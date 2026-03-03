@@ -22,10 +22,6 @@ vertices = PackedVector3Array(2.7089376, 2, -3.7910624, 3.4589376, 2, -3.0410624
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(3, 6, 11), PackedInt32Array(11, 6, 8), PackedInt32Array(8, 6, 7), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 14, 19), PackedInt32Array(19, 14, 15), PackedInt32Array(8, 7, 18), PackedInt32Array(20, 19, 21), PackedInt32Array(20, 21, 16), PackedInt32Array(16, 21, 18), PackedInt32Array(18, 21, 8), PackedInt32Array(8, 21, 10), PackedInt32Array(11, 23, 3), PackedInt32Array(3, 23, 2), PackedInt32Array(2, 23, 22), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(9, 10, 28), PackedInt32Array(28, 10, 27), PackedInt32Array(31, 30, 29), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(23, 33, 22), PackedInt32Array(22, 33, 29), PackedInt32Array(28, 27, 33), PackedInt32Array(33, 27, 32), PackedInt32Array(32, 27, 24), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(37, 34, 39), PackedInt32Array(37, 39, 38), PackedInt32Array(37, 38, 40), PackedInt32Array(40, 38, 16), PackedInt32Array(40, 16, 41), PackedInt32Array(41, 16, 17), PackedInt32Array(5, 42, 4), PackedInt32Array(4, 42, 43), PackedInt32Array(44, 43, 42), PackedInt32Array(42, 47, 44), PackedInt32Array(44, 47, 48), PackedInt32Array(48, 47, 45), PackedInt32Array(45, 47, 46), PackedInt32Array(44, 48, 41), PackedInt32Array(41, 48, 40), PackedInt32Array(50, 49, 45), PackedInt32Array(45, 49, 48), PackedInt32Array(35, 36, 51), PackedInt32Array(51, 36, 52), PackedInt32Array(55, 54, 12), PackedInt32Array(12, 54, 53), PackedInt32Array(58, 57, 56), PackedInt32Array(53, 60, 59), PackedInt32Array(62, 39, 61), PackedInt32Array(61, 39, 34), PackedInt32Array(64, 58, 63), PackedInt32Array(62, 61, 65), PackedInt32Array(51, 52, 67), PackedInt32Array(67, 52, 66), PackedInt32Array(67, 66, 60), PackedInt32Array(13, 62, 12), PackedInt32Array(12, 62, 65), PackedInt32Array(12, 65, 55), PackedInt32Array(68, 63, 69), PackedInt32Array(69, 63, 58), PackedInt32Array(69, 58, 56), PackedInt32Array(70, 64, 71), PackedInt32Array(71, 64, 72), PackedInt32Array(72, 64, 73), PackedInt32Array(73, 64, 63), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 73), PackedInt32Array(73, 79, 72), PackedInt32Array(72, 79, 78), PackedInt32Array(66, 52, 74), PackedInt32Array(74, 52, 82), PackedInt32Array(74, 82, 77), PackedInt32Array(79, 80, 83), PackedInt32Array(83, 80, 77), PackedInt32Array(83, 77, 82), PackedInt32Array(49, 50, 82), PackedInt32Array(82, 50, 83), PackedInt32Array(73, 84, 81), PackedInt32Array(67, 60, 54), PackedInt32Array(54, 60, 53), PackedInt32Array(79, 85, 78), PackedInt32Array(25, 26, 86), PackedInt32Array(86, 26, 87), PackedInt32Array(87, 89, 88), PackedInt32Array(30, 31, 90), PackedInt32Array(90, 31, 91), PackedInt32Array(0, 1, 47), PackedInt32Array(47, 1, 92), PackedInt32Array(92, 94, 47), PackedInt32Array(47, 94, 46), PackedInt32Array(46, 94, 78), PackedInt32Array(78, 94, 93), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 93), PackedInt32Array(88, 98, 87), PackedInt32Array(87, 98, 99), PackedInt32Array(87, 99, 86), PackedInt32Array(85, 46, 78), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 91), PackedInt32Array(91, 97, 93), PackedInt32Array(91, 93, 94), PackedInt32Array(94, 90, 91), PackedInt32Array(101, 100, 102), PackedInt32Array(102, 100, 103), PackedInt32Array(102, 103, 68), PackedInt32Array(102, 68, 69), PackedInt32Array(84, 104, 81), PackedInt32Array(81, 104, 105), PackedInt32Array(53, 59, 106), PackedInt32Array(76, 105, 109), PackedInt32Array(109, 105, 106), PackedInt32Array(106, 105, 107), PackedInt32Array(107, 105, 108), PackedInt32Array(104, 103, 105), PackedInt32Array(105, 103, 108), PackedInt32Array(108, 103, 100), PackedInt32Array(109, 75, 76), PackedInt32Array(111, 110, 107), PackedInt32Array(107, 110, 106), PackedInt32Array(106, 110, 53), PackedInt32Array(57, 112, 56), PackedInt32Array(56, 112, 113), PackedInt32Array(113, 112, 114), PackedInt32Array(89, 87, 115), PackedInt32Array(115, 87, 116), PackedInt32Array(116, 87, 117), PackedInt32Array(117, 87, 118), PackedInt32Array(119, 114, 120), PackedInt32Array(120, 114, 121), PackedInt32Array(121, 114, 123), PackedInt32Array(121, 123, 122), PackedInt32Array(120, 115, 119), PackedInt32Array(119, 115, 116), PackedInt32Array(114, 112, 123), PackedInt32Array(71, 122, 70), PackedInt32Array(70, 122, 123), PackedInt32Array(95, 96, 122), PackedInt32Array(122, 96, 121), PackedInt32Array(101, 102, 124), PackedInt32Array(124, 102, 125), PackedInt32Array(111, 124, 110), PackedInt32Array(110, 124, 125)]
 agent_height = 0.25
 
-[sub_resource type="SphereMesh" id="SphereMesh_50ct6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_50ct6"]
-
 [node name="TestScene" type="Node3D" unique_id=637909514]
 script = ExtResource("1_50ct6")
 
@@ -51,30 +47,25 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(0.9999811, 0.004246789, -0.004443347, 0, 0.7229156, 0.6909364, 0.006146426, -0.69092333, 0.72290194, -0.18380333, 8.235338, 10.867315)
 
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164255, 1.8428593, 8.049091)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
 script = ExtResource("2_r5l72")
-_state = 1
+_state = 3
+metadata/_custom_type_script = "uid://b7ocrnrctly4f"
+
+[node name="Mole2" type="Node3D" parent="." unique_id=2804634]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
+script = ExtResource("2_r5l72")
+_state = 3
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Enemy" type="Node3D" parent="." unique_id=1008627062]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7, 2.2407684, -7)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7, 1.7, -7)
 script = ExtResource("2_r5l72")
 _is_enemy = true
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=986664853]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.509, 2, 7.334)
-visible = false
-mesh = SubResource("SphereMesh_50ct6")
-
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1761910190]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1380687533]
-transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, -7.4140787, 0)
-shape = SubResource("BoxShape3D_50ct6")
-
-[node name="Mole2" type="Node3D" parent="." unique_id=509087683]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.5754867, 1.6708755, 8.235585)
+[node name="Enemy2" type="Node3D" parent="." unique_id=139571797]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.215, 1.7, 7.1887655)
 script = ExtResource("2_r5l72")
-_state = 1
+_is_enemy = true
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
