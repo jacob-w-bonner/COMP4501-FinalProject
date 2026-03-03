@@ -5,14 +5,24 @@ enum STATES {
 	IDLE,
 	MOVING,
 	ATTACKING,
-	SENTRY
+	SENTRY,
+	BURROW
 }
 
 # Array that contains each of the enemies
-var ENEMY_ARR: Array = []
+var ENEMY_ARR: 						Array			= []
 
 # Array that contains each of the allies
-var ALLY_ARR:  Array = []
+var ALLY_ARR:  						Array			= []
+
+# Value that holds a selected unit
+var SELECTED_UNIT: 					Unit 			= null
+
+# Value of the height of the world floor
+var FLOOR_HEIGHT: 					float			= 1.7
+
+# Unit selection timer
+var			SELECT_COOLDOWN:		bool			= false
 
 # Called to determine the closest opposing unit to the given position
 func closest_opponent(unit: Unit) -> Unit:
@@ -21,6 +31,10 @@ func closest_opponent(unit: Unit) -> Unit:
 	var closest_pos  = Vector3(10000.0, 10000.0, 10000.0)
 	var closest_dist = 10000.0
 	var closest_unit = null
+
+	# Do not accept null units
+	if unit.is_queued_for_deletion():
+		return null
 
 	# If the unit is an enemy then check for the closest ally
 	if unit.is_enemy():
