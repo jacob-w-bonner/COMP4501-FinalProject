@@ -10,9 +10,7 @@ var _curr_burrow_cooldown: 	float 			= 0.0
 var _can_burrow:			bool			= true
 var _burrow_target:			Vector3			= Vector3(0.0, Globals.FLOOR_HEIGHT, 0.0)
 
-var _shader_mat_arr:		Array			= []
-
-# Shader and material for the mole
+# Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
 # Called when the node enters the scene tree for the first time.
@@ -23,10 +21,6 @@ func _ready() -> void:
 
 	# Moles are not enemies
 	#_is_enemy							= false
-
-	# Instantiating mesh
-	_mesh								= MeshInstance3D.new()
-	_physics_body.add_child(_mesh)
 
 	# Setting the mesh
 	_mesh.mesh							= (load("res://Assets/MoleAssets/Mole/Mole.tres") as Mesh).duplicate()
@@ -59,7 +53,6 @@ func _ready() -> void:
 			# Initializing shader material for the mesh
 			var shader_mat		= ShaderMaterial.new()
 			shader_mat.shader 	= _shader
-			_shader_mat_arr.push_back(shader_mat)
 
 			# Setting the shader surface colour to the old material
 			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
@@ -78,7 +71,13 @@ func _input(event: InputEvent) -> void:
 		if self._is_hovered and Globals.SELECTED_UNIT == null and !self.is_enemy() and _state != Globals.STATES.BURROW and !Globals.SELECT_COOLDOWN:
 			Globals.SELECTED_UNIT = self
 			_is_selected		  = true
-			print(Globals.SELECTED_UNIT.name)
+			print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
+			return
+
+		# Deselect a unit
+		elif self._is_hovered and Globals.SELECTED_UNIT == self and !self.is_enemy() and _state != Globals.STATES.BURROW and !Globals.SELECT_COOLDOWN:
+			Globals.SELECTED_UNIT = null
+			_is_selected		  = false
 			return
 
 		# Actions to consider if the unit has been selected
@@ -166,7 +165,7 @@ func _process(delta: float) -> void:
 
 		# Checking for the closest enemy to target if no target exists
 		if _closest_op == null:
-			_closest_op				   = Globals.closest_opponent(self)
+			_closest_op				   = closest_opponent(self)
 
 		# Navigation setting
 		else:
@@ -194,7 +193,7 @@ func _process(delta: float) -> void:
 		if _closest_op.is_queued_for_deletion() or _closest_op == null:
 			_mesh.global_transform.basis 	= _physics_body.global_transform.basis
 			_mesh.position					= Vector3.ZERO
-			_state = Globals.STATES.MOVING
+			_state							= Globals.STATES.MOVING
 			return
 
 		_nav_agent.velocity = Vector3.ZERO

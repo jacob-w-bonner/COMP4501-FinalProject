@@ -5,6 +5,9 @@ extends Node3D
 @onready var mole2 = $Mole2
 @onready var enemy = $Enemy
 @onready var enemy2 = $Enemy2
+@onready var resource = $Resource
+@onready var resource2 = $Resource2
+@onready var miner_mole  = $MinerMole
 
 @onready var camera = $Camera3D
 
@@ -14,6 +17,9 @@ func _ready() -> void:
 	# Adding the allies to the ally array
 	Globals.ALLY_ARR.push_back(mole)
 	Globals.ALLY_ARR.push_back(mole2)
+	Globals.ALLY_ARR.push_back(resource)
+	Globals.ALLY_ARR.push_back(resource2)
+	Globals.ALLY_ARR.push_back(miner_mole)
 
 	# Adding the enemies to the enemy array
 	Globals.ENEMY_ARR.push_back(enemy)

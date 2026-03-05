@@ -15,12 +15,12 @@ var 		_attack_direction:	float				= 10.0
 # The current target of the unit
 @onready var _closest_op: 		Unit				= null
 
+# Navigation agent to help with movement around walled areas
+var _nav_agent:					NavigationAgent3D	= null
+
 # The radius at which the unit can take certain actions
 var _reach_radius:				float				= 2.5
 var _sentry_radius:				float				= 8.0
-
-# Navigation agent to help with movement around walled areas
-var _nav_agent:					NavigationAgent3D	= null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +31,10 @@ func _ready() -> void:
 	# Instantiating a character body
 	_physics_body 							= CharacterBody3D.new()
 	self.add_child(_physics_body)
+
+	# Instantiating mesh
+	_mesh									= MeshInstance3D.new()
+	_physics_body.add_child(_mesh)
 
 	# Enabling mouse detection
 	_physics_body.input_ray_pickable		= true
@@ -57,11 +61,8 @@ func _ready() -> void:
 # Called to handle input events
 func _input(event: InputEvent) -> void:
 
-	# Checking for left mouse click
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-
-		if self._is_hovered:
-			print(self.name)
+	# Differing to unit input
+	super._input(event)
 
 # Called to move the unit to a location
 func move(target: Unit) -> void:
@@ -127,7 +128,7 @@ func attack(target: Unit, delta: float) -> void:
 func sentry() -> void:
 
 	# Potential opponent
-	var opponent = Globals.closest_opponent(self)
+	var opponent = closest_opponent(self)
 
 	# If there are no opponents return
 	if opponent == null:
@@ -140,10 +141,14 @@ func sentry() -> void:
 
 # Called when movement is finished
 func nav_finish() -> void:
+
+	# If the closest target is an enemy then attack it
 	if _closest_op.is_enemy():
 		_state = Globals.STATES.ATTACKING
+
+	# Move towards the closest target
 	else:
-		_closest_op = Globals.closest_opponent(self)
+		_closest_op = closest_opponent(self)
 		_state		= Globals.STATES.MOVING
 
 # A basic hitting animation handler
