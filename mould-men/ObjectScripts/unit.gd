@@ -18,8 +18,8 @@ var _collision_shape:			CollisionShape3D
 var _mesh:						MeshInstance3D
 
 # Selection variables
-var			_is_hovered:		bool			= false
-var			_is_selected:		bool			= false
+var _is_hovered:				bool			= false
+var _is_selected:				bool			= false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,9 +33,22 @@ func _ready() -> void:
 	else:
 		print("Camera node not found.")
 
+# Called to handle input events
+func _input(event: InputEvent) -> void:
+
+	# Checking for left mouse click
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+
+		if self._is_hovered:
+			print(self.name)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+# Getter for the state
+func get_state() -> Globals.STATES:
+	return _state
 
 # Setter for the health
 func set_health(new_health: int) -> void:
@@ -64,6 +77,74 @@ func get_global_pos() -> Vector3:
 # Getter for the enemy indicator
 func is_enemy() -> bool:
 	return _is_enemy
+
+# Called to determine the closest opposing unit to the given position
+func closest_opponent(unit: Unit) -> Unit:
+
+	# Values that will contain the closest enemy position and distance
+	var closest_pos  = Vector3(10000.0, 10000.0, 10000.0)
+	var closest_dist = 10000.0
+	var closest_unit = null
+
+	# Do not accept null units
+	if unit.is_queued_for_deletion() or !is_instance_valid(unit):
+		return null
+
+	# If the unit is a miner mole then prioritize finding resources
+	if unit is MinerMole:
+		for ally in Globals.ALLY_ARR:
+			var distance = ally.global_position.distance_to(unit.get_global_pos())
+			if distance < closest_dist and ally is ResourceVein:
+				closest_pos  = ally.global_position
+				closest_dist = distance
+				closest_unit = ally
+
+		# If a resource vein in range was found go mine it
+		if closest_unit != null:
+			return closest_unit
+
+	# If the unit is an enemy then check for the closest ally
+	if unit.is_enemy():
+
+		# First make sure that there are allies to track
+		if Globals.ALLY_ARR.size() == 0:
+			return null
+
+		# Check the array for the closest ally
+		for ally in Globals.ALLY_ARR:
+
+			# Do not accept null units
+			if !is_instance_valid(ally):
+				continue
+
+			var distance = ally.global_position.distance_to(unit.get_global_pos())
+			if distance < closest_dist:
+				closest_pos  = ally.global_position
+				closest_dist = distance
+				closest_unit = ally
+
+	# Otherwise check for the closest enemy
+	else:
+
+		# First make sure that there are enemies to track
+		if Globals.ENEMY_ARR.size() == 0:
+			return null
+
+		# Check the array for the closest enemy
+		for enemy in Globals.ENEMY_ARR:
+
+			# Do not accept null units
+			if !is_instance_valid(enemy):
+				continue
+
+			var distance = enemy.global_position.distance_to(unit.get_global_pos())
+			if distance < closest_dist:
+				closest_pos  = enemy.global_position
+				closest_dist = distance
+				closest_unit = enemy
+
+	return closest_unit
+
 
 # Called to apply damage to the unit
 func take_damage(damage_val: int) -> void:
