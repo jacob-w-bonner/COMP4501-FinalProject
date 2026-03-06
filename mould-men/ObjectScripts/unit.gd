@@ -8,6 +8,7 @@ var _camera:					Camera3D		= null
 @export var _max_health: 		int 			= 100
 @export var _health: 			int 			= 100
 @export var _is_enemy: 			bool 			= false
+@export var _attack_strength:	int 				= 5.0
 
 # State of the unit
 @export var _state:				Globals.STATES	= Globals.STATES.IDLE
@@ -90,19 +91,6 @@ func closest_opponent(unit: Unit) -> Unit:
 	if unit.is_queued_for_deletion() or !is_instance_valid(unit):
 		return null
 
-	# If the unit is a miner mole then prioritize finding resources
-	if unit is MinerMole:
-		for ally in Globals.ALLY_ARR:
-			var distance = ally.global_position.distance_to(unit.get_global_pos())
-			if distance < closest_dist and ally is ResourceVein:
-				closest_pos  = ally.global_position
-				closest_dist = distance
-				closest_unit = ally
-
-		# If a resource vein in range was found go mine it
-		if closest_unit != null:
-			return closest_unit
-
 	# If the unit is an enemy then check for the closest ally
 	if unit.is_enemy():
 
@@ -117,9 +105,9 @@ func closest_opponent(unit: Unit) -> Unit:
 			if !is_instance_valid(ally):
 				continue
 
-			var distance = ally.global_position.distance_to(unit.get_global_pos())
+			var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
 			if distance < closest_dist:
-				closest_pos  = ally.global_position
+				closest_pos  = ally.get_global_pos()
 				closest_dist = distance
 				closest_unit = ally
 

@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://b7ocrnrctly4f" path="res://ObjectScripts/mole.gd" id="2_r5l72"]
 [ext_resource type="Script" uid="uid://cbcqjp5vy7j3u" path="res://ObjectScripts/coal.gd" id="5_ak5v8"]
 [ext_resource type="Script" uid="uid://dswgpx4ppis5i" path="res://ObjectScripts/miner_moal.gd" id="6_x033f"]
+[ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="7_oho3u"]
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="7_rdbpf"]
+[ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="8_oho3u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,12 +54,13 @@ transform = Transform3D(0.9999811, 0.004246789, -0.004443347, 0, 0.7229156, 0.69
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
 script = ExtResource("2_r5l72")
-_state = 3
+_health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Mole2" type="Node3D" parent="." unique_id=2804634]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
 script = ExtResource("2_r5l72")
+_health = 50
 _state = 3
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
@@ -84,7 +87,19 @@ script = ExtResource("5_ak5v8")
 metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
 
 [node name="MinerMole" type="Node3D" parent="." unique_id=500099539]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.507, 1.7, 3.8662405)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.849202, 1.7, 3.8662405)
 script = ExtResource("6_x033f")
-_state = 3
 metadata/_custom_type_script = "uid://dswgpx4ppis5i"
+
+[node name="MusicMole" type="Node3D" parent="." unique_id=1302204269]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.8171678, 1.7, 1.307)
+script = ExtResource("7_oho3u")
+_state = 3
+metadata/_custom_type_script = "uid://bltrhy7jjrbn1"
+
+[node name="DoctorMole" type="Node3D" parent="." unique_id=1979961695]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.377, 1.7, 1.3252635)
+script = ExtResource("8_oho3u")
+_speed = 5
+_health = 50
+metadata/_custom_type_script = "uid://edh800y1jebg"

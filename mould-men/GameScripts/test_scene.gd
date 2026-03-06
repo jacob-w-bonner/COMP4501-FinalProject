@@ -8,6 +8,8 @@ extends Node3D
 @onready var resource = $Resource
 @onready var resource2 = $Resource2
 @onready var miner_mole  = $MinerMole
+@onready var music_mole  = $MusicMole
+@onready var doctor_mole  = $DoctorMole
 
 @onready var camera = $Camera3D
 
@@ -20,6 +22,8 @@ func _ready() -> void:
 	Globals.ALLY_ARR.push_back(resource)
 	Globals.ALLY_ARR.push_back(resource2)
 	Globals.ALLY_ARR.push_back(miner_mole)
+	Globals.ALLY_ARR.push_back(music_mole)
+	Globals.ALLY_ARR.push_back(doctor_mole)
 
 	# Adding the enemies to the enemy array
 	Globals.ENEMY_ARR.push_back(enemy)
@@ -29,3 +33,6 @@ func _process(_delta: float) -> void:
 
 	# Take select off cooldown
 	Globals.SELECT_COOLDOWN = false
+
+	# Incrementing the time passed
+	Globals.TIME			+= _delta
