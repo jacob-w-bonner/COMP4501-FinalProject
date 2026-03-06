@@ -98,7 +98,7 @@ func mine(target: ResourceVein, delta: float) -> void:
 		return
 
 	# Resetting the mine if it is maxed out
-	if _mining_time > _MINING_DURATION:
+	if _mining_time > _MINING_DURATION / _buff_val:
 		_already_mined	= false
 		_mining_time	= 0.0
 
@@ -106,7 +106,7 @@ func mine(target: ResourceVein, delta: float) -> void:
 	_mining_time += delta
 
 	# Deal damage to the target after a quarter of the time
-	if _mining_time > 3.0 * _MINING_DURATION / 4.0 and !_already_mined:
+	if _mining_time > 3.0 * _MINING_DURATION / _buff_val / 4.0 and !_already_mined:
 		var retrieved = target.deplete_resource(_mining_efficiency)
 		_already_mined = true
 
@@ -137,3 +137,30 @@ func mine_animation(delta: float) -> void:
 	_mesh.rotate_x(_mining_direction * delta)
 	if _mesh.rotation.x > deg_to_rad(45) or _mesh.rotation.x < deg_to_rad(-45):
 		_mining_direction *= -1.0
+
+# Called to determine the closest opposing unit to the given position
+func closest_opponent(unit: Unit) -> Unit:
+
+	# Values that will contain the closest enemy position and distance
+	var closest_pos  = Vector3(10000.0, 10000.0, 10000.0)
+	var closest_dist = 10000.0
+	var closest_unit = null
+
+	# Do not accept null units
+	if unit.is_queued_for_deletion() or !is_instance_valid(unit):
+		return null
+
+	# If the unit is a miner mole then prioritize finding resources
+	if unit is MinerMole:
+		for ally in Globals.ALLY_ARR:
+			var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
+			if distance < closest_dist and ally is ResourceVein:
+				closest_pos  = ally.get_global_pos()
+				closest_dist = distance
+				closest_unit = ally
+
+		# If a resource vein in range was found go mine it
+		if closest_unit != null:
+			return closest_unit
+
+	return super.closest_opponent(self)

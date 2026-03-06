@@ -64,6 +64,14 @@ func _input(event: InputEvent) -> void:
 	# Checking all dynamic click events first
 	super._input(event)
 
+	# Checking for double click left mouse click
+	if event is InputEventMouseButton and event.double_click and event.button_index == MOUSE_BUTTON_LEFT:
+		if self._is_hovered and !self.is_enemy() and _state != Globals.STATES.BURROW and !Globals.SELECT_COOLDOWN:
+			Globals.SELECTED_UNIT 	= null
+			Globals.SELECT_COOLDOWN = true
+			_state					= Globals.STATES.SENTRY
+			return
+
 	# Checking for left mouse click
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 
@@ -131,6 +139,14 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
+	# If the target is buffed run the animation
+	if _buff_val > 1.0:
+		self.buff_animation(delta)
+
+	# If the target is being healed run the animation
+	if _is_receiving_healing:
+		self.heal_animation(delta)
+
 	# Check first to make sure a target exists
 	if _closest_op != null:
 		if _closest_op.is_queued_for_deletion():
@@ -163,13 +179,16 @@ func _process(delta: float) -> void:
 	# Movement state processing
 	if _state == Globals.STATES.MOVING:
 
+		# If a previous action was being taken reset the mesh
+		_mesh.global_transform.basis 	= _physics_body.global_transform.basis
+
 		# Checking for the closest enemy to target if no target exists
 		if _closest_op == null:
-			_closest_op				   = closest_opponent(self)
+			_closest_op				    = closest_opponent(self)
 
 		# Navigation setting
 		else:
-			_nav_agent.target_position = _closest_op.get_global_pos()
+			_nav_agent.target_position  = _closest_op.get_global_pos()
 
 		# Moving the mole to its target location
 		move(_closest_op)
@@ -238,3 +257,7 @@ func burrow(delta: float):
 	# Move the mesh to the destination
 	if _curr_burrow_cooldown > _BURROW_TIME / 2.0 and self.get_global_pos() != _burrow_target:
 		self.set_global_pos(_burrow_target)
+
+# Called to determine the closest opposing unit to the given position
+func closest_opponent(unit: Unit) -> Unit:
+	return super.closest_opponent(self)

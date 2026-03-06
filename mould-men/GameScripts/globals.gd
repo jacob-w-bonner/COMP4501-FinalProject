@@ -7,7 +7,9 @@ enum STATES {
 	ATTACKING,
 	SENTRY,
 	BURROW,
-	MINE
+	MINE,
+	GROOVING,
+	HEALING
 }
 
 # Enum for the types of resources
@@ -17,6 +19,9 @@ enum RESOURCES {
 	DIAMOND,
 	AMETHYST
 }
+
+# Total time that has elapsed
+var TIME:							float			= 0.0
 
 # Tracking the amount of resources the player has
 var COAL_NUM:						int				= 0
@@ -37,4 +42,4 @@ var SELECTED_UNIT: 					Unit 			= null
 var FLOOR_HEIGHT: 					float			= 1.7
 
 # Unit selection timer
-var			SELECT_COOLDOWN:		bool			= false
+var SELECT_COOLDOWN:				bool			= false

@@ -3,7 +3,7 @@ class_name DynamicUnit extends Unit
 
 # Properties that all dynamic units have
 @export var _speed: 			int 				= 1.0
-@export var _attack_strength:	int 				= 10.0
+@export var _buff_val:			float				= 1.0
 var			_velocity:			Vector3				= Vector3.ZERO
 
 # Properties that track attacking
@@ -22,6 +22,13 @@ var _nav_agent:					NavigationAgent3D	= null
 var _reach_radius:				float				= 2.5
 var _sentry_radius:				float				= 8.0
 
+# Indicator for whether or not the unit is currently receiving healing
+var _is_receiving_healing:		int					= 0
+
+# Meshes for status effect indicators
+var _buff_mesh:					MeshInstance3D		= null
+var _heal_mesh:					MeshInstance3D		= null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -35,6 +42,21 @@ func _ready() -> void:
 	# Instantiating mesh
 	_mesh									= MeshInstance3D.new()
 	_physics_body.add_child(_mesh)
+
+	# Instantiating the buff indicator mesh
+	_buff_mesh								= MeshInstance3D.new()
+	_physics_body.add_child(_buff_mesh)
+	_buff_mesh.mesh							= (load("res://Assets/MoleAssets/EffectIndicators/QuarterNote.tres") as Mesh).duplicate()
+	_buff_mesh.scale						= Vector3(0.5, 0.5, 0.5)
+	_buff_mesh.position						= Vector3(0.0, 4.0, 0.0)
+	_buff_mesh.visible						= false
+
+	# Instantiating the healing indicator mesh
+	_heal_mesh								= MeshInstance3D.new()
+	_physics_body.add_child(_heal_mesh)
+	_heal_mesh.mesh							= (load("res://Assets/MoleAssets/EffectIndicators/Halo.tres") as Mesh).duplicate()
+	_heal_mesh.position						= Vector3(0.0, 4.0, 0.0)
+	_heal_mesh.visible						= false
 
 	# Enabling mouse detection
 	_physics_body.input_ray_pickable		= true
@@ -79,12 +101,12 @@ func move(target: Unit) -> void:
 
 	# Calculate direction of travel
 	var direction					= (next_pos - _physics_body.global_transform.origin).normalized()
-	_velocity						= direction * _speed
+	_velocity						= direction * _speed * _buff_val
 
 	# Calculating rotation so that unit is facing correct direction
 	var rotation_vec				= Vector3(direction.x, 0, direction.z)
 	var angle						= atan2(rotation_vec.x, rotation_vec.z)
-	_physics_body.rotation.y		= lerp_angle(_physics_body.rotation.y, angle, _speed * 0.1)
+	_physics_body.rotation.y		= lerp_angle(_physics_body.rotation.y, angle, _speed * _buff_val * 0.1)
 
 	# Calculating a velocity to avoid collisions with other moving objects
 	_nav_agent.velocity				= _velocity
@@ -109,7 +131,7 @@ func attack(target: Unit, delta: float) -> void:
 		return
 
 	# Resetting the attack if it is maxed out
-	if _attack_time > _ATTACK_DURATION:
+	if _attack_time > _ATTACK_DURATION / _buff_val:
 		_damage_dealt	= false
 		_attack_time	= 0.0
 
@@ -117,7 +139,7 @@ func attack(target: Unit, delta: float) -> void:
 	_attack_time += delta
 
 	# Deal damage to the target after a quarter of the time
-	if _attack_time > _ATTACK_DURATION / 4.0 and !_damage_dealt:
+	if _attack_time > _ATTACK_DURATION / _buff_val / 4.0 and !_damage_dealt:
 		target.take_damage(_attack_strength)
 		_damage_dealt = true
 
@@ -153,9 +175,18 @@ func nav_finish() -> void:
 
 # A basic hitting animation handler
 func hit_animation(delta: float) -> void:
-	_mesh.rotate_y(_attack_direction * delta)
+	_mesh.rotate_y(_attack_direction * delta * _buff_val)
 	if _mesh.rotation.y > deg_to_rad(45) or _mesh.rotation.y < deg_to_rad(-45):
 		_attack_direction *= -1.0
+
+# Animation for the buff indicator
+func buff_animation(delta: float) -> void:
+	_buff_mesh.position = Vector3(0.0, 0.5 * cos(4.0 * Globals.TIME) + 4.0, 0.0)
+	_buff_mesh.rotate_y(4.0 * delta)
+
+# Animation for the heal indicator
+func heal_animation(delta: float) -> void:
+	_heal_mesh.position = Vector3(0.0, 0.5 * cos(4.0 * Globals.TIME) + 4.0, 0.0)
 
 # Called to adjust the velocity to account for other moving objects
 func adjust_velocity(adj_vel: Vector3) -> void:
@@ -167,3 +198,48 @@ func adjust_velocity(adj_vel: Vector3) -> void:
 	_physics_body.velocity.x		= _velocity.x
 	_physics_body.velocity.z		= _velocity.z
 	_physics_body.move_and_slide()
+
+# Called to determine the closest opposing unit to the given position
+func closest_opponent(unit: Unit) -> Unit:
+	return super.closest_opponent(self)
+
+# Getter for the buff value
+func get_buff_val() -> float:
+	return _buff_val
+
+# Reset for the buff value
+func float_buff_val() -> void:
+	_buff_val = 1.0
+
+# Getter for if the unit is receiving healing
+func get_is_healing() -> bool:
+	return _is_receiving_healing
+
+# Setter for if the unit is receiving healing
+func set_is_healing(is_healing: bool) -> void:
+	if is_healing:
+		_is_receiving_healing += 1
+	else:
+		_is_receiving_healing -= 1
+
+	# If for some reason the healing indicator is invalid then fix it
+	if _is_receiving_healing < 0:
+		_is_receiving_healing = 0
+
+	# Checking the status of the mesh
+	if _is_receiving_healing > 0:
+		_heal_mesh.visible = true
+	else:
+		_heal_mesh.visible = false
+
+# Increase the buff value
+func increase_buff_val(change_val: float) -> void:
+	_buff_val += change_val
+	if _buff_val > 1.0:
+		_buff_mesh.visible = true
+
+# Decrease the buff value
+func decrease_buff_val(change_val: float) -> void:
+	_buff_val = max(1.0, _buff_val - change_val)
+	if _buff_val <= 1.0:
+		_buff_mesh.visible = false
