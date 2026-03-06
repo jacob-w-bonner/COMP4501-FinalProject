@@ -7,7 +7,8 @@ enum STATES {
 	ATTACKING,
 	SENTRY,
 	BURROW,
-	MINE
+	MINE,
+	GROOVING
 }
 
 # Enum for the types of resources

@@ -2,8 +2,10 @@
 class_name DynamicUnit extends Unit
 
 # Properties that all dynamic units have
-@export var _speed: 			int 				= 1.0
-@export var _attack_strength:	int 				= 10.0
+@export var _speed: 			float 				= 1.0
+@export var _attack_strength:	float 				= 10.0
+@export var _buff_val:			float				= 1.0
+@export var _is_buffed:			bool				= false
 var			_velocity:			Vector3				= Vector3.ZERO
 
 # Properties that track attacking
@@ -79,12 +81,12 @@ func move(target: Unit) -> void:
 
 	# Calculate direction of travel
 	var direction					= (next_pos - _physics_body.global_transform.origin).normalized()
-	_velocity						= direction * _speed
+	_velocity						= direction * _speed * (_buff_val if _is_buffed else 1.0)
 
 	# Calculating rotation so that unit is facing correct direction
 	var rotation_vec				= Vector3(direction.x, 0, direction.z)
 	var angle						= atan2(rotation_vec.x, rotation_vec.z)
-	_physics_body.rotation.y		= lerp_angle(_physics_body.rotation.y, angle, _speed * 0.1)
+	_physics_body.rotation.y		= lerp_angle(_physics_body.rotation.y, angle, _speed * (_buff_val if _is_buffed else 1.0) * 0.1)
 
 	# Calculating a velocity to avoid collisions with other moving objects
 	_nav_agent.velocity				= _velocity
@@ -109,7 +111,7 @@ func attack(target: Unit, delta: float) -> void:
 		return
 
 	# Resetting the attack if it is maxed out
-	if _attack_time > _ATTACK_DURATION:
+	if _attack_time > _ATTACK_DURATION / (_buff_val if _is_buffed else 1.0):
 		_damage_dealt	= false
 		_attack_time	= 0.0
 
@@ -117,7 +119,7 @@ func attack(target: Unit, delta: float) -> void:
 	_attack_time += delta
 
 	# Deal damage to the target after a quarter of the time
-	if _attack_time > _ATTACK_DURATION / 4.0 and !_damage_dealt:
+	if _attack_time > _ATTACK_DURATION / (_buff_val if _is_buffed else 1.0) / 4.0 and !_damage_dealt:
 		target.take_damage(_attack_strength)
 		_damage_dealt = true
 
@@ -167,3 +169,23 @@ func adjust_velocity(adj_vel: Vector3) -> void:
 	_physics_body.velocity.x		= _velocity.x
 	_physics_body.velocity.z		= _velocity.z
 	_physics_body.move_and_slide()
+
+# Getter for the buff value
+func get_buff_val() -> float:
+	return _buff_val
+
+# Increase the buff value
+func increase_buff_val(change_val: float) -> void:
+	_buff_val += change_val
+
+# Decrease the buff value
+func decrease_buff_val(change_val: float) -> void:
+	_buff_val = max(1.0, _buff_val - change_val)
+
+# Getter for whether or not the unit is buffed
+func is_buffed() -> bool:
+	return _is_buffed
+
+# Setter for whether or not the unit is buffed
+func set_buffed(buff_val: float) -> void:
+	_is_buffed = buff_val

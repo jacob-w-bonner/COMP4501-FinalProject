@@ -48,13 +48,13 @@ func _process(delta: float) -> void:
 		# If the target is invalid select a new one
 		if !is_instance_valid(_closest_op):
 			_state = Globals.STATES.MOVING
-			_mesh.global_transform.basis 	= _physics_body.global_transform.basis
+			_mesh.global_transform.basis 	= self.global_transform.basis
 			_mesh.position					= Vector3.ZERO
 			return
 
 		# If there is no target to mine then try to find a new one
 		if _closest_op.is_queued_for_deletion() or _closest_op == null or _closest_op is not ResourceVein:
-			_mesh.global_transform.basis 	= _physics_body.global_transform.basis
+			_mesh.global_transform.basis 	= self.global_transform.basis
 			_mesh.position					= Vector3.ZERO
 			_state							= Globals.STATES.MOVING
 			return
@@ -92,13 +92,13 @@ func mine(target: ResourceVein, delta: float) -> void:
 	if self.get_global_pos().distance_to(target.get_global_pos()) > _reach_radius:
 		_already_mined					= false
 		_mining_time					= 0.0
-		_mesh.global_transform.basis 	= _physics_body.global_transform.basis
+		_mesh.global_transform.basis 	= self.global_transform.basis
 		_mesh.position					= Vector3.ZERO
 		_state							= Globals.STATES.MOVING
 		return
 
 	# Resetting the mine if it is maxed out
-	if _mining_time > _MINING_DURATION:
+	if _mining_time > _MINING_DURATION * (_buff_val if _is_buffed else 1.0):
 		_already_mined	= false
 		_mining_time	= 0.0
 
@@ -106,7 +106,7 @@ func mine(target: ResourceVein, delta: float) -> void:
 	_mining_time += delta
 
 	# Deal damage to the target after a quarter of the time
-	if _mining_time > 3.0 * _MINING_DURATION / 4.0 and !_already_mined:
+	if _mining_time > 3.0 * _MINING_DURATION / (_buff_val if _is_buffed else 1.0) / 4.0 and !_already_mined:
 		var retrieved = target.deplete_resource(_mining_efficiency)
 		_already_mined = true
 

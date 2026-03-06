@@ -68,11 +68,11 @@ func get_unit_position() -> Vector3:
 
 # Setter for practical global position (USE THIS INSTEAD OF NORMAL GLOBAL POSITION SETTER)
 func set_global_pos(new_pos: Vector3) -> void:
-	_physics_body.set_global_position(new_pos)
+	self.set_global_position(new_pos)
 
 # Getter for practical global position (USE THIS INSTEAD OF NORMAL GLOBAL POSITION GETTER)
 func get_global_pos() -> Vector3:
-	return _physics_body.get_global_position()
+	return self.get_global_position()
 
 # Getter for the enemy indicator
 func is_enemy() -> bool:
