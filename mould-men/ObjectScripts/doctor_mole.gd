@@ -1,5 +1,22 @@
 class_name DoctorMole extends Mole
 
+# BEHAVIOURS DESCRIPTION
+#
+# All behaviours of a Mole with the following changes:
+# - RIGHT CLICK on the doctor mole will toggle the mole Healing
+# - While Healing, the doctor mole has the following behavioural changes
+#    ~ While in the MOVING state the doctor mole prioritizes moving towards the closest mole
+#      and it regenerates health over time
+#    ~ When the doctor mole reaches a target of any kind in the MOVING state it transitions
+#      to the HEALING state instead of any other state
+#
+# HEALING:
+# - State becomes HEALING when the doctor mole is Healing and it reaches a target
+#   while in the MOVING state.
+# - While in the HEALING state, every mole within a certain radius gains healing over time
+# - When all allies leave the radius of the doctor mole, or the doctor mole stops Healing,
+#   the doctor mole transitions to the MOVING state.
+
 # Properties that healing
 @export var _is_healing:		bool			= false
 @export var _healing_radius:	float			= 5.0

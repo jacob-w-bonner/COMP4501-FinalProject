@@ -1,5 +1,18 @@
 class_name MinerMole extends Mole
 
+# BEHAVIOURS DESCRIPTION
+#
+# All behaviours of a Mole with the following changes:
+# - When choosing a target for the MOVING state, the miner mole will prioritize moving towards 
+#   ResourceVeins instead of enemies
+#
+# MINING:
+# - State becomes MINING if the miner mole reaches a ResourceVein in the MOVING state
+# - While in the MINING state, the miner mole extracts resources from the ResourceVein
+#   (adding to the player's resources tracked in Globals over time)
+# - When a ResourceVein runs out of resources or health, it is destroyed and the miner mole
+#   transitions to the MOVING state
+
 # Properties that track mining
 @export var _mining_efficiency:	int 				= 10
 const		_MINING_DURATION:	float				= 2.0
