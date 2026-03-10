@@ -1,5 +1,24 @@
 class_name MusicMole extends Mole
 
+# BEHAVIOURS DESCRIPTION
+#
+# All behaviours of a Mole with the following changes:
+# - RIGHT CLICK on the music mole will toggle the mole Playing Music
+# - While Playing Music, the music mole has the following behavioural changes
+#    ~ While in the MOVING state the music mole prioritizes moving towards the closest mole
+#      and it has a speed boost
+#    ~ When the music mole reaches a target of any kind in the MOVING state it transitions
+#      to the GROOVING state instead of any other state
+#
+# GROOVING:
+# - State becomes GROOVING when the music mole is Playing Music and it reaches a target
+#   while in the MOVING state.
+# - While in the GROOVING state, every mole within a certain radius gains a boost to movement
+#   and attack speed (also applies to mining speed for the miner mole and healing speed for the
+#   doctor mole)
+# - When all allies leave the radius of the music mole, or the music mole stops Playing Music,
+#   the music mole transitions to the MOVING state.
+
 # Properties that track music playing
 @export var _is_playing:		bool			= false
 @export var _music_radius:		float			= 5.0

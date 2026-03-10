@@ -1,5 +1,36 @@
 class_name Mole extends DynamicUnit
 
+# BEHAVIOURS DESCRIPTION
+#
+# SENTRY:
+# - State becomes SENTRY if no enemies left or mole is DOUBLE CLICKED
+# - While in SENTRY state, mole waits until an enemy unit comes within sentry radius then
+#   changes to MOVING state
+#
+# MOVING:
+# - State becomes MOVING if
+#    ~ there is an enemy within its SENTRY radius
+#    ~ the mole is CLICKED and another unit of any kind is clicked (will move towards this unit)
+#    ~ the mole is in the ATTACKING state and it does not have an enemy to attack (will find the closest
+#      one to move towards)
+#    ~ the mole's target in the ATTACKING state moves out of range
+#    ~ the mole has reached its destination specified by the BURROW state
+# - While in MOVING state, the mole moves towards a target contained in the _closest_op field
+#
+# ATTACKING:
+# - State becomes ATTACKING if mole reaches its target in the MOVING state and its target is an enemy
+# - While in the ATTACKING state the mole attacks the unit in the _closest_op field until it has been
+#   killed (when this happens it changes to MOVING state targeting the closest enemy)
+#
+# BURROW
+# - State becomes BURROW when the mole is CLICKED and a valid space that does not contain a unit of
+#   any kind is CLICKED (the space must be within a certain radius)
+# - While in the BURROW state the mole travels to the CLICKED location underground (it remains at
+#   its first location before half of the cast time and it teleports to its destination after half
+#   its cast time)
+# - Once the BURROW cast time has finished there is a small cooldown before a mole can BURROW again
+#   and the mole will find the nearest enemy and transition to the MOVING state
+
 # Constants common to moles
 const _BURROW_COOLDOWN: 	float 			= 5.0
 const _BURROW_DISTANCE:		float			= 10.0
