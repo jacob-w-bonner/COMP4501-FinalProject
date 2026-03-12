@@ -2,7 +2,7 @@
 class_name Unit extends Node3D
 
 # Storing the camera
-var _camera:					Camera3D		= null
+var _camera:					GameCamera		= null
 
 # Properties that all units will have
 @export var _max_health: 		int 			= 100
@@ -21,6 +21,10 @@ var _mesh:						MeshInstance3D
 # Selection variables
 var _is_hovered:				bool			= false
 var _is_selected:				bool			= false
+
+
+# Signals
+signal clicked_on
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,6 +45,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 
 		if self._is_hovered:
+			_camera.unit_clicked_on(self)
 			print(self.name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

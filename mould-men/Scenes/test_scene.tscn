@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dooyoh66rfi37" path="res://GameScripts/test_scene.gd" id="1_50ct6"]
 [ext_resource type="MeshLibrary" uid="uid://cwsa5dnbhabxe" path="res://Assets/TestAssets/test_tiles.meshlib" id="1_r5l72"]
 [ext_resource type="Script" uid="uid://b7ocrnrctly4f" path="res://ObjectScripts/mole.gd" id="2_r5l72"]
+[ext_resource type="Script" uid="uid://bwy5dtc5n2h4c" path="res://ObjectScripts/camera_script.gd" id="3_d3awe"]
 [ext_resource type="Script" uid="uid://cbcqjp5vy7j3u" path="res://ObjectScripts/coal.gd" id="5_ak5v8"]
 [ext_resource type="Script" uid="uid://dswgpx4ppis5i" path="res://ObjectScripts/miner_moal.gd" id="6_x033f"]
 [ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="7_oho3u"]
@@ -49,7 +50,11 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=147667770]
-transform = Transform3D(0.9999811, 0.004246789, -0.004443347, 0, 0.7229156, 0.6909364, 0.006146426, -0.69092333, 0.72290194, -0.18380333, 8.235338, 10.867315)
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -0.18380333, 8.235338, 10.867315)
+projection = 1
+size = 10.0
+far = 200.0
+script = ExtResource("3_d3awe")
 
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
