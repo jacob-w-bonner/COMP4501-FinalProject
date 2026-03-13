@@ -88,7 +88,6 @@ func _input(event: InputEvent) -> void:
 
 # Called to move the unit to a location
 func move(target: Unit) -> void:
-
 	# If there is nowhere to go remain idle
 	if target == null:
 		_velocity			= Vector3(0.0, 0.0, 0.0)
