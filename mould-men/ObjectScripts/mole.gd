@@ -7,7 +7,6 @@ class_name Mole extends DynamicUnit
 # - While in SENTRY state, mole waits until an enemy unit comes within sentry radius then
 #   changes to MOVING state
 #
-#
 # MOVING:
 # - State becomes MOVING if
 #    ~ there is an enemy within its SENTRY radius
@@ -42,6 +41,11 @@ var _curr_burrow_cooldown: 	float 			= 0.0
 var _can_burrow:			bool			= true
 var _burrow_target:			Vector3			= Vector3(0.0, Globals.FLOOR_HEIGHT, 0.0)
 
+# Text over mole variables 
+var _action_text: Label3D
+var _action_text_timer: float = 0.0
+var _previous_state = -1
+
 # Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
@@ -50,6 +54,16 @@ func _ready() -> void:
 
 	# Instantiating parent first
 	super._ready()
+	
+	_action_text = Label3D.new()
+	_action_text.text = ""
+	_action_text.visible = false
+	_action_text.font_size = 200
+	_action_text.position = Vector3(0, 5.0, 0) # height above mole
+	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_action_text.outline_size = 50
+	
+	_physics_body.add_child(_action_text)
 
 	# Moles are not enemies
 	#_is_enemy							= false
@@ -111,6 +125,7 @@ func _input(event: InputEvent) -> void:
 		if self._is_hovered and Globals.SELECTED_UNIT == null and !self.is_enemy() and _state != Globals.STATES.BURROW and !Globals.SELECT_COOLDOWN:
 			Globals.SELECTED_UNIT = self
 			_is_selected		  = true
+			show_action_text("Selected", Color(1.0, 0.489, 0.112, 1.0))
 			print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
 			return
 
@@ -170,6 +185,17 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
+	if _action_text_timer > 0:
+		_action_text_timer -= delta
+	
+	if _action_text_timer <= 0:
+		_action_text.visible = false
+		
+	# Detect state changes
+	if _state != _previous_state:
+		_on_state_changed(_state)
+		_previous_state = _state
 
 	# If the target is buffed run the animation
 	if _buff_val > 1.0:
@@ -293,3 +319,32 @@ func burrow(delta: float):
 # Called to determine the closest opposing unit to the given position
 func closest_opponent(unit: Unit) -> Unit:
 	return super.closest_opponent(self)
+
+func show_action_text(text: String, color: Color):
+	_action_text.text = text
+	_action_text.modulate = color
+	_action_text.visible = true
+	_action_text_timer = 1.5
+	
+func _on_state_changed(new_state):
+	match new_state:
+		Globals.STATES.MOVING:
+			show_action_text("Moving", Color(0,1,0))
+
+		Globals.STATES.ATTACKING:
+			show_action_text("Attacking", Color(1,0,0))
+
+		Globals.STATES.BURROW:
+			show_action_text("Burrowing", Color(0,0.5,1))
+
+		Globals.STATES.SENTRY:
+			show_action_text("Sentry", Color(1,1,0))
+			
+		Globals.STATES.MINE:
+			show_action_text("Mining", Color(1.0, 0.0, 0.937, 1.0))
+			
+		Globals.STATES.GROOVING:
+			show_action_text("Grooving", Color(0.456, 0.663, 1.0, 1.0))
+			
+		Globals.STATES.HEALING:
+			show_action_text("Healing", Color(0.0, 0.602, 0.295, 1.0))
