@@ -7,6 +7,7 @@ class_name Mole extends DynamicUnit
 # - While in SENTRY state, mole waits until an enemy unit comes within sentry radius then
 #   changes to MOVING state
 #
+#
 # MOVING:
 # - State becomes MOVING if
 #    ~ there is an enemy within its SENTRY radius
