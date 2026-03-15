@@ -20,6 +20,13 @@ var			_mining_time:		float				= 0.0
 var			_already_mined:		bool				= false
 var 		_mining_direction:	float				= 10.0
 
+# UI labels to be updated
+@onready var gold_label: RichTextLabel = $"../CanvasLayer/Resources/GoldLabel"
+@onready var coal_label: RichTextLabel = $"../CanvasLayer/Resources/CoalLabel"
+@onready var amethyst_label: RichTextLabel = $"../CanvasLayer/Resources/AmethystLabel"
+@onready var diamond_label: RichTextLabel = $"../CanvasLayer/Resources/DiamondLabel"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -129,18 +136,22 @@ func mine(target: ResourceVein, delta: float) -> void:
 			# Coal was retrieved
 			Globals.RESOURCES.COAL:
 				Globals.COAL_NUM += retrieved
+				coal_label.text = str(Globals.COAL_NUM)
 
 			# Gold was retrieved
 			Globals.RESOURCES.GOLD:
 				Globals.GOLD_NUM += retrieved
+				gold_label.text = str(Globals.GOAL_NUM)
 
 			# Diamond was retrieved
 			Globals.RESOURCES.DIAMOND:
 				Globals.DIAMOND_NUM += retrieved
+				diamond_label.text = str(Globals.DIAMOND_NUM)
 
 			# Amethyst was retrieved
 			Globals.RESOURCES.AMETHYST:
 				Globals.AMETHYST_NUM += retrieved
+				amethyst_label.text = str(Globals.AMETHYST_NUM)
 
 	# Handling a basic mining animation
 	mine_animation(delta)
