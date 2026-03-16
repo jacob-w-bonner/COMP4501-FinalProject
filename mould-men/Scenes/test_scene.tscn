@@ -9,14 +9,14 @@
 [ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="7_oho3u"]
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="7_rdbpf"]
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="8_oho3u"]
-[ext_resource type="Texture2D" uid="uid://c74p7insid7qy" path="res://Assets/UIAssets/move.svg" id="9_bwjpn"]
-[ext_resource type="Texture2D" uid="uid://bype42xtc0jyn" path="res://Assets/UIAssets/punch.svg" id="9_d3awe"]
-[ext_resource type="Texture2D" uid="uid://cursq3yb0o8ql" path="res://Assets/UIAssets/mining.svg" id="10_yglu3"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="12_040rt"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_ibmi3"]
 [ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_4qg1e"]
+[ext_resource type="Script" uid="uid://do8f65lvyujm0" path="res://UIScripts/actions_popup.gd" id="15_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dhrl2"]
+[ext_resource type="Texture2D" uid="uid://cngfx3612y0v" path="res://Assets/UIAssets/mouse_left_outline.svg" id="16_040rt"]
+[ext_resource type="Texture2D" uid="uid://bxh02b2vv7hb" path="res://Assets/UIAssets/mouse_right_outline.svg" id="17_dhrl2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -120,83 +120,6 @@ metadata/_custom_type_script = "uid://edh800y1jebg"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=860007368]
 follow_viewport_enabled = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=770770930]
-visible = false
-offset_left = 51.0
-offset_top = 514.0
-offset_right = 502.0
-offset_bottom = 604.0
-
-[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=70346131]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button" unique_id=1689490909]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_bwjpn")
-expand_mode = 1
-
-[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1487398996]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button2" unique_id=442897038]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_d3awe")
-expand_mode = 1
-
-[node name="Button3" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=85365220]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button3" unique_id=1136574900]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_yglu3")
-expand_mode = 1
-
-[node name="Button4" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=259134342]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button4" unique_id=1896281759]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_d3awe")
-expand_mode = 1
-
-[node name="Button5" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=895700574]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button5" unique_id=1905308696]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_d3awe")
-expand_mode = 1
-
 [node name="Resources" type="GridContainer" parent="CanvasLayer" unique_id=2119782003]
 anchors_preset = 5
 anchor_left = 0.5
@@ -283,3 +206,56 @@ text = "0"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="ActionsPopup" type="PanelContainer" parent="CanvasLayer" unique_id=562009989]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("15_4qg1e")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/ActionsPopup" unique_id=770307677]
+layout_mode = 2
+columns = 2
+
+[node name="Left Mouse" type="TextureRect" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=600950005]
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("16_040rt")
+expand_mode = 1
+
+[node name="Select" type="RichTextLabel" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=1211902402]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Select"
+
+[node name="Move" type="RichTextLabel" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=1330522701]
+visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Move"
+
+[node name="Burrow" type="RichTextLabel" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=459117365]
+visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Burrow"
+
+[node name="Right Mouse" type="TextureRect" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=1596749676]
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("17_dhrl2")
+expand_mode = 1
+
+[node name="Play Music" type="RichTextLabel" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=718259735]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Play Music"
+
+[node name="Heal" type="RichTextLabel" parent="CanvasLayer/ActionsPopup/GridContainer" unique_id=1733163857]
+visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Heal"

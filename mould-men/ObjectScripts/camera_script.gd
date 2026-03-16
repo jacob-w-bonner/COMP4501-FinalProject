@@ -29,21 +29,22 @@ func _process(delta: float) -> void:
 		#global_position = target.get_global_pos()+unit_offset
 	
 	#Movement Stuff
-	handle_camera_movement(delta)
-	handle_camera_zoom()
+	if not Input.is_action_just_pressed("middle_click"):
+		handle_camera_movement(delta)
+		handle_camera_zoom()
 	
 	#Smooth transition to target Stuff
 	if target != null and (moving_to_target or zooming_to_target):
 		if moving_to_target:
 			var dist_to_target = ((target.get_global_pos()+unit_offset) - global_position)
-			if dist_to_target.length() < 0.10:
+			if dist_to_target.length() < 1.0:
 				global_position = target.get_global_pos()+unit_offset
 				moving_to_target = false
 			else:
 				self.global_position+= dist_to_target.normalized() * moving_to_target_speed * delta
 		if zooming_to_target:
 			if abs(self.size - default_zoom) < 0.5:
-				self.size = default_zoom #reset zoom to have unit proporly in view
+				self.size = default_zoom #reset zoom to have unit properly in view
 				zooming_to_target = false
 			else:
 				var zoom_dir = (default_zoom - self.size) / abs(self.size - default_zoom)
@@ -75,6 +76,7 @@ func handle_camera_zoom() -> void:
 		self.size = min(self.size+zoom_incro, zoom_bounds[1])
 	elif Input.is_action_just_pressed('camera_zoom_out'):
 		self.size = max(self.size-zoom_incro, zoom_bounds[0])
+
 func unit_clicked_on(unit: Unit) -> void:
 	target = unit
 	moving_to_target = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bype42xtc0jyn"
-path="res://.godot/imported/punch.svg-629e120a63bea5e3911c56847082e016.ctex"
+uid="uid://dpkg3p82b7t61"
+path="res://.godot/imported/mouse_right.svg-ad60431d82256f57639eb42a10938c87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UIAssets/punch.svg"
-dest_files=["res://.godot/imported/punch.svg-629e120a63bea5e3911c56847082e016.ctex"]
+source_file="res://Assets/UIAssets/mouse_right.svg"
+dest_files=["res://.godot/imported/mouse_right.svg-ad60431d82256f57639eb42a10938c87.ctex"]
 
 [params]
 

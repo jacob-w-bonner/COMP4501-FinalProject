@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c74p7insid7qy"
-path="res://.godot/imported/move.svg-6aa4b002a1944681f9e615dd20507488.ctex"
+uid="uid://b2r8dxgh2inrf"
+path="res://.godot/imported/mouse_left.svg-71877b44d77a9f102de659e1bd24bb00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UIAssets/move.svg"
-dest_files=["res://.godot/imported/move.svg-6aa4b002a1944681f9e615dd20507488.ctex"]
+source_file="res://Assets/UIAssets/mouse_left.svg"
+dest_files=["res://.godot/imported/mouse_left.svg-71877b44d77a9f102de659e1bd24bb00.ctex"]
 
 [params]
 

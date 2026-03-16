@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cursq3yb0o8ql"
-path="res://.godot/imported/mining.svg-b468daf4ac834a93756e9f56a6ff9106.ctex"
+uid="uid://cngfx3612y0v"
+path="res://.godot/imported/mouse_left_outline.svg-a2457ff3ae57751e7e92efd9a652d949.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UIAssets/mining.svg"
-dest_files=["res://.godot/imported/mining.svg-b468daf4ac834a93756e9f56a6ff9106.ctex"]
+source_file="res://Assets/UIAssets/mouse_left_outline.svg"
+dest_files=["res://.godot/imported/mouse_left_outline.svg-a2457ff3ae57751e7e92efd9a652d949.ctex"]
 
 [params]
 
