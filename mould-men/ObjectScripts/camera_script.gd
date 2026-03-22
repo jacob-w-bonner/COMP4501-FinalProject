@@ -4,10 +4,11 @@ class_name GameCamera extends Camera3D
 var target: 					Unit = null
 var moving_to_target: 		bool = false
 var zooming_to_target:		bool = false
+var moving_to_target_max_speed: float = 30.0
 var moving_to_target_speed:	float = 30.0
 var zooming_to_target_speed:	float = 30.0
 var dir:						Vector3 = Vector3(0,0,0)
-@export var move_speed:		float = 5.0
+@export var move_speed:		float = 8.0
 var unit_offset:				Vector3 = Vector3(0.0, 8.235, 5.0)
 
 #Zoom
@@ -23,11 +24,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#Selected Unit stuff
-	if target != null and not moving_to_target:
-		pass
-		#global_position = target.get_global_pos()+unit_offset
-	
 	#Movement Stuff
 	handle_camera_movement(delta)
 	handle_camera_zoom()
@@ -36,10 +32,16 @@ func _process(delta: float) -> void:
 	if target != null and (moving_to_target or zooming_to_target):
 		if moving_to_target:
 			var dist_to_target = ((target.get_global_pos()+unit_offset) - global_position)
-			if dist_to_target.length() < 0.10:
-				global_position = target.get_global_pos()+unit_offset
+			dist_to_target.y = 0.0
+			
+			if dist_to_target.length() < 0.01:
+				moving_to_target_speed = moving_to_target_max_speed
+				global_position = ((target.get_global_pos() + unit_offset) * Vector3(1,0,1)) + (self.global_position * Vector3(0,1,0))
 				moving_to_target = false
 			else:
+				while will_overshoot(dist_to_target, delta):
+					#If the camera is about to overshoot, cut the speed and check again
+					moving_to_target_speed /= 2
 				self.global_position+= dist_to_target.normalized() * moving_to_target_speed * delta
 		if zooming_to_target:
 			if abs(self.size - default_zoom) < 0.5:
@@ -52,19 +54,19 @@ func _process(delta: float) -> void:
 func handle_camera_movement(delta: float) -> void:
 	if Input.is_action_just_pressed('camera_left'):
 		dir+= Vector3.LEFT
-	elif Input.is_action_just_pressed('camera_right'):
+	if Input.is_action_just_pressed('camera_right'):
 		dir+= Vector3.RIGHT
-	elif Input.is_action_just_pressed('camera_forward'):
+	if Input.is_action_just_pressed('camera_forward'):
 		dir+= Vector3.FORWARD
-	elif Input.is_action_just_pressed('camera_back'):
+	if Input.is_action_just_pressed('camera_back'):
 		dir+= Vector3.BACK
-	elif Input.is_action_just_released('camera_left'):
+	if Input.is_action_just_released('camera_left'):
 		dir-= Vector3.LEFT
-	elif Input.is_action_just_released('camera_right'):
+	if Input.is_action_just_released('camera_right'):
 		dir-= Vector3.RIGHT
-	elif Input.is_action_just_released('camera_forward'):
+	if Input.is_action_just_released('camera_forward'):
 		dir-= Vector3.FORWARD
-	elif Input.is_action_just_released('camera_back'):
+	if Input.is_action_just_released('camera_back'):
 		dir-= Vector3.BACK
 	if dir != Vector3(0,0,0): #If we are moving stop focusing on unit
 		global_position += dir.normalized() * move_speed * delta
@@ -79,3 +81,13 @@ func unit_clicked_on(unit: Unit) -> void:
 	target = unit
 	moving_to_target = true
 	zooming_to_target = true
+
+
+func will_overshoot(dist_to_target: Vector3, delta: float) -> bool:
+	var new_loc = self.global_position + (dist_to_target.normalized() * moving_to_target_speed * delta)
+	var new_dist_to_target = ((target.get_global_pos()+unit_offset) - new_loc)
+	new_dist_to_target.y = 0.0
+	
+	if new_dist_to_target.normalized() * dist_to_target.normalized() < Vector3(0,0,0):
+		return true
+	return false
