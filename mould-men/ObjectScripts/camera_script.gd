@@ -4,12 +4,12 @@ class_name GameCamera extends Camera3D
 var target: 					Unit = null
 var moving_to_target: 		bool = false
 var zooming_to_target:		bool = false
-var moving_to_target_max_speed: float = 30.0
-var moving_to_target_speed:	float = 30.0
-var zooming_to_target_speed:	float = 30.0
+var moving_to_target_max_speed: float = 60.0
+var moving_to_target_speed:	float = 60.0
+var zooming_to_target_speed:	float = 40.0
 var dir:						Vector3 = Vector3(0,0,0)
-@export var move_speed:		float = 8.0
-var unit_offset:				Vector3 = Vector3(0.0, 8.235, 5.0)
+@export var move_speed:		float = 20.0
+var unit_offset:				Vector3 = Vector3(0.0, 20, 17.0)
 
 #Zoom
 @export var default_zoom:	float = 10.0
