@@ -1,23 +1,40 @@
 class_name Base extends StaticUnit
 
-#NOTE as 4 resourses seems a lot for a game of this size I am assuming that we are only going to have Coal, Gold, and Amethyst
+#NOTE as 4 resourses seems a lot for a game of this size I am assuming that we are only going to have Coal, Gold, and Amethyst (and honestly we might drop Amethyst)
 var friendly_units = {
 	"mole" : {
-		"cost" : { "coal" : 10, "gold" : 0, "amethyst" : 0},
+		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0 },
 		"spawn_cooldown" : 2.0,
-		"cur_spawn_cooldown" : 0.0
+		"cur_spawn_cooldown" : 0.0,
+		"unit_type" : Mole,
 	},
 	"miner_mole" : {
-		"cost" : { "coal" : 15, "gold" : 1, "amethyst" : 0},
+		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -1, Globals.RESOURCES.AMETHYST : 0 },
 		"spawn_cooldown" : 5.0,
-		"cur_spawn_cooldown" : 0.0
+		"cur_spawn_cooldown" : 0.0,
+		"unit_type" : MinerMole,
+	},
+	"doctor_mole" : {
+		"cost" : { Globals.RESOURCES.COAL : -22, Globals.RESOURCES.GOLD : -3, Globals.RESOURCES.AMETHYST : 0 },
+		"spawn_cooldown" : 5.0,
+		"cur_spawn_cooldown" : 0.0,
+		"unit_type" : DoctorMole,
+	},
+	"music_mole" : {
+		"cost" : { Globals.RESOURCES.COAL : -3, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : -1 },
+		"spawn_cooldown" : 10.0,
+		"cur_spawn_cooldown" : 0.0,
+		"unit_type" : MusicMole,
 	}
 }
 enum enemy_units {
 	
 }
+@onready var resources_container: GridContainer = $"../CanvasLayer/Resources"
 
-
+@export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT,0.0)
+@export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,13 +65,46 @@ func _input(event: InputEvent) -> void:
 			print(self.name)
 			return
 
-func spawn(unit_str) -> void:
-	#Put the actual spawning logic here
+func spawn_unit(unit_str) -> void:
+	#TODO use a collision box or smth so that you can tell when you are about to spawn a mole on a mole, and avoid that, could also give them initial move orders
+	if not is_enemy():
+		var spawned_unit: DynamicUnit = friendly_units[unit_str]["unit_type"].new()
+		spawned_unit.set_name(unit_str)
+		get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
+		spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
+		spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
+	else:
+		pass
 	pass
 
 func request_spawn(unit_str: String) -> float:
-	if friendly_units[unit_str]["cur_spawn_cooldown"] <= 0.0:
-		spawn(unit_str)
-		friendly_units[unit_str]["cur_spawn_cooldown"] = friendly_units[unit_str]["spawn_cooldown"]
-		return friendly_units[unit_str]["cur_spawn_cooldown"]
+	if not is_enemy():
+		if friendly_units[unit_str]["cur_spawn_cooldown"] <= 0.0:
+			for res in friendly_units[unit_str]["cost"].keys():
+				if not Globals.check_valid_resource_transaction(res, friendly_units[unit_str]["cost"][res]):
+					return -1.0
+			for res in friendly_units[unit_str]["cost"].keys():
+				if friendly_units[unit_str]["cost"][res] < 0:
+					var new_val: int = Globals.update_resource(res, friendly_units[unit_str]["cost"][res])
+					if(res == Globals.RESOURCES.COAL):
+						resources_container.get_node("CoalLabel").text = str(new_val)
+					elif(res == Globals.RESOURCES.GOLD):
+						resources_container.get_node("GoldLabel").text = str(new_val)
+					elif(res == Globals.RESOURCES.AMETHYST):
+						resources_container.get_node("AmethystLabel").text = str(new_val)
+					elif(res == Globals.RESOURCES.DIAMOND):
+						resources_container.get_node("DiamondLabel").text = str(new_val)
+					
+			spawn_unit(unit_str)
+			friendly_units[unit_str]["cur_spawn_cooldown"] = friendly_units[unit_str]["spawn_cooldown"]
+			return friendly_units[unit_str]["cur_spawn_cooldown"]
+	else:
+		pass
 	return -1.0
+
+func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
+	return origin + Vector3(rng.randf_range(radious.x * -1, radious.x),
+	0.0, #cannot imagine we would ever want to change this but feel free
+	rng.randf_range(radious.z * -1, radious.z))
+
+	pass # Replace with function body.

@@ -4,7 +4,9 @@ extends Node
 
 var units = {
 	"mole" : false,
-	"miner_mole" : false
+	"miner_mole" : false,
+	"doctor_mole" : false,
+	"music_mole" : false,
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +23,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		for unit in units.keys():
 			if units[unit]:
-				print("Spawned ", unit)
 				var cool_down_time: float = base.request_spawn(unit)
 				if cool_down_time != -1:
 					pass
@@ -38,3 +39,18 @@ func _on_miner_mouse_entered():
 
 func _on_miner_mouse_exited():
 	units['miner_mole'] = false
+	
+func _on_doctor_mouse_entered():
+	units['doctor_mole'] = true
+
+
+func _on_doctor_mouse_exited():
+	units['doctor_mole'] = false
+
+
+func _on_music_mouse_entered():
+	units['music_mole'] = true
+
+
+func _on_music_mouse_exited():
+	units['music_mole'] = false

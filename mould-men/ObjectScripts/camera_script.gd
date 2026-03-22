@@ -12,8 +12,8 @@ var dir:						Vector3 = Vector3(0,0,0)
 var unit_offset:				Vector3 = Vector3(0.0, 20, 17.0)
 
 #Zoom
-@export var default_zoom:	float = 10.0
-var zoom_bounds: 			Array[float] = [5.0, 15.0]
+@export var default_zoom:	float = 20.0
+var zoom_bounds: 			Array[float] = [5.0, 25.0]
 var zoom_incro:				float = 0.5
 
 # Called when the node enters the scene tree for the first time.

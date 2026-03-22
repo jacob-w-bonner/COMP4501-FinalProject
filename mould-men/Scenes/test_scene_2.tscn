@@ -74,6 +74,12 @@ script = ExtResource("4_xep68")
 _health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
+[node name="Mole3" type="Node3D" parent="." unique_id=1998668318]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -12.508, 1.4, -1.294)
+script = ExtResource("4_xep68")
+_health = 50
+metadata/_custom_type_script = "uid://b7ocrnrctly4f"
+
 [node name="Mole2" type="Node3D" parent="." unique_id=2804634]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
 script = ExtResource("4_xep68")
@@ -213,21 +219,21 @@ grow_horizontal = 2
 columns = 4
 script = ExtResource("13_miijk")
 
-[node name="Gold" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1704177364]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("14_7wsrj")
-expand_mode = 3
-stretch_mode = 6
-
 [node name="Coal" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1664037066]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("15_w0mrj")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Gold" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1704177364]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("14_7wsrj")
 expand_mode = 3
 stretch_mode = 6
 
@@ -249,7 +255,7 @@ texture = ExtResource("17_3oa1i")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="GoldLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1324698047]
+[node name="CoalLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1981445377]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -259,7 +265,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="CoalLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1981445377]
+[node name="GoldLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1324698047]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -293,10 +299,10 @@ horizontal_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -147.0
-offset_top = 966.0
-offset_right = 105.0
-offset_bottom = 1061.0
+offset_left = -108.0
+offset_top = 976.0
+offset_right = 149.0
+offset_bottom = 1071.0
 grow_horizontal = 2
 columns = 4
 script = ExtResource("18_pkh5n")
@@ -320,7 +326,7 @@ texture = ExtResource("15_w0mrj")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Amethyst" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=790763997]
+[node name="Doctor" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=790763997]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -329,7 +335,7 @@ texture = ExtResource("16_arxsw")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Diamond" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=2006190828]
+[node name="Music" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=2006190828]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -358,23 +364,22 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="AmethystLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1197005138]
+[node name="DoctorLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1197005138]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 22
-text = "NULL"
+text = "Doc"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="DiamondLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1649539898]
+[node name="MusicLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1649539898]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 22
-text = "NULL
-"
+text = "Music"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -387,7 +392,17 @@ _health = 1500
 _attack_strength = 0
 metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
 
+[node name="Mole4" type="Node3D" parent="MoleBase" unique_id=1978050972]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 70.47583, 17, 10.937388)
+script = ExtResource("4_xep68")
+_health = 50
+metadata/_custom_type_script = "uid://b7ocrnrctly4f"
+
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Miner" to="CanvasLayer/BaseActions" method="_on_miner_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Miner" to="CanvasLayer/BaseActions" method="_on_miner_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BaseActions/Doctor" to="CanvasLayer/BaseActions" method="_on_doctor_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BaseActions/Doctor" to="CanvasLayer/BaseActions" method="_on_doctor_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BaseActions/Music" to="CanvasLayer/BaseActions" method="_on_music_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BaseActions/Music" to="CanvasLayer/BaseActions" method="_on_music_mouse_exited"]
