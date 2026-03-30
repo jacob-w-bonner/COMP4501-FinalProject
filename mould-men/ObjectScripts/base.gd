@@ -27,8 +27,9 @@ var friendly_units = {
 		"unit_type" : MusicMole,
 	}
 }
-enum enemy_units {
-	
+var enemy_units = {
+	#TODO JACOB fill this up with the needed stuff and it should start spawning! (same format as above)
+	#Make sure to include costs and have the enemys actually have resources and stuff
 }
 @onready var resources_container: GridContainer = $"../CanvasLayer/Resources"
 
@@ -48,7 +49,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_enemy():
-		pass
+		enemy_spawn_logic(delta)
 	else:
 		for unit in friendly_units.keys():
 			if friendly_units[unit]['cur_spawn_cooldown'] > 0.0:
@@ -65,17 +66,30 @@ func _input(event: InputEvent) -> void:
 			print(self.name)
 			return
 
-func spawn_unit(unit_str) -> void:
+func enemy_spawn_logic(delta: float)->void:
+	for key in enemy_units.keys():
+		var unit = enemy_units[key]
+		enemy_units[key]["cur_spawn_cooldown"] = unit["cur_spawn_cooldown"]-delta
+		if unit["cur_spawn_cooldown"] <= 0.0:
+			spawn_unit(key)
+			enemy_units[key]["cur_spawn_cooldown"] = unit["spawn_cooldown"]
+			#TODO put smth subtracting resources here if we wanna go that route
+		
+
+
+func spawn_unit(unit_str: String) -> void:
 	#TODO use a collision box or smth so that you can tell when you are about to spawn a mole on a mole, and avoid that, could also give them initial move orders
+	var spawned_unit: DynamicUnit = null
 	if not is_enemy():
-		var spawned_unit: DynamicUnit = friendly_units[unit_str]["unit_type"].new()
-		spawned_unit.set_name(unit_str)
-		get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
-		spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
-		spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
+		spawned_unit = friendly_units[unit_str]["unit_type"].new()
+		spawned_unit.set_enemy(false)
 	else:
-		pass
-	pass
+		spawned_unit = enemy_units[unit_str]["unit_type"].new()
+		spawned_unit.set_enemy(true)
+	spawned_unit.set_name(unit_str)
+	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
+	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
+	spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
 
 func request_spawn(unit_str: String) -> float:
 	if not is_enemy():

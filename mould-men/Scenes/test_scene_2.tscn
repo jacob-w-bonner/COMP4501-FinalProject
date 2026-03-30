@@ -392,11 +392,15 @@ _health = 1500
 _attack_strength = 0
 metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
 
-[node name="Mole4" type="Node3D" parent="MoleBase" unique_id=1978050972]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 70.47583, 17, 10.937388)
-script = ExtResource("4_xep68")
-_health = 50
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
+[node name="OliverBase" type="Node3D" parent="." unique_id=492485465]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 30.951, 0, -1.29)
+script = ExtResource("18_pntab")
+spawn_offset = Vector3(-6, 1.7, 0)
+_max_health = 1500
+_health = 1500
+_is_enemy = true
+_attack_strength = 0
+metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
 
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]
