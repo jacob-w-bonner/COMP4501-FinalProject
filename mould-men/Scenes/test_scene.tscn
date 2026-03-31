@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dhrl2"]
+[ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="18_i0miu"]
+[ext_resource type="Script" uid="uid://b0tx07quuwgx7" path="res://ObjectScripts/prospector.gd" id="19_6bfml"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -74,19 +76,6 @@ metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
 script = ExtResource("2_r5l72")
 _health = 50
-_state = 3
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
-
-[node name="Enemy" type="Node3D" parent="." unique_id=1008627062]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7, 1.7, -7)
-script = ExtResource("2_r5l72")
-_is_enemy = true
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
-
-[node name="Enemy2" type="Node3D" parent="." unique_id=139571797]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.215, 1.7, 7.1887655)
-script = ExtResource("2_r5l72")
-_is_enemy = true
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Resource" type="Node3D" parent="." unique_id=122697034]
@@ -107,11 +96,10 @@ metadata/_custom_type_script = "uid://dswgpx4ppis5i"
 [node name="MusicMole" type="Node3D" parent="." unique_id=1302204269]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.8171678, 1.7, 1.307)
 script = ExtResource("7_oho3u")
-_state = 3
 metadata/_custom_type_script = "uid://bltrhy7jjrbn1"
 
 [node name="DoctorMole" type="Node3D" parent="." unique_id=1979961695]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.377, 1.7, 1.3252635)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.3557024, 1.7, 2.558735)
 script = ExtResource("8_oho3u")
 _speed = 5
 _health = 50
@@ -283,3 +271,14 @@ text = "0"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="Enemy" type="Node3D" parent="." unique_id=847837603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.6, -7)
+script = ExtResource("19_6bfml")
+_is_enemy = true
+metadata/_custom_type_script = "uid://b0tx07quuwgx7"
+
+[node name="Enemy2" type="Node3D" parent="." unique_id=671918099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 1.6, 7.189)
+script = ExtResource("18_i0miu")
+metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"

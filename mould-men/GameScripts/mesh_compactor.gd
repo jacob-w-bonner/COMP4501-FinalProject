@@ -2,9 +2,9 @@
 extends EditorScript
 
 # The paths for the original file and save destination
-@export var original_path:	String	= "res://Assets/MoleAssets/EffectIndicators/halo.glb"
-@export var save_path:		String	= "res://Assets/MoleAssets/EffectIndicators/"
-@export var save_name:		String	= "Halo"
+@export var original_path:	String	= "res://Assets/ArKaickAssets/EffectIndicators/exclamation.glb"
+@export var save_path:		String	= "res://Assets/ArKaickAssets/EffectIndicators/"
+@export var save_name:		String	= "Exclamation"
 
 func _run():
 
@@ -93,10 +93,12 @@ func process_meshes(curr_node: Node, arr_mesh: ArrayMesh) -> void:
 					properties[Mesh.ARRAY_TANGENT] = tangents
 
 				# Adding the surface to the array mesh
-				arr_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, properties)
+				var primitive = new_mesh.surface_get_primitive_type(surface)
+				var format    = new_mesh.surface_get_format(surface)
+				arr_mesh.add_surface_from_arrays(primitive, properties, [], {}, format)
 
 				# Adding the surface material to the array mesh
-				var material = new_mesh.surface_get_material(surface)
+				var material  = new_mesh.surface_get_material(surface)
 				if material:
 					arr_mesh.surface_set_material(arr_mesh.get_surface_count() - 1,material)
 

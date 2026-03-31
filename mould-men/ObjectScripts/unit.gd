@@ -8,7 +8,7 @@ var _camera:					GameCamera		= null
 @export var _max_health: 		int 			= 100
 @export var _health: 			int 			= 100
 @export var _is_enemy: 			bool 			= false
-@export var _attack_strength:	int 				= 5.0
+@export var _attack_strength:	int 			= 5.0
 
 # State of the unit
 @export var _state:				Globals.STATES	= Globals.STATES.IDLE
@@ -50,7 +50,7 @@ func _input(event: InputEvent) -> void:
 				_camera.unit_clicked_on(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # Getter for the state
@@ -64,6 +64,10 @@ func set_health(new_health: int) -> void:
 # Getter for the health
 func get_health() -> int:
 	return _health
+
+# Getter for a unit at max health
+func is_max_health() -> bool:
+	return _health == _max_health
 
 # Setter for the unit position
 func set_unit_position(new_pos: Vector3) -> void:
@@ -92,7 +96,6 @@ func set_enemy(is_en: bool):
 func closest_opponent(unit: Unit) -> Unit:
 
 	# Values that will contain the closest enemy position and distance
-	var closest_pos  = Vector3(10000.0, 10000.0, 10000.0)
 	var closest_dist = 10000.0
 	var closest_unit = null
 
@@ -114,9 +117,12 @@ func closest_opponent(unit: Unit) -> Unit:
 			if !is_instance_valid(ally):
 				continue
 
+			# Do not accept self as an option
+			if ally == self:
+				continue
+
 			var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
 			if distance < closest_dist:
-				closest_pos  = ally.get_global_pos()
 				closest_dist = distance
 				closest_unit = ally
 
@@ -134,9 +140,12 @@ func closest_opponent(unit: Unit) -> Unit:
 			if !is_instance_valid(enemy):
 				continue
 
-			var distance = enemy.global_position.distance_to(unit.get_global_pos())
+			# Do not accept self as an option
+			if enemy == self:
+				continue
+
+			var distance = enemy.get_global_pos().distance_to(unit.get_global_pos())
 			if distance < closest_dist:
-				closest_pos  = enemy.global_position
 				closest_dist = distance
 				closest_unit = enemy
 
