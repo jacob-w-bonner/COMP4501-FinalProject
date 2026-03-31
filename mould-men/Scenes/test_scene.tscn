@@ -59,6 +59,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=147667770]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -0.18380333, 8.235338, 10.867315)
+cull_mask = 1048571
 projection = 1
 size = 10.0
 far = 200.0
@@ -117,21 +118,21 @@ _speed = 5
 _health = 50
 metadata/_custom_type_script = "uid://edh800y1jebg"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=860007368]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=860007368]
 follow_viewport_enabled = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=770770930]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI" unique_id=770770930]
 visible = false
 offset_left = 51.0
 offset_top = 514.0
 offset_right = 502.0
 offset_bottom = 604.0
 
-[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=70346131]
+[node name="Button" type="Button" parent="GUI/HBoxContainer" unique_id=70346131]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button" unique_id=1689490909]
+[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button" unique_id=1689490909]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,11 +142,11 @@ grow_vertical = 2
 texture = ExtResource("9_bwjpn")
 expand_mode = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1487398996]
+[node name="Button2" type="Button" parent="GUI/HBoxContainer" unique_id=1487398996]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button2" unique_id=442897038]
+[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button2" unique_id=442897038]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,11 +156,11 @@ grow_vertical = 2
 texture = ExtResource("9_d3awe")
 expand_mode = 1
 
-[node name="Button3" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=85365220]
+[node name="Button3" type="Button" parent="GUI/HBoxContainer" unique_id=85365220]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button3" unique_id=1136574900]
+[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button3" unique_id=1136574900]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,11 +170,11 @@ grow_vertical = 2
 texture = ExtResource("10_yglu3")
 expand_mode = 1
 
-[node name="Button4" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=259134342]
+[node name="Button4" type="Button" parent="GUI/HBoxContainer" unique_id=259134342]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button4" unique_id=1896281759]
+[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button4" unique_id=1896281759]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,11 +184,11 @@ grow_vertical = 2
 texture = ExtResource("9_d3awe")
 expand_mode = 1
 
-[node name="Button5" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=895700574]
+[node name="Button5" type="Button" parent="GUI/HBoxContainer" unique_id=895700574]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button5" unique_id=1905308696]
+[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button5" unique_id=1905308696]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +198,7 @@ grow_vertical = 2
 texture = ExtResource("9_d3awe")
 expand_mode = 1
 
-[node name="Resources" type="GridContainer" parent="CanvasLayer" unique_id=2119782003]
+[node name="Resources" type="GridContainer" parent="GUI" unique_id=2119782003]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -208,7 +209,7 @@ grow_horizontal = 2
 columns = 4
 script = ExtResource("12_040rt")
 
-[node name="Gold" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1704177364]
+[node name="Gold" type="TextureRect" parent="GUI/Resources" unique_id=1704177364]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -217,7 +218,7 @@ texture = ExtResource("12_ibmi3")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Coal" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1664037066]
+[node name="Coal" type="TextureRect" parent="GUI/Resources" unique_id=1664037066]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -226,7 +227,7 @@ texture = ExtResource("13_4qg1e")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Amethyst" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1062729079]
+[node name="Amethyst" type="TextureRect" parent="GUI/Resources" unique_id=1062729079]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -235,7 +236,7 @@ texture = ExtResource("14_4qg1e")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Diamond" type="TextureRect" parent="CanvasLayer/Resources" unique_id=528638485]
+[node name="Diamond" type="TextureRect" parent="GUI/Resources" unique_id=528638485]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -244,7 +245,7 @@ texture = ExtResource("15_dhrl2")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="GoldLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1324698047]
+[node name="GoldLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=1324698047]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -254,7 +255,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="CoalLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1981445377]
+[node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=1981445377]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -264,7 +265,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="AmethystLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1038039947]
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=1038039947]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -274,7 +275,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="DiamondLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=506366338]
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=506366338]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -283,3 +284,32 @@ text = "0"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="Minimap" type="Control" parent="GUI" unique_id=1759971428]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/Minimap" unique_id=705651411]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+
+[node name="SubViewport" type="SubViewport" parent="GUI/Minimap/SubViewportContainer" unique_id=468922276]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Minimap Camera" type="Camera3D" parent="GUI/Minimap/SubViewportContainer/SubViewport" unique_id=1790892708]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
+cull_mask = 1048573
+projection = 1
+size = 20.0

@@ -40,3 +40,18 @@ func _ready() -> void:
 			shader_mat.set_shader_parameter("true_col", _res_col)
 			shader_mat.set_shader_parameter("modify_col", true)
 			_res_mesh.mesh.surface_set_material(i, shader_mat)
+	
+	# Setting the minimap icon texture
+	_minimap_icon_texture = load("res://Assets/UIAssets/stone-pile.svg")
+	
+	# Set minimap icon
+	_minimap_icon = Sprite3D.new()
+	if _minimap_icon_texture:
+		_minimap_icon.texture = _minimap_icon_texture
+		_physics_body.add_child(_minimap_icon)
+		_minimap_icon.position = Vector3(0, 3.0, 0) # height above mole
+		_minimap_icon.scale = Vector3(0.5, 0.5, 0.5)
+		_minimap_icon.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		_minimap_icon.set_layer_mask_value(1, false) # minimap objects (ground)
+		_minimap_icon.set_layer_mask_value(2, false) # visible through player camera
+		_minimap_icon.set_layer_mask_value(3, true) # minimap icons

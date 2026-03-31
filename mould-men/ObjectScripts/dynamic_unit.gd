@@ -57,6 +57,17 @@ func _ready() -> void:
 	_heal_mesh.mesh							= (load("res://Assets/MoleAssets/EffectIndicators/Halo.tres") as Mesh).duplicate()
 	_heal_mesh.position						= Vector3(0.0, 4.0, 0.0)
 	_heal_mesh.visible						= false
+	
+	# Change visibility layer of all meshes so they're NOT visible on layer 1 and ARE visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	_mesh.set_layer_mask_value(1, false)
+	#_buff_mesh.set_layer_mask_value(1, false)
+	#_heal_mesh.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	_mesh.set_layer_mask_value(2, true)
+	#_buff_mesh.set_layer_mask_value(2, true)
+	#_heal_mesh.set_layer_mask_value(2, true)
 
 	# Enabling mouse detection
 	_physics_body.input_ray_pickable		= true
@@ -78,7 +89,7 @@ func _ready() -> void:
 	# Setting more path following parameters for tighter motion
 	_nav_agent.target_desired_distance		= 2.5
 	_nav_agent.path_desired_distance		= 0.5
-	_nav_agent.debug_enabled 				= true
+	#_nav_agent.debug_enabled 				= true
 
 # Called to handle input events
 func _input(event: InputEvent) -> void:

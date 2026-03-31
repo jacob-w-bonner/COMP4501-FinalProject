@@ -39,6 +39,13 @@ func _ready() -> void:
 	# Instantiating the resource mesh mesh
 	_res_mesh							= MeshInstance3D.new()
 	_mesh.add_child(_res_mesh)
+	
+	# Change visibility layer of all meshes so they're NOT visible on layer 1 and ARE visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	_res_mesh.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	_res_mesh.set_layer_mask_value(2, true)
 
 	# Instantiating the collision shape
 	_collision_shape					= CollisionShape3D.new()

@@ -13,6 +13,10 @@ var _camera:					GameCamera		= null
 # State of the unit
 @export var _state:				Globals.STATES	= Globals.STATES.IDLE
 
+# Minimap variables
+@export var _minimap_icon_texture: Texture2D
+var _minimap_icon: Sprite3D
+
 # Physicality of the unit
 var _physics_body:				PhysicsBody3D
 var _collision_shape:			CollisionShape3D
@@ -22,13 +26,11 @@ var _mesh:						MeshInstance3D
 var _is_hovered:				bool			= false
 var _is_selected:				bool			= false
 
-
 # Signals
 signal clicked_on
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	# Getting the root of the tree so the camera node can be found
 	var root		= get_tree().get_root()
 	var target_node = root.find_child("Camera3D", true, false)

@@ -63,6 +63,13 @@ func _ready() -> void:
 	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_action_text.outline_size = 50
 	
+	# Change visibility layer of action label so it's NOT visible on layer 1 and IS visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	_action_text.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	_action_text.set_layer_mask_value(2, true)
+	
 	_physics_body.add_child(_action_text)
 
 	# Moles are not enemies
@@ -103,6 +110,20 @@ func _ready() -> void:
 			# Setting the shader surface colour to the old material
 			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
 			_mesh.mesh.surface_set_material(i, shader_mat)
+			
+	# Setting the minimap icon texture
+	_minimap_icon_texture = load("res://Assets/UIAssets/MinimapAssets/mole.svg")
+	
+	# Set minimap icon
+	_minimap_icon = Sprite3D.new()
+	if _minimap_icon_texture:
+		_minimap_icon.texture = _minimap_icon_texture
+		_physics_body.add_child(_minimap_icon)
+		_minimap_icon.position = Vector3(0, 3.0, 0) # height above mole
+		_minimap_icon.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		_minimap_icon.set_layer_mask_value(1, false) # minimap objects (ground)
+		_minimap_icon.set_layer_mask_value(2, false) # visible through player camera
+		_minimap_icon.set_layer_mask_value(3, true) # minimap icons
 
 # Called to handle input events
 func _input(event: InputEvent) -> void:
@@ -325,6 +346,9 @@ func show_action_text(text: String, color: Color):
 	_action_text.modulate = color
 	_action_text.visible = true
 	_action_text_timer = 1.5
+	
+	# Also update color of minimap icon
+	_minimap_icon.modulate = color
 	
 func _on_state_changed(new_state):
 	match new_state:
