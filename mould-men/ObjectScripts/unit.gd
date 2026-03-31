@@ -89,6 +89,9 @@ func get_global_pos() -> Vector3:
 func is_enemy() -> bool:
 	return _is_enemy
 
+func set_enemy(is_en: bool):
+	_is_enemy = is_en
+
 # Called to determine the closest opposing unit to the given position
 func closest_opponent(unit: Unit) -> Unit:
 
