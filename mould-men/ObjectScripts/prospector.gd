@@ -35,6 +35,13 @@ func _ready() -> void:
 	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_action_text.outline_size = 50
 	_physics_body.add_child(_action_text)
+	
+	# Change visibility layer of action label so it's NOT visible on layer 1 and IS visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	_action_text.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	_action_text.set_layer_mask_value(2, true)
 
 	# Setting that the unit is an enemy
 	_is_enemy							= true

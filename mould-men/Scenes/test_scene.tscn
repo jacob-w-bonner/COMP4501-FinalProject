@@ -311,5 +311,5 @@ metadata/_custom_type_script = "uid://b0tx07quuwgx7"
 [node name="Enemy2" type="Node3D" parent="." unique_id=671918099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 1.6, 7.189)
 script = ExtResource("18_i0miu")
+_is_enemy = true
 metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
-
