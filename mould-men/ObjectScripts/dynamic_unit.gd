@@ -4,6 +4,7 @@ class_name DynamicUnit extends Unit
 # Properties that all dynamic units have
 @export var _speed: 			int 				= 1.0
 @export var _buff_val:			float				= 1.0
+var			_buff_height:		float				= 4.0
 var			_velocity:			Vector3				= Vector3.ZERO
 
 # Properties that track attacking
@@ -76,7 +77,7 @@ func _ready() -> void:
 	_nav_agent.radius						= 1.0
 
 	# Setting more path following parameters for tighter motion
-	_nav_agent.target_desired_distance		= 2.5
+	_nav_agent.target_desired_distance		= _reach_radius
 	_nav_agent.path_desired_distance		= 0.5
 	_nav_agent.debug_enabled 				= true
 
@@ -163,9 +164,19 @@ func sentry() -> void:
 # Called when movement is finished
 func nav_finish() -> void:
 
-	# If the closest target is an enemy then attack it
-	if _closest_op.is_enemy():
-		_state = Globals.STATES.ATTACKING
+	# If the closest target is an opponent then attack it
+	if _closest_op.is_enemy() != self.is_enemy():
+
+		# Calculating the direction the target is facing
+		var direction					= self._closest_op._physics_body.global_transform.origin - self._physics_body.global_transform.origin
+		direction.y						= 0
+		direction 						= direction.normalized()
+
+		# Setting the object rotation
+		self._physics_body.rotation.y	= atan2(direction.x, direction.z)
+
+		# Changing states
+		_state							= Globals.STATES.ATTACKING
 
 	# Move towards the closest target
 	else:
@@ -180,7 +191,7 @@ func hit_animation(delta: float) -> void:
 
 # Animation for the buff indicator
 func buff_animation(delta: float) -> void:
-	_buff_mesh.position = Vector3(0.0, 0.5 * cos(4.0 * Globals.TIME) + 4.0, 0.0)
+	_buff_mesh.position = Vector3(0.0, 0.5 * cos(_buff_height * Globals.TIME) + _buff_height, 0.0)
 	_buff_mesh.rotate_y(4.0 * delta)
 
 # Animation for the heal indicator
@@ -201,6 +212,10 @@ func adjust_velocity(adj_vel: Vector3) -> void:
 # Called to determine the closest opposing unit to the given position
 func closest_opponent(unit: Unit) -> Unit:
 	return super.closest_opponent(self)
+
+# Override called to destroy the unit
+func destroy_self() -> void:
+	super.destroy_self()
 
 # Getter for the buff value
 func get_buff_val() -> float:

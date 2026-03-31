@@ -9,7 +9,9 @@ enum STATES {
 	BURROW,
 	MINE,
 	GROOVING,
-	HEALING
+	HEALING,
+	MENDING,
+	RALLYING
 }
 
 # Enum for the types of resources
@@ -39,7 +41,7 @@ var ALLY_ARR:  						Array			= []
 var SELECTED_UNIT: 					Unit 			= null
 
 # Value of the height of the world floor
-var FLOOR_HEIGHT: 					float			= 1.7
+var FLOOR_HEIGHT: 					float			= 1.6
 
 # Unit selection timer
 var SELECT_COOLDOWN:				bool			= false
