@@ -6,3 +6,18 @@ Mole Assets:
 
 Resource Vein Assets:
 "Stylized Crystal Prop Asset" (https://skfb.ly/pEsY7) by ESO is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Foreman Assets:
+"Miner Robot" (https://skfb.ly/oqr7J) by amurin is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Prospector Assets:
+"Robot Miner" (https://skfb.ly/oLwAr) by JonathanCastillo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Dynamite Assets:
+"Dynamite" (https://skfb.ly/6XFRB) by Michele.Passerino is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Dynamite Explosion Tutorial:
+https://www.youtube.com/watch?v=RtJJVjjM_-Q
+
+Apartment Asset:
+"Korean Apartment" (https://skfb.ly/oSItZ) by Route_Canal is licensed under Free Standard Attribution (https://sketchfab.com/licenses)

@@ -19,7 +19,7 @@ func _ready() -> void:
 	# Adding the allies to the ally array
 	Globals.ALLY_ARR.push_back(mole)
 	Globals.ALLY_ARR.push_back(mole2)
-	Globals.ALLY_ARR.push_back(resource)
+	Globals.ENEMY_ARR.push_back(resource)
 	Globals.ALLY_ARR.push_back(resource2)
 	Globals.ALLY_ARR.push_back(miner_mole)
 	Globals.ALLY_ARR.push_back(music_mole)

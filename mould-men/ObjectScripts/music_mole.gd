@@ -33,7 +33,7 @@ func _ready() -> void:
 	super._ready()
 
 	# Moles are not enemies
-	#_is_enemy							= false
+	_is_enemy							= false
 
 	# Setting the mesh
 	_mesh.mesh							= (load("res://Assets/MoleAssets/MusicMole/MusicMole.tres") as Mesh).duplicate()
@@ -155,6 +155,17 @@ func nav_finish() -> void:
 	else:
 		_closest_op = closest_opponent(self)
 		_state		= Globals.STATES.MOVING
+
+# Override called to destroy the unit
+func destroy_self() -> void:
+
+	# Clear the buff list
+	for ally in _units_buffed:
+		ally.decrease_buff_val(_music_buff)
+	_units_buffed.clear()
+
+	# Destroying the unit
+	super.destroy_self()
 
 # Called to determine the closest opposing unit to the given position
 func closest_opponent(unit: Unit) -> Unit:

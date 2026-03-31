@@ -38,7 +38,7 @@ func _ready() -> void:
 	super._ready()
 
 	# Moles are not enemies
-	#_is_enemy							= false
+	_is_enemy							= false
 
 	# Setting the mesh
 	_mesh.mesh							= (load("res://Assets/MoleAssets/DoctorMole/DoctorMole.tres") as Mesh).duplicate()
@@ -163,7 +163,7 @@ func healing(delta: float) -> void:
 	if _units_healed.size() == 0:
 		_state = Globals.STATES.MOVING
 
-# A basic mining animation handler
+# A basic healing animation handler
 func healing_animation(delta: float) -> void:
 	_mesh.set_rotation(Vector3(cos(Globals.TIME * _speed) * 0.5, _mesh.rotation.y, sin(Globals.TIME * _speed) * 0.5))
 

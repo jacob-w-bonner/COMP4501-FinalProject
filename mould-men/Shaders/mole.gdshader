@@ -24,12 +24,8 @@ void fragment() {
 	// Starter for the final colour
 	vec4 final_col = texture(tex, UV);
 
-	// If the unit is selected keep the hover colour but amplify it
-	if (is_selected) {
-		final_col = final_col * hover_col * 5.0;
-
 	// If the unit is being hovered then apply the hover colour
-	} else if (is_hovered) {
+	if (is_hovered) {
 		final_col = final_col * hover_col;
 
 	// Show the normal colour

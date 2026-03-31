@@ -33,7 +33,7 @@ func _ready() -> void:
 	super._ready()
 
 	# Moles are not enemies
-	#_is_enemy							= false
+	_is_enemy							= false
 
 	# Setting the mesh
 	_mesh.mesh							= (load("res://Assets/MoleAssets/MinerMole/MinerMole.tres") as Mesh).duplicate()
@@ -90,7 +90,17 @@ func nav_finish() -> void:
 
 	# If the closest target is an enemy then attack it
 	elif _closest_op.is_enemy():
-		_state = Globals.STATES.ATTACKING
+
+		# Calculating the direction the target is facing
+		var direction					= self._closest_op._physics_body.global_transform.origin - self._physics_body.global_transform.origin
+		direction.y						= 0
+		direction 						= direction.normalized()
+
+		# Setting the object rotation
+		self._physics_body.rotation.y	= atan2(direction.x, direction.z)
+
+		# Changing states
+		_state							= Globals.STATES.ATTACKING
 
 	# Move towards the closest target
 	else:
@@ -157,7 +167,7 @@ func mine(target: ResourceVein, delta: float) -> void:
 
 # A basic mining animation handler
 func mine_animation(delta: float) -> void:
-	_mesh.rotate_x(_mining_direction * delta)
+	_mesh.rotate_x(_mining_direction * delta * _buff_val)
 	if _mesh.rotation.x > deg_to_rad(45) or _mesh.rotation.x < deg_to_rad(-45):
 		_mining_direction *= -1.0
 

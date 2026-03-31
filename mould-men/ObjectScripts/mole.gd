@@ -51,7 +51,6 @@ var _previous_state = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	# Instantiating parent first
 	super._ready()
 	
@@ -73,7 +72,7 @@ func _ready() -> void:
 	_physics_body.add_child(_action_text)
 
 	# Moles are not enemies
-	#_is_enemy							= false
+	_is_enemy							= false
 
 	# Setting the mesh
 	_mesh.mesh							= (load("res://Assets/MoleAssets/Mole/Mole.tres") as Mesh).duplicate()
@@ -206,6 +205,9 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
+	# Locking y axis
+	_physics_body.global_position.y = Globals.FLOOR_HEIGHT
 
 	if _action_text_timer > 0:
 		_action_text_timer -= delta
@@ -340,6 +342,10 @@ func burrow(delta: float):
 # Called to determine the closest opposing unit to the given position
 func closest_opponent(unit: Unit) -> Unit:
 	return super.closest_opponent(self)
+
+# Override called to destroy the unit
+func destroy_self() -> void:
+	super.destroy_self()
 
 func show_action_text(text: String, color: Color):
 	_action_text.text = text
