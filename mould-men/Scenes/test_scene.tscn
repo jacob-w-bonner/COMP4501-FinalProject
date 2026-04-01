@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dhrl2"]
-[ext_resource type="Texture2D" uid="uid://ckv7gwot74xs2" path="res://Assets/UIAssets/MinimapAssets/plain-circle.svg" id="18_0g4ye"]
+[ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="18_0g4ye"]
 [ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="18_i0miu"]
 [ext_resource type="Script" uid="uid://b0tx07quuwgx7" path="res://ObjectScripts/prospector.gd" id="19_6bfml"]
 
@@ -288,10 +288,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -245.0
+offset_left = -205.0
 offset_top = -5.0
 offset_right = 5.0
-offset_bottom = 245.0
+offset_bottom = 205.0
 grow_horizontal = 0
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
@@ -303,25 +303,25 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -240.0
-offset_bottom = 240.0
+offset_left = -200.0
+offset_bottom = 200.0
 grow_horizontal = 0
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="Clipping Circle" type="TextureRect" parent="GUI/Minimap" unique_id=1434148811]
+[node name="Clipping Shape" type="TextureRect" parent="GUI/Minimap" unique_id=1434148811]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -240.0
-offset_bottom = 240.0
+offset_left = -200.0
+offset_bottom = 200.0
 grow_horizontal = 0
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="GUI/Minimap/Clipping Circle" unique_id=1906904083]
+[node name="CenterContainer" type="CenterContainer" parent="GUI/Minimap/Clipping Shape" unique_id=1906904083]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -329,16 +329,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/Minimap/Clipping Circle/CenterContainer" unique_id=705651411]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/Minimap/Clipping Shape/CenterContainer" unique_id=705651411]
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="GUI/Minimap/Clipping Circle/CenterContainer/SubViewportContainer" unique_id=468922276]
+[node name="SubViewport" type="SubViewport" parent="GUI/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=468922276]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(200, 200)
+size = Vector2i(180, 180)
 render_target_update_mode = 4
 
-[node name="Minimap Camera" type="Camera3D" parent="GUI/Minimap/Clipping Circle/CenterContainer/SubViewportContainer/SubViewport" unique_id=1790892708]
+[node name="Minimap Camera" type="Camera3D" parent="GUI/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=1790892708]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
 cull_mask = 1048573
 projection = 1
