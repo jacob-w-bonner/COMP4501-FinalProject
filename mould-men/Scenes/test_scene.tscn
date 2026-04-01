@@ -114,12 +114,16 @@ anchor_right = 1.0
 offset_left = -81.0
 offset_bottom = 252.0
 grow_horizontal = 0
+theme_override_constants/separation = 5
 
 [node name="Resources" type="MarginContainer" parent="GUI/Resources + Minimap" unique_id=2019743021]
 layout_mode = 2
+theme_override_constants/margin_left = 30
 
 [node name="GridContainer" type="GridContainer" parent="GUI/Resources + Minimap/Resources" unique_id=2119782003]
 layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = -67
 columns = 2
 script = ExtResource("12_040rt")
 
@@ -131,16 +135,16 @@ theme_override_font_sizes/normal_font_size = 22
 text = "0"
 fit_content = true
 autowrap_mode = 0
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Gold" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1704177364]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("12_ibmi3")
-expand_mode = 3
-stretch_mode = 6
+expand_mode = 1
 
 [node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1981445377]
 layout_mode = 2
@@ -150,13 +154,14 @@ theme_override_font_sizes/normal_font_size = 22
 text = "0"
 fit_content = true
 autowrap_mode = 0
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Coal" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1664037066]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("13_4qg1e")
 expand_mode = 3
 stretch_mode = 6
@@ -169,13 +174,14 @@ theme_override_font_sizes/normal_font_size = 22
 text = "0"
 fit_content = true
 autowrap_mode = 0
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Amethyst" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1062729079]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("14_4qg1e")
 expand_mode = 3
 stretch_mode = 6
@@ -188,20 +194,21 @@ theme_override_font_sizes/normal_font_size = 22
 text = "0"
 fit_content = true
 autowrap_mode = 0
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Diamond" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=528638485]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("15_dhrl2")
 expand_mode = 3
 stretch_mode = 6
 
 [node name="Minimap" type="MarginContainer" parent="GUI/Resources + Minimap" unique_id=1246477485]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 30
 
 [node name="Map Frame" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=1327164916]
