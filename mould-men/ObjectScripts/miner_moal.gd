@@ -21,11 +21,10 @@ var			_already_mined:		bool				= false
 var 		_mining_direction:	float				= 10.0
 
 # UI labels to be updated
-@onready var gold_label: RichTextLabel = $"../CanvasLayer/Resources/GoldLabel"
-@onready var coal_label: RichTextLabel = $"../CanvasLayer/Resources/CoalLabel"
-@onready var amethyst_label: RichTextLabel = $"../CanvasLayer/Resources/AmethystLabel"
-@onready var diamond_label: RichTextLabel = $"../CanvasLayer/Resources/DiamondLabel"
-
+@onready var gold_label: RichTextLabel = $"../GUI/Resources/GoldLabel"
+@onready var coal_label: RichTextLabel = $"../GUI/Resources/CoalLabel"
+@onready var amethyst_label: RichTextLabel = $"../GUI/Resources/AmethystLabel"
+@onready var diamond_label: RichTextLabel = $"../GUI/Resources/DiamondLabel"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

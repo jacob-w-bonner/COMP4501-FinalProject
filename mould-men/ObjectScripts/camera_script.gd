@@ -19,8 +19,6 @@ var zoom_incro:				float = 0.5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.size = default_zoom
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
