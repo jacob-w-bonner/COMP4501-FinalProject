@@ -111,25 +111,26 @@ follow_viewport_enabled = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -81.0
-offset_bottom = 252.0
+offset_left = -330.0
+offset_bottom = 210.0
 grow_horizontal = 0
-theme_override_constants/separation = 5
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -20
 
 [node name="Resources" type="MarginContainer" parent="GUI/Resources + Minimap" unique_id=2019743021]
 custom_minimum_size = Vector2(110, 200)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 11
+size_flags_vertical = 0
+theme_override_constants/margin_top = -9
 
 [node name="TextureRect" type="TextureRect" parent="GUI/Resources + Minimap/Resources" unique_id=731510843]
 modulate = Color(0.70480496, 0.76072985, 0.7606284, 1)
 custom_minimum_size = Vector2(120, 210)
 layout_mode = 2
 texture = ExtResource("18_0g4ye")
-expand_mode = 4
+expand_mode = 1
 
 [node name="GridContainer" type="GridContainer" parent="GUI/Resources + Minimap/Resources" unique_id=2119782003]
 layout_mode = 2
@@ -151,11 +152,16 @@ layout_mode = 2
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer" unique_id=2073197649]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer" unique_id=1753466466]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/MarginContainer" unique_id=2073197649]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="GoldLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/HBoxContainer" unique_id=1324698047]
+[node name="GoldLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1324698047]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -167,7 +173,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Gold" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/HBoxContainer" unique_id=1704177364]
+[node name="Gold" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1704177364]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -187,11 +193,16 @@ layout_mode = 2
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2" unique_id=1563137240]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2" unique_id=286821777]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/MarginContainer" unique_id=1563137240]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/HBoxContainer" unique_id=1981445377]
+[node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1981445377]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -203,7 +214,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Coal" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/HBoxContainer" unique_id=1664037066]
+[node name="Coal" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1664037066]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -224,11 +235,16 @@ layout_mode = 2
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3" unique_id=1928297071]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3" unique_id=235201423]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/MarginContainer" unique_id=1928297071]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/HBoxContainer" unique_id=1038039947]
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1038039947]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -240,7 +256,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Amethyst" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/HBoxContainer" unique_id=1062729079]
+[node name="Amethyst" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1062729079]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -261,11 +277,16 @@ layout_mode = 2
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4" unique_id=695393345]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4" unique_id=1838514861]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/MarginContainer" unique_id=695393345]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/HBoxContainer" unique_id=506366338]
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=506366338]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -277,7 +298,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Diamond" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/HBoxContainer" unique_id=528638485]
+[node name="Diamond" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=528638485]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -288,13 +309,13 @@ stretch_mode = 6
 
 [node name="Minimap" type="MarginContainer" parent="GUI/Resources + Minimap" unique_id=1246477485]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -5
 
 [node name="Map Frame" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=1327164916]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
-custom_minimum_size = Vector2(210, 210)
+custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -304,7 +325,7 @@ expand_mode = 1
 [node name="Map Background Colour" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=995718154]
 modulate = Color(0.54901963, 0.36862746, 0.28627452, 1)
 clip_contents = true
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(230, 230)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -313,7 +334,7 @@ expand_mode = 1
 
 [node name="Clipping Shape" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=1434148811]
 clip_children = 1
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(230, 230)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -340,7 +361,7 @@ layout_mode = 2
 [node name="SubViewport" type="SubViewport" parent="GUI/Resources + Minimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=468922276]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(180, 180)
+size = Vector2i(205, 205)
 render_target_update_mode = 4
 
 [node name="Minimap Camera" type="Camera3D" parent="GUI/Resources + Minimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=1790892708]

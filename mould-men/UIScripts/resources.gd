@@ -1,10 +1,9 @@
 extends GridContainer
 
-@onready var gold_label: RichTextLabel = $MarginContainer/HBoxContainer/GoldLabel
-@onready var coal_label: RichTextLabel = $MarginContainer2/HBoxContainer/CoalLabel
-@onready var amethyst_label: RichTextLabel = $MarginContainer3/HBoxContainer/AmethystLabel
-@onready var diamond_label: RichTextLabel = $MarginContainer4/HBoxContainer/DiamondLabel
-
+@onready var gold_label: RichTextLabel = $MarginContainer/MarginContainer/HBoxContainer/GoldLabel
+@onready var coal_label: RichTextLabel = $MarginContainer2/MarginContainer/HBoxContainer/CoalLabel
+@onready var amethyst_label: RichTextLabel = $MarginContainer3/MarginContainer/HBoxContainer/AmethystLabel
+@onready var diamond_label: RichTextLabel = $MarginContainer4/MarginContainer/HBoxContainer/DiamondLabel
 
 func _ready():
 	gold_label.text = str(Globals.GOLD_NUM)
