@@ -9,9 +9,6 @@
 [ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="7_oho3u"]
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="7_rdbpf"]
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="8_oho3u"]
-[ext_resource type="Texture2D" uid="uid://c74p7insid7qy" path="res://Assets/UIAssets/move.svg" id="9_bwjpn"]
-[ext_resource type="Texture2D" uid="uid://bype42xtc0jyn" path="res://Assets/UIAssets/punch.svg" id="9_d3awe"]
-[ext_resource type="Texture2D" uid="uid://cursq3yb0o8ql" path="res://Assets/UIAssets/mining.svg" id="10_yglu3"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="12_040rt"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_ibmi3"]
 [ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
@@ -110,95 +107,33 @@ metadata/_custom_type_script = "uid://edh800y1jebg"
 [node name="GUI" type="CanvasLayer" parent="." unique_id=860007368]
 follow_viewport_enabled = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI" unique_id=770770930]
-visible = false
-offset_left = 51.0
-offset_top = 514.0
-offset_right = 502.0
-offset_bottom = 604.0
-
-[node name="Button" type="Button" parent="GUI/HBoxContainer" unique_id=70346131]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button" unique_id=1689490909]
-layout_mode = 1
-anchors_preset = 15
+[node name="Resources + Minimap" type="HBoxContainer" parent="GUI" unique_id=1234846300]
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_bwjpn")
-expand_mode = 1
+offset_left = -81.0
+offset_bottom = 252.0
+grow_horizontal = 0
 
-[node name="Button2" type="Button" parent="GUI/HBoxContainer" unique_id=1487398996]
+[node name="Resources" type="MarginContainer" parent="GUI/Resources + Minimap" unique_id=2019743021]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button2" unique_id=442897038]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_d3awe")
-expand_mode = 1
-
-[node name="Button3" type="Button" parent="GUI/HBoxContainer" unique_id=85365220]
+[node name="GridContainer" type="GridContainer" parent="GUI/Resources + Minimap/Resources" unique_id=2119782003]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button3" unique_id=1136574900]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_yglu3")
-expand_mode = 1
-
-[node name="Button4" type="Button" parent="GUI/HBoxContainer" unique_id=259134342]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button4" unique_id=1896281759]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_d3awe")
-expand_mode = 1
-
-[node name="Button5" type="Button" parent="GUI/HBoxContainer" unique_id=895700574]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/HBoxContainer/Button5" unique_id=1905308696]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_d3awe")
-expand_mode = 1
-
-[node name="Resources" type="GridContainer" parent="GUI" unique_id=2119782003]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -82.0
-offset_right = 82.0
-offset_bottom = 80.0
-grow_horizontal = 2
-columns = 4
+columns = 2
 script = ExtResource("12_040rt")
 
-[node name="Gold" type="TextureRect" parent="GUI/Resources" unique_id=1704177364]
+[node name="GoldLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1324698047]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Gold" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1704177364]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -207,7 +142,17 @@ texture = ExtResource("12_ibmi3")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Coal" type="TextureRect" parent="GUI/Resources" unique_id=1664037066]
+[node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1981445377]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Coal" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1664037066]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -216,7 +161,17 @@ texture = ExtResource("13_4qg1e")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Amethyst" type="TextureRect" parent="GUI/Resources" unique_id=1062729079]
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1038039947]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Amethyst" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=1062729079]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -225,7 +180,17 @@ texture = ExtResource("14_4qg1e")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Diamond" type="TextureRect" parent="GUI/Resources" unique_id=528638485]
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=506366338]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Diamond" type="TextureRect" parent="GUI/Resources + Minimap/Resources/GridContainer" unique_id=528638485]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -234,111 +199,64 @@ texture = ExtResource("15_dhrl2")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="GoldLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=1324698047]
+[node name="Minimap" type="MarginContainer" parent="GUI/Resources + Minimap" unique_id=1246477485]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 30
 
-[node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=1981445377]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=1038039947]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI/Resources" unique_id=506366338]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="Minimap" type="Control" parent="GUI" unique_id=2108377139]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-
-[node name="Map Frame" type="TextureRect" parent="GUI/Minimap" unique_id=1327164916]
+[node name="Map Frame" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=1327164916]
 modulate = Color(0.5580791, 0.6217646, 0.6248082, 1)
 clip_contents = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -205.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 205.0
-grow_horizontal = 0
+custom_minimum_size = Vector2(210, 210)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="Map Background Colour" type="TextureRect" parent="GUI/Minimap" unique_id=995718154]
+[node name="Map Background Colour" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=995718154]
 modulate = Color(0.37761593, 0.2430608, 0.17935398, 1)
 clip_contents = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_bottom = 200.0
-grow_horizontal = 0
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="Clipping Shape" type="TextureRect" parent="GUI/Minimap" unique_id=1434148811]
+[node name="Clipping Shape" type="TextureRect" parent="GUI/Resources + Minimap/Minimap" unique_id=1434148811]
 clip_children = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_bottom = 200.0
-grow_horizontal = 0
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("18_0g4ye")
 expand_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="GUI/Minimap/Clipping Shape" unique_id=1906904083]
+[node name="CenterContainer" type="CenterContainer" parent="GUI/Resources + Minimap/Minimap/Clipping Shape" unique_id=1906904083]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/Minimap/Clipping Shape/CenterContainer" unique_id=705651411]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/Resources + Minimap/Minimap/Clipping Shape/CenterContainer" unique_id=705651411]
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="GUI/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=468922276]
+[node name="SubViewport" type="SubViewport" parent="GUI/Resources + Minimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=468922276]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(180, 180)
 render_target_update_mode = 4
 
-[node name="Minimap Camera" type="Camera3D" parent="GUI/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=1790892708]
+[node name="Minimap Camera" type="Camera3D" parent="GUI/Resources + Minimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=1790892708]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
 cull_mask = 1048573
 projection = 1
