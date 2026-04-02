@@ -62,6 +62,13 @@ func _ready() -> void:
 	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_action_text.outline_size = 50
 	
+	# Change visibility layer of action label so it's NOT visible on layer 1 and IS visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	_action_text.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	_action_text.set_layer_mask_value(2, true)
+	
 	_physics_body.add_child(_action_text)
 
 	# Moles are not enemies
@@ -331,7 +338,7 @@ func show_action_text(text: String, color: Color):
 	_action_text.modulate = color
 	_action_text.visible = true
 	_action_text_timer = 1.5
-	
+
 func _on_state_changed(new_state):
 	match new_state:
 		Globals.STATES.MOVING:

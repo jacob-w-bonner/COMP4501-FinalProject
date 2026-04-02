@@ -59,6 +59,12 @@ camera_zoom_out={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_1="Minimap (gridmap locked to layer 1 as well)"
+3d_render/layer_2="Everything for player camera"
+3d_render/layer_3="minimap"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
