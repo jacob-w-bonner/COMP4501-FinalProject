@@ -32,73 +32,98 @@
 [ext_resource type="PackedScene" uid="uid://dms25gigdrgse" path="res://Assets/Cave Tiles/cave_floor/cave_floor_014.glb" id="30_o7emr"]
 [ext_resource type="PackedScene" uid="uid://cm2ldw3cnndsx" path="res://Assets/Cave Tiles/cave_floor/cave_floor_015.glb" id="31_4ohco"]
 [ext_resource type="PackedScene" uid="uid://b76kqhbcp0is4" path="res://Assets/Cave Tiles/cave_floor/cave_floor_016.glb" id="32_xygrm"]
+[ext_resource type="PackedScene" uid="uid://cmse57cto1rhn" path="res://Assets/Cave Tiles/cave_minecart/cave_minecart.glb" id="33_wa6g3"]
+[ext_resource type="PackedScene" uid="uid://d0db8wvlnlel2" path="res://Assets/Cave Tiles/cave_minecart/cave_minecart_full.glb" id="34_asx6v"]
+[ext_resource type="PackedScene" uid="uid://nmcsf7b0cf3n" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_curve.glb" id="35_wr8hr"]
+[ext_resource type="PackedScene" uid="uid://cy2ly47ufe1ak" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_splitL.glb" id="36_iy1vn"]
+[ext_resource type="PackedScene" uid="uid://clvr74q1n8roy" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_splitR.glb" id="37_5tml6"]
+[ext_resource type="PackedScene" uid="uid://bhkuqtsa0rwuo" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_straight1.glb" id="38_ompgt"]
+[ext_resource type="PackedScene" uid="uid://ddxqcmcsde2gs" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_straight2.glb" id="39_efh6c"]
 
 [node name="Node3D" type="Node3D" unique_id=129390319]
 
 [node name="cave_floor_decor" type="Node3D" parent="." unique_id=868701902]
 
-[node name="cave_floor_decor_001" parent="cave_floor_decor" unique_id=475028052 instance=ExtResource("1_0b86e")]
+[node name="cave_floor_decor_001" parent="cave_floor_decor" unique_id=709832801 instance=ExtResource("1_0b86e")]
 
-[node name="cave_floor_decor_002" parent="cave_floor_decor" unique_id=1998534253 instance=ExtResource("2_ni50q")]
+[node name="cave_floor_decor_002" parent="cave_floor_decor" unique_id=1590897082 instance=ExtResource("2_ni50q")]
 
-[node name="cave_floor_decor_003" parent="cave_floor_decor" unique_id=397458020 instance=ExtResource("3_nnqrc")]
+[node name="cave_floor_decor_003" parent="cave_floor_decor" unique_id=876837262 instance=ExtResource("3_nnqrc")]
 
-[node name="cave_floor_decor_004" parent="cave_floor_decor" unique_id=35183361 instance=ExtResource("4_247gn")]
+[node name="cave_floor_decor_004" parent="cave_floor_decor" unique_id=1142736032 instance=ExtResource("4_247gn")]
 
-[node name="cave_floor_decor_005" parent="cave_floor_decor" unique_id=1855476745 instance=ExtResource("5_381lj")]
+[node name="cave_floor_decor_005" parent="cave_floor_decor" unique_id=1180653983 instance=ExtResource("5_381lj")]
 
-[node name="cave_floor_decor_006" parent="cave_floor_decor" unique_id=150065218 instance=ExtResource("6_hxv6m")]
+[node name="cave_floor_decor_006" parent="cave_floor_decor" unique_id=744079681 instance=ExtResource("6_hxv6m")]
 
-[node name="cave_floor_decor_007" parent="cave_floor_decor" unique_id=1336736253 instance=ExtResource("7_bp31p")]
+[node name="cave_floor_decor_007" parent="cave_floor_decor" unique_id=2141358899 instance=ExtResource("7_bp31p")]
 
-[node name="cave_floor_decor_008" parent="cave_floor_decor" unique_id=1949941607 instance=ExtResource("8_0w5xw")]
+[node name="cave_floor_decor_008" parent="cave_floor_decor" unique_id=1428549096 instance=ExtResource("8_0w5xw")]
 
-[node name="cave_floor_decor_009" parent="cave_floor_decor" unique_id=572993616 instance=ExtResource("9_w1fb7")]
+[node name="cave_floor_decor_009" parent="cave_floor_decor" unique_id=290798601 instance=ExtResource("9_w1fb7")]
 
-[node name="cave_floor_decor_010" parent="cave_floor_decor" unique_id=1042173447 instance=ExtResource("10_hiopx")]
+[node name="cave_floor_decor_010" parent="cave_floor_decor" unique_id=671966715 instance=ExtResource("10_hiopx")]
 
-[node name="cave_floor_decor_011" parent="cave_floor_decor" unique_id=230171301 instance=ExtResource("11_eo8mj")]
+[node name="cave_floor_decor_011" parent="cave_floor_decor" unique_id=990222322 instance=ExtResource("11_eo8mj")]
 
-[node name="cave_floor_decor_012" parent="cave_floor_decor" unique_id=322269977 instance=ExtResource("12_urvai")]
+[node name="cave_floor_decor_012" parent="cave_floor_decor" unique_id=1112614134 instance=ExtResource("12_urvai")]
 
-[node name="cave_floor_decor_013" parent="cave_floor_decor" unique_id=364951856 instance=ExtResource("13_lyj30")]
+[node name="cave_floor_decor_013" parent="cave_floor_decor" unique_id=943627976 instance=ExtResource("13_lyj30")]
 
-[node name="cave_floor_decor_014" parent="cave_floor_decor" unique_id=520075979 instance=ExtResource("14_t77bu")]
+[node name="cave_floor_decor_014" parent="cave_floor_decor" unique_id=1841967572 instance=ExtResource("14_t77bu")]
 
-[node name="cave_floor_decor_015" parent="cave_floor_decor" unique_id=70311335 instance=ExtResource("15_smt8y")]
+[node name="cave_floor_decor_015" parent="cave_floor_decor" unique_id=1233244484 instance=ExtResource("15_smt8y")]
 
-[node name="cave_floor_decor_016" parent="cave_floor_decor" unique_id=992852360 instance=ExtResource("16_k0iju")]
+[node name="cave_floor_decor_016" parent="cave_floor_decor" unique_id=1047608678 instance=ExtResource("16_k0iju")]
 
 [node name="cave_floor" type="Node3D" parent="." unique_id=292365382]
 
-[node name="cave_floor_0012" parent="cave_floor" unique_id=631531285 instance=ExtResource("17_uichq")]
+[node name="cave_floor_0012" parent="cave_floor" unique_id=985969751 instance=ExtResource("17_uichq")]
 
-[node name="cave_floor_0022" parent="cave_floor" unique_id=251896094 instance=ExtResource("18_gc4ku")]
+[node name="cave_floor_0022" parent="cave_floor" unique_id=222264320 instance=ExtResource("18_gc4ku")]
 
-[node name="cave_floor_0032" parent="cave_floor" unique_id=2103106747 instance=ExtResource("19_wa6g3")]
+[node name="cave_floor_0032" parent="cave_floor" unique_id=1229314172 instance=ExtResource("19_wa6g3")]
 
-[node name="cave_floor_0042" parent="cave_floor" unique_id=1571648412 instance=ExtResource("20_asx6v")]
+[node name="cave_floor_0042" parent="cave_floor" unique_id=594193357 instance=ExtResource("20_asx6v")]
 
-[node name="cave_floor_0052" parent="cave_floor" unique_id=2085608109 instance=ExtResource("21_2sf1s")]
+[node name="cave_floor_0052" parent="cave_floor" unique_id=849900662 instance=ExtResource("21_2sf1s")]
 
-[node name="cave_floor_0062" parent="cave_floor" unique_id=53040242 instance=ExtResource("22_3aicp")]
+[node name="cave_floor_0062" parent="cave_floor" unique_id=1369098714 instance=ExtResource("22_3aicp")]
 
-[node name="cave_floor_0072" parent="cave_floor" unique_id=791987389 instance=ExtResource("23_dk6fr")]
+[node name="cave_floor_0072" parent="cave_floor" unique_id=159672560 instance=ExtResource("23_dk6fr")]
 
-[node name="cave_floor_0082" parent="cave_floor" unique_id=1370853795 instance=ExtResource("24_wr8hr")]
+[node name="cave_floor_0082" parent="cave_floor" unique_id=786576006 instance=ExtResource("24_wr8hr")]
 
-[node name="cave_floor_0092" parent="cave_floor" unique_id=834389717 instance=ExtResource("25_iy1vn")]
+[node name="cave_floor_0092" parent="cave_floor" unique_id=2111425029 instance=ExtResource("25_iy1vn")]
 
-[node name="cave_floor_0102" parent="cave_floor" unique_id=1784575860 instance=ExtResource("26_5tml6")]
+[node name="cave_floor_0102" parent="cave_floor" unique_id=1103512707 instance=ExtResource("26_5tml6")]
 
-[node name="cave_floor_0112" parent="cave_floor" unique_id=1588069189 instance=ExtResource("27_ompgt")]
+[node name="cave_floor_0112" parent="cave_floor" unique_id=685679389 instance=ExtResource("27_ompgt")]
 
-[node name="cave_floor_0122" parent="cave_floor" unique_id=1867651661 instance=ExtResource("28_efh6c")]
+[node name="cave_floor_0122" parent="cave_floor" unique_id=749423207 instance=ExtResource("28_efh6c")]
 
-[node name="cave_floor_0132" parent="cave_floor" unique_id=537027830 instance=ExtResource("29_5vr3k")]
+[node name="cave_floor_0132" parent="cave_floor" unique_id=1299449526 instance=ExtResource("29_5vr3k")]
 
-[node name="cave_floor_0142" parent="cave_floor" unique_id=1037636397 instance=ExtResource("30_o7emr")]
+[node name="cave_floor_0142" parent="cave_floor" unique_id=976061541 instance=ExtResource("30_o7emr")]
 
-[node name="cave_floor_0152" parent="cave_floor" unique_id=153032739 instance=ExtResource("31_4ohco")]
+[node name="cave_floor_0152" parent="cave_floor" unique_id=1804199241 instance=ExtResource("31_4ohco")]
 
-[node name="cave_floor_0162" parent="cave_floor" unique_id=1117840205 instance=ExtResource("32_xygrm")]
+[node name="cave_floor_0162" parent="cave_floor" unique_id=677271768 instance=ExtResource("32_xygrm")]
+
+[node name="cave_minecart" type="Node3D" parent="." unique_id=2858650]
+
+[node name="cave_minecart" parent="cave_minecart" unique_id=1976196185 instance=ExtResource("33_wa6g3")]
+
+[node name="cave_minecart_full" parent="cave_minecart" unique_id=1404465382 instance=ExtResource("34_asx6v")]
+
+[node name="cave_minetracks" type="Node3D" parent="." unique_id=888160375]
+
+[node name="cave_minetrack_curve" parent="cave_minetracks" unique_id=330260998 instance=ExtResource("35_wr8hr")]
+
+[node name="cave_minetrack_splitL" parent="cave_minetracks" unique_id=454176939 instance=ExtResource("36_iy1vn")]
+
+[node name="cave_minetrack_splitR" parent="cave_minetracks" unique_id=1222717851 instance=ExtResource("37_5tml6")]
+
+[node name="cave_minetrack_straight1" parent="cave_minetracks" unique_id=2054564754 instance=ExtResource("38_ompgt")]
+
+[node name="cave_minetrack_straight2" parent="cave_minetracks" unique_id=396005660 instance=ExtResource("39_efh6c")]
