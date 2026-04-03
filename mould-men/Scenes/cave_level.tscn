@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c37hw1u3o5gff"]
 
 [ext_resource type="Script" uid="uid://dooyoh66rfi37" path="res://GameScripts/test_scene.gd" id="1_bp8ox"]
-[ext_resource type="MeshLibrary" path="res://Assets/Cave Tiles/cave_tiles.meshlib" id="2_bp8ox"]
+[ext_resource type="MeshLibrary" uid="uid://blonb8mxcl0sj" path="res://Assets/CaveTileset/cave_tiles.meshlib" id="2_bp8ox"]
 [ext_resource type="Script" uid="uid://bwy5dtc5n2h4c" path="res://ObjectScripts/camera_script.gd" id="3_4y3ct"]
 [ext_resource type="Script" uid="uid://b7ocrnrctly4f" path="res://ObjectScripts/mole.gd" id="4_go3ms"]
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="5_dvdba"]
