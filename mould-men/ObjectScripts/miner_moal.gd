@@ -21,10 +21,10 @@ var			_already_mined:		bool				= false
 var 		_mining_direction:	float				= 10.0
 
 # UI labels to be updated
-@onready var gold_label: RichTextLabel = $"../GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer/GoldLabel"
-@onready var coal_label: RichTextLabel = $"../GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer/CoalLabel"
-@onready var amethyst_label: RichTextLabel = $"../GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer/AmethystLabel"
-@onready var diamond_label: RichTextLabel = $"../GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer/DiamondLabel"
+@onready var gold_label: RichTextLabel = $"../GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer/GoldLabel"
+@onready var coal_label: RichTextLabel = $"../GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer/CoalLabel"
+@onready var amethyst_label: RichTextLabel = $"../GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer/AmethystLabel"
+@onready var diamond_label: RichTextLabel = $"../GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer/DiamondLabel"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

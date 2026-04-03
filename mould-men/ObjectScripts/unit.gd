@@ -42,14 +42,13 @@ func _ready() -> void:
 
 # Called to handle input events
 func _input(event: InputEvent) -> void:
-
 	# Checking for left mouse click
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-
 		if self._is_hovered:
 			print(self.name)
-			if event.is_double_click():
-				_camera.unit_clicked_on(self)
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_MIDDLE:
+		if self._is_hovered:
+			_camera.unit_clicked_on(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

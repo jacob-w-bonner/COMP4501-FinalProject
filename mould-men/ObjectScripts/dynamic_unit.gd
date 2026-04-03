@@ -2,7 +2,7 @@
 class_name DynamicUnit extends Unit
 
 # Properties that all dynamic units have
-@export var _speed: 			int 				= 1.0
+@export var _speed: 			int 				= 2.0
 @export var _buff_val:			float				= 1.0
 var			_buff_height:		float				= 4.0
 var			_velocity:			Vector3				= Vector3.ZERO

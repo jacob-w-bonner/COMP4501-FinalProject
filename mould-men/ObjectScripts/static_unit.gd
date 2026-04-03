@@ -3,6 +3,7 @@ class_name StaticUnit extends Unit
 
 # Properties all static units have
 var _level: int = 1
+var _nav_obs: NavigationObstacle3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +18,13 @@ func _ready() -> void:
 	# Instantiating mesh
 	_mesh								= MeshInstance3D.new()
 	_physics_body.add_child(_mesh)
+	
+	#Avoidence obstacoledd
+	_nav_obs								= NavigationObstacle3D.new()
+	self.add_child(_nav_obs)
+	_nav_obs.position = Vector3(0,0,0)
+	_nav_obs.avoidance_enabled = true
+	_nav_obs.radius = 1
 	
 	# Change visibility layer of all meshes so they're NOT visible on layer 1 and ARE visible on layer 2
 	# Layer 1 will contain everything visible in the minimap
