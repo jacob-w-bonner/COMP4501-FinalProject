@@ -120,6 +120,7 @@
 [node name="cave_floor_decor_0162" parent="cave_floor_decor" unique_id=618573424 instance=ExtResource("16_ylrcm")]
 
 [node name="cave_floor" type="Node3D" parent="." unique_id=292365382]
+visible = false
 
 [node name="cave_floor_0012" parent="cave_floor" unique_id=2013526172 instance=ExtResource("17_xqyi1")]
 
@@ -154,12 +155,14 @@
 [node name="cave_floor_0162" parent="cave_floor" unique_id=1015693579 instance=ExtResource("32_kgbls")]
 
 [node name="cave_minecart" type="Node3D" parent="." unique_id=2858650]
+visible = false
 
 [node name="cave_minecart" parent="cave_minecart" unique_id=997378698 instance=ExtResource("33_v1812")]
 
 [node name="cave_minecart_full" parent="cave_minecart" unique_id=162888109 instance=ExtResource("34_whawt")]
 
 [node name="cave_minetracks" type="Node3D" parent="." unique_id=888160375]
+visible = false
 
 [node name="cave_minetracks_curve" parent="cave_minetracks" unique_id=892732782 instance=ExtResource("35_53ill")]
 
@@ -172,6 +175,7 @@
 [node name="cave_minetracks_straight2" parent="cave_minetracks" unique_id=577471116 instance=ExtResource("39_neknk")]
 
 [node name="cave_minewalls" type="Node3D" parent="." unique_id=1890032055]
+visible = false
 
 [node name="cave_minewalls_basewall" parent="cave_minewalls" unique_id=568951696 instance=ExtResource("40_m3k6x")]
 
@@ -180,6 +184,7 @@
 [node name="cave_minewalls_wallwood" parent="cave_minewalls" unique_id=1854446716 instance=ExtResource("42_6qrdb")]
 
 [node name="cave_objects" type="Node3D" parent="." unique_id=2007757670]
+visible = false
 
 [node name="cave_objects_rubble1" parent="cave_objects" unique_id=1888459110 instance=ExtResource("43_nx0vn")]
 
@@ -202,6 +207,7 @@
 [node name="cave_objects_stala_pillar2" parent="cave_objects" unique_id=120893334 instance=ExtResource("52_hl1mb")]
 
 [node name="cave_shrooms" type="Node3D" parent="." unique_id=275873939]
+visible = false
 
 [node name="cave_shrooms_concave" parent="cave_shrooms" unique_id=900613322 instance=ExtResource("53_sy70t")]
 
@@ -220,6 +226,7 @@
 [node name="cave_shrooms_straight" parent="cave_shrooms" unique_id=2103730071 instance=ExtResource("60_bfxb8")]
 
 [node name="cave_walls" type="Node3D" parent="." unique_id=1908163928]
+visible = false
 
 [node name="cave_walls_concave1" parent="cave_walls" unique_id=367128443 instance=ExtResource("61_0vwyn")]
 
@@ -252,6 +259,7 @@
 [node name="cave_walls_straight_web" parent="cave_walls" unique_id=710922231 instance=ExtResource("75_h4gi8")]
 
 [node name="cave_water" type="Node3D" parent="." unique_id=1897447963]
+visible = false
 
 [node name="cave_water" parent="cave_water" unique_id=631787210 instance=ExtResource("76_iuobu")]
 
