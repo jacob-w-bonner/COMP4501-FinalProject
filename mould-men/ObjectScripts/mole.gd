@@ -342,22 +342,22 @@ func show_action_text(text: String, color: Color):
 func _on_state_changed(new_state):
 	match new_state:
 		Globals.STATES.MOVING:
-			show_action_text("Moving", Color(0,1,0))
+			show_action_text("Im Moving!", Color(0,1,0))
 
 		Globals.STATES.ATTACKING:
-			show_action_text("Attacking", Color(1,0,0))
+			show_action_text("Im Attacking!", Color(1,0,0))
 
 		Globals.STATES.BURROW:
-			show_action_text("Burrowing", Color(0,0.5,1))
+			show_action_text("Im Burrowing!", Color(0,0.5,1))
 
 		Globals.STATES.SENTRY:
-			show_action_text("Sentry", Color(1,1,0))
+			show_action_text("Im a Sentry!", Color(1,1,0))
 			
 		Globals.STATES.MINE:
-			show_action_text("Mining", Color(1.0, 0.0, 0.937, 1.0))
+			show_action_text("I love Mining!", Color(1.0, 0.0, 0.937, 1.0))
 			
 		Globals.STATES.GROOVING:
-			show_action_text("Grooving", Color(0.456, 0.663, 1.0, 1.0))
+			show_action_text("Grooving oh ya!", Color(0.456, 0.663, 1.0, 1.0))
 			
 		Globals.STATES.HEALING:
-			show_action_text("Healing", Color(0.0, 0.602, 0.295, 1.0))
+			show_action_text("Healing ma friends!", Color(0.0, 0.602, 0.295, 1.0))
