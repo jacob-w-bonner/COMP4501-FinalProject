@@ -34,11 +34,54 @@
 [ext_resource type="PackedScene" uid="uid://b76kqhbcp0is4" path="res://Assets/Cave Tiles/cave_floor/cave_floor_016.glb" id="32_xygrm"]
 [ext_resource type="PackedScene" uid="uid://cmse57cto1rhn" path="res://Assets/Cave Tiles/cave_minecart/cave_minecart.glb" id="33_wa6g3"]
 [ext_resource type="PackedScene" uid="uid://d0db8wvlnlel2" path="res://Assets/Cave Tiles/cave_minecart/cave_minecart_full.glb" id="34_asx6v"]
-[ext_resource type="PackedScene" uid="uid://nmcsf7b0cf3n" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_curve.glb" id="35_wr8hr"]
-[ext_resource type="PackedScene" uid="uid://cy2ly47ufe1ak" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_splitL.glb" id="36_iy1vn"]
-[ext_resource type="PackedScene" uid="uid://clvr74q1n8roy" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_splitR.glb" id="37_5tml6"]
-[ext_resource type="PackedScene" uid="uid://bhkuqtsa0rwuo" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_straight1.glb" id="38_ompgt"]
-[ext_resource type="PackedScene" uid="uid://ddxqcmcsde2gs" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetrack_straight2.glb" id="39_efh6c"]
+[ext_resource type="PackedScene" uid="uid://nmcsf7b0cf3n" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetracks_curve.glb" id="35_wr8hr"]
+[ext_resource type="PackedScene" uid="uid://cy2ly47ufe1ak" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetracks_splitL.glb" id="36_iy1vn"]
+[ext_resource type="PackedScene" uid="uid://clvr74q1n8roy" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetracks_splitR.glb" id="37_5tml6"]
+[ext_resource type="PackedScene" uid="uid://bhkuqtsa0rwuo" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetracks_straight1.glb" id="38_ompgt"]
+[ext_resource type="PackedScene" uid="uid://ddxqcmcsde2gs" path="res://Assets/Cave Tiles/cave_minetracks/cave_minetracks_straight2.glb" id="39_efh6c"]
+[ext_resource type="PackedScene" uid="uid://58qof506p8td" path="res://Assets/Cave Tiles/cave_minewalls/cave_minewalls_basewall.glb" id="40_ompgt"]
+[ext_resource type="PackedScene" uid="uid://dda2gsd7h5yqv" path="res://Assets/Cave Tiles/cave_minewalls/cave_minewalls_wallstud.glb" id="41_efh6c"]
+[ext_resource type="PackedScene" uid="uid://cngr4do2dynnl" path="res://Assets/Cave Tiles/cave_minewalls/cave_minewalls_wallwood.glb" id="42_5vr3k"]
+[ext_resource type="PackedScene" uid="uid://bqdy8tyh4ligv" path="res://Assets/Cave Tiles/cave_objects/cave_objects_rubble1.glb" id="43_cs6fu"]
+[ext_resource type="PackedScene" uid="uid://lm303bops5eg" path="res://Assets/Cave Tiles/cave_objects/cave_objects_rubble2.glb" id="44_dmsxc"]
+[ext_resource type="PackedScene" uid="uid://byoiq7goarbxi" path="res://Assets/Cave Tiles/cave_objects/cave_objects_rubble3.glb" id="45_elvbg"]
+[ext_resource type="PackedScene" uid="uid://dm2gct3ddmfuf" path="res://Assets/Cave Tiles/cave_objects/cave_objects_rubble4.glb" id="46_gcowg"]
+[ext_resource type="PackedScene" uid="uid://bfdt2nglqb60m" path="res://Assets/Cave Tiles/cave_objects/cave_objects_stalag1.glb" id="47_pbbaw"]
+[ext_resource type="PackedScene" uid="uid://dxbfim3tn0bh" path="res://Assets/Cave Tiles/cave_objects/cave_objects_stalag2.glb" id="48_wpxad"]
+[ext_resource type="PackedScene" uid="uid://cna6pa6u0bbco" path="res://Assets/Cave Tiles/cave_objects/cave_objects_stalag3.glb" id="49_vc65o"]
+[ext_resource type="PackedScene" uid="uid://y1aealdj7prm" path="res://Assets/Cave Tiles/cave_objects/cave_objects_stalag4.glb" id="50_3m6su"]
+[ext_resource type="PackedScene" uid="uid://1i0raungkenj" path="res://Assets/Cave Tiles/cave_objects/cave_objects_stala_pillar1.glb" id="51_6tyct"]
+[ext_resource type="PackedScene" uid="uid://d2h3d17638bly" path="res://Assets/Cave Tiles/cave_objects/cave_objects_stala_pillar2.glb" id="52_brfc7"]
+[ext_resource type="PackedScene" uid="uid://bxsfnne2rlxa3" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_concave.glb" id="53_6tyct"]
+[ext_resource type="PackedScene" uid="uid://bqk0e5sb31g8u" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_convex.glb" id="54_brfc7"]
+[ext_resource type="PackedScene" uid="uid://cx54gy85m0dsx" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_floor1.glb" id="55_x4htu"]
+[ext_resource type="PackedScene" uid="uid://wyxc8bvnmm7" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_floor2.glb" id="56_tw6fy"]
+[ext_resource type="PackedScene" uid="uid://daexeoinp7m3b" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_floor3.glb" id="57_mxppo"]
+[ext_resource type="PackedScene" uid="uid://buyy5we4j65bo" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_floor4.glb" id="58_e6udu"]
+[ext_resource type="PackedScene" uid="uid://dartucrvkle6b" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_straight2.glb" id="59_ys34b"]
+[ext_resource type="PackedScene" uid="uid://cdnsiibqnufg8" path="res://Assets/Cave Tiles/cave_shrooms/cave_shrooms_straight.glb" id="60_5htgf"]
+[ext_resource type="PackedScene" uid="uid://b8yeacfivykki" path="res://Assets/Cave Tiles/cave_walls/cave_walls_concave1.glb" id="61_b5mwo"]
+[ext_resource type="PackedScene" uid="uid://cwnlqyomhwxpv" path="res://Assets/Cave Tiles/cave_walls/cave_walls_concave2.glb" id="62_u4f0b"]
+[ext_resource type="PackedScene" uid="uid://dmdhoa78lesku" path="res://Assets/Cave Tiles/cave_walls/cave_walls_concave_stalag.glb" id="63_kbja8"]
+[ext_resource type="PackedScene" uid="uid://bladx7ujgjfov" path="res://Assets/Cave Tiles/cave_walls/cave_walls_concave_web.glb" id="64_2pnmb"]
+[ext_resource type="PackedScene" uid="uid://dykwmnfd5kcwn" path="res://Assets/Cave Tiles/cave_walls/cave_walls_convex1.glb" id="65_qg5a3"]
+[ext_resource type="PackedScene" uid="uid://cxc6a0ot3gnvk" path="res://Assets/Cave Tiles/cave_walls/cave_walls_convex2.glb" id="66_5q23g"]
+[ext_resource type="PackedScene" uid="uid://deiis5gqnf17s" path="res://Assets/Cave Tiles/cave_walls/cave_walls_convex_stalag.glb" id="67_yrl1p"]
+[ext_resource type="PackedScene" uid="uid://byt7iy2k20a1c" path="res://Assets/Cave Tiles/cave_walls/cave_walls_convex_web.glb" id="68_sf1g5"]
+[ext_resource type="PackedScene" uid="uid://dvqnjnxy83nti" path="res://Assets/Cave Tiles/cave_walls/cave_walls_plane_001.glb" id="69_2bhqy"]
+[ext_resource type="PackedScene" uid="uid://pumsyxj0xgw7" path="res://Assets/Cave Tiles/cave_walls/cave_walls_plane_002.glb" id="70_s4ce2"]
+[ext_resource type="PackedScene" uid="uid://cdtstslxr2b0g" path="res://Assets/Cave Tiles/cave_walls/cave_walls_plane_003.glb" id="71_e8qeh"]
+[ext_resource type="PackedScene" uid="uid://bvem57u2pd70x" path="res://Assets/Cave Tiles/cave_walls/cave_walls_straight1.glb" id="72_uh57q"]
+[ext_resource type="PackedScene" uid="uid://bu8vopipeyyu" path="res://Assets/Cave Tiles/cave_walls/cave_walls_straight2.glb" id="73_js3xq"]
+[ext_resource type="PackedScene" uid="uid://bcfg3crkw6e5e" path="res://Assets/Cave Tiles/cave_walls/cave_walls_straight_stalag.glb" id="74_p622m"]
+[ext_resource type="PackedScene" uid="uid://cjlpvkprfktrb" path="res://Assets/Cave Tiles/cave_walls/cave_walls_straight_web.glb" id="75_rcawk"]
+[ext_resource type="PackedScene" uid="uid://cv14at7ea64bp" path="res://Assets/Cave Tiles/cave_water/cave_water.glb" id="76_sf1g5"]
+[ext_resource type="PackedScene" uid="uid://b7gejh7q3vgva" path="res://Assets/Cave Tiles/cave_water/cave_water_concave1.glb" id="77_2bhqy"]
+[ext_resource type="PackedScene" uid="uid://b8cym37p7gvhe" path="res://Assets/Cave Tiles/cave_water/cave_water_concave2.glb" id="78_s4ce2"]
+[ext_resource type="PackedScene" uid="uid://ci4ed5rd7u6vy" path="res://Assets/Cave Tiles/cave_water/cave_water_convex1.glb" id="79_e8qeh"]
+[ext_resource type="PackedScene" uid="uid://b45kirh2nvp8n" path="res://Assets/Cave Tiles/cave_water/cave_water_convex2.glb" id="80_uh57q"]
+[ext_resource type="PackedScene" uid="uid://jmuubsg8ywtd" path="res://Assets/Cave Tiles/cave_water/cave_water_edge1.glb" id="81_js3xq"]
+[ext_resource type="PackedScene" uid="uid://p8x77nkocsc" path="res://Assets/Cave Tiles/cave_water/cave_water_edge2.glb" id="82_p622m"]
 
 [node name="Node3D" type="Node3D" unique_id=129390319]
 
@@ -112,9 +155,9 @@
 
 [node name="cave_minecart" type="Node3D" parent="." unique_id=2858650]
 
-[node name="cave_minecart" parent="cave_minecart" unique_id=1976196185 instance=ExtResource("33_wa6g3")]
+[node name="cave_minecart" parent="cave_minecart" unique_id=279463820 instance=ExtResource("33_wa6g3")]
 
-[node name="cave_minecart_full" parent="cave_minecart" unique_id=1404465382 instance=ExtResource("34_asx6v")]
+[node name="cave_minecart_full" parent="cave_minecart" unique_id=1537686130 instance=ExtResource("34_asx6v")]
 
 [node name="cave_minetracks" type="Node3D" parent="." unique_id=888160375]
 
@@ -127,3 +170,99 @@
 [node name="cave_minetrack_straight1" parent="cave_minetracks" unique_id=2054564754 instance=ExtResource("38_ompgt")]
 
 [node name="cave_minetrack_straight2" parent="cave_minetracks" unique_id=396005660 instance=ExtResource("39_efh6c")]
+
+[node name="cave_minewalls" type="Node3D" parent="." unique_id=1890032055]
+
+[node name="cave_minewall_basewall" parent="cave_minewalls" unique_id=391208487 instance=ExtResource("40_ompgt")]
+
+[node name="cave_minewall_wallstud" parent="cave_minewalls" unique_id=1592564159 instance=ExtResource("41_efh6c")]
+
+[node name="cave_minewall_wallwood" parent="cave_minewalls" unique_id=1684370361 instance=ExtResource("42_5vr3k")]
+
+[node name="cave_objects" type="Node3D" parent="." unique_id=2007757670]
+
+[node name="cave_objects_rubble1" parent="cave_objects" unique_id=1631826264 instance=ExtResource("43_cs6fu")]
+
+[node name="cave_objects_rubble2" parent="cave_objects" unique_id=1696113687 instance=ExtResource("44_dmsxc")]
+
+[node name="cave_objects_rubble3" parent="cave_objects" unique_id=1966597861 instance=ExtResource("45_elvbg")]
+
+[node name="cave_objects_rubble4" parent="cave_objects" unique_id=1291809159 instance=ExtResource("46_gcowg")]
+
+[node name="cave_objects_stalag1" parent="cave_objects" unique_id=1748595262 instance=ExtResource("47_pbbaw")]
+
+[node name="cave_objects_stalag2" parent="cave_objects" unique_id=409851139 instance=ExtResource("48_wpxad")]
+
+[node name="cave_objects_stalag3" parent="cave_objects" unique_id=1198294520 instance=ExtResource("49_vc65o")]
+
+[node name="cave_objects_stalag4" parent="cave_objects" unique_id=1053910460 instance=ExtResource("50_3m6su")]
+
+[node name="cave_objects_stala_pillar1" parent="cave_objects" unique_id=967338276 instance=ExtResource("51_6tyct")]
+
+[node name="cave_objects_stala_pillar2" parent="cave_objects" unique_id=1881813240 instance=ExtResource("52_brfc7")]
+
+[node name="cave_shrooms" type="Node3D" parent="." unique_id=275873939]
+
+[node name="cave_shrooms_concave" parent="cave_shrooms" unique_id=661515625 instance=ExtResource("53_6tyct")]
+
+[node name="cave_shrooms_convex" parent="cave_shrooms" unique_id=1290536530 instance=ExtResource("54_brfc7")]
+
+[node name="cave_shrooms_floor1" parent="cave_shrooms" unique_id=65292297 instance=ExtResource("55_x4htu")]
+
+[node name="cave_shrooms_floor2" parent="cave_shrooms" unique_id=933393878 instance=ExtResource("56_tw6fy")]
+
+[node name="cave_shrooms_floor3" parent="cave_shrooms" unique_id=518062042 instance=ExtResource("57_mxppo")]
+
+[node name="cave_shrooms_floor4" parent="cave_shrooms" unique_id=1736739851 instance=ExtResource("58_e6udu")]
+
+[node name="cave_shrooms_straight2" parent="cave_shrooms" unique_id=396500795 instance=ExtResource("59_ys34b")]
+
+[node name="cave_shrooms_straight" parent="cave_shrooms" unique_id=1944269777 instance=ExtResource("60_5htgf")]
+
+[node name="cave_walls" type="Node3D" parent="." unique_id=1908163928]
+
+[node name="cave_walls_concave1" parent="cave_walls" unique_id=492510682 instance=ExtResource("61_b5mwo")]
+
+[node name="cave_walls_concave2" parent="cave_walls" unique_id=2069376075 instance=ExtResource("62_u4f0b")]
+
+[node name="cave_walls_concave_stalag" parent="cave_walls" unique_id=231388505 instance=ExtResource("63_kbja8")]
+
+[node name="cave_walls_concave_web" parent="cave_walls" unique_id=1958690014 instance=ExtResource("64_2pnmb")]
+
+[node name="cave_walls_convex1" parent="cave_walls" unique_id=1403455812 instance=ExtResource("65_qg5a3")]
+
+[node name="cave_walls_convex2" parent="cave_walls" unique_id=142522591 instance=ExtResource("66_5q23g")]
+
+[node name="cave_walls_convex_stalag" parent="cave_walls" unique_id=1860832555 instance=ExtResource("67_yrl1p")]
+
+[node name="cave_walls_convex_web" parent="cave_walls" unique_id=826580478 instance=ExtResource("68_sf1g5")]
+
+[node name="cave_walls_plane_001" parent="cave_walls" unique_id=1114179501 instance=ExtResource("69_2bhqy")]
+
+[node name="cave_walls_plane_002" parent="cave_walls" unique_id=1659353630 instance=ExtResource("70_s4ce2")]
+
+[node name="cave_walls_plane_003" parent="cave_walls" unique_id=874197541 instance=ExtResource("71_e8qeh")]
+
+[node name="cave_walls_straight1" parent="cave_walls" unique_id=1430711405 instance=ExtResource("72_uh57q")]
+
+[node name="cave_walls_straight2" parent="cave_walls" unique_id=992842905 instance=ExtResource("73_js3xq")]
+
+[node name="cave_walls_straight_stalag" parent="cave_walls" unique_id=2059640392 instance=ExtResource("74_p622m")]
+
+[node name="cave_walls_straight_web" parent="cave_walls" unique_id=1596671001 instance=ExtResource("75_rcawk")]
+
+[node name="cave_water" type="Node3D" parent="." unique_id=1897447963]
+
+[node name="cave_water" parent="cave_water" unique_id=273609315 instance=ExtResource("76_sf1g5")]
+
+[node name="cave_water_concave1" parent="cave_water" unique_id=1227574756 instance=ExtResource("77_2bhqy")]
+
+[node name="cave_water_concave2" parent="cave_water" unique_id=368161967 instance=ExtResource("78_s4ce2")]
+
+[node name="cave_water_convex1" parent="cave_water" unique_id=1526969790 instance=ExtResource("79_e8qeh")]
+
+[node name="cave_water_convex2" parent="cave_water" unique_id=1254110578 instance=ExtResource("80_uh57q")]
+
+[node name="cave_water_edge1" parent="cave_water" unique_id=391363493 instance=ExtResource("81_js3xq")]
+
+[node name="cave_water_edge2" parent="cave_water" unique_id=1510261933 instance=ExtResource("82_p622m")]
