@@ -301,7 +301,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 
 [node name="MoleBase" type="Node3D" parent="." unique_id=583691117]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -37.64323, 0, -1.2937388)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34.628, 1.632, -1)
 script = ExtResource("18_pntab")
 _max_health = 1500
 _health = 1500
@@ -309,7 +309,7 @@ _attack_strength = 0
 metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
 
 [node name="OliverBase" type="Node3D" parent="." unique_id=492485465]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 30.951, 0, -1.29)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 30.951, 0, -3)
 script = ExtResource("18_pntab")
 spawn_offset = Vector3(-6, 1.7, 0)
 _max_health = 1500

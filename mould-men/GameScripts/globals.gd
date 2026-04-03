@@ -55,6 +55,7 @@ var SELECT_COOLDOWN:				bool			= false
 func update_resource(resource: RESOURCES, amt: int) -> int:
 	if(resource == RESOURCES.COAL):
 		COAL_NUM += amt
+		coal_label.text = str(COAL_NUM)
 		return COAL_NUM
 	elif(resource == RESOURCES.GOLD):
 		GOLD_NUM += amt
@@ -62,9 +63,11 @@ func update_resource(resource: RESOURCES, amt: int) -> int:
 		return GOLD_NUM
 	elif(resource == RESOURCES.AMETHYST):
 		AMETHYST_NUM += amt
+		amethyst_label.text = str(AMETHYST_NUM)
 		return AMETHYST_NUM
 	elif(resource == RESOURCES.DIAMOND):
 		DIAMOND_NUM += amt
+		diamond_label.text = str(DIAMOND_NUM)
 		return DIAMOND_NUM
 	return -1
 

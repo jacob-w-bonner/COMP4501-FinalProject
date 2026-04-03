@@ -28,8 +28,16 @@ var friendly_units = {
 	}
 }
 var enemy_units = {
-	#TODO JACOB fill this up with the needed stuff and it should start spawning! (same format as above)
-	#Make sure to include costs and have the enemys actually have resources and stuff
+	"prospector" : {
+		"spawn_cooldown" : 9.0,
+		"cur_spawn_cooldown" : 20.0, 
+		"unit_type" : Prospector,
+	},
+	"foreman" : {
+		"spawn_cooldown" : 22.0,
+		"cur_spawn_cooldown" : 60.0,
+		"unit_type" : Foreman,
+	}
 }
 @onready var resources_container: GridContainer = $"../CanvasLayer/Resources"
 
@@ -42,12 +50,16 @@ func _ready():
 	# Instantiating parent first
 	super._ready()
 	
-	#Set avoidence radious for units
-	_nav_obs.radius = 30
-	_nav_obs.global_position = self.global_position + Vector3(2,Globals.FLOOR_HEIGHT,1)
-	
+	# Set avoidence radious for units
 	# Setting the mesh
-	_mesh.mesh							= (load("res://Assets/StaticAssets/apartment.tres") as Mesh).duplicate()
+	if is_enemy():
+		_nav_obs.radius = 30
+		_nav_obs.global_position = self.global_position + Vector3(2,Globals.FLOOR_HEIGHT,1)
+		_mesh.mesh							= (load("res://Assets/StaticAssets/apartment.tres") as Mesh).duplicate()
+	else:
+		_nav_obs.radius = 0.9
+		_nav_obs.global_position = self.global_position
+		_mesh.mesh							= (load("res://Assets/StaticAssets/hole.tres") as Mesh).duplicate()
 	
 
 
