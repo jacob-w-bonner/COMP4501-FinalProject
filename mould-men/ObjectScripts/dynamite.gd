@@ -114,7 +114,8 @@ func explode() -> void:
 				ally.take_damage(_EXPLOSION_DAMAGE)
 
 	# Indicating the thrower can throw another dynamite
-	_thrower.throw_another()
+	if _thrower:
+		_thrower.throw_another()
 
 	# Adding an explosion to the scene tree
 	var exp				= EXPLOSION.instantiate()

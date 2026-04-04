@@ -82,6 +82,16 @@
 [ext_resource type="PackedScene" uid="uid://b45kirh2nvp8n" path="res://Assets/CaveTileset/cave_water/cave_water_convex2.glb" id="80_yjav8"]
 [ext_resource type="PackedScene" uid="uid://jmuubsg8ywtd" path="res://Assets/CaveTileset/cave_water/cave_water_edge1.glb" id="81_eqlqx"]
 [ext_resource type="PackedScene" uid="uid://p8x77nkocsc" path="res://Assets/CaveTileset/cave_water/cave_water_edge2.glb" id="82_6hixi"]
+[ext_resource type="PackedScene" uid="uid://dm0c7cshpwrm4" path="res://Assets/CaveTileset/cave_extras/cave_crystal1.glb" id="83_dqqs5"]
+[ext_resource type="PackedScene" uid="uid://by0vqb67vfkui" path="res://Assets/CaveTileset/cave_extras/cave_crystal2.glb" id="84_xhe7w"]
+[ext_resource type="PackedScene" uid="uid://452t3bq1ag53" path="res://Assets/CaveTileset/cave_extras/cave_crystal3.glb" id="85_p26vy"]
+[ext_resource type="PackedScene" uid="uid://c8fqkgn8cevd8" path="res://Assets/CaveTileset/cave_extras/cave_crystal4.glb" id="86_5vmai"]
+[ext_resource type="PackedScene" uid="uid://cc66566kd423e" path="res://Assets/CaveTileset/cave_extras/cave_crystal5.glb" id="87_nitna"]
+[ext_resource type="PackedScene" uid="uid://ny1yturlsnyn" path="res://Assets/CaveTileset/cave_extras/cave_crystal6.glb" id="88_ylrcm"]
+[ext_resource type="PackedScene" uid="uid://1s6yd3mqh6op" path="res://Assets/CaveTileset/cave_extras/cave_crystal_wall1.glb" id="89_xqyi1"]
+[ext_resource type="PackedScene" uid="uid://dmddfmombt2xc" path="res://Assets/CaveTileset/cave_extras/cave_crystal_wall2.glb" id="90_a1ri3"]
+[ext_resource type="PackedScene" uid="uid://gh8lcl2cx5ku" path="res://Assets/CaveTileset/cave_extras/cave_crystal_wall3.glb" id="91_csvk8"]
+[ext_resource type="PackedScene" uid="uid://bd7yf3dt2rv31" path="res://Assets/CaveTileset/cave_extras/cave_crystal_wall4.glb" id="92_dp06d"]
 
 [node name="Node3D" type="Node3D" unique_id=129390319]
 
@@ -275,3 +285,25 @@ visible = false
 [node name="cave_water_edge1" parent="cave_water" unique_id=504015318 instance=ExtResource("81_eqlqx")]
 
 [node name="cave_water_edge2" parent="cave_water" unique_id=1370580075 instance=ExtResource("82_6hixi")]
+
+[node name="cave_extras" type="Node3D" parent="." unique_id=869249428]
+
+[node name="cave_crystal1" parent="cave_extras" unique_id=729273739 instance=ExtResource("83_dqqs5")]
+
+[node name="cave_crystal2" parent="cave_extras" unique_id=1914899189 instance=ExtResource("84_xhe7w")]
+
+[node name="cave_crystal3" parent="cave_extras" unique_id=59106684 instance=ExtResource("85_p26vy")]
+
+[node name="cave_crystal4" parent="cave_extras" unique_id=224065589 instance=ExtResource("86_5vmai")]
+
+[node name="cave_crystal5" parent="cave_extras" unique_id=1994756041 instance=ExtResource("87_nitna")]
+
+[node name="cave_crystal6" parent="cave_extras" unique_id=2141915069 instance=ExtResource("88_ylrcm")]
+
+[node name="cave_crystal_wall1" parent="cave_extras" unique_id=1575120775 instance=ExtResource("89_xqyi1")]
+
+[node name="cave_crystal_wall2" parent="cave_extras" unique_id=159573502 instance=ExtResource("90_a1ri3")]
+
+[node name="cave_crystal_wall3" parent="cave_extras" unique_id=1628577966 instance=ExtResource("91_csvk8")]
+
+[node name="cave_crystal_wall4" parent="cave_extras" unique_id=203268046 instance=ExtResource("92_dp06d")]
