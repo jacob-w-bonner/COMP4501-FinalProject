@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="8_oho3u"]
 [ext_resource type="Texture2D" uid="uid://c74p7insid7qy" path="res://Assets/UIAssets/move.svg" id="9_bwjpn"]
 [ext_resource type="Texture2D" uid="uid://bype42xtc0jyn" path="res://Assets/UIAssets/punch.svg" id="9_d3awe"]
-[ext_resource type="Script" uid="uid://0dcbh6my24" path="res://Scenes/armadillo.gd" id="10_i0miu"]
+[ext_resource type="PackedScene" uid="uid://bfk2wh1jp25e3" path="res://Scenes/armadillo.tscn" id="10_i0miu"]
 [ext_resource type="Texture2D" uid="uid://cursq3yb0o8ql" path="res://Assets/UIAssets/mining.svg" id="10_yglu3"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="12_040rt"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_ibmi3"]
@@ -36,16 +36,6 @@ glow_enabled = true
 vertices = PackedVector3Array(2.7089376, 2, -3.7910624, 3.4589376, 2, -3.0410624, 3.9589376, 2, -3.7910624, 2.4589376, 2, -5.5410624, -0.29106236, 2, -5.0410624, 0.45893764, 2, -5.0410624, 0.95893764, 2, -5.7910624, -0.54106236, 2, -6.5410624, 3.4589376, 2, -8.291062, 4.7089376, 2, -8.791062, 4.7089376, 2, -9.041062, 3.4589376, 2, -6.7910624, -9.041062, 2, -5.0410624, -7.5410624, 2, -5.0410624, -7.5410624, 2, -6.2910624, -9.041062, 2, -7.2910624, -5.2910624, 2, -6.2910624, -2.5410624, 2, -6.2910624, -2.0410624, 2, -6.7910624, -7.5410624, 2, -7.5410624, -7.0410624, 2, -6.7910624, -7.2910624, 2, -9.041062, 4.7089376, 2, -3.7910624, 4.7089376, 2, -6.2910624, 8.708938, 2, -1.2910624, 8.708938, 2, -0.54106236, 8.958938, 2, -0.54106236, 8.958938, 2, -9.041062, 5.7089376, 2, -8.291062, 5.7089376, 2, -3.2910624, 5.7089376, 2, -2.0410624, 6.4589376, 2, -1.2910624, 7.9589376, 2, -1.7910624, 5.7089376, 2, -6.7910624, -6.2910624, 2, -2.0410624, -6.2910624, 2, -1.5410624, -5.5410624, 2, -1.5410624, -5.0410624, 2, -2.7910624, -5.2910624, 2, -4.7910624, -6.0410624, 2, -4.2910624, -4.0410624, 2, -2.7910624, -2.5410624, 2, -4.7910624, 0.45893764, 2, -3.7910624, -1.0410624, 2, -4.2910624, -2.0410624, 2, -4.2910624, -1.0410624, 2, -0.79106236, 0.70893764, 2, -0.29106236, 1.4589376, 2, -3.2910624, -3.2910624, 2, -2.2910624, -3.2910624, 2, -1.0410624, -1.5410624, 2, -0.29106236, -6.2910624, 2, -0.79106236, -5.0410624, 2, -0.29106236, -9.041062, 2, 2.4589376, -8.541062, 2, -0.79106236, -8.541062, 2, -2.2910624, 2.7089376, 2, 8.958938, 2.7089376, 2, 8.708938, 1.4589376, 2, 8.208938, -8.541062, 2, 2.4589376, -8.041062, 2, 1.2089376, -7.0410624, 2, -2.7910624, -7.0410624, 2, -4.2910624, -0.29106236, 2, 7.2089376, 1.4589376, 2, 6.7089376, -8.041062, 2, -2.7910624, -7.0410624, 2, 1.2089376, -7.0410624, 2, -0.29106236, -1.5410624, 2, 7.7089376, -1.5410624, 2, 8.958938, 2.4589376, 2, 6.2089376, 2.4589376, 2, 4.7089376, 1.4589376, 2, 4.2089376, -0.29106236, 2, 5.7089376, -6.2910624, 2, 1.7089376, -6.2910624, 2, 2.7089376, -4.5410624, 2, 3.2089376, -4.0410624, 2, 2.2089376, 1.7089376, 2, 2.4589376, -1.0410624, 2, 1.7089376, -2.5410624, 2, 2.4589376, -2.5410624, 2, 4.4589376, -4.0410624, 2, -0.29106236, -1.5410624, 2, 1.2089376, -2.0410624, 2, 5.2089376, 0.70893764, 2, 1.2089376, 8.458938, 2, 0.45893764, 8.958938, 2, 4.4589376, 7.7089376, 2, 3.7089376, 7.7089376, 2, 4.4589376, 4.9589376, 2, -1.2910624, 6.4589376, 2, 0.20893764, 3.4589376, 2, -1.7910624, 3.4589376, 2, 2.4589376, 3.9589376, 2, -1.2910624, 3.7089376, 2, 3.7089376, 5.4589376, 2, 3.9589376, 5.9589376, 2, 3.2089376, 6.9589376, 2, 3.2089376, 6.9589376, 2, 0.70893764, -5.2910624, 2, 8.208938, -6.2910624, 2, 8.708938, -6.2910624, 2, 8.958938, -2.5410624, 2, 7.2089376, -2.5410624, 2, 5.7089376, -4.0410624, 2, 4.7089376, -8.041062, 2, 3.7089376, -7.0410624, 2, 6.2089376, -5.2910624, 2, 6.7089376, -6.5410624, 2, 3.4589376, -9.041062, 2, 6.9589376, -7.5410624, 2, 6.9589376, 3.7089376, 2, 8.208938, 5.4589376, 2, 8.958938, 5.4589376, 2, 7.7089376, 7.4589376, 2, 5.4589376, 7.4589376, 2, 7.4589376, 7.7089376, 2, 8.958938, 8.958938, 2, 8.958938, 5.9589376, 2, 7.2089376, 5.9589376, 2, 5.7089376, 5.4589376, 2, 5.2089376, 3.4589376, 2, 4.4589376, 3.7089376, 2, 6.7089376, -7.5410624, 2, 8.208938, -9.041062, 2, 8.958938)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(3, 6, 11), PackedInt32Array(11, 6, 8), PackedInt32Array(8, 6, 7), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 14, 19), PackedInt32Array(19, 14, 15), PackedInt32Array(8, 7, 18), PackedInt32Array(20, 19, 21), PackedInt32Array(20, 21, 16), PackedInt32Array(16, 21, 18), PackedInt32Array(18, 21, 8), PackedInt32Array(8, 21, 10), PackedInt32Array(11, 23, 3), PackedInt32Array(3, 23, 2), PackedInt32Array(2, 23, 22), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(9, 10, 28), PackedInt32Array(28, 10, 27), PackedInt32Array(31, 30, 29), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(23, 33, 22), PackedInt32Array(22, 33, 29), PackedInt32Array(28, 27, 33), PackedInt32Array(33, 27, 32), PackedInt32Array(32, 27, 24), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(37, 34, 39), PackedInt32Array(37, 39, 38), PackedInt32Array(37, 38, 40), PackedInt32Array(40, 38, 16), PackedInt32Array(40, 16, 41), PackedInt32Array(41, 16, 17), PackedInt32Array(5, 42, 4), PackedInt32Array(4, 42, 43), PackedInt32Array(44, 43, 42), PackedInt32Array(42, 47, 44), PackedInt32Array(44, 47, 48), PackedInt32Array(48, 47, 45), PackedInt32Array(45, 47, 46), PackedInt32Array(44, 48, 41), PackedInt32Array(41, 48, 40), PackedInt32Array(50, 49, 45), PackedInt32Array(45, 49, 48), PackedInt32Array(35, 36, 51), PackedInt32Array(51, 36, 52), PackedInt32Array(55, 54, 12), PackedInt32Array(12, 54, 53), PackedInt32Array(58, 57, 56), PackedInt32Array(53, 60, 59), PackedInt32Array(62, 39, 61), PackedInt32Array(61, 39, 34), PackedInt32Array(64, 58, 63), PackedInt32Array(62, 61, 65), PackedInt32Array(51, 52, 67), PackedInt32Array(67, 52, 66), PackedInt32Array(67, 66, 60), PackedInt32Array(13, 62, 12), PackedInt32Array(12, 62, 65), PackedInt32Array(12, 65, 55), PackedInt32Array(68, 63, 69), PackedInt32Array(69, 63, 58), PackedInt32Array(69, 58, 56), PackedInt32Array(70, 64, 71), PackedInt32Array(71, 64, 72), PackedInt32Array(72, 64, 73), PackedInt32Array(73, 64, 63), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 73), PackedInt32Array(73, 79, 72), PackedInt32Array(72, 79, 78), PackedInt32Array(66, 52, 74), PackedInt32Array(74, 52, 82), PackedInt32Array(74, 82, 77), PackedInt32Array(79, 80, 83), PackedInt32Array(83, 80, 77), PackedInt32Array(83, 77, 82), PackedInt32Array(49, 50, 82), PackedInt32Array(82, 50, 83), PackedInt32Array(73, 84, 81), PackedInt32Array(67, 60, 54), PackedInt32Array(54, 60, 53), PackedInt32Array(79, 85, 78), PackedInt32Array(25, 26, 86), PackedInt32Array(86, 26, 87), PackedInt32Array(87, 89, 88), PackedInt32Array(30, 31, 90), PackedInt32Array(90, 31, 91), PackedInt32Array(0, 1, 47), PackedInt32Array(47, 1, 92), PackedInt32Array(92, 94, 47), PackedInt32Array(47, 94, 46), PackedInt32Array(46, 94, 78), PackedInt32Array(78, 94, 93), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 93), PackedInt32Array(88, 98, 87), PackedInt32Array(87, 98, 99), PackedInt32Array(87, 99, 86), PackedInt32Array(85, 46, 78), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 91), PackedInt32Array(91, 97, 93), PackedInt32Array(91, 93, 94), PackedInt32Array(94, 90, 91), PackedInt32Array(101, 100, 102), PackedInt32Array(102, 100, 103), PackedInt32Array(102, 103, 68), PackedInt32Array(102, 68, 69), PackedInt32Array(84, 104, 81), PackedInt32Array(81, 104, 105), PackedInt32Array(53, 59, 106), PackedInt32Array(76, 105, 109), PackedInt32Array(109, 105, 106), PackedInt32Array(106, 105, 107), PackedInt32Array(107, 105, 108), PackedInt32Array(104, 103, 105), PackedInt32Array(105, 103, 108), PackedInt32Array(108, 103, 100), PackedInt32Array(109, 75, 76), PackedInt32Array(111, 110, 107), PackedInt32Array(107, 110, 106), PackedInt32Array(106, 110, 53), PackedInt32Array(57, 112, 56), PackedInt32Array(56, 112, 113), PackedInt32Array(113, 112, 114), PackedInt32Array(89, 87, 115), PackedInt32Array(115, 87, 116), PackedInt32Array(116, 87, 117), PackedInt32Array(117, 87, 118), PackedInt32Array(119, 114, 120), PackedInt32Array(120, 114, 121), PackedInt32Array(121, 114, 123), PackedInt32Array(121, 123, 122), PackedInt32Array(120, 115, 119), PackedInt32Array(119, 115, 116), PackedInt32Array(114, 112, 123), PackedInt32Array(71, 122, 70), PackedInt32Array(70, 122, 123), PackedInt32Array(95, 96, 122), PackedInt32Array(122, 96, 121), PackedInt32Array(101, 102, 124), PackedInt32Array(124, 102, 125), PackedInt32Array(111, 124, 110), PackedInt32Array(110, 124, 125)]
 agent_height = 0.25
-
-[sub_resource type="TorusMesh" id="TorusMesh_6bfml"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_i0miu"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6bfml"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_0g4ye"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_soh27"]
 
 [node name="TestScene" type="Node3D" unique_id=637909514]
 script = ExtResource("1_50ct6")
@@ -128,82 +118,8 @@ _speed = 5
 _health = 50
 metadata/_custom_type_script = "uid://edh800y1jebg"
 
-[node name="Armadillo" type="Node3D" parent="." unique_id=530044858]
+[node name="Armadillo" parent="." unique_id=336840183 instance=ExtResource("10_i0miu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
-script = ExtResource("10_i0miu")
-
-[node name="DALE" type="Node3D" parent="Armadillo" unique_id=868246259]
-
-[node name="RING_1" type="MeshInstance3D" parent="Armadillo/DALE" unique_id=742547927]
-transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.2951295, -0.91788816, 0.5088651)
-mesh = SubResource("TorusMesh_6bfml")
-
-[node name="RING_2" type="MeshInstance3D" parent="Armadillo/DALE" unique_id=1657060797]
-transform = Transform3D(1.1464114e-15, 2.6226827e-08, 0.5999999, 0.6, -2.6226825e-08, 0, 2.6226834e-08, 0.5999999, -2.6226827e-08, -3.2964694, -0.91788816, 0.23265755)
-mesh = SubResource("TorusMesh_6bfml")
-
-[node name="RING_3" type="MeshInstance3D" parent="Armadillo/DALE" unique_id=1520371793]
-transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.2977285, -0.91788816, -0.026831627)
-mesh = SubResource("TorusMesh_6bfml")
-
-[node name="RING_4" type="MeshInstance3D" parent="Armadillo/DALE" unique_id=160437114]
-transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.2990549, -0.91788816, -0.30016923)
-mesh = SubResource("TorusMesh_6bfml")
-
-[node name="RING_5" type="MeshInstance3D" parent="Armadillo/DALE" unique_id=2039722010]
-transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.3004222, -0.91788816, -0.58196354)
-mesh = SubResource("TorusMesh_6bfml")
-
-[node name="RING_6" type="MeshInstance3D" parent="Armadillo/DALE" unique_id=263138886]
-transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.3016686, -0.91788816, -0.83884406)
-mesh = SubResource("TorusMesh_6bfml")
-
-[node name="HEAD_PIVOT" type="Node3D" parent="Armadillo/DALE" unique_id=978927987]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.188, 7.557001, 0.49300003)
-
-[node name="HEAD" type="MeshInstance3D" parent="Armadillo/DALE/HEAD_PIVOT" unique_id=1567151825]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00048327446, -8.507671, -3.1123066)
-mesh = SubResource("SphereMesh_i0miu")
-
-[node name="SNOUT" type="MeshInstance3D" parent="Armadillo/DALE/HEAD_PIVOT/HEAD" unique_id=1157910691]
-transform = Transform3D(-1.311341e-08, -0.29999992, -3.4924597e-10, 0.30000004, -1.3113421e-08, 5.2041386e-18, -2.0816682e-17, -3.4924597e-10, 0.29999992, -0.44124126, 0.06561279, 0.005038634)
-mesh = SubResource("CapsuleMesh_6bfml")
-
-[node name="L_EYE" type="MeshInstance3D" parent="Armadillo/DALE/HEAD_PIVOT/HEAD" unique_id=1656612501]
-transform = Transform3D(-8.742278e-09, -0.19999996, -4.0745363e-10, 0.20000002, -8.742276e-09, -3.4690592e-18, -1.3877788e-17, -4.0745363e-10, 0.19999996, -0.27401853, 0.2331419, 0.25140464)
-mesh = SubResource("SphereMesh_0g4ye")
-
-[node name="R_EYE" type="MeshInstance3D" parent="Armadillo/DALE/HEAD_PIVOT/HEAD" unique_id=2089611951]
-transform = Transform3D(-8.742278e-09, -0.19999996, -4.0745363e-10, 0.20000002, -8.742276e-09, -3.4690592e-18, -1.3877788e-17, -4.0745363e-10, 0.19999996, -0.274019, 0.2331419, -0.23439145)
-mesh = SubResource("SphereMesh_0g4ye")
-
-[node name="L_F_LEG_PIVOT" type="Node3D" parent="Armadillo/DALE" unique_id=2059447060]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042000003, 6.969, 0.31300044)
-
-[node name="L_F_LEG" type="MeshInstance3D" parent="Armadillo/DALE/L_F_LEG_PIVOT" unique_id=290123098]
-transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1118677, -8.508087, -0.00032699108)
-mesh = SubResource("CapsuleMesh_soh27")
-
-[node name="R_F_LEG_PIVOT" type="Node3D" parent="Armadillo/DALE" unique_id=1434211565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413, 6.969, 0.3150003)
-
-[node name="R_F_LEG" type="MeshInstance3D" parent="Armadillo/DALE/R_F_LEG_PIVOT" unique_id=2140819851]
-transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1118078, -8.507944, 0)
-mesh = SubResource("CapsuleMesh_soh27")
-
-[node name="R_B_LEG_PIVOT" type="Node3D" parent="Armadillo/DALE" unique_id=1386100962]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41800004, 6.969, -0.7229998)
-
-[node name="R_B_LEG" type="MeshInstance3D" parent="Armadillo/DALE/R_B_LEG_PIVOT" unique_id=411785926]
-transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1120138, -8.508087, 0.000318408)
-mesh = SubResource("CapsuleMesh_soh27")
-
-[node name="L_B_LEG_PIVOT" type="Node3D" parent="Armadillo/DALE" unique_id=1407430445]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027, 6.969, -0.7390001)
-
-[node name="L_B_LEG" type="MeshInstance3D" parent="Armadillo/DALE/L_B_LEG_PIVOT" unique_id=2093067251]
-transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1117642, -8.508087, 0.0001502037)
-mesh = SubResource("CapsuleMesh_soh27")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=860007368]
 follow_viewport_enabled = true

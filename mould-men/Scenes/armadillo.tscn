@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bfk2wh1jp25e3"]
+
+[ext_resource type="Script" uid="uid://0dcbh6my24" path="res://Scenes/armadillo.gd" id="1_64rdl"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_6bfml"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i0miu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6bfml"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0g4ye"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_soh27"]
+
+[node name="Armadillo" type="Node3D" unique_id=336840183]
+script = ExtResource("1_64rdl")
+
+[node name="DALE" type="Node3D" parent="." unique_id=668558025]
+
+[node name="RING_1" type="MeshInstance3D" parent="DALE" unique_id=214383396]
+transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.2951295, -0.91788816, 0.5088651)
+mesh = SubResource("TorusMesh_6bfml")
+
+[node name="RING_2" type="MeshInstance3D" parent="DALE" unique_id=351377098]
+transform = Transform3D(1.1464114e-15, 2.6226827e-08, 0.5999999, 0.6, -2.6226825e-08, 0, 2.6226834e-08, 0.5999999, -2.6226827e-08, -3.2964694, -0.91788816, 0.23265755)
+mesh = SubResource("TorusMesh_6bfml")
+
+[node name="RING_3" type="MeshInstance3D" parent="DALE" unique_id=1990178001]
+transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.2977285, -0.91788816, -0.026831627)
+mesh = SubResource("TorusMesh_6bfml")
+
+[node name="RING_4" type="MeshInstance3D" parent="DALE" unique_id=2053997674]
+transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.2990549, -0.91788816, -0.30016923)
+mesh = SubResource("TorusMesh_6bfml")
+
+[node name="RING_5" type="MeshInstance3D" parent="DALE" unique_id=1621188539]
+transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.3004222, -0.91788816, -0.58196354)
+mesh = SubResource("TorusMesh_6bfml")
+
+[node name="RING_6" type="MeshInstance3D" parent="DALE" unique_id=1634910828]
+transform = Transform3D(1.1464114e-15, 2.6226829e-08, 0.5999999, 0.6000001, -2.6226829e-08, 0, 2.6226836e-08, 0.5999999, -2.6226829e-08, -3.3016686, -0.91788816, -0.83884406)
+mesh = SubResource("TorusMesh_6bfml")
+
+[node name="HEAD_PIVOT" type="Node3D" parent="DALE" unique_id=1518815245]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.188, 7.557001, 0.49300003)
+
+[node name="HEAD" type="MeshInstance3D" parent="DALE/HEAD_PIVOT" unique_id=708081172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00048327446, -8.507671, -3.1123066)
+mesh = SubResource("SphereMesh_i0miu")
+
+[node name="SNOUT" type="MeshInstance3D" parent="DALE/HEAD_PIVOT/HEAD" unique_id=155074011]
+transform = Transform3D(-1.311341e-08, -0.29999992, -3.4924597e-10, 0.30000004, -1.3113421e-08, 5.2041386e-18, -2.0816682e-17, -3.4924597e-10, 0.29999992, -0.44124126, 0.06561279, 0.005038634)
+mesh = SubResource("CapsuleMesh_6bfml")
+
+[node name="L_EYE" type="MeshInstance3D" parent="DALE/HEAD_PIVOT/HEAD" unique_id=1767455647]
+transform = Transform3D(-8.742278e-09, -0.19999996, -4.0745363e-10, 0.20000002, -8.742276e-09, -3.4690592e-18, -1.3877788e-17, -4.0745363e-10, 0.19999996, -0.27401853, 0.2331419, 0.25140464)
+mesh = SubResource("SphereMesh_0g4ye")
+
+[node name="R_EYE" type="MeshInstance3D" parent="DALE/HEAD_PIVOT/HEAD" unique_id=628606959]
+transform = Transform3D(-8.742278e-09, -0.19999996, -4.0745363e-10, 0.20000002, -8.742276e-09, -3.4690592e-18, -1.3877788e-17, -4.0745363e-10, 0.19999996, -0.274019, 0.2331419, -0.23439145)
+mesh = SubResource("SphereMesh_0g4ye")
+
+[node name="L_F_LEG_PIVOT" type="Node3D" parent="DALE" unique_id=401753001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042000003, 6.969, 0.31300044)
+
+[node name="L_F_LEG" type="MeshInstance3D" parent="DALE/L_F_LEG_PIVOT" unique_id=1705088516]
+transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1118677, -8.508087, -0.00032699108)
+mesh = SubResource("CapsuleMesh_soh27")
+
+[node name="R_F_LEG_PIVOT" type="Node3D" parent="DALE" unique_id=118868387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413, 6.969, 0.3150003)
+
+[node name="R_F_LEG" type="MeshInstance3D" parent="DALE/R_F_LEG_PIVOT" unique_id=1684638416]
+transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1118078, -8.507944, 0)
+mesh = SubResource("CapsuleMesh_soh27")
+
+[node name="R_B_LEG_PIVOT" type="Node3D" parent="DALE" unique_id=504940523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41800004, 6.969, -0.7229998)
+
+[node name="R_B_LEG" type="MeshInstance3D" parent="DALE/R_B_LEG_PIVOT" unique_id=414900346]
+transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1120138, -8.508087, 0.000318408)
+mesh = SubResource("CapsuleMesh_soh27")
+
+[node name="L_B_LEG_PIVOT" type="Node3D" parent="DALE" unique_id=1962809946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027, 6.969, -0.7390001)
+
+[node name="L_B_LEG" type="MeshInstance3D" parent="DALE/L_B_LEG_PIVOT" unique_id=1268072058]
+transform = Transform3D(-1.3113414e-08, 0, 0.29999995, 0, 0.30000004, 0, -0.29999995, 0, -1.3113414e-08, -3.1117642, -8.508087, 0.0001502037)
+mesh = SubResource("CapsuleMesh_soh27")

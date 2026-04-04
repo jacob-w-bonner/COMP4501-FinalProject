@@ -41,8 +41,9 @@ func _ready() -> void:
 	_action_text.text = ""
 	_action_text.visible = false
 	_action_text.font_size = 200
-	_action_text.position = Vector3(0, 5.0, 0) # height above mole
+	_action_text.position = Vector3(0, 2.0, 0) # height above armadillo
 	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_action_text.scale = Vector3(0.5, 0.5, 0.5)
 	_action_text.outline_size = 50
 	
 	_physics_body.add_child(_action_text)
@@ -62,11 +63,14 @@ func _ready() -> void:
 	_physics_body.add_child(_collision_shape)
 	$DALE.reparent(_physics_body)
 
-	var box_shape = BoxShape3D.new()
-	box_shape.size = Vector3(1, 1, 2)
+	var box_shape = CapsuleShape3D.new()
+	box_shape.height = 1
+	box_shape.radius = 0.6
+	box_shape.mid_height = 1
 
 	_collision_shape.shape = box_shape
-	_collision_shape.position = Vector3(0, 0, -0.5)
+	_collision_shape.rotation_degrees.x = -90
+	_collision_shape.position = Vector3(0, -0.2, -0.5)
 
 	# Grabbing the material from each surface for use in the shader
 	#for child in model.get_children():
