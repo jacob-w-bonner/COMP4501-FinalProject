@@ -11,6 +11,8 @@ extends Node3D
 @onready var music_mole  = $MusicMole
 @onready var doctor_mole  = $DoctorMole
 
+@onready var armadillo = $Armadillo
+
 @onready var camera = $Camera3D
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +26,8 @@ func _ready() -> void:
 	Globals.ALLY_ARR.push_back(miner_mole)
 	Globals.ALLY_ARR.push_back(music_mole)
 	Globals.ALLY_ARR.push_back(doctor_mole)
+	
+	Globals.ALLY_ARR.push_back(armadillo)
 
 	# Adding the enemies to the enemy array
 	Globals.ENEMY_ARR.push_back(enemy)
