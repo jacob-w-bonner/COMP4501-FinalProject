@@ -39,7 +39,6 @@ var enemy_units = {
 		"unit_type" : Foreman,
 	}
 }
-@onready var resources_container: GridContainer = $"../CanvasLayer/Resources"
 
 @export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT,0.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
@@ -140,5 +139,3 @@ func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 	return origin + Vector3(rng.randf_range(radious.x * -1, radious.x),
 	0.0, #cannot imagine we would ever want to change this but feel free
 	rng.randf_range(radious.z * -1, radious.z))
-
-	pass # Replace with function body.

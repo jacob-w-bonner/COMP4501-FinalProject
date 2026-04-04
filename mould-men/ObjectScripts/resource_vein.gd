@@ -99,7 +99,7 @@ func _ready() -> void:
 	_mesh.add_child(light)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
 	# Setting the shader parameters that need to be set by frame
 	for i in range(_mesh.mesh.get_surface_count()):

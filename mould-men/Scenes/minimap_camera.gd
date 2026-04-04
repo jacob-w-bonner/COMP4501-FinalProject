@@ -8,6 +8,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#TODO Simple fix for left to right maps, if maps become more vertical will need to change to smth slightly more robust
 	self.position.x = main_cam.position.x

@@ -164,7 +164,7 @@ func healing(delta: float) -> void:
 		_state = Globals.STATES.MOVING
 
 # A basic healing animation handler
-func healing_animation(delta: float) -> void:
+func healing_animation(_delta: float) -> void:
 	_mesh.set_rotation(Vector3(cos(Globals.TIME * _speed) * 0.5, _mesh.rotation.y, sin(Globals.TIME * _speed) * 0.5))
 
 # Getter for if the music is playing

@@ -214,7 +214,7 @@ func buff_animation(delta: float) -> void:
 	_buff_mesh.rotate_y(4.0 * delta)
 
 # Animation for the heal indicator
-func heal_animation(delta: float) -> void:
+func heal_animation(_delta: float) -> void:
 	_heal_mesh.position = Vector3(0.0, 0.5 * cos(4.0 * Globals.TIME) + 4.0, 0.0)
 
 # Called to adjust the velocity to account for other moving objects
