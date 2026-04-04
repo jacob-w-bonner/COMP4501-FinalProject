@@ -99,6 +99,13 @@ func _ready() -> void:
 	light.light_specular = 0.0
 	light.shadow_enabled = false
 	_mesh.add_child(light)
+	
+	# Change visibility layer of all lights so they're NOT visible on layer 1 and ARE visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	light.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	light.set_layer_mask_value(2, true)
 
 # Called to handle input events
 func _input(event: InputEvent) -> void:

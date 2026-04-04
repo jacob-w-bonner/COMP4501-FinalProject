@@ -188,8 +188,10 @@ func is_hovered() -> bool:
 	return _is_hovered
 
 func set_minimap_icon(obj) -> void:
-	# Set correct texture
 	var path : String
+	var size : Vector3 = Vector3(0.4, 0.4, 0.4) # default icon scale in relation to scale of their parent
+	var pos : Vector3 = Vector3(0, 3.0, 0) # default icon position about unit
+	# Set correct texture and size
 	if obj is Amethyst:
 		path = "res://Assets/UIAssets/amethyst.svg"
 	elif obj is Diamond:
@@ -198,13 +200,19 @@ func set_minimap_icon(obj) -> void:
 		path = "res://Assets/UIAssets/gold-bar.svg"
 	elif obj is Coal:
 		path = "res://Assets/UIAssets/stone-pile.svg"
+	elif obj is Base:
+		if obj.name == "MoleBase":
+			size = Vector3(0.7, 0.7, 0.7)
+			path = "res://Assets/UIAssets/tumulus.svg"
+		elif obj.name == "OliverBase":
+			# set position b/c elevator is super tall
+			pos = Vector3(10.0, 100.0, 15.0)
+			size = Vector3(10.0, 10.0, 10.0)
+			path = "res://Assets/UIAssets/modern-city.svg"
 	elif _is_enemy:
 		path = "res://Assets/UIAssets/MinimapAssets/plain-square.svg"
 	else:
 		path =  "res://Assets/UIAssets/MinimapAssets/plain-circle.svg"
-	
-	# Set size
-	var size = Vector3(0.3, 0.3, 0.3)
 	
 	# Load texture
 	_minimap_icon_texture = load(path)
@@ -214,7 +222,7 @@ func set_minimap_icon(obj) -> void:
 	if _minimap_icon_texture:
 		_minimap_icon.texture = _minimap_icon_texture
 		_physics_body.add_child(_minimap_icon)
-		_minimap_icon.position = Vector3(0, 3.0, 0) # height above mole
+		_minimap_icon.position = pos
 		_minimap_icon.scale = size
 		_minimap_icon.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		_minimap_icon.set_layer_mask_value(1, false) # minimap objects (ground)
@@ -225,6 +233,6 @@ func set_minimap_icon(obj) -> void:
 		if obj is ResourceVein:
 			return
 		if _is_enemy:
-			_minimap_icon.modulate = Color(0.0, 0.0, 1.0, 1.0)
+			_minimap_icon.modulate = Color(1.0, 0.0, 0.0, 1.0)
 		else:
-			_minimap_icon.modulate = Color(0.684, 0.311, 0.08, 1.0)
+			_minimap_icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
