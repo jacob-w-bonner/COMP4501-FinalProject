@@ -21,3 +21,7 @@ https://www.youtube.com/watch?v=RtJJVjjM_-Q
 
 Apartment Asset:
 "Korean Apartment" (https://skfb.ly/oSItZ) by Route_Canal is licensed under Free Standard Attribution (https://sketchfab.com/licenses)
+
+
+Flame Texture:
+https://opengameart.org/sites/default/files/Smoke30Frames_0.png
