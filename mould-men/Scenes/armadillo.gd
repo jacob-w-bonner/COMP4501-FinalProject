@@ -3,21 +3,21 @@ class_name Armadillo extends DynamicUnit
 # Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
-@onready var head_pivot = $HEAD_PIVOT
-@onready var head = $HEAD_PIVOT/HEAD
-@onready var snout = $HEAD_PIVOT/HEAD/SNOUT
+@onready var head_pivot = $DALE/HEAD_PIVOT
+@onready var head = $DALE/HEAD_PIVOT/HEAD
+@onready var snout = $DALE/HEAD_PIVOT/HEAD/SNOUT
 
-@onready var ring_1 = $RING_1
-@onready var ring_2 = $RING_2
-@onready var ring_3 = $RING_3
-@onready var ring_4 = $RING_4
-@onready var ring_5 = $RING_5
-@onready var ring_6 = $RING_6
+@onready var ring_1 = $DALE/RING_1
+@onready var ring_2 = $DALE/RING_2
+@onready var ring_3 = $DALE/RING_3
+@onready var ring_4 = $DALE/RING_4
+@onready var ring_5 = $DALE/RING_5
+@onready var ring_6 = $DALE/RING_6
 
-@onready var lf_leg_pivot = $L_F_LEG_PIVOT
-@onready var rf_leg_pivot = $R_F_LEG_PIVOT
-@onready var lb_leg_pivot = $L_B_LEG_PIVOT
-@onready var rb_leg_pivot = $R_B_LEG_PIVOT
+@onready var lf_leg_pivot = $DALE/L_F_LEG_PIVOT
+@onready var rf_leg_pivot = $DALE/R_F_LEG_PIVOT
+@onready var lb_leg_pivot = $DALE/L_B_LEG_PIVOT
+@onready var rb_leg_pivot = $DALE/R_B_LEG_PIVOT
 
 # Text over armadillo variables 
 var _action_text: Label3D
@@ -60,12 +60,13 @@ func _ready() -> void:
 	# Instantiating the collision shape
 	_collision_shape = CollisionShape3D.new()
 	_physics_body.add_child(_collision_shape)
+	$DALE.reparent(_physics_body)
 
 	var box_shape = BoxShape3D.new()
-	box_shape.size = Vector3(3.078995, 2.525981, 2.62208) 
+	box_shape.size = Vector3(1, 1, 2)
 
 	_collision_shape.shape = box_shape
-	_collision_shape.position = Vector3(0.013623, 1.237009, 0.31104)
+	_collision_shape.position = Vector3(0, 0, -0.5)
 
 	# Grabbing the material from each surface for use in the shader
 	#for child in model.get_children():
