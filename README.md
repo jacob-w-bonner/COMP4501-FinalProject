@@ -21,3 +21,6 @@ https://www.youtube.com/watch?v=RtJJVjjM_-Q
 
 Apartment Asset:
 "Korean Apartment" (https://skfb.ly/oSItZ) by Route_Canal is licensed under Free Standard Attribution (https://sketchfab.com/licenses)
+
+Hole in the Ground Asset:
+"Cartoon Rabbit Hole In The Ground" (https://skfb.ly/o6pQI) by 3DDisco is licensed under Royalty Free License

@@ -28,8 +28,16 @@ var friendly_units = {
 	}
 }
 var enemy_units = {
-	#TODO JACOB fill this up with the needed stuff and it should start spawning! (same format as above)
-	#Make sure to include costs and have the enemys actually have resources and stuff
+	"prospector" : {
+		"spawn_cooldown" : 9.0,
+		"cur_spawn_cooldown" : 20.0, 
+		"unit_type" : Prospector,
+	},
+	"foreman" : {
+		"spawn_cooldown" : 22.0,
+		"cur_spawn_cooldown" : 60.0,
+		"unit_type" : Foreman,
+	}
 }
 @onready var resources_container: GridContainer = $"../CanvasLayer/Resources"
 
@@ -42,8 +50,17 @@ func _ready():
 	# Instantiating parent first
 	super._ready()
 	
+	# Set avoidence radious for units
 	# Setting the mesh
-	_mesh.mesh							= (load("res://Assets/StaticAssets/apartment.tres") as Mesh).duplicate()
+	if is_enemy():
+		_nav_obs.radius = 30
+		_nav_obs.global_position = self.global_position + Vector3(2,Globals.FLOOR_HEIGHT,1)
+		_mesh.mesh							= (load("res://Assets/StaticAssets/apartment.tres") as Mesh).duplicate()
+	else:
+		_nav_obs.radius = 0.9
+		_nav_obs.global_position = self.global_position
+		_mesh.mesh							= (load("res://Assets/StaticAssets/hole.tres") as Mesh).duplicate()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,9 +100,12 @@ func spawn_unit(unit_str: String) -> void:
 	if not is_enemy():
 		spawned_unit = friendly_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(false)
+		Globals.ENEMY_ARR.push_back(spawned_unit)
+		
 	else:
 		spawned_unit = enemy_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(true)
+		Globals.ALLY_ARR.push_back(spawned_unit)
 	spawned_unit.set_name(unit_str)
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
 	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
@@ -100,14 +120,14 @@ func request_spawn(unit_str: String) -> float:
 			for res in friendly_units[unit_str]["cost"].keys():
 				if friendly_units[unit_str]["cost"][res] < 0:
 					var new_val: int = Globals.update_resource(res, friendly_units[unit_str]["cost"][res])
-					if(res == Globals.RESOURCES.COAL):
-						resources_container.get_node("CoalLabel").text = str(new_val)
-					elif(res == Globals.RESOURCES.GOLD):
-						resources_container.get_node("GoldLabel").text = str(new_val)
-					elif(res == Globals.RESOURCES.AMETHYST):
-						resources_container.get_node("AmethystLabel").text = str(new_val)
-					elif(res == Globals.RESOURCES.DIAMOND):
-						resources_container.get_node("DiamondLabel").text = str(new_val)
+					#if(res == Globals.RESOURCES.COAL):
+						#resources_container.get_node("CoalLabel").text = str(new_val)
+					#elif(res == Globals.RESOURCES.GOLD):
+						#resources_container.get_node("GoldLabel").text = str(new_val)
+					#elif(res == Globals.RESOURCES.AMETHYST):
+						#resources_container.get_node("AmethystLabel").text = str(new_val)
+					#elif(res == Globals.RESOURCES.DIAMOND):
+						#resources_container.get_node("DiamondLabel").text = str(new_val)
 					
 			spawn_unit(unit_str)
 			friendly_units[unit_str]["cur_spawn_cooldown"] = friendly_units[unit_str]["spawn_cooldown"]

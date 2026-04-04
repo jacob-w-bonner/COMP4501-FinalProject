@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="17_3oa1i"]
 [ext_resource type="Script" uid="uid://ccayliw5ke47i" path="res://UIScripts/base_ui.gd" id="18_pkh5n"]
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="18_pntab"]
+[ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="19_xep68"]
+[ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://Scenes/minimap_camera.gd" id="21_hhc3w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -49,6 +51,7 @@ shadow_enabled = true
 environment = SubResource("Environment_50ct6")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1438635578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4723549, 0)
 navigation_mesh = SubResource("NavigationMesh_3dogw")
 
 [node name="GridMap" type="GridMap" parent="NavigationRegion3D" unique_id=1322689917]
@@ -58,10 +61,11 @@ cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(65527, 65527, 17, 65527, 65528, 17, 65527, 65529, 17, 65527, 65530, 17, 65527, 65531, 17, 65527, 65532, 17, 65527, 65533, 17, 65527, 65534, 17, 65527, 65535, 17, 65527, 0, 17, 65527, 1, 17, 65527, 2, 17, 65527, 3, 17, 65527, 4, 17, 65527, 5, 17, 65527, 6, 17, 65527, 7, 17, 65527, 8, 17, 65528, 65527, 17, 65528, 65528, 17, 65528, 65529, 17, 65528, 65530, 17, 65528, 65531, 17, 65528, 65532, 17, 65528, 65533, 17, 65528, 65534, 17, 65528, 65535, 17, 65528, 0, 17, 65528, 1, 17, 65528, 2, 17, 65528, 3, 17, 65528, 4, 17, 65528, 5, 17, 65528, 6, 17, 65528, 7, 17, 65528, 8, 17, 65529, 65527, 17, 65529, 65528, 17, 65529, 65529, 17, 65529, 65530, 17, 65529, 65531, 17, 65529, 65532, 17, 65529, 65533, 17, 65529, 65534, 17, 65529, 65535, 17, 65529, 0, 17, 65529, 1, 17, 65529, 2, 17, 65529, 3, 17, 65529, 4, 17, 65529, 5, 17, 65529, 6, 17, 65529, 7, 17, 65529, 8, 17, 65530, 65527, 17, 65530, 65528, 17, 65530, 65529, 17, 65530, 65530, 17, 65530, 65531, 17, 65530, 65532, 17, 65530, 65533, 17, 65530, 65534, 17, 65530, 65535, 17, 65530, 0, 17, 65530, 1, 17, 65530, 2, 17, 65530, 3, 17, 65530, 4, 17, 65530, 5, 17, 65530, 6, 17, 65530, 7, 17, 65530, 8, 17, 65531, 65527, 17, 65531, 65528, 17, 65531, 65529, 17, 65531, 65530, 17, 65531, 65531, 17, 65531, 65532, 17, 65531, 65533, 17, 65531, 65534, 17, 65531, 65535, 17, 65531, 0, 17, 65531, 1, 17, 65531, 2, 17, 65531, 3, 17, 65531, 4, 17, 65531, 5, 17, 65531, 6, 17, 65531, 7, 17, 65531, 8, 17, 65532, 65527, 17, 65532, 65528, 17, 65532, 65529, 17, 65532, 65530, 17, 65532, 65531, 17, 65532, 65532, 17, 65532, 65533, 17, 65532, 65534, 17, 65532, 65535, 17, 65532, 0, 17, 65532, 1, 17, 65532, 2, 17, 65532, 3, 17, 65532, 4, 17, 65532, 5, 17, 65532, 6, 17, 65532, 7, 17, 65532, 8, 17, 65533, 65527, 17, 65533, 65528, 17, 65533, 65529, 17, 65533, 65530, 17, 65533, 65531, 17, 65533, 65532, 17, 65533, 65533, 17, 65533, 65534, 17, 65533, 65535, 17, 65533, 0, 17, 65533, 1, 17, 65533, 2, 17, 65533, 3, 17, 65533, 4, 17, 65533, 5, 17, 65533, 6, 17, 65533, 7, 17, 65533, 8, 17, 65534, 65527, 17, 65534, 65528, 17, 65534, 65529, 17, 65534, 65530, 17, 65534, 65531, 17, 65534, 65532, 17, 65534, 65533, 17, 65534, 65534, 17, 65534, 65535, 17, 65534, 0, 17, 65534, 1, 17, 65534, 2, 17, 65534, 3, 17, 65534, 4, 17, 65534, 5, 17, 65534, 6, 17, 65534, 7, 17, 65534, 8, 17, 65535, 65527, 17, 65535, 65528, 17, 65535, 65529, 17, 65535, 65530, 17, 65535, 65531, 17, 65535, 65532, 17, 65535, 65533, 17, 65535, 65534, 17, 65535, 65535, 17, 65535, 0, 17, 65535, 1, 17, 65535, 2, 17, 65535, 3, 17, 65535, 4, 17, 65535, 5, 17, 65535, 6, 17, 65535, 7, 17, 65535, 8, 17, 0, 65527, 17, 0, 65528, 17, 0, 65529, 17, 0, 65530, 17, 0, 65531, 17, 0, 65532, 17, 0, 65533, 17, 0, 65534, 17, 0, 65535, 17, 0, 0, 17, 0, 1, 17, 0, 2, 17, 0, 3, 17, 0, 4, 17, 0, 5, 17, 0, 6, 17, 0, 7, 17, 0, 8, 17, 1, 65527, 17, 1, 65528, 17, 1, 65529, 17, 1, 65530, 17, 1, 65531, 17, 1, 65532, 17, 1, 65533, 17, 1, 65534, 17, 1, 65535, 17, 1, 0, 17, 1, 1, 17, 1, 2, 17, 1, 3, 17, 1, 4, 17, 1, 5, 17, 1, 6, 17, 1, 7, 17, 1, 8, 17, 2, 65527, 17, 2, 65528, 17, 2, 65529, 17, 2, 65530, 17, 2, 65531, 17, 2, 65532, 17, 2, 65533, 17, 2, 65534, 17, 2, 65535, 17, 2, 0, 17, 2, 1, 17, 2, 2, 17, 2, 3, 17, 2, 4, 17, 2, 5, 17, 2, 6, 17, 2, 7, 17, 2, 8, 17, 3, 65527, 17, 3, 65528, 17, 3, 65529, 17, 3, 65530, 17, 3, 65531, 17, 3, 65532, 17, 3, 65533, 17, 3, 65534, 17, 3, 65535, 17, 3, 0, 17, 3, 1, 17, 3, 2, 17, 3, 3, 17, 3, 4, 17, 3, 5, 17, 3, 6, 17, 3, 7, 17, 3, 8, 17, 4, 65527, 17, 4, 65528, 17, 4, 65529, 17, 4, 65530, 17, 4, 65531, 17, 4, 65532, 17, 4, 65533, 17, 4, 65534, 17, 4, 65535, 17, 4, 0, 17, 4, 1, 17, 4, 2, 17, 4, 3, 17, 4, 4, 17, 4, 5, 17, 4, 6, 17, 4, 7, 17, 4, 8, 17, 5, 65527, 17, 5, 65528, 17, 5, 65529, 17, 5, 65530, 17, 5, 65531, 17, 5, 65532, 17, 5, 65533, 17, 5, 65534, 17, 5, 65535, 17, 5, 0, 17, 5, 1, 17, 5, 2, 17, 5, 3, 17, 5, 4, 17, 5, 5, 17, 5, 6, 17, 5, 7, 17, 5, 8, 17, 6, 65527, 17, 6, 65528, 17, 6, 65529, 17, 6, 65530, 17, 6, 65531, 17, 6, 65532, 17, 6, 65533, 17, 6, 65534, 17, 6, 65535, 17, 6, 0, 17, 6, 1, 17, 6, 2, 17, 6, 3, 17, 6, 4, 17, 6, 5, 17, 6, 6, 17, 6, 7, 17, 6, 8, 17, 7, 65527, 17, 7, 65528, 17, 7, 65529, 17, 7, 65530, 17, 7, 65531, 17, 7, 65532, 17, 7, 65533, 17, 7, 65534, 17, 7, 65535, 17, 7, 0, 17, 7, 1, 17, 7, 2, 17, 7, 3, 17, 7, 4, 17, 7, 5, 17, 7, 6, 17, 7, 7, 17, 7, 8, 17, 8, 65527, 17, 8, 65528, 17, 8, 65529, 17, 8, 65530, 17, 8, 65531, 17, 8, 65532, 17, 8, 65533, 17, 8, 65534, 17, 8, 65535, 17, 8, 0, 17, 8, 1, 17, 8, 2, 17, 8, 3, 17, 8, 4, 17, 8, 5, 17, 8, 6, 17, 8, 7, 17, 8, 8, 17, 131066, 65532, 41, 131067, 65531, 41, 131068, 65531, 41, 131069, 65531, 41, 131070, 65530, 41, 131071, 65530, 41, 65536, 65530, 41, 65537, 65531, 41, 65538, 65531, 41, 65539, 65531, 41, 65540, 65532, 41, 131066, 2, 41, 131067, 3, 41, 131068, 3, 41, 131069, 3, 41, 131070, 4, 41, 131071, 4, 41, 65536, 4, 41, 65537, 3, 41, 65538, 3, 41, 65539, 3, 41, 65540, 2, 41, 131071, 65526, 85, 131066, 8, 143, 131067, 6, 143, 65538, 8, 143, 65539, 5, 143, 65537, 8, 143, 131070, 7, 143, 131070, 65526, 85, 65536, 65526, 85, 65543, 5, 17, 65543, 7, 17, 131063, 65527, 17, 131064, 3, 0)
 }
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=147667770]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -0.184, 20, 20.77685)
+cull_mask = 1048571
 projection = 1
 size = 10.0
 near = 0.001
@@ -69,7 +73,7 @@ far = 500.0
 script = ExtResource("3_pkh5n")
 
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -35.490005, 1.7, -6.2905593)
 script = ExtResource("4_xep68")
 _health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
@@ -81,7 +85,7 @@ _health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Mole2" type="Node3D" parent="." unique_id=2804634]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -35.587646, 1.7, 9.490339)
 script = ExtResource("4_xep68")
 _health = 50
 _state = 3
@@ -207,94 +211,6 @@ grow_vertical = 2
 texture = ExtResource("11_px64b")
 expand_mode = 1
 
-[node name="Resources" type="GridContainer" parent="CanvasLayer" unique_id=2119782003]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -112.0
-offset_top = 8.0
-offset_right = 140.0
-offset_bottom = 103.0
-grow_horizontal = 2
-columns = 4
-script = ExtResource("13_miijk")
-
-[node name="Coal" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1664037066]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("15_w0mrj")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Gold" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1704177364]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("14_7wsrj")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Amethyst" type="TextureRect" parent="CanvasLayer/Resources" unique_id=1062729079]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("16_arxsw")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Diamond" type="TextureRect" parent="CanvasLayer/Resources" unique_id=528638485]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("17_3oa1i")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="CoalLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1981445377]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="GoldLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1324698047]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="AmethystLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=1038039947]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="DiamondLabel" type="RichTextLabel" parent="CanvasLayer/Resources" unique_id=506366338]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
 [node name="BaseActions" type="GridContainer" parent="CanvasLayer" unique_id=58045482 node_paths=PackedStringArray("base")]
 anchors_preset = 5
 anchor_left = 0.5
@@ -385,7 +301,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 
 [node name="MoleBase" type="Node3D" parent="." unique_id=583691117]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -36.047585, 0, -1.2937388)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34.628, 1.632, -1)
 script = ExtResource("18_pntab")
 _max_health = 1500
 _health = 1500
@@ -393,7 +309,7 @@ _attack_strength = 0
 metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
 
 [node name="OliverBase" type="Node3D" parent="." unique_id=492485465]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 30.951, 0, -1.29)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 30.951, 0, -3)
 script = ExtResource("18_pntab")
 spawn_offset = Vector3(-6, 1.7, 0)
 _max_health = 1500
@@ -401,6 +317,273 @@ _health = 1500
 _is_enemy = true
 _attack_strength = 0
 metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=531666910]
+follow_viewport_enabled = true
+
+[node name="ResourcesAndMinimap" type="HBoxContainer" parent="GUI" unique_id=4742121]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -330.0
+offset_bottom = 210.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -20
+
+[node name="Resources" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=1154260337]
+custom_minimum_size = Vector2(110, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = -9
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources" unique_id=1099250905]
+modulate = Color(0.70480496, 0.76072985, 0.7606284, 1)
+custom_minimum_size = Vector2(120, 210)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="GUI/ResourcesAndMinimap/Resources" unique_id=1899566102]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 1
+script = ExtResource("13_miijk")
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1843225718]
+custom_minimum_size = Vector2(65, 45)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=445497242]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=1553794831]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer" unique_id=12294247]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GoldLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=2023314576]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Gold" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=837326220]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_7wsrj")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1853055636]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=603270369]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=358990459]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer" unique_id=316230757]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CoalLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=969312219]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Coal" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1427808078]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_w0mrj")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2006377370]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=1569470171]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=1568669041]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer" unique_id=368075071]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=961243320]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Amethyst" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=483361119]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_arxsw")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MarginContainer4" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2081237397]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=965907874]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=2126566929]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer" unique_id=819999818]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=2124487317]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Diamond" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=201949995]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_3oa1i")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Minimap" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=1879669242]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -5
+
+[node name="Map Frame" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=824079523]
+modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
+clip_contents = true
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="Map Background Colour" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1627250300]
+modulate = Color(0.54901963, 0.36862746, 0.28627452, 1)
+clip_contents = true
+custom_minimum_size = Vector2(230, 230)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="Clipping Shape" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1597011873]
+clip_children = 1
+custom_minimum_size = Vector2(230, 230)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape" unique_id=687032604]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer" unique_id=170520361]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=1885969121]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(205, 205)
+render_target_update_mode = 4
+
+[node name="MinimapCamera" type="Camera3D" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=2014806782]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
+cull_mask = 1048573
+projection = 1
+size = 20.0
+script = ExtResource("21_hhc3w")
 
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]

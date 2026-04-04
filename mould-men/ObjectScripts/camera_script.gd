@@ -8,7 +8,7 @@ var moving_to_target_max_speed: float = 60.0
 var moving_to_target_speed:	float = 60.0
 var zooming_to_target_speed:	float = 40.0
 var dir:						Vector3 = Vector3(0,0,0)
-@export var move_speed:		float = 20.0
+@export var move_speed:		float = 15.0
 var unit_offset:				Vector3 = Vector3(0.0, 20, 17.0)
 
 #Zoom
@@ -67,7 +67,7 @@ func handle_camera_movement(delta: float) -> void:
 	if Input.is_action_just_released('camera_back'):
 		dir-= Vector3.BACK
 	if dir != Vector3(0,0,0): #If we are moving stop focusing on unit
-		global_position += dir.normalized() * move_speed * delta
+		global_position += dir.normalized() * move_speed * delta * max(self.size / (zoom_bounds[1] / 2), 0.5)
 		target = null
 
 func handle_camera_zoom() -> void:
