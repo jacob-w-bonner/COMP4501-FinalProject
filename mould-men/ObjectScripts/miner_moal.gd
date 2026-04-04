@@ -54,6 +54,13 @@ func _ready() -> void:
 			# Setting the shader surface colour to the old material
 			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
 			_mesh.mesh.surface_set_material(i, shader_mat)
+	
+	var headlamp = OmniLight3D.new()
+	headlamp.position = Vector3(0.0, 3.0, 3.0)
+	headlamp.omni_range = 2.02
+	headlamp.light_specular = 1.67
+	headlamp.shadow_enabled = false
+	_mesh.add_child(headlamp)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

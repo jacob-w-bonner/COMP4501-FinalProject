@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dh5c0"]
 [ext_resource type="Script" uid="uid://b0tx07quuwgx7" path="res://ObjectScripts/prospector.gd" id="16_6f257"]
 [ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="17_hln3t"]
+[ext_resource type="Script" uid="uid://tyimuh366lck" path="res://ObjectScripts/gold.gd" id="18_m7bt0"]
+[ext_resource type="Script" uid="uid://fr08nj5cf2wv" path="res://ObjectScripts/diamond.gd" id="19_4y3ct"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -71,24 +73,137 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="LightSources" type="Node3D" parent="." unique_id=1461074335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="Gem" type="OmniLight3D" parent="LightSources" unique_id=154085669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9466847, 2.51709, 0.62385035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9466847, 3.4109519, 0.62385035)
 light_color = Color(0.15686275, 0.90588236, 0, 1)
 light_specular = 0.0
-omni_range = 8.0
+omni_range = 4.0
 
 [node name="Gem2" type="OmniLight3D" parent="LightSources" unique_id=21947392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.970108, 3.6061342, -22.514978)
 light_color = Color(0.15686275, 0.90588236, 0, 1)
 light_specular = 0.0
-omni_range = 8.0
+omni_range = 4.0
 
 [node name="Shroom" type="OmniLight3D" parent="LightSources" unique_id=1463287736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751781, 2.8966599, -14.561219)
 light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
 light_specular = 0.0
+omni_range = 6.0
+
+[node name="Torch" type="OmniLight3D" parent="LightSources" unique_id=1965330693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.997353, 5.0887656, 7.336193)
+light_color = Color(0.7664595, 0.75194085, 0.4245687, 1)
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="Shroom2" type="OmniLight3D" parent="LightSources" unique_id=601983992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.061493, 2.6509738, 10.906289)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
+omni_range = 4.0
+
+[node name="Shroom3" type="OmniLight3D" parent="LightSources" unique_id=1048322924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.080638, 3.9305882, -16.99561)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
+omni_range = 4.0
+
+[node name="Shroom4" type="OmniLight3D" parent="LightSources" unique_id=1975036639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.616652, 4.0141907, -13.863155)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
 omni_range = 8.0
+
+[node name="Torch2" type="OmniLight3D" parent="LightSources" unique_id=325379508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.01455, 5.0887656, -8.579371)
+light_color = Color(0.7664595, 0.75194085, 0.4245687, 1)
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="Torch3" type="OmniLight3D" parent="LightSources" unique_id=658812327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9990005, 5.0887656, -22.36459)
+light_color = Color(0.7664595, 0.75194085, 0.4245687, 1)
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="Gem3" type="OmniLight3D" parent="LightSources" unique_id=837436068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.091555, 4.153638, -11.975061)
+light_color = Color(0.15686275, 0.90588236, 0, 1)
+light_specular = 0.0
+omni_range = 4.0
+
+[node name="Torch4" type="OmniLight3D" parent="LightSources" unique_id=1830283278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.004765, 5.0887656, -12.629285)
+light_color = Color(0.7664595, 0.75194085, 0.4245687, 1)
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="Shroom5" type="OmniLight3D" parent="LightSources" unique_id=1134256856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.098244, 4.4095078, -16.27633)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
+omni_range = 8.0
+
+[node name="Shroom6" type="OmniLight3D" parent="LightSources" unique_id=161173081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.318207, 4.1318755, -10.951047)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
+omni_range = 8.0
+
+[node name="Torch5" type="OmniLight3D" parent="LightSources" unique_id=436425529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.00696, 5.0887656, -8.664987)
+light_color = Color(0.7664595, 0.75194085, 0.4245687, 1)
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="Torch6" type="OmniLight3D" parent="LightSources" unique_id=96472301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.293007, 5.0887656, -11.02068)
+light_color = Color(0.7664595, 0.75194085, 0.4245687, 1)
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="Shroom7" type="OmniLight3D" parent="LightSources" unique_id=508417756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.56741, 3.4209547, -14.409184)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
+omni_range = 6.0
+
+[node name="Shroom8" type="OmniLight3D" parent="LightSources" unique_id=1584736833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.075874, 4.675328, -13.54395)
+light_color = Color(0.7629065, 0.43262723, 0.48422015, 1)
+light_specular = 0.0
+omni_range = 6.0
+
+[node name="Skeleton" type="OmniLight3D" parent="LightSources" unique_id=711098707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.76473, 2.6509738, 10.906289)
+light_color = Color(0.8773294, 0.8223195, 0.6933095, 1)
+light_energy = 0.3
+light_specular = 0.0
+omni_range = 4.0
+
+[node name="Skeleton2" type="OmniLight3D" parent="LightSources" unique_id=231565489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.073008, 2.6509738, -14.8036175)
+light_color = Color(0.8773294, 0.8223195, 0.6933095, 1)
+light_energy = 0.3
+light_specular = 0.0
+omni_range = 4.0
+
+[node name="Skeleton3" type="OmniLight3D" parent="LightSources" unique_id=115540805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.993992, 2.6509738, -16.734772)
+light_color = Color(0.8773294, 0.8223195, 0.6933095, 1)
+light_energy = 0.3
+light_specular = 0.0
+omni_range = 4.0
+
+[node name="Skeleton4" type="OmniLight3D" parent="LightSources" unique_id=1298667495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0671716, 2.6509738, -12.653057)
+light_color = Color(0.8773294, 0.8223195, 0.6933095, 1)
+light_energy = 0.3
+light_specular = 0.0
+omni_range = 4.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=147667770]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -0.18380333, 8.235338, 10.867315)
@@ -121,7 +236,7 @@ script = ExtResource("6_dlpd7")
 metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
 
 [node name="MinerMole" type="Node3D" parent="." unique_id=500099539]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.849202, 1.7, 3.8662405)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.9285984, 1.7, 3.8662405)
 script = ExtResource("7_2n1tv")
 metadata/_custom_type_script = "uid://dswgpx4ppis5i"
 
@@ -414,3 +529,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 1.6, 7.189)
 script = ExtResource("17_hln3t")
 _is_enemy = true
 metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
+
+[node name="Gold" type="Node3D" parent="." unique_id=1535261089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.575, 1.7, 7.395)
+script = ExtResource("18_m7bt0")
+metadata/_custom_type_script = "uid://tyimuh366lck"
+
+[node name="Diamond" type="Node3D" parent="." unique_id=801235585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.543, 1.7, 1.637)
+script = ExtResource("19_4y3ct")
+metadata/_custom_type_script = "uid://fr08nj5cf2wv"

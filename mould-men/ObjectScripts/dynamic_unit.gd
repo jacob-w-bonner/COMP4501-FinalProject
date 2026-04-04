@@ -90,6 +90,15 @@ func _ready() -> void:
 	
 	# Set minimap icon
 	set_minimap_icon(self)
+	
+	# Create OmniLight3D to slightly light up unit
+	var light = OmniLight3D.new()
+	light.position = Vector3(0.0, 4.0, 0.0)
+	light.omni_range = 4
+	light.light_energy = 0.2
+	light.light_specular = 0.0
+	light.shadow_enabled = false
+	_mesh.add_child(light)
 
 # Called to handle input events
 func _input(event: InputEvent) -> void:

@@ -23,6 +23,9 @@ var _AMYTHEST_MAX:			int					= 10
 @export var _res_max: 		int					= 100
 @export var _res_amount: 	int					= 100
 
+# OmniLight
+var light:					OmniLight3D			= null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -82,6 +85,15 @@ func _ready() -> void:
 			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
 			shader_mat.set_shader_parameter("modify_col", false)
 			_mesh.mesh.surface_set_material(i, shader_mat)
+	
+	# Create OmniLight3D to slightly light up unit
+	light = OmniLight3D.new()
+	light.position = Vector3(0.0, 0.0, -2.0)
+	light.omni_range = 3
+	light.light_specular = 0.0
+	light.light_energy = 3.0
+	light.shadow_enabled = false
+	_mesh.add_child(light)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
