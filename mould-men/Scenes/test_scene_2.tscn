@@ -9,9 +9,6 @@
 [ext_resource type="Script" uid="uid://dswgpx4ppis5i" path="res://ObjectScripts/miner_moal.gd" id="7_kkpf2"]
 [ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="8_ns6qj"]
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="9_ekh8e"]
-[ext_resource type="Texture2D" uid="uid://c74p7insid7qy" path="res://Assets/UIAssets/move.svg" id="10_bb7vx"]
-[ext_resource type="Texture2D" uid="uid://bype42xtc0jyn" path="res://Assets/UIAssets/punch.svg" id="11_px64b"]
-[ext_resource type="Texture2D" uid="uid://cursq3yb0o8ql" path="res://Assets/UIAssets/mining.svg" id="12_01ajl"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="13_miijk"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="14_7wsrj"]
 [ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="15_w0mrj"]
@@ -133,83 +130,6 @@ metadata/_custom_type_script = "uid://edh800y1jebg"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=860007368]
 follow_viewport_enabled = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=770770930]
-visible = false
-offset_left = 51.0
-offset_top = 514.0
-offset_right = 502.0
-offset_bottom = 604.0
-
-[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=70346131]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button" unique_id=1689490909]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_bb7vx")
-expand_mode = 1
-
-[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1487398996]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button2" unique_id=442897038]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_px64b")
-expand_mode = 1
-
-[node name="Button3" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=85365220]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button3" unique_id=1136574900]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_01ajl")
-expand_mode = 1
-
-[node name="Button4" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=259134342]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button4" unique_id=1896281759]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_px64b")
-expand_mode = 1
-
-[node name="Button5" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=895700574]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button5" unique_id=1905308696]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_px64b")
-expand_mode = 1
 
 [node name="BaseActions" type="GridContainer" parent="CanvasLayer" unique_id=58045482 node_paths=PackedStringArray("base")]
 anchors_preset = 5

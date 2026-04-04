@@ -287,6 +287,7 @@ visible = false
 [node name="cave_water_edge2" parent="cave_water" unique_id=1370580075 instance=ExtResource("82_6hixi")]
 
 [node name="cave_extras" type="Node3D" parent="." unique_id=869249428]
+visible = false
 
 [node name="cave_crystal1" parent="cave_extras" unique_id=729273739 instance=ExtResource("83_dqqs5")]
 
