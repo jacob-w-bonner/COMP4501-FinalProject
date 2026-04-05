@@ -2,9 +2,9 @@
 extends EditorScript
 
 # The paths for the original file and save destination
-@export var original_path:	String	= "res://Assets/Lamp/lantern.glb"
-@export var save_path:		String	= "res://Assets/Lamp/"
-@export var save_name:		String	= "Lantern"
+@export var original_path:	String	= "res://Assets/Shells/shell.glb"
+@export var save_path:		String	= "res://Assets/Shells/"
+@export var save_name:		String	= "Shell"
 
 func _run():
 

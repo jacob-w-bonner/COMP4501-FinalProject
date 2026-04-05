@@ -39,6 +39,14 @@ Cave Tileset Assets:
 Cave Gem Assets:
 "free isometric cave-extras" (https://opengameart.org/content/free-isometric-cave-extras) by rubberduck is licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/).
 
+Cannon Assets:
+"Cannon" (https://skfb.ly/ozqxG) by 321Blender is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Cannon Shell Assets:
+"9mm bullet" (https://skfb.ly/6SSoV) by lluismartinezborrell is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Bomb Assets:
+"Simple Bomb" (https://skfb.ly/6APSP) by Blender3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 Armadillo:
 "Realistic Animated Armadillo 3D Model" (https://skfb.ly/pxF77) by WildMesh 3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
