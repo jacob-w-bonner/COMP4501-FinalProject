@@ -2,25 +2,25 @@ class_name Base extends StaticUnit
 
 #NOTE as 4 resourses seems a lot for a game of this size I am assuming that we are only going to have Coal, Gold, and Amethyst (and honestly we might drop Amethyst)
 var friendly_units = {
-	"mole" : {
+	"Mole" : {
 		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 2.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : Mole,
 	},
-	"miner_mole" : {
+	"MinerMole" : {
 		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 5.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MinerMole,
 	},
-	"doctor_mole" : {
+	"DoctorMole" : {
 		"cost" : { Globals.RESOURCES.COAL : -35, Globals.RESOURCES.GOLD : -15, Globals.RESOURCES.AMETHYST : -2, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 5.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : DoctorMole,
 	},
-	"music_mole" : {
+	"MusicMole" : {
 		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -25, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
@@ -28,12 +28,12 @@ var friendly_units = {
 	}
 }
 var enemy_units = {
-	"prospector" : {
+	"Prospector" : {
 		"spawn_cooldown" : 9.0,
 		"cur_spawn_cooldown" : 20.0, 
 		"unit_type" : Prospector,
 	},
-	"foreman" : {
+	"Foreman" : {
 		"spawn_cooldown" : 22.0,
 		"cur_spawn_cooldown" : 60.0,
 		"unit_type" : Foreman,
@@ -49,7 +49,6 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	# Instantiating parent first
 	super._ready()
-	
 	# Set avoidence radious for units
 	# Setting the mesh
 	if is_enemy():
@@ -146,33 +145,35 @@ func handle_level_up() -> void:
 		receive_healing(_max_health-old_health)
 
 #Base triggers upgrades
-func trigger_upgrade(unit: Unit) -> int:
+func trigger_upgrade(unit) -> int:
+	var unit_class = unit.get_script().get_global_name()
+	
 	if unit is DynamicUnit:
 		#check if the level up is legal
-		var cur_level = Globals.dynamic_levels[typeof(unit)]['cur_level']+1
-		for res in Globals.dynamic_levels[typeof(unit)]['cost'][cur_level].keys():
-			if Globals.check_valid_resource_transaction(res, Globals.dynamic_levels[typeof(unit)]['cost'][cur_level][res]):
+		var cur_level = Globals.dynamic_levels[unit_class]['cur_level']+1
+		for res in Globals.dynamic_levels[unit_class]['cost'][cur_level].keys():
+			if not Globals.check_valid_resource_transaction(res, Globals.dynamic_levels[unit_class]['cost'][cur_level][res]):
 				return -1
 		
 		#Registar the level up
-		for res in Globals.dynamic_levels[typeof(unit)]['cost'][cur_level].keys():
-			Globals.update_resource(res, Globals.dynamic_levels[typeof(unit)]['cost'][cur_level][res])
-		Globals.dynamic_levels[typeof(unit)]['cur_level'] = cur_level
+		for res in Globals.dynamic_levels[unit_class]['cost'][cur_level].keys():
+			Globals.update_resource(res, Globals.dynamic_levels[unit_class]['cost'][cur_level][res])
+		Globals.dynamic_levels[unit_class]['cur_level'] = cur_level
 		
 		return cur_level
 	elif unit is StaticUnit:
 		#check if the level up is legal
-		var cur_level = Globals.static_levels[typeof(unit)]['cur_level']+1
-		for res in Globals.static_levels[typeof(unit)]['cost'][cur_level].keys():
-			if Globals.check_valid_resource_transaction(res, Globals.static_levels[typeof(unit)]['cost'][cur_level][res]):
+		var cur_level = Globals.static_levels[unit_class]['cur_level']+1
+		for res in Globals.static_levels[unit_class]['cost'][cur_level].keys():
+			if not Globals.check_valid_resource_transaction(res, Globals.static_levels[unit_class]['cost'][cur_level][res]):
 				return -1
 		
 		#Trigger the level up
-		for res in Globals.static_levels[typeof(unit)]['cost'][cur_level].keys():
-			Globals.update_resource(res, Globals.static_levels[typeof(unit)]['cost'][cur_level][res])
+		for res in Globals.static_levels[unit_class]['cost'][cur_level].keys():
+			Globals.update_resource(res, Globals.static_levels[unit_class]['cost'][cur_level][res])
 		unit.level_up()
 		unit.handle_level_up()
 		#Registar the level up
-		Globals.static_levels[typeof(unit)]['cur_level'] = cur_level
+		Globals.static_levels[unit_class]['cur_level'] = cur_level
 		return cur_level
 	return -401

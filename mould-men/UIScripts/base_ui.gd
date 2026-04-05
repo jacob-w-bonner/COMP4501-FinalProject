@@ -3,10 +3,10 @@ extends Node
 @export var base: Base = null
 
 var units = {
-	"mole" : false,
-	"miner_mole" : false,
-	"doctor_mole" : false,
-	"music_mole" : false,
+	"Mole" : false,
+	"MinerMole" : false,
+	"DoctorMole" : false,
+	"MusicMole" : false,
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,28 +29,28 @@ func _input(event: InputEvent) -> void:
 					#TODO Then it went through, visualize this with a simple partial opacity shader that takes cool_down_time seconds to clear up
 
 func _on_mole_mouse_entered():
-	units['mole'] = true
+	units['Mole'] = true
 
 func _on_mole_mouse_exited():
-	units['mole'] = false
+	units['Mole'] = false
 
 func _on_miner_mouse_entered():
-	units['miner_mole'] = true
+	units['MinerMole'] = true
 
 func _on_miner_mouse_exited():
-	units['miner_mole'] = false
+	units['MinerMole'] = false
 	
 func _on_doctor_mouse_entered():
-	units['doctor_mole'] = true
+	units['DoctorMole'] = true
 
 
 func _on_doctor_mouse_exited():
-	units['doctor_mole'] = false
+	units['DoctorMole'] = false
 
 
 func _on_music_mouse_entered():
-	units['music_mole'] = true
+	units['MusicMole'] = true
 
 
 func _on_music_mouse_exited():
-	units['music_mole'] = false
+	units['MusicMole'] = false

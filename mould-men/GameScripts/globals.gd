@@ -27,28 +27,28 @@ enum RESOURCES {
 #2. Diamonds should be the main upgrade resource, gives them a unique identity
 #3. You should allways say thank you to people who hold the door open for you, like who doesnt do that? Scum, thats who, scum.
 var dynamic_levels = {
-	Mole: {
+	'Mole': {
 		'cur_level' : 1,
 		'cost' : {
 			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -10 },
 			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -25 },
 		}
 	},
-	MinerMole: {
+	'MinerMole': {
 		'cur_level' : 1,
 		'cost' : {
 			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -10 },
 			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -4, Globals.RESOURCES.DIAMOND : -25 },
 		}
 	},
-	MusicMole: {
+	'MusicMole': {
 		'cur_level' : 1,
 		'cost' : {
 			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : -10 },
 			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -100, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -15 },
 		}
 	},
-	DoctorMole : {
+	'DoctorMole' : {
 		'cur_level' : 1,
 		'cost' : {
 			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -30 },
@@ -60,7 +60,7 @@ var dynamic_levels = {
 #TODO Replace 'Cannon' with Cannon once has Cannon from jacobs branch
 # I assume that the Cannons first level here is effectivly 'buying' it
 var static_levels = {
-	Base: {
+	'Base': {
 		'cur_level' : 1,
 		'cost' : {
 			2 : { Globals.RESOURCES.COAL : -50, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
@@ -81,10 +81,10 @@ var static_levels = {
 var TIME:							float			= 0.0
 
 # Tracking the amount of resources the player has
-var COAL_NUM:						int				= 999
-var GOLD_NUM:						int				= 99
-var DIAMOND_NUM:						int				= 0
-var AMETHYST_NUM:					int				= 5
+var COAL_NUM:						int				= 350
+var GOLD_NUM:						int				= 150
+var DIAMOND_NUM:						int				= 40
+var AMETHYST_NUM:					int				= 25
 
 # Array that contains each of the enemies
 var ENEMY_ARR: 						Array			= []
@@ -127,12 +127,12 @@ func update_resource(resource: RESOURCES, amt: int) -> int:
 	return -1
 
 func check_valid_resource_transaction(resource: RESOURCES, amt: int) -> bool:
-	if(resource == RESOURCES.COAL and COAL_NUM - amt < 0):
+	if(resource == RESOURCES.COAL and COAL_NUM + amt < 0):
 		return false
-	elif(resource == RESOURCES.GOLD and GOLD_NUM - amt < 0):
+	elif(resource == RESOURCES.GOLD and GOLD_NUM + amt < 0):
 		return false
-	elif(resource == RESOURCES.AMETHYST and AMETHYST_NUM - amt < 0):
+	elif(resource == RESOURCES.AMETHYST and AMETHYST_NUM + amt < 0):
 		return false
-	elif(resource == RESOURCES.DIAMOND and DIAMOND_NUM - amt < 0):
+	elif(resource == RESOURCES.DIAMOND and DIAMOND_NUM + amt < 0):
 		return false
 	return true

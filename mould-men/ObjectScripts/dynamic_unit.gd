@@ -89,7 +89,8 @@ func _ready() -> void:
 	#_nav_agent.debug_enabled 				= true
 	
 	#Apply level up if previously perchesed
-	handle_level_up_effects()
+	if not is_enemy():
+		handle_level_up_effects()
 	# Set minimap icon
 	set_minimap_icon(self)
 
@@ -272,7 +273,8 @@ func decrease_buff_val(change_val: float) -> void:
 
 #Incroments that units level and gives it its boons, deducts resource cost
 func handle_level_up_effects() -> void:
-	var cur_level = Globals.dynamic_levels[typeof(self)]['cur_level']
+	var my_class = self.get_script().get_global_name()
+	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
 	
 	if cur_level == 2:
 		#recieve a 20% max health boost, heal 20%, and then get a 15% attack boost
