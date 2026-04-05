@@ -361,3 +361,23 @@ func _on_state_changed(new_state):
 			
 		Globals.STATES.HEALING:
 			show_action_text("Healing ma friends!", Color(0.0, 0.602, 0.295, 1.0))
+			
+			
+#Gives the unit its upgrade boons, deducts resource cost
+func handle_level_up_effects() -> void:
+	var my_class = self.get_script().get_global_name()
+	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
+	
+	if cur_level == 2:
+		#recieve a 20% max health boost, heal 20%, and then get a 15% attack boost
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.20)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_attack_strength * 1.15)
+	elif cur_level == 3:
+		#recieve a 30% max health boost, heal 30%, and then get a 20% attack boost
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.30)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_attack_strength * 1.20)
+		

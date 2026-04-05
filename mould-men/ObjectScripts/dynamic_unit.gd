@@ -271,7 +271,7 @@ func decrease_buff_val(change_val: float) -> void:
 	if _buff_val <= 1.0:
 		_buff_mesh.visible = false
 
-#Incroments that units level and gives it its boons, deducts resource cost
+#Gives the unit its upgrade boons, deducts resource cost
 func handle_level_up_effects() -> void:
 	var my_class = self.get_script().get_global_name()
 	var cur_level = Globals.dynamic_levels[my_class]['cur_level']

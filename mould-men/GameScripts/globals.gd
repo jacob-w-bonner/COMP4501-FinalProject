@@ -28,31 +28,47 @@ enum RESOURCES {
 #3. You should allways say thank you to people who hold the door open for you, like who doesnt do that? Scum, thats who, scum.
 var dynamic_levels = {
 	'Mole': {
-		'cur_level' : 1,
-		'cost' : {
-			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -10 },
-			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -25 },
+		'cur_level': 1,
+		'cost': {
+			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 10},
+			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 30},
+		},
+		'description ': {
+			2: 'A medium upgrade to health and a small one to damage',
+			3: 'A large upgrade to health and a medium one to damage',
 		}
 	},
 	'MinerMole': {
-		'cur_level' : 1,
-		'cost' : {
-			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -10 },
-			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -4, Globals.RESOURCES.DIAMOND : -25 },
+		'cur_level': 1,
+		'cost': {
+			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 15},
+			3: {Globals.RESOURCES.COAL: - 90, Globals.RESOURCES.GOLD: - 25, Globals.RESOURCES.AMETHYST: - 10, Globals.RESOURCES.DIAMOND: - 20},
+		},
+		'description ': {
+			2: 'A medium upgrade to mining speed and a small one to health',
+			3: 'A MASSIVE upgrade to mining speed',
 		}
 	},
 	'MusicMole': {
-		'cur_level' : 1,
-		'cost' : {
-			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : -10 },
-			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -100, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -15 },
+		'cur_level': 1,
+		'cost': {
+			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 5, Globals.RESOURCES.DIAMOND: - 10},
+			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: - 100, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 20}
+		},
+		'description ': {
+			2: 'A medium increase in music radius',
+			3: 'A medium upgrade to health and a large upgrade to music amplification',
 		}
 	},
-	'DoctorMole' : {
-		'cur_level' : 1,
-		'cost' : {
-			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -30 },
-			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -65 },
+	'DoctorMole': {
+		'cur_level': 1,
+		'cost': {
+			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 35},
+			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 80},
+		},
+		'description ': {
+			2: 'Medium upgrades to health, damage, healing radius, and healing strength',
+			3: 'A HUGE upgrade to healing radius and healing strength',
 		}
 	}
 }
@@ -61,45 +77,49 @@ var dynamic_levels = {
 # I assume that the Cannons first level here is effectivly 'buying' it
 var static_levels = {
 	'Base': {
-		'cur_level' : 1,
-		'cost' : {
-			2 : { Globals.RESOURCES.COAL : -50, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
-			3 : { Globals.RESOURCES.COAL : -150, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -5 },
+		'cur_level': 1,
+		'cost': {
+			2: {Globals.RESOURCES.COAL: - 125, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: 0},
+			3: {Globals.RESOURCES.COAL: - 250, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 10},
+		},
+		'description ': {
+			2: 'A HUGE upgrade to max health, all units cost 1 less of each resource',
+			3: 'Heal to full, reduce all spawn cooldowns by a HUGE amount. Now go WIN',
 		}
 	},
 	'Cannon': {
-		'cur_level' : 0,
-		'cost' : {
-			1 : { Globals.RESOURCES.COAL : -25, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : -10, Globals.RESOURCES.DIAMOND : -5 },
-			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -25 },
-			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -50 },
+		'cur_level': 0,
+		'cost': {
+			1: {Globals.RESOURCES.COAL: - 25, Globals.RESOURCES.GOLD: - 5, Globals.RESOURCES.AMETHYST: - 5, Globals.RESOURCES.DIAMOND: - 5},
+			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: - 25, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 25},
+			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 25, Globals.RESOURCES.DIAMOND: - 50},
 		}
 	}
 }
 
 # Total time that has elapsed
-var TIME:							float			= 0.0
+var TIME: float = 0.0
 
 # Tracking the amount of resources the player has
-var COAL_NUM:						int				= 350
-var GOLD_NUM:						int				= 150
-var DIAMOND_NUM:						int				= 40
-var AMETHYST_NUM:					int				= 25
+var COAL_NUM: int = 999 #350
+var GOLD_NUM: int = 999 #150
+var DIAMOND_NUM: int = 999 #40
+var AMETHYST_NUM: int = 999 #25
 
 # Array that contains each of the enemies
-var ENEMY_ARR: 						Array			= []
+var ENEMY_ARR: Array = []
 
 # Array that contains each of the allies
-var ALLY_ARR:  						Array			= []
+var ALLY_ARR: Array = []
 
 # Value that holds a selected unit
-var SELECTED_UNIT: 					Unit 			= null
+var SELECTED_UNIT: Unit = null
 
 # Value of the height of the world floor
-var FLOOR_HEIGHT: 					float			= 1.6
+var FLOOR_HEIGHT: float = 1.6
 
 # Unit selection timer
-var SELECT_COOLDOWN:				bool			= false
+var SELECT_COOLDOWN: bool = false
 
 # Resource Locations
 @onready var gold_label: RichTextLabel = get_tree().root.get_node("TestScene/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer/GoldLabel")
@@ -108,31 +128,31 @@ var SELECT_COOLDOWN:				bool			= false
 @onready var diamond_label: RichTextLabel = get_tree().root.get_node("TestScene/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer/DiamondLabel")
 
 func update_resource(resource: RESOURCES, amt: int) -> int:
-	if(resource == RESOURCES.COAL):
+	if (resource == RESOURCES.COAL):
 		COAL_NUM += amt
 		coal_label.text = str(COAL_NUM)
 		return COAL_NUM
-	elif(resource == RESOURCES.GOLD):
+	elif (resource == RESOURCES.GOLD):
 		GOLD_NUM += amt
 		gold_label.text = str(GOLD_NUM)
 		return GOLD_NUM
-	elif(resource == RESOURCES.AMETHYST):
+	elif (resource == RESOURCES.AMETHYST):
 		AMETHYST_NUM += amt
 		amethyst_label.text = str(AMETHYST_NUM)
 		return AMETHYST_NUM
-	elif(resource == RESOURCES.DIAMOND):
+	elif (resource == RESOURCES.DIAMOND):
 		DIAMOND_NUM += amt
 		diamond_label.text = str(DIAMOND_NUM)
 		return DIAMOND_NUM
 	return -1
 
 func check_valid_resource_transaction(resource: RESOURCES, amt: int) -> bool:
-	if(resource == RESOURCES.COAL and COAL_NUM + amt < 0):
+	if (resource == RESOURCES.COAL and COAL_NUM + amt < 0):
 		return false
-	elif(resource == RESOURCES.GOLD and GOLD_NUM + amt < 0):
+	elif (resource == RESOURCES.GOLD and GOLD_NUM + amt < 0):
 		return false
-	elif(resource == RESOURCES.AMETHYST and AMETHYST_NUM + amt < 0):
+	elif (resource == RESOURCES.AMETHYST and AMETHYST_NUM + amt < 0):
 		return false
-	elif(resource == RESOURCES.DIAMOND and DIAMOND_NUM + amt < 0):
+	elif (resource == RESOURCES.DIAMOND and DIAMOND_NUM + amt < 0):
 		return false
 	return true

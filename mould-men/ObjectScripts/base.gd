@@ -47,6 +47,10 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not is_enemy():
+		print(trigger_upgrade(self))
+		print(trigger_upgrade(self))
+	
 	# Instantiating parent first
 	super._ready()
 	# Set avoidence radious for units
@@ -133,16 +137,22 @@ func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 
 
 func handle_level_up() -> void:
+	print('a')
 	if _level == 2:
-		#recieve a 20% max health boost, heal 20%, 
+		print("b")
+		#recieve a 50% max health boost, heal 50%, recieve a -1 deduction in all unit costs
 		var old_health = _max_health
-		_max_health = ceil(_max_health * 1.20)
+		_max_health = ceil(_max_health * 1.50)
 		receive_healing(_max_health-old_health)
+		for unit in friendly_units.keys():
+			for res in friendly_units[unit]['cost']:
+				if friendly_units[unit]['cost'][res] < 0:
+					friendly_units[unit]['cost'][res] = friendly_units[unit]['cost'][res]+1
 	elif _level == 3:
-		#recieve a 35% max health boost, heal 35%
-		var old_health = _max_health
-		_max_health = ceil(_max_health * 1.35)
-		receive_healing(_max_health-old_health)
+		#Heal to full, reduce all spawn cooldowns by 50%,
+		receive_healing(_max_health)
+		for unit in friendly_units.keys():
+			friendly_units[unit]['spawn_cooldown'] = friendly_units[unit]['spawn_cooldown']*0.50
 
 #Base triggers upgrades
 func trigger_upgrade(unit) -> int:
