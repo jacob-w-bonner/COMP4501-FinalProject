@@ -41,3 +41,11 @@ Cave Gem Assets:
 
 Armadillo:
 "Realistic Animated Armadillo 3D Model" (https://skfb.ly/pxF77) by WildMesh 3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Minimap Icon Assets:
+Stone pile icon (https://game-icons.net/1x1/delapouite/stone-pile.html) by Delapouite under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+Gold bar icon (https://game-icons.net/1x1/willdabeast/gold-bar.html) by Willdabeast under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+Amethyst icon (https://game-icons.net/1x1/skoll/amethyst.html) by Skoll under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+Cut diamond icon (https://game-icons.net/1x1/lorc/cut-diamond.html) by Lorc under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+Modern city icon (https://game-icons.net/1x1/delapouite/modern-city.html) by Delapouite under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+Tumulus icon (https://game-icons.net/1x1/cathelineau/tumulus.html) by Cathelineau under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
