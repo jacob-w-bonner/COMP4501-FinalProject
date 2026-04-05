@@ -38,3 +38,6 @@ Cave Tileset Assets:
 
 Cave Gem Assets:
 "free isometric cave-extras" (https://opengameart.org/content/free-isometric-cave-extras) by rubberduck is licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/).
+
+Armadillo:
+"Realistic Animated Armadillo 3D Model" (https://skfb.ly/pxF77) by WildMesh 3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
