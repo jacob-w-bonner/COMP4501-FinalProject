@@ -88,6 +88,8 @@ func _ready() -> void:
 	_nav_agent.path_desired_distance		= 0.5
 	#_nav_agent.debug_enabled 				= true
 	
+	#Apply level up if previously perchesed
+	handle_level_up_effects()
 	# Set minimap icon
 	set_minimap_icon(self)
 
@@ -267,3 +269,21 @@ func decrease_buff_val(change_val: float) -> void:
 	_buff_val = max(1.0, _buff_val - change_val)
 	if _buff_val <= 1.0:
 		_buff_mesh.visible = false
+
+#Incroments that units level and gives it its boons, deducts resource cost
+func handle_level_up_effects() -> void:
+	var cur_level = Globals.dynamic_levels[typeof(self)]['cur_level']
+	
+	if cur_level == 2:
+		#recieve a 20% max health boost, heal 20%, and then get a 15% attack boost
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.20)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_attack_strength * 1.15)
+	elif cur_level == 3:
+		#recieve a 30% max health boost, heal 30%, and then get a 20% attack boost
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.30)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_attack_strength * 1.20)
+		

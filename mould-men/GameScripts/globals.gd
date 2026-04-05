@@ -22,6 +22,61 @@ enum RESOURCES {
 	AMETHYST
 }
 
+#Can tweek these later, but I think the winning philosaphy here is 
+#1. Moles and Minner Moles should have relativly cheep upgrades, Music and Doctor shouldnt. Base is medium cost, cannon is large
+#2. Diamonds should be the main upgrade resource, gives them a unique identity
+#3. You should allways say thank you to people who hold the door open for you, like who doesnt do that? Scum, thats who, scum.
+var dynamic_levels = {
+	Mole: {
+		'cur_level' : 1,
+		'cost' : {
+			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -10 },
+			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -25 },
+		}
+	},
+	MinerMole: {
+		'cur_level' : 1,
+		'cost' : {
+			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -10 },
+			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -4, Globals.RESOURCES.DIAMOND : -25 },
+		}
+	},
+	MusicMole: {
+		'cur_level' : 1,
+		'cost' : {
+			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : -10 },
+			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -100, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -15 },
+		}
+	},
+	DoctorMole : {
+		'cur_level' : 1,
+		'cost' : {
+			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -30 },
+			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -65 },
+		}
+	}
+}
+
+#TODO Replace 'Cannon' with Cannon once has Cannon from jacobs branch
+# I assume that the Cannons first level here is effectivly 'buying' it
+var static_levels = {
+	Base: {
+		'cur_level' : 1,
+		'cost' : {
+			2 : { Globals.RESOURCES.COAL : -50, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
+			3 : { Globals.RESOURCES.COAL : -150, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -5 },
+		}
+	},
+	'Cannon': {
+		'cur_level' : 0,
+		'cost' : {
+			1 : { Globals.RESOURCES.COAL : -25, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : -10, Globals.RESOURCES.DIAMOND : -5 },
+			2 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -25 },
+			3 : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : -50 },
+		}
+	}
+}
+
 # Total time that has elapsed
 var TIME:							float			= 0.0
 

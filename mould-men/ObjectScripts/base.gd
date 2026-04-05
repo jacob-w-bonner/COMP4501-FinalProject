@@ -3,25 +3,25 @@ class_name Base extends StaticUnit
 #NOTE as 4 resourses seems a lot for a game of this size I am assuming that we are only going to have Coal, Gold, and Amethyst (and honestly we might drop Amethyst)
 var friendly_units = {
 	"mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0 },
+		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 2.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : Mole,
 	},
 	"miner_mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -1, Globals.RESOURCES.AMETHYST : 0 },
+		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 5.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MinerMole,
 	},
 	"doctor_mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -22, Globals.RESOURCES.GOLD : -3, Globals.RESOURCES.AMETHYST : 0 },
+		"cost" : { Globals.RESOURCES.COAL : -35, Globals.RESOURCES.GOLD : -15, Globals.RESOURCES.AMETHYST : -2, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 5.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : DoctorMole,
 	},
 	"music_mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -3, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : -1 },
+		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -25, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MusicMole,
@@ -120,15 +120,6 @@ func request_spawn(unit_str: String) -> float:
 			for res in friendly_units[unit_str]["cost"].keys():
 				if friendly_units[unit_str]["cost"][res] < 0:
 					var new_val: int = Globals.update_resource(res, friendly_units[unit_str]["cost"][res])
-					#if(res == Globals.RESOURCES.COAL):
-						#resources_container.get_node("CoalLabel").text = str(new_val)
-					#elif(res == Globals.RESOURCES.GOLD):
-						#resources_container.get_node("GoldLabel").text = str(new_val)
-					#elif(res == Globals.RESOURCES.AMETHYST):
-						#resources_container.get_node("AmethystLabel").text = str(new_val)
-					#elif(res == Globals.RESOURCES.DIAMOND):
-						#resources_container.get_node("DiamondLabel").text = str(new_val)
-					
 			spawn_unit(unit_str)
 			friendly_units[unit_str]["cur_spawn_cooldown"] = friendly_units[unit_str]["spawn_cooldown"]
 			return friendly_units[unit_str]["cur_spawn_cooldown"]
@@ -141,4 +132,47 @@ func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 	0.0, #cannot imagine we would ever want to change this but feel free
 	rng.randf_range(radious.z * -1, radious.z))
 
-	pass # Replace with function body.
+
+func handle_level_up() -> void:
+	if _level == 2:
+		#recieve a 20% max health boost, heal 20%, 
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.20)
+		receive_healing(_max_health-old_health)
+	elif _level == 3:
+		#recieve a 35% max health boost, heal 35%
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.35)
+		receive_healing(_max_health-old_health)
+
+#Base triggers upgrades
+func trigger_upgrade(unit: Unit) -> int:
+	if unit is DynamicUnit:
+		#check if the level up is legal
+		var cur_level = Globals.dynamic_levels[typeof(unit)]['cur_level']+1
+		for res in Globals.dynamic_levels[typeof(unit)]['cost'][cur_level].keys():
+			if Globals.check_valid_resource_transaction(res, Globals.dynamic_levels[typeof(unit)]['cost'][cur_level][res]):
+				return -1
+		
+		#Registar the level up
+		for res in Globals.dynamic_levels[typeof(unit)]['cost'][cur_level].keys():
+			Globals.update_resource(res, Globals.dynamic_levels[typeof(unit)]['cost'][cur_level][res])
+		Globals.dynamic_levels[typeof(unit)]['cur_level'] = cur_level
+		
+		return cur_level
+	elif unit is StaticUnit:
+		#check if the level up is legal
+		var cur_level = Globals.static_levels[typeof(unit)]['cur_level']+1
+		for res in Globals.static_levels[typeof(unit)]['cost'][cur_level].keys():
+			if Globals.check_valid_resource_transaction(res, Globals.static_levels[typeof(unit)]['cost'][cur_level][res]):
+				return -1
+		
+		#Trigger the level up
+		for res in Globals.static_levels[typeof(unit)]['cost'][cur_level].keys():
+			Globals.update_resource(res, Globals.static_levels[typeof(unit)]['cost'][cur_level][res])
+		unit.level_up()
+		unit.handle_level_up()
+		#Registar the level up
+		Globals.static_levels[typeof(unit)]['cur_level'] = cur_level
+		return cur_level
+	return -401
