@@ -164,7 +164,7 @@ func _input(event: InputEvent) -> void:
 	super._input(event)
 
 	# Checking for right mouse click
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and self._is_hovered:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and self._is_hovered and !_is_enemy:
 
 		# Changing states based on toggle
 		if _state == Globals.STATES.CANNONING:
