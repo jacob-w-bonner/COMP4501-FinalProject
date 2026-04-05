@@ -11,7 +11,9 @@ enum STATES {
 	GROOVING,
 	HEALING,
 	MENDING,
-	RALLYING
+	RALLYING,
+	CANNONING,
+	MORTARING
 }
 
 # Enum for the types of resources

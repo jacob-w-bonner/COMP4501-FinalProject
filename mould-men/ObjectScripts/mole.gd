@@ -53,7 +53,10 @@ var _previous_state = -1
 func _ready() -> void:
 	# Instantiating parent first
 	super._ready()
-	
+
+	# Setting the scale
+	self.scale = Vector3(0.5, 0.5, 0.5)
+
 	_action_text = Label3D.new()
 	_action_text.text = ""
 	_action_text.visible = false
