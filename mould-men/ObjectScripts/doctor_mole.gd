@@ -214,3 +214,21 @@ func closest_opponent(unit: Unit) -> Unit:
 			return closest_unit
 
 	return super.closest_opponent(self)
+	
+#Gives the unit its upgrade boons, deducts resource cost
+func handle_level_up_effects() -> void:
+	var my_class = self.get_script().get_global_name()
+	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
+	
+	if cur_level == 2:
+		#A 15% buff to health, strange, healing radius, and healing strangth
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.15)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_healing_strength * 1.15)
+		_healing_strength = ceil(_healing_strength * 1.15)
+		_healing_radius = _healing_radius * 1.15
+	elif cur_level == 3:
+		#A 35% increase to healing radius, and healing strangth
+		_healing_strength = ceil(_healing_strength * 1.35)
+		_healing_radius = _healing_radius * 1.35

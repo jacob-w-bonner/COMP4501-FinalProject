@@ -2,38 +2,38 @@ class_name Base extends StaticUnit
 
 #NOTE as 4 resourses seems a lot for a game of this size I am assuming that we are only going to have Coal, Gold, and Amethyst (and honestly we might drop Amethyst)
 var friendly_units = {
-	"mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0 },
+	"Mole" : {
+		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 2.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : Mole,
 	},
-	"miner_mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -1, Globals.RESOURCES.AMETHYST : 0 },
+	"MinerMole" : {
+		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 5.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MinerMole,
 	},
-	"doctor_mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -22, Globals.RESOURCES.GOLD : -3, Globals.RESOURCES.AMETHYST : 0 },
+	"DoctorMole" : {
+		"cost" : { Globals.RESOURCES.COAL : -35, Globals.RESOURCES.GOLD : -15, Globals.RESOURCES.AMETHYST : -2, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 5.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : DoctorMole,
 	},
-	"music_mole" : {
-		"cost" : { Globals.RESOURCES.COAL : -3, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : -1 },
+	"MusicMole" : {
+		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -25, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MusicMole,
 	}
 }
 var enemy_units = {
-	"prospector" : {
+	"Prospector" : {
 		"spawn_cooldown" : 9.0,
 		"cur_spawn_cooldown" : 20.0, 
 		"unit_type" : Prospector,
 	},
-	"foreman" : {
+	"Foreman" : {
 		"spawn_cooldown" : 22.0,
 		"cur_spawn_cooldown" : 60.0,
 		"unit_type" : Foreman,
@@ -46,9 +46,12 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not is_enemy():
+		print(trigger_upgrade(self))
+		print(trigger_upgrade(self))
+	
 	# Instantiating parent first
 	super._ready()
-	
 	# Set avoidence radious for units
 	# Setting the mesh
 	if is_enemy():
@@ -119,15 +122,6 @@ func request_spawn(unit_str: String) -> float:
 			for res in friendly_units[unit_str]["cost"].keys():
 				if friendly_units[unit_str]["cost"][res] < 0:
 					var new_val: int = Globals.update_resource(res, friendly_units[unit_str]["cost"][res])
-					#if(res == Globals.RESOURCES.COAL):
-						#resources_container.get_node("CoalLabel").text = str(new_val)
-					#elif(res == Globals.RESOURCES.GOLD):
-						#resources_container.get_node("GoldLabel").text = str(new_val)
-					#elif(res == Globals.RESOURCES.AMETHYST):
-						#resources_container.get_node("AmethystLabel").text = str(new_val)
-					#elif(res == Globals.RESOURCES.DIAMOND):
-						#resources_container.get_node("DiamondLabel").text = str(new_val)
-					
 			spawn_unit(unit_str)
 			friendly_units[unit_str]["cur_spawn_cooldown"] = friendly_units[unit_str]["spawn_cooldown"]
 			return friendly_units[unit_str]["cur_spawn_cooldown"]
@@ -139,3 +133,55 @@ func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 	return origin + Vector3(rng.randf_range(radious.x * -1, radious.x),
 	0.0, #cannot imagine we would ever want to change this but feel free
 	rng.randf_range(radious.z * -1, radious.z))
+
+func handle_level_up() -> void:
+	print('a')
+	if _level == 2:
+		print("b")
+		#recieve a 50% max health boost, heal 50%, recieve a -1 deduction in all unit costs
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.50)
+		receive_healing(_max_health-old_health)
+		for unit in friendly_units.keys():
+			for res in friendly_units[unit]['cost']:
+				if friendly_units[unit]['cost'][res] < 0:
+					friendly_units[unit]['cost'][res] = friendly_units[unit]['cost'][res]+1
+	elif _level == 3:
+		#Heal to full, reduce all spawn cooldowns by 50%,
+		receive_healing(_max_health)
+		for unit in friendly_units.keys():
+			friendly_units[unit]['spawn_cooldown'] = friendly_units[unit]['spawn_cooldown']*0.50
+
+#Base triggers upgrades
+func trigger_upgrade(unit) -> int:
+	var unit_class = unit.get_script().get_global_name()
+	
+	if unit is DynamicUnit:
+		#check if the level up is legal
+		var cur_level = Globals.dynamic_levels[unit_class]['cur_level']+1
+		for res in Globals.dynamic_levels[unit_class]['cost'][cur_level].keys():
+			if not Globals.check_valid_resource_transaction(res, Globals.dynamic_levels[unit_class]['cost'][cur_level][res]):
+				return -1
+		
+		#Registar the level up
+		for res in Globals.dynamic_levels[unit_class]['cost'][cur_level].keys():
+			Globals.update_resource(res, Globals.dynamic_levels[unit_class]['cost'][cur_level][res])
+		Globals.dynamic_levels[unit_class]['cur_level'] = cur_level
+		
+		return cur_level
+	elif unit is StaticUnit:
+		#check if the level up is legal
+		var cur_level = Globals.static_levels[unit_class]['cur_level']+1
+		for res in Globals.static_levels[unit_class]['cost'][cur_level].keys():
+			if not Globals.check_valid_resource_transaction(res, Globals.static_levels[unit_class]['cost'][cur_level][res]):
+				return -1
+		
+		#Trigger the level up
+		for res in Globals.static_levels[unit_class]['cost'][cur_level].keys():
+			Globals.update_resource(res, Globals.static_levels[unit_class]['cost'][cur_level][res])
+		unit.level_up()
+		unit.handle_level_up()
+		#Registar the level up
+		Globals.static_levels[unit_class]['cur_level'] = cur_level
+		return cur_level
+	return -401

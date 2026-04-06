@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b8eesw2fwfhtg"]
+
+[ext_resource type="PackedScene" uid="uid://d3vp4tp2h2k5w" path="res://Assets/Lamp/lantern.glb" id="1_btn7n"]
+[ext_resource type="Gradient" uid="uid://dtduqn1ahun08" path="res://Assets/Lamp/fire.tres" id="2_pr0u3"]
+[ext_resource type="Texture2D" uid="uid://bsdxqfanro72x" path="res://Assets/Lamp/flame_texture.png" id="3_5eniw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btn7n"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.11372549)
+roughness = 0.0
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2e5h4"]
+gradient = ExtResource("2_pr0u3")
+
+[sub_resource type="Curve" id="Curve_btn7n"]
+_data = [Vector2(0, 0.15730345), 0.0, 0.0, 0, 0, Vector2(0.1891892, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.19101131), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3awor"]
+curve = SubResource("Curve_btn7n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2e5h4"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 5.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 39.999985
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 3.9999976
+scale_min = 0.79999995
+scale_curve = SubResource("CurveTexture_3awor")
+color_ramp = SubResource("GradientTexture1D_2e5h4")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.049999975
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aqvp"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_5eniw")
+detail_blend_mode = 1
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_48wus"]
+material = SubResource("StandardMaterial3D_2aqvp")
+
+[node name="Lantern" unique_id=943472903 instance=ExtResource("1_btn7n")]
+
+[node name="Bottom_Material #47_0" parent="Sketchfab_model/def0bc61c8bd452b8103f3c4a2d797cb_fbx/RootNode/Bottom/Object_4" parent_id_path=PackedInt32Array(469385713) index="1" unique_id=429394530]
+surface_material_override/0 = SubResource("StandardMaterial3D_btn7n")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="1" unique_id=487347237]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.29158008, 0)
+amount = 200
+lifetime = 0.5
+randomness = 1.0
+local_coords = true
+draw_order = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_2e5h4")
+draw_pass_1 = SubResource("QuadMesh_48wus")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GPUParticles3D" index="0" unique_id=1162277746]
+transform = Transform3D(5, 0, 0, 0, 5, -1.4210856e-13, 0, 1.4210856e-13, 5, 0, 1.1817123, 1.4210855e-13)

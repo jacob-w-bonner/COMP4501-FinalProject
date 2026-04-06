@@ -63,3 +63,18 @@ func get_level() -> int:
 func level_up() -> int:
 	_level += 1
 	return _level
+
+#A generic level up that may be overidden by a unit (or combined)
+func handle_level_up() -> void:
+	if _level == 2:
+		#recieve a 20% max health boost, heal 20%, and then get a 15% attack boost
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.20)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_attack_strength * 1.15)
+	elif _level == 3:
+		#recieve a 30% max health boost, heal 30%, and then get a 20% attack boost
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.30)
+		receive_healing(_max_health-old_health)
+		_attack_strength = ceil(_attack_strength * 1.20)
