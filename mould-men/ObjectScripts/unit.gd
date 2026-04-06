@@ -187,28 +187,6 @@ func stop_hover() -> void:
 func is_hovered() -> bool:
 	return _is_hovered
 
-#func set_minimap_icon(obj, path: String, size: Vector3) -> void:
-	## Setting the minimap icon texture
-	#_minimap_icon_texture = load(path)
-	#
-	## Set minimap icon
-	#_minimap_icon = Sprite3D.new()
-	#if _minimap_icon_texture:
-		#_minimap_icon.texture = _minimap_icon_texture
-		#_physics_body.add_child(_minimap_icon)
-		#_minimap_icon.position = Vector3(0, 3.0, 0) # height above mole
-		#_minimap_icon.scale = size
-		#_minimap_icon.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		#_minimap_icon.set_layer_mask_value(1, false) # minimap objects (ground)
-		#_minimap_icon.set_layer_mask_value(2, false) # visible through player camera
-		#_minimap_icon.set_layer_mask_value(3, true) # minimap icons
-		#if obj is ResourceVein:
-			#return
-		#if _is_enemy:
-			#_minimap_icon.modulate = Color(1.0, 0.0, 0.0, 1.0)
-		#else:
-			#_minimap_icon.modulate = Color(0.0, 0.0, 1.0, 1.0)
-
 func set_minimap_icon(obj) -> void:
 	# Set correct texture
 	var path : String
