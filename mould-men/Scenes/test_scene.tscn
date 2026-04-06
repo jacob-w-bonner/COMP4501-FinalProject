@@ -17,17 +17,18 @@
 [ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="18_0g4ye"]
 [ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="18_i0miu"]
 [ext_resource type="Script" uid="uid://b0tx07quuwgx7" path="res://ObjectScripts/prospector.gd" id="19_6bfml"]
+[ext_resource type="Script" uid="uid://bao444cjqck6q" path="res://ObjectScripts/cannon.gd" id="20_0g4ye"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dhrl2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_r5l72"]
-sky_material = SubResource("ProceduralSkyMaterial_3dogw")
+[sub_resource type="Sky" id="Sky_i0miu"]
+sky_material = SubResource("ProceduralSkyMaterial_dhrl2")
 
-[sub_resource type="Environment" id="Environment_50ct6"]
+[sub_resource type="Environment" id="Environment_6bfml"]
 background_mode = 2
-sky = SubResource("Sky_r5l72")
+sky = SubResource("Sky_i0miu")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -39,13 +40,13 @@ agent_height = 0.25
 [node name="TestScene" type="Node3D" unique_id=637909514]
 script = ExtResource("1_50ct6")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1661225263]
+environment = SubResource("Environment_6bfml")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=998747993]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 sky_mode = 2
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=858371792]
-environment = SubResource("Environment_50ct6")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1438635578]
 navigation_mesh = SubResource("NavigationMesh_3dogw")
@@ -67,7 +68,7 @@ far = 200.0
 script = ExtResource("3_d3awe")
 
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.164, 1.7, 8.049)
 script = ExtResource("2_r5l72")
 _health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
@@ -79,12 +80,12 @@ _health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Resource" type="Node3D" parent="." unique_id=122697034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.416, 1.7, 2.619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27, 100, -3.59)
 script = ExtResource("7_rdbpf")
 metadata/_custom_type_script = "uid://xudvisx4xxyv"
 
 [node name="Resource2" type="Node3D" parent="." unique_id=857229491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2732453, 1.7, -3.5961723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58, 100, 2.62)
 script = ExtResource("5_ak5v8")
 metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
 
@@ -101,7 +102,6 @@ metadata/_custom_type_script = "uid://bltrhy7jjrbn1"
 [node name="DoctorMole" type="Node3D" parent="." unique_id=1979961695]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.3557024, 1.7, 2.558735)
 script = ExtResource("8_oho3u")
-_speed = 5
 _health = 50
 metadata/_custom_type_script = "uid://edh800y1jebg"
 
@@ -378,7 +378,12 @@ _is_enemy = true
 metadata/_custom_type_script = "uid://b0tx07quuwgx7"
 
 [node name="Enemy2" type="Node3D" parent="." unique_id=671918099]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 1.6, 7.189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.307, 1.6, 7.189)
 script = ExtResource("18_i0miu")
 _is_enemy = true
 metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
+
+[node name="Cannon" type="Node3D" parent="." unique_id=1820889614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.439568, 2.6025872, 0.8603525)
+script = ExtResource("20_0g4ye")
+metadata/_custom_type_script = "uid://bao444cjqck6q"

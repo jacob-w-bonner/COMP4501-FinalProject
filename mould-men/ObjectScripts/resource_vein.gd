@@ -32,7 +32,6 @@ func _ready() -> void:
 	# Resource veins are for allies
 	if self.name == "Resource":
 		_is_enemy							= true
-	_health = 50
 
 	# Setting the rock base
 	_mesh.mesh							= (load("res://Assets/ResourceAssets/RockBase/BaseRock.tres") as Mesh).duplicate()
