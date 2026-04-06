@@ -10,6 +10,7 @@ extends Node3D
 @onready var miner_mole  = $MinerMole
 @onready var music_mole  = $MusicMole
 @onready var doctor_mole  = $DoctorMole
+@onready var cannon  = $Cannon
 
 @onready var camera = $Camera3D
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 	Globals.ALLY_ARR.push_back(miner_mole)
 	Globals.ALLY_ARR.push_back(music_mole)
 	Globals.ALLY_ARR.push_back(doctor_mole)
+	Globals.ALLY_ARR.push_back(cannon)
 
 	# Adding the enemies to the enemy array
 	Globals.ENEMY_ARR.push_back(enemy)

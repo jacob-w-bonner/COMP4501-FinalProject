@@ -106,21 +106,27 @@ func explode() -> void:
 			_raycast.force_raycast_update()
 			var collider					= _raycast.get_collider()
 
+			# If there is an enemy static unit blocking the way then don't damage
+			var static_blocking				= true
+			if collider != null:
+				if (collider.get_parent().get_parent() is StaticUnit) and collider.get_parent().get_parent().is_enemy():
+					static_blocking = false
+
 			# Indicator on whether line of sight is blocked
-			var los							= (collider != null and collider is not GridMap and collider.get_parent() is not StaticUnit)
+			var los							= (collider != null and collider is not GridMap and static_blocking)
 
 			# If there is sufficient line of sight deal damage to the ally
 			if los:
 				ally.take_damage(_EXPLOSION_DAMAGE)
 
 	# Indicating the thrower can throw another dynamite
-	if _thrower:
+	if is_instance_valid(_thrower) and !_thrower.is_queued_for_deletion():
 		_thrower.throw_another()
 
 	# Adding an explosion to the scene tree
-	var exp				= EXPLOSION.instantiate()
-	get_tree().current_scene.add_child(exp)
-	exp.global_position = self.global_position
+	var expl			 = EXPLOSION.instantiate()
+	get_tree().current_scene.add_child(expl)
+	expl.global_position = self.global_position
 
 	# Removing the dynamite
 	self.queue_free()

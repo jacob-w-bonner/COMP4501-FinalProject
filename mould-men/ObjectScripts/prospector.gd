@@ -333,9 +333,9 @@ func closest_opponent(unit: Unit) -> Unit:
 	if ally_closest_distance <= enemy_closest_distance:
 		closest_unit = ally_closest_unit
 
-	# If the closest unit is a full health enemy building return the opponent
+	# If the closest unit is a full health enemy building or the opponent is in attack range return the opponent
 	elif enemy_closest_unit != null:
-		if enemy_closest_unit.is_max_health():
+		if enemy_closest_unit.is_max_health() or ally_closest_unit.get_global_pos().distance_to(self.get_global_pos()) <= 10.0:
 			closest_unit = ally_closest_unit
 
 		# Otherwise return the building
