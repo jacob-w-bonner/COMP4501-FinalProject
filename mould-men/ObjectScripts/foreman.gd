@@ -55,7 +55,7 @@ func _ready() -> void:
 	_buff_height						= 7.0
 
 	# Setting health higher
-	_max_health							= 150
+	_max_health							= 220
 	_health								= _max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

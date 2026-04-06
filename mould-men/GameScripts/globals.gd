@@ -75,8 +75,6 @@ var dynamic_levels = {
 	}
 }
 
-#TODO Replace 'Cannon' with Cannon once has Cannon from jacobs branch
-# I assume that the Cannons first level here is effectivly 'buying' it
 var static_levels = {
 	'Base': {
 		'cur_level': 1,
@@ -90,11 +88,16 @@ var static_levels = {
 		}
 	},
 	'Cannon': {
-		'cur_level': 0,
+		'cur_level': 1,
 		'cost': {
-			1: {Globals.RESOURCES.COAL: - 25, Globals.RESOURCES.GOLD: - 5, Globals.RESOURCES.AMETHYST: - 5, Globals.RESOURCES.DIAMOND: - 5},
-			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: - 25, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 25},
-			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 25, Globals.RESOURCES.DIAMOND: - 50},
+			2: {Globals.RESOURCES.COAL: - 25, Globals.RESOURCES.GOLD: - 5, Globals.RESOURCES.AMETHYST: - 5, Globals.RESOURCES.DIAMOND: - 5},
+			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: - 25, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 25},
+			4: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 25, Globals.RESOURCES.DIAMOND: - 50},
+		},
+		'description ': {
+			2: 'Unlock a powerful stationary cannon to protect your base',
+			3: 'Medium increase to attack speed, heal to full',
+			4: 'large increase to attack speed, medium damage increase, heal to full',
 		}
 	}
 }
@@ -103,10 +106,10 @@ var static_levels = {
 var TIME: float = 0.0
 
 # Tracking the amount of resources the player has
-var COAL_NUM: int = 999 #350
-var GOLD_NUM: int = 999 #150
-var DIAMOND_NUM: int = 999 #40
-var AMETHYST_NUM: int = 999 #25
+var COAL_NUM: int = 999 # 100
+var GOLD_NUM: int = 999 # 15
+var DIAMOND_NUM: int = 999 # 0
+var AMETHYST_NUM: int = 999 # 0
 
 # Array that contains each of the enemies
 var ENEMY_ARR: Array = []

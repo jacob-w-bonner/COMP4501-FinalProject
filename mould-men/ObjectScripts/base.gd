@@ -39,28 +39,33 @@ var enemy_units = {
 		"unit_type" : Foreman,
 	}
 }
-@onready var resources_container: GridContainer = $"../CanvasLayer/Resources"
 
-@export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT,0.0)
+@export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
+@export var cannon_pos: Vector3 = Vector3(2.0, Globals.FLOOR_HEIGHT, -5.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if not is_enemy():
-		print(trigger_upgrade(self))
-		print(trigger_upgrade(self))
+	
+	#If you just want to test an upgrade quickly
+	#if not is_enemy():
+		#var temp = Cannon.new()
+		#print(trigger_upgrade(temp))
+		#temp.queue_free()
 	
 	# Instantiating parent first
 	super._ready()
 	# Set avoidence radious for units
 	# Setting the mesh
 	if is_enemy():
-		_nav_obs.radius = 30
-		_nav_obs.global_position = self.global_position + Vector3(2,Globals.FLOOR_HEIGHT,1)
+		_nav_obs.scale = Vector3(1,1,1) / self.scale
+		_nav_obs.radius = 2
+
+		_nav_obs.global_position = self.global_position + Vector3(12,Globals.FLOOR_HEIGHT,20) * Vector3(self.scale.x, 1, self.scale.z)
 		_mesh.mesh							= (load("res://Assets/StaticAssets/apartment.tres") as Mesh).duplicate()
 	else:
-		_nav_obs.radius = 0.9
+		_nav_obs.radius = 0.65
 		_nav_obs.global_position = self.global_position
 		_mesh.mesh							= (load("res://Assets/StaticAssets/hole.tres") as Mesh).duplicate()
 	
@@ -103,12 +108,19 @@ func spawn_unit(unit_str: String) -> void:
 	if not is_enemy():
 		spawned_unit = friendly_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(false)
-		Globals.ENEMY_ARR.push_back(spawned_unit)
-		
+		Globals.ALLY_ARR.push_back(spawned_unit)
+		if spawned_unit is MinerMole:
+			spawned_unit._state = Globals.STATES.MINE
+		else:
+			spawned_unit._state = Globals.STATES.SENTRY
 	else:
 		spawned_unit = enemy_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(true)
-		Globals.ALLY_ARR.push_back(spawned_unit)
+		Globals.ENEMY_ARR.push_back(spawned_unit)
+		if randf_range(0.0,1.0) >= 0.80:
+			spawned_unit._state = Globals.STATES.MOVING
+		else:
+			spawned_unit._state = Globals.STATES.SENTRY
 	spawned_unit.set_name(unit_str)
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
 	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
@@ -137,9 +149,7 @@ func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 
 
 func handle_level_up() -> void:
-	print('a')
 	if _level == 2:
-		print("b")
 		#recieve a 50% max health boost, heal 50%, recieve a -1 deduction in all unit costs
 		var old_health = _max_health
 		_max_health = ceil(_max_health * 1.50)
@@ -181,6 +191,14 @@ func trigger_upgrade(unit) -> int:
 		#Trigger the level up
 		for res in Globals.static_levels[unit_class]['cost'][cur_level].keys():
 			Globals.update_resource(res, Globals.static_levels[unit_class]['cost'][cur_level][res])
+		if unit is Cannon and unit._level == 1: #special behvaoir
+			var cannon = Cannon.new() 
+			Globals.ALLY_ARR.push_back(cannon)
+			cannon.set_name(unit_class)
+			get_parent().add_child.call_deferred(cannon) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
+			#cannon.set_enemy(false) TODO Figure out why this crashes?
+			cannon.global_position = self.global_position + cannon_pos
+			unit = cannon
 		unit.level_up()
 		unit.handle_level_up()
 		#Registar the level up

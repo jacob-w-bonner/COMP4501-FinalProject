@@ -71,6 +71,10 @@ func _ready() -> void:
 	_buff_mesh.position					= Vector3(0.0, 8.0, 0.0)
 	_buff_mesh.visible					= false
 	_buff_height						= 8.0
+	
+	# Setting health higher
+	_max_health							= 120
+	_health								= _max_health
 
 	# Grabbing the material from each surface for use in the shader
 	for i in range(_mesh.mesh.get_surface_count()):
