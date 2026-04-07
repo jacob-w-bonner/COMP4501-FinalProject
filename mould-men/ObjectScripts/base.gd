@@ -1,6 +1,5 @@
 class_name Base extends StaticUnit
 
-#NOTE as 4 resourses seems a lot for a game of this size I am assuming that we are only going to have Coal, Gold, and Amethyst (and honestly we might drop Amethyst)
 var friendly_units = {
 	"Mole" : {
 		"cost" : { Globals.RESOURCES.COAL : -10, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
@@ -29,12 +28,13 @@ var friendly_units = {
 }
 var enemy_units = {
 	"Prospector" : {
-		"spawn_cooldown" : 9.0,
+		"spawn_cooldown" : 20.0,
 		"cur_spawn_cooldown" : 20.0, 
 		"unit_type" : Prospector,
+		
 	},
 	"Foreman" : {
-		"spawn_cooldown" : 22.0,
+		"spawn_cooldown" : 45.0,
 		"cur_spawn_cooldown" : 60.0,
 		"unit_type" : Foreman,
 	}
@@ -44,6 +44,9 @@ var enemy_units = {
 @export var cannon_pos: Vector3 = Vector3(2.0, Globals.FLOOR_HEIGHT, -5.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
+
+var seconds_elapsed: float = 0
+var enemy_diff:		int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,8 +76,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	seconds_elapsed+=delta
 	if is_enemy():
 		enemy_spawn_logic(delta)
+		scale_enemy_diff(seconds_elapsed)
 	else:
 		for unit in friendly_units.keys():
 			if friendly_units[unit]['cur_spawn_cooldown'] > 0.0:
@@ -98,12 +103,28 @@ func enemy_spawn_logic(delta: float)->void:
 		if unit["cur_spawn_cooldown"] <= 0.0:
 			spawn_unit(key)
 			enemy_units[key]["cur_spawn_cooldown"] = unit["spawn_cooldown"]
-			#TODO put smth subtracting resources here if we wanna go that route
+			#NOTE put smth subtracting resources here if we wanna go that route
 		
 
+func scale_enemy_diff(time_passed: int):
+	if time_passed > 180 and enemy_diff == 1: # 3 minutes
+		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
+		enemy_diff=2
+	elif time_passed > 360 and enemy_diff == 2: # 6 minutes
+		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-15.0
+		enemy_diff=3
+	elif time_passed > 600 and enemy_diff == 3: # 10 minutes
+		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
+		enemy_diff=4
+	elif time_passed > 1500 and enemy_diff == 4: # 25 minutes
+		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-15.0
+		enemy_diff=5
+	elif time_passed > 2400 and enemy_diff == 5: #40 minutes Only to pace out players that take an INSANE amount of time
+		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
+		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-5.0
+		enemy_diff=6
 
 func spawn_unit(unit_str: String) -> void:
-	#TODO use a collision box or smth so that you can tell when you are about to spawn a mole on a mole, and avoid that, could also give them initial move orders
 	var spawned_unit: DynamicUnit = null
 	if not is_enemy():
 		spawned_unit = friendly_units[unit_str]["unit_type"].new()
