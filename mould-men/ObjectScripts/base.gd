@@ -52,6 +52,14 @@ var health_bar_sprite:	Sprite3D
 var subview_port:		SubViewport
 var health_bar:			ProgressBar = preload("res://Scenes/health_bar.tscn").instantiate()
 
+# Text over mole variables 
+var _action_text: Label3D
+var _action_text_timer: float = 0.0
+var _previous_state = -1
+
+# Shader for the mole
+@onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -75,7 +83,23 @@ func _ready():
 		_nav_obs.radius = 0.65
 		_nav_obs.global_position = self.global_position
 		_mesh.mesh							= (load("res://Assets/StaticAssets/hole.tres") as Mesh).duplicate()
-	
+
+	# Instantiating the collision shape
+	_collision_shape					= CollisionShape3D.new()
+	_physics_body.add_child(_collision_shape)
+
+	# Finding the size of the collision box
+	var bounding_box					= _mesh.mesh.get_aabb()
+	var box_size						= bounding_box.size
+
+	# Creating a collision box for the object
+	var box_shape						= BoxShape3D.new()
+	box_shape.size						= box_size
+
+	# Setting the collision box
+	_collision_shape.shape				= box_shape
+	_collision_shape.position 			= bounding_box.get_center()
+
 	#health bar stuff
 	subview_port = SubViewport.new()
 	health_bar_sprite = Sprite3D.new()
@@ -100,13 +124,48 @@ func _ready():
 	else:
 		health_bar.add_theme_stylebox_override("fill", load("res://Assets/ResourceAssets/mole_health_bar_fill.tres"))
 		health_bar_sprite.position = Vector3(0,2,0)
-		
-	
-	
 
+	_action_text = Label3D.new()
+	_action_text.text = ""
+	_action_text.visible = false
+	_action_text.font_size = 50
+	_action_text.position = Vector3(0, 2.5, 0) # height above mole
+	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_action_text.outline_size = 15
+	
+	# Change visibility layer of action label so it's NOT visible on layer 1 and IS visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	_action_text.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	_action_text.set_layer_mask_value(2, true)
+	
+	_physics_body.add_child(_action_text)
+
+	# Grabbing the material from each surface for use in the shader
+	for i in range(_mesh.mesh.get_surface_count()):
+
+		# Getting the standard material from the surface
+		var standard_mat 	= _mesh.mesh.surface_get_material(i)
+
+		# Only transform if what was retrieved is a standard material
+		if standard_mat is StandardMaterial3D:
+
+			# Initializing shader material for the mesh
+			var shader_mat		= ShaderMaterial.new()
+			shader_mat.shader 	= _shader
+
+			# Setting the shader surface colour to the old material
+			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
+			_mesh.mesh.surface_set_material(i, shader_mat)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if _action_text_timer > 0:
+		_action_text_timer -= delta
+	
+	if _action_text_timer <= 0:
+		_action_text.visible = false
 	seconds_elapsed+=delta
 	if is_enemy():
 		enemy_spawn_logic(delta)
@@ -116,15 +175,41 @@ func _process(delta):
 			if friendly_units[unit]['cur_spawn_cooldown'] > 0.0:
 				friendly_units[unit]['cur_spawn_cooldown'] -= delta
 
+	# Setting the shader parameters that need to be set by frame
+	for i in range(_mesh.mesh.get_surface_count()):
+
+		# Sending the hover value
+		_mesh.mesh.surface_get_material(i).set_shader_parameter("is_hovered", _is_hovered)
+
+		# If the object is being selected indicate so
+		if Globals.SELECTED_UNIT == self:
+			_mesh.mesh.surface_get_material(i).set_shader_parameter("is_selected", true)
+		else:
+			_mesh.mesh.surface_get_material(i).set_shader_parameter("is_selected", false)
+
+		# Send health percentage to affect colouring
+		_mesh.mesh.surface_get_material(i).set_shader_parameter("health_percent", 1.0 - (float(_health) / float(_max_health)))
+
 func _input(event: InputEvent) -> void:
+
 	# Checking all static click events first
 	super._input(event)
 
-	# Checking for double click left mouse click
-	if event is InputEventMouseButton and event.double_click and event.button_index == MOUSE_BUTTON_LEFT:
-		if self._is_hovered and !self.is_enemy() and _state: 
-			#TODO, we need to make static units work with mouse_entered and is_hovered and make the spawning ui appear and disappear on duble click or smth
-			print(self.name)
+	# Checking for left mouse click
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+
+		# If the unit is being hovered and there is nothing else selected then select the unit
+		if self._is_hovered and Globals.SELECTED_UNIT == null and !self.is_enemy() and _state != Globals.STATES.BURROW and !Globals.SELECT_COOLDOWN:
+			Globals.SELECTED_UNIT = self
+			_is_selected		  = true
+			show_action_text("Selected", Color(1.0, 0.489, 0.112, 1.0))
+			print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
+			return
+
+		# Deselect a unit
+		elif self._is_hovered and Globals.SELECTED_UNIT == self and !self.is_enemy() and _state != Globals.STATES.BURROW and !Globals.SELECT_COOLDOWN:
+			Globals.SELECTED_UNIT = null
+			_is_selected		  = false
 			return
 
 func take_damage(damage_val: int) -> void:
@@ -278,3 +363,9 @@ func trigger_upgrade(unit) -> int:
 		Globals.static_levels[unit_class]['cur_level'] = cur_level
 		return cur_level
 	return -401
+
+func show_action_text(text: String, color: Color):
+	_action_text.text = text
+	_action_text.modulate = color
+	_action_text.visible = true
+	_action_text_timer = 1.5
