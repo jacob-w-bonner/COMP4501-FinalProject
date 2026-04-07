@@ -1,7 +1,8 @@
 class_name Foreman extends Prospector
 
 # The foreman has a different attack radius than its reach radius
-var _attack_radius: float 	= 8.0
+const _RADIUS_MAX:  float	= 20.0
+var _attack_radius: float 	= _RADIUS_MAX
 
 # Ray cast objects
 var _raycast1: RayCast3D 	= null
@@ -63,6 +64,10 @@ func _process(delta: float) -> void:
 
 	# Additional things to do as foreman if moving
 	if _state == Globals.STATES.MOVING:
+
+		# Checking for the closest enemy to target if no target exists
+		if _closest_op == null:
+			_closest_op				    = closest_opponent(self)
 
 		# If the current target is an ally or enemy then reset navigation range
 		if _closest_op != null:
@@ -146,6 +151,27 @@ func attack(target: Unit, delta: float) -> void:
 
 	# If the current target is out of range then move towards it 
 	if self.get_global_pos().distance_to(target.get_global_pos()) > _attack_radius:
+		_damage_dealt					= false
+		_attack_time					= 0.0
+		_mesh.global_transform.basis 	= _physics_body.global_transform.basis
+		_mesh.position					= Vector3.ZERO
+		_state							= Globals.STATES.MOVING
+		return
+
+	# Making sure enemy is within line of sight still
+	_raycast1.target_position = _raycast1.to_local(self._closest_op.get_global_pos())
+	_raycast1.force_raycast_update()
+	_raycast2.target_position = _raycast2.to_local(self._closest_op.get_global_pos())
+	_raycast2.force_raycast_update()
+	var collider1			  = _raycast1.get_collider()
+	var collider2			  = _raycast2.get_collider()
+
+	# Indicator on whether line of sight is blocked
+	var los1				  = (collider1 == null or (collider1 is not GridMap and !(collider1.get_parent() is StaticUnit and collider1.get_parent().is_enemy())))
+	var los2				  = (collider2 == null or (collider2 is not GridMap and !(collider2.get_parent() is StaticUnit and collider2.get_parent().is_enemy())))
+
+	# If the target is no longer in line of sight start moving
+	if !los1 or !los2:
 		_damage_dealt					= false
 		_attack_time					= 0.0
 		_mesh.global_transform.basis 	= _physics_body.global_transform.basis
@@ -241,7 +267,7 @@ func nav_finish() -> void:
 		self._physics_body.rotation.y	= atan2(direction.x, direction.z)
 
 		# Changing states
-		_attack_radius					= 8.0
+		_attack_radius					= _RADIUS_MAX
 		_state							= Globals.STATES.ATTACKING
 
 	# Move towards the closest target
@@ -255,7 +281,7 @@ func nav_finish() -> void:
 		if prev == _closest_op and !_closest_op.is_enemy():
 			_attack_radius = max(_reach_radius, _attack_radius - 1.0)
 		else:
-			_attack_radius = 8.0
+			_attack_radius = _RADIUS_MAX
 
 		# Changing states
 		_state		= Globals.STATES.MOVING
