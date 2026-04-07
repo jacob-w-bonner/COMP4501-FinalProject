@@ -46,3 +46,18 @@ func _process(_delta: float) -> void:
 
 	# Incrementing the time passed
 	Globals.TIME			+= _delta
+	
+
+#Capture input for testing funtionality
+func _input(event: InputEvent) -> void:
+	return #NOTE remove this if you want to test some arbitrary funtionality
+	if event is InputEventKey and event.pressed:
+		if event.keycode  == KEY_Z:
+			print("taking damage")
+			mole_base.take_damage(400)
+		elif event.keycode  == KEY_X:
+			print("taking healing")
+			mole_base.receive_healing(400)
+		elif event.keycode  == KEY_C:
+			print("Upgrading")
+			mole_base.trigger_upgrade(mole_base)

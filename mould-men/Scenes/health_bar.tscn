@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://5y1rpvmowbsb"]
+
+[ext_resource type="StyleBox" uid="uid://72hs8s06a5d" path="res://Assets/ResourceAssets/health_bar_background.tres" id="1_m34ix"]
+[ext_resource type="StyleBox" uid="uid://bmcuopf2d72oy" path="res://Assets/ResourceAssets/mole_health_bar_fill.tres" id="2_qay8w"]
+
+[node name="HealthBar" type="ProgressBar" unique_id=1422476480]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -10.0
+offset_right = 125.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = ExtResource("1_m34ix")
+theme_override_styles/fill = ExtResource("2_qay8w")
+step = 1.0
+value = 50.0
+show_percentage = false

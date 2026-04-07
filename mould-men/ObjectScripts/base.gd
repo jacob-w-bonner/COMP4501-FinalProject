@@ -48,6 +48,10 @@ var rng = RandomNumberGenerator.new()
 var seconds_elapsed: float = 0
 var enemy_diff:		int = 1
 
+var health_bar_sprite:	Sprite3D
+var subview_port:		SubViewport
+var health_bar:			ProgressBar = preload("res://Scenes/health_bar.tscn").instantiate()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -72,6 +76,33 @@ func _ready():
 		_nav_obs.global_position = self.global_position
 		_mesh.mesh							= (load("res://Assets/StaticAssets/hole.tres") as Mesh).duplicate()
 	
+	#health bar stuff
+	subview_port = SubViewport.new()
+	health_bar_sprite = Sprite3D.new()
+
+	subview_port.add_child(health_bar)
+	subview_port.transparent_bg = true
+	subview_port.disable_3d = true
+	health_bar_sprite.billboard = 1
+	health_bar_sprite.texture = subview_port.get_texture()
+	
+	health_bar.fill_mode = ProgressBar.FillMode.FILL_BEGIN_TO_END
+	health_bar.show_percentage = false
+	health_bar.max_value = _max_health
+	health_bar.value = _health
+	self.add_child(subview_port)
+	self.add_child(health_bar_sprite)
+	
+	if is_enemy():
+		health_bar.add_theme_stylebox_override("fill", load("res://Assets/ResourceAssets/oliver_health_bar_fill.tres"))
+		health_bar_sprite.scale = Vector3(2, 2, 2) / self.scale
+		health_bar_sprite.position = Vector3(12,90,0)
+	else:
+		health_bar.add_theme_stylebox_override("fill", load("res://Assets/ResourceAssets/mole_health_bar_fill.tres"))
+		health_bar_sprite.position = Vector3(0,2,0)
+		
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -95,6 +126,21 @@ func _input(event: InputEvent) -> void:
 			#TODO, we need to make static units work with mouse_entered and is_hovered and make the spawning ui appear and disappear on duble click or smth
 			print(self.name)
 			return
+
+func take_damage(damage_val: int) -> void:
+	super.take_damage(damage_val)
+	health_bar.value = _health
+	
+#TODO put the end of game stuff here, transition to a you lost screen I guess?
+func destroy_self() -> void:
+	if is_enemy():
+		pass #Win
+	else:
+		pass #Loss
+
+func receive_healing(healing_val: int) -> void:
+	super.receive_healing(healing_val)
+	health_bar.value = _health
 
 func enemy_spawn_logic(delta: float)->void:
 	for key in enemy_units.keys():
@@ -184,6 +230,8 @@ func handle_level_up() -> void:
 		receive_healing(_max_health)
 		for unit in friendly_units.keys():
 			friendly_units[unit]['spawn_cooldown'] = friendly_units[unit]['spawn_cooldown']*0.50
+	health_bar.max_value = _max_health
+	health_bar.value = _health
 
 #Base triggers upgrades
 func trigger_upgrade(unit) -> int:
@@ -192,6 +240,8 @@ func trigger_upgrade(unit) -> int:
 	if unit is DynamicUnit:
 		#check if the level up is legal
 		var cur_level = Globals.dynamic_levels[unit_class]['cur_level']+1
+		if cur_level not in Globals.dynamic_levels[unit_class]['cost'].keys():
+			return -201
 		for res in Globals.dynamic_levels[unit_class]['cost'][cur_level].keys():
 			if not Globals.check_valid_resource_transaction(res, Globals.dynamic_levels[unit_class]['cost'][cur_level][res]):
 				return -1
@@ -205,6 +255,8 @@ func trigger_upgrade(unit) -> int:
 	elif unit is StaticUnit:
 		#check if the level up is legal
 		var cur_level = Globals.static_levels[unit_class]['cur_level']+1
+		if cur_level not in Globals.static_levels[unit_class]['cost'].keys():
+			return -201
 		for res in Globals.static_levels[unit_class]['cost'][cur_level].keys():
 			if not Globals.check_valid_resource_transaction(res, Globals.static_levels[unit_class]['cost'][cur_level][res]):
 				return -1
