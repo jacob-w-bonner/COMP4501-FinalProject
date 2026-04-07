@@ -68,7 +68,7 @@ far = 200.0
 script = ExtResource("3_d3awe")
 
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.164, 1.7, 8.049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.671699, 1.7, 8.049)
 script = ExtResource("2_r5l72")
 _health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
@@ -95,12 +95,12 @@ script = ExtResource("6_x033f")
 metadata/_custom_type_script = "uid://dswgpx4ppis5i"
 
 [node name="MusicMole" type="Node3D" parent="." unique_id=1302204269]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.8171678, 1.7, 1.307)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.817, 1.7, 1.307)
 script = ExtResource("7_oho3u")
 metadata/_custom_type_script = "uid://bltrhy7jjrbn1"
 
 [node name="DoctorMole" type="Node3D" parent="." unique_id=1979961695]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.3557024, 1.7, 2.558735)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.655, 1.7, -2.382)
 script = ExtResource("8_oho3u")
 _health = 50
 metadata/_custom_type_script = "uid://edh800y1jebg"
@@ -382,12 +382,13 @@ _is_enemy = true
 metadata/_custom_type_script = "uid://b0tx07quuwgx7"
 
 [node name="Enemy2" type="Node3D" parent="." unique_id=671918099]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.307, 1.6, 7.189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.693, 1.6, 2.1890001)
 script = ExtResource("18_i0miu")
 _is_enemy = true
+_state = 1
 metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
 
 [node name="Cannon" type="Node3D" parent="." unique_id=1820889614]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.439568, 2.6025872, 0.8603525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44, 1.6, 0.86)
 script = ExtResource("20_0g4ye")
 metadata/_custom_type_script = "uid://bao444cjqck6q"

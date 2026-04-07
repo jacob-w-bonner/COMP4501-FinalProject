@@ -41,7 +41,7 @@ func _ready() -> void:
 	# Instantiating parent first
 	super._ready()
 
-		# Setting health higher
+	# Setting health higher
 	_max_health							= 500
 	_health								= _max_health
 	
