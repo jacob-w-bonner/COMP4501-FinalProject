@@ -44,8 +44,6 @@ var enemy_units = {
 @export var cannon_pos: Vector3 = Vector3(2.0, Globals.FLOOR_HEIGHT, -5.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
-
-var seconds_elapsed: float = 0
 var enemy_diff:		int = 1
 
 var health_bar_sprite:	Sprite3D
@@ -166,10 +164,10 @@ func _process(delta):
 	
 	if _action_text_timer <= 0:
 		_action_text.visible = false
-	seconds_elapsed+=delta
+
 	if is_enemy():
 		enemy_spawn_logic(delta)
-		scale_enemy_diff(seconds_elapsed)
+		scale_enemy_diff(Globals.TIME)
 	else:
 		for unit in friendly_units.keys():
 			if friendly_units[unit]['cur_spawn_cooldown'] > 0.0:
