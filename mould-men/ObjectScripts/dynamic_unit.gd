@@ -93,6 +93,22 @@ func _ready() -> void:
 		handle_level_up_effects()
 	# Set minimap icon
 	set_minimap_icon(self)
+	
+	# Create OmniLight3D to slightly light up unit
+	var light = OmniLight3D.new()
+	light.position = Vector3(0.0, 4.0, 0.0)
+	light.omni_range = 4
+	light.light_energy = 0.2
+	light.light_specular = 0.0
+	light.shadow_enabled = false
+	_mesh.add_child(light)
+	
+	# Change visibility layer of all lights so they're NOT visible on layer 1 and ARE visible on layer 2
+	# Layer 1 will contain everything visible in the minimap
+	# (this is because the gridmap is on layer 1 by default and i don't think its layer can be changed)
+	light.set_layer_mask_value(1, false)
+	# Layer 2 will contain everything visible in the "player" camera
+	light.set_layer_mask_value(2, true)
 
 # Called to handle input events
 func _input(event: InputEvent) -> void:
@@ -213,7 +229,7 @@ func buff_animation(delta: float) -> void:
 	_buff_mesh.rotate_y(4.0 * delta)
 
 # Animation for the heal indicator
-func heal_animation(delta: float) -> void:
+func heal_animation(_delta: float) -> void:
 	_heal_mesh.position = Vector3(0.0, 0.5 * cos(4.0 * Globals.TIME) + 4.0, 0.0)
 
 # Called to adjust the velocity to account for other moving objects

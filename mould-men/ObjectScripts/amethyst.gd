@@ -40,3 +40,6 @@ func _ready() -> void:
 			shader_mat.set_shader_parameter("true_col", _res_col)
 			shader_mat.set_shader_parameter("modify_col", true)
 			_res_mesh.mesh.surface_set_material(i, shader_mat)
+	
+	# Set colour of OmniLight
+	light.light_color = Color(0.753, 0.09, 1.0, 1.0)

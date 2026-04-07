@@ -297,7 +297,6 @@ func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 	0.0, #cannot imagine we would ever want to change this but feel free
 	rng.randf_range(radious.z * -1, radious.z))
 
-
 func handle_level_up() -> void:
 	if _level == 2:
 		#recieve a 50% max health boost, heal 50%, recieve a -1 deduction in all unit costs

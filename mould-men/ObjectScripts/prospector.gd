@@ -395,7 +395,7 @@ func hit_animation(delta: float) -> void:
 		_attack_anim_dir *= -1.0
 
 # A basic mending animation handler
-func mending_animation(delta: float) -> void:
+func mending_animation(_delta: float) -> void:
 	var angle = pingpong(Globals.TIME * _speed * 3.0 * _buff_val, PI)
 	_mesh.set_rotation(Vector3(sin(angle) * 0.5, _mesh.rotation.y, cos(angle) * 0.5))
 
