@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c37hw1u3o5gff"]
 
-[ext_resource type="Script" uid="uid://dooyoh66rfi37" path="res://GameScripts/test_scene.gd" id="1_bp8ox"]
+[ext_resource type="Script" uid="uid://d0qn1oqwde5n2" path="res://GameScripts/cave_level.gd" id="1_dpcai"]
 [ext_resource type="MeshLibrary" uid="uid://blonb8mxcl0sj" path="res://Assets/CaveTileset/cave_tiles.meshlib" id="2_bp8ox"]
 [ext_resource type="Script" uid="uid://iwtm2n3p57xf" path="res://UIScripts/light_sources.gd" id="3_2n1tv"]
 [ext_resource type="Script" uid="uid://bwy5dtc5n2h4c" path="res://ObjectScripts/camera_script.gd" id="3_4y3ct"]
@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://tyimuh366lck" path="res://ObjectScripts/gold.gd" id="18_m7bt0"]
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="19_2n1tv"]
 [ext_resource type="Script" uid="uid://fr08nj5cf2wv" path="res://ObjectScripts/diamond.gd" id="19_4y3ct"]
-[ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://Scenes/minimap_camera.gd" id="22_dpcai"]
+[ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://ObjectScripts/minimap_camera.gd" id="22_dpcai"]
 [ext_resource type="Shader" uid="uid://way6cbc8uy1t" path="res://UIScripts/minimap.gdshader" id="23_dpcai"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
@@ -51,7 +51,7 @@ shader = ExtResource("23_dpcai")
 shader_parameter/brightness = 2.67
 
 [node name="TestScene" type="Node3D" unique_id=637909514]
-script = ExtResource("1_bp8ox")
+script = ExtResource("1_dpcai")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=998747993]
 transform = Transform3D(1, 0, 0, 0, 0.45674086, 0.8895998, 0, -0.8895998, 0.45674086, 0, 0, 0)
@@ -231,67 +231,6 @@ size = 10.0
 far = 200.0
 script = ExtResource("3_4y3ct")
 
-[node name="Mole" type="Node3D" parent="." unique_id=1154567982]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
-script = ExtResource("4_go3ms")
-_health = 50
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
-
-[node name="Mole2" type="Node3D" parent="." unique_id=2804634]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
-script = ExtResource("4_go3ms")
-_health = 50
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
-
-[node name="Resource" type="Node3D" parent="." unique_id=122697034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.416, 1.7, 2.619)
-script = ExtResource("5_dvdba")
-metadata/_custom_type_script = "uid://xudvisx4xxyv"
-
-[node name="Resource2" type="Node3D" parent="." unique_id=857229491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2732453, 1.7, -3.5961723)
-script = ExtResource("6_dlpd7")
-metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
-
-[node name="MinerMole" type="Node3D" parent="." unique_id=500099539]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.9285984, 1.7, 3.8662405)
-script = ExtResource("7_2n1tv")
-metadata/_custom_type_script = "uid://dswgpx4ppis5i"
-
-[node name="MusicMole" type="Node3D" parent="." unique_id=1302204269]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.8171678, 1.7, 1.307)
-script = ExtResource("8_dpcai")
-metadata/_custom_type_script = "uid://bltrhy7jjrbn1"
-
-[node name="DoctorMole" type="Node3D" parent="." unique_id=1979961695]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.3557024, 1.7, 2.558735)
-script = ExtResource("9_u3hpu")
-_speed = 5
-_health = 50
-metadata/_custom_type_script = "uid://edh800y1jebg"
-
-[node name="Enemy" type="Node3D" parent="." unique_id=847837603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.6, -7)
-script = ExtResource("16_6f257")
-_is_enemy = true
-metadata/_custom_type_script = "uid://b0tx07quuwgx7"
-
-[node name="Enemy2" type="Node3D" parent="." unique_id=671918099]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 1.6, 7.189)
-script = ExtResource("17_hln3t")
-_is_enemy = true
-metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
-
-[node name="Gold" type="Node3D" parent="." unique_id=1535261089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.575, 1.7, 7.395)
-script = ExtResource("18_m7bt0")
-metadata/_custom_type_script = "uid://tyimuh366lck"
-
-[node name="Diamond" type="Node3D" parent="." unique_id=801235585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.543, 1.7, 1.637)
-script = ExtResource("19_4y3ct")
-metadata/_custom_type_script = "uid://fr08nj5cf2wv"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=156212610]
 follow_viewport_enabled = true
 
@@ -306,7 +245,7 @@ offset_bottom = 1071.0
 grow_horizontal = 2
 columns = 4
 script = ExtResource("14_dlpd7")
-base = NodePath("../../MoleBase")
+base = NodePath("../../Units/MoleBase")
 
 [node name="Mole" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=758269976]
 custom_minimum_size = Vector2(60, 60)
@@ -384,26 +323,6 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="MoleBase" type="Node3D" parent="." unique_id=1116468287]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40, 1.632, -1)
-rotation_order = 0
-script = ExtResource("19_2n1tv")
-_max_health = 1500
-_health = 1500
-_attack_strength = 0
-metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
-
-[node name="OliverBase" type="Node3D" parent="." unique_id=2040485188]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 40, 0, -3)
-rotation_order = 0
-script = ExtResource("19_2n1tv")
-spawn_offset = Vector3(-6, 1.7, 0)
-_max_health = 1500
-_health = 1500
-_is_enemy = true
-_attack_strength = 0
-metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
-
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1829879879]
 follow_viewport_enabled = true
 
@@ -462,6 +381,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="GoldLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=43402988]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -503,6 +423,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="CoalLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1124159630]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -545,6 +466,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="AmethystLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=276973714]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -587,6 +509,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="DiamondLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=1157175575]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -671,6 +594,89 @@ cull_mask = 1048573
 projection = 1
 size = 40.0
 script = ExtResource("22_dpcai")
+
+[node name="Units" type="Node3D" parent="." unique_id=46713047]
+
+[node name="MoleBase" type="Node3D" parent="Units" unique_id=1116468287]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40, 1.632, -1)
+rotation_order = 0
+script = ExtResource("19_2n1tv")
+_max_health = 1500
+_health = 1500
+_attack_strength = 0
+metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
+
+[node name="OliverBase" type="Node3D" parent="Units" unique_id=2040485188]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 40, 0, -3)
+rotation_order = 0
+script = ExtResource("19_2n1tv")
+spawn_offset = Vector3(-6, 1.7, 0)
+_max_health = 1500
+_health = 1500
+_is_enemy = true
+_attack_strength = 0
+metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
+
+[node name="Mole" type="Node3D" parent="Units" unique_id=1154567982]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.164, 1.7, 8.049)
+script = ExtResource("4_go3ms")
+_health = 50
+metadata/_custom_type_script = "uid://b7ocrnrctly4f"
+
+[node name="Mole2" type="Node3D" parent="Units" unique_id=2804634]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.575, 1.7, 8.236)
+script = ExtResource("4_go3ms")
+_health = 50
+metadata/_custom_type_script = "uid://b7ocrnrctly4f"
+
+[node name="Resource" type="Node3D" parent="Units" unique_id=122697034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.416, 1.7, 2.619)
+script = ExtResource("5_dvdba")
+metadata/_custom_type_script = "uid://xudvisx4xxyv"
+
+[node name="Resource2" type="Node3D" parent="Units" unique_id=857229491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2732453, 1.7, -3.5961723)
+script = ExtResource("6_dlpd7")
+metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
+
+[node name="MinerMole" type="Node3D" parent="Units" unique_id=500099539]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.9285984, 1.7, 3.8662405)
+script = ExtResource("7_2n1tv")
+metadata/_custom_type_script = "uid://dswgpx4ppis5i"
+
+[node name="MusicMole" type="Node3D" parent="Units" unique_id=1302204269]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.8171678, 1.7, 1.307)
+script = ExtResource("8_dpcai")
+metadata/_custom_type_script = "uid://bltrhy7jjrbn1"
+
+[node name="DoctorMole" type="Node3D" parent="Units" unique_id=1979961695]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.3557024, 1.7, 2.558735)
+script = ExtResource("9_u3hpu")
+_speed = 5
+_health = 50
+metadata/_custom_type_script = "uid://edh800y1jebg"
+
+[node name="Prospector" type="Node3D" parent="Units" unique_id=847837603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.6, -7)
+script = ExtResource("16_6f257")
+_is_enemy = true
+metadata/_custom_type_script = "uid://b0tx07quuwgx7"
+
+[node name="Foreman" type="Node3D" parent="Units" unique_id=671918099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 1.6, 7.189)
+script = ExtResource("17_hln3t")
+_is_enemy = true
+metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
+
+[node name="Gold" type="Node3D" parent="Units" unique_id=1535261089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.575, 1.7, 7.395)
+script = ExtResource("18_m7bt0")
+metadata/_custom_type_script = "uid://tyimuh366lck"
+
+[node name="Diamond" type="Node3D" parent="Units" unique_id=801235585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.543, 1.7, 1.637)
+script = ExtResource("19_4y3ct")
+metadata/_custom_type_script = "uid://fr08nj5cf2wv"
 
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]

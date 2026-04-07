@@ -163,6 +163,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="GoldLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1324698047]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -204,6 +205,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="CoalLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1981445377]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -246,6 +248,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="AmethystLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1038039947]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -288,6 +291,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="DiamondLabel" type="RichTextLabel" parent="GUI/Resources + Minimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=506366338]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
