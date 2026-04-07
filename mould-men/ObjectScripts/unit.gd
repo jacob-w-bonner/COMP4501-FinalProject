@@ -8,7 +8,7 @@ var _camera:					GameCamera		= null
 @export var _max_health: 		int 			= 100
 @export var _health: 			int 			= 100
 @export var _is_enemy: 			bool 			= false
-@export var _attack_strength:	int 			= 5.0
+@export var _attack_strength:	int 			= 10.0
 
 # State of the unit
 @export var _state:				Globals.STATES	= Globals.STATES.IDLE

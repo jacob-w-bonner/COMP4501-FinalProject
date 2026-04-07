@@ -55,7 +55,7 @@ func _ready() -> void:
 	_buff_height						= 7.0
 
 	# Setting health higher
-	_max_health							= 150
+	_max_health							= 220
 	_health								= _max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,7 +69,10 @@ func _process(delta: float) -> void:
 			if !_closest_op.is_enemy():
 				_nav_agent.target_desired_distance = _attack_radius
 			else:
-				_nav_agent.target_desired_distance = _reach_radius
+				if _closest_op is Base:
+					_nav_agent.target_desired_distance = _reach_radius * 2.0
+				else:
+					_nav_agent.target_desired_distance = _reach_radius
 
 		# Running a basic move animation
 		move_animation(delta)
@@ -117,7 +120,11 @@ func rally(delta: float) -> void:
 	# Checking to see if each ally should be buffed
 	for enemy in Globals.ENEMY_ARR:
 
-		# Only buff moles
+		# Do not accept null units
+		if !is_instance_valid(enemy):
+			continue
+
+		# Only buff enemies
 		if enemy is Prospector and enemy != self:
 
 			# If the enemy is within range and is not buffed already then do so
@@ -190,6 +197,8 @@ func destroy_self() -> void:
 
 	# Clear the buff list
 	for enemy in _units_buffed:
+		if !is_instance_valid(enemy):
+				continue
 		enemy.decrease_buff_val(_rally_buff)
 	_units_buffed.clear()
 

@@ -98,6 +98,10 @@ func explode() -> void:
 	# Check the array for who to damage
 	for ally in Globals.ALLY_ARR:
 
+		# Do not accept null units
+		if !is_instance_valid(ally):
+			continue
+
 		# Only do LOS check if ally is close enough to take damage
 		if self.global_position.distance_to(ally.get_global_pos()) <= _EXPLOSION_RANGE:
 

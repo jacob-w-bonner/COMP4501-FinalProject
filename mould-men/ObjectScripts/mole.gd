@@ -259,6 +259,10 @@ func _process(delta: float) -> void:
 		# Navigation setting
 		else:
 			_nav_agent.target_position  = _closest_op.get_global_pos()
+			if _closest_op is Base:
+				_nav_agent.target_desired_distance = _reach_radius * 2.0
+			else:
+				_nav_agent.target_desired_distance = _reach_radius
 
 		# Moving the mole to its target location
 		move(_closest_op)

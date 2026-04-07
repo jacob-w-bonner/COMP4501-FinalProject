@@ -71,6 +71,10 @@ func _ready() -> void:
 	_buff_mesh.position					= Vector3(0.0, 8.0, 0.0)
 	_buff_mesh.visible					= false
 	_buff_height						= 8.0
+	
+	# Setting health higher
+	_max_health							= 120
+	_health								= _max_health
 
 	# Grabbing the material from each surface for use in the shader
 	for i in range(_mesh.mesh.get_surface_count()):
@@ -144,6 +148,10 @@ func _process(delta: float) -> void:
 		# Navigation setting
 		else:
 			_nav_agent.target_position  = _closest_op.get_global_pos()
+			if _closest_op is Base:
+				_nav_agent.target_desired_distance = _reach_radius * 2.0
+			else:
+				_nav_agent.target_desired_distance = _reach_radius
 
 		# Moving the prospector to its target location
 		move(_closest_op)
@@ -216,8 +224,13 @@ func mend(target: StaticUnit, delta: float) -> void:
 		_state			= Globals.STATES.MOVING
 		return
 
+	# Checking if the target is a base
+	var reach = _reach_radius
+	if target is Base:
+		reach = _reach_radius * 2.0
+
 	# If the current target is out of range then move towards it 
-	if self.get_global_pos().distance_to(target.get_global_pos()) > _reach_radius:
+	if self.get_global_pos().distance_to(target.get_global_pos()) > reach:
 		_mending_dealt					= false
 		_mending_time					= 0.0
 		_mesh.global_transform.basis 	= _physics_body.global_transform.basis

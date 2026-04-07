@@ -23,6 +23,7 @@ var _previous_state = -1
 # Properties that track attacking
 const		_ATTACK_DURATION:	float				= 1.0
 var			_attack_time:		float				= 0.0
+var 			_attack_speed:		float				= 1.0
 
 # Bomb object
 var 		_bomb:				Bomb				= null
@@ -33,11 +34,16 @@ var 		_bomb:				Bomb				= null
 # List of targets to fire at
 var _target_list:			Array					= []
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
 	# Instantiating parent first
 	super._ready()
+
+		# Setting health higher
+	_max_health							= 500
+	_health								= _max_health
 	
 	_action_text = Label3D.new()
 	_action_text.text = ""
@@ -270,8 +276,8 @@ func _process(delta: float) -> void:
 # Called to handle cannoning action
 func cannon(delta: float) -> void:
 
-	# Adding to the current cast time
-	_attack_time += delta
+	# Adding to the current cast time, scaling by level
+	_attack_time += (delta * _attack_speed)
 
 	# Resetting the attack if it is maxed out
 	if _attack_time > _ATTACK_DURATION:
@@ -376,3 +382,15 @@ func _on_state_changed(new_state):
 
 		Globals.STATES.MORTARING:
 			show_action_text("Mortar", Color(1.0, 0.405, 0.028, 1.0))
+			
+func handle_level_up() -> void:
+	if _level == 3:
+		#25% increase to attack speed, heal to full
+		_attack_speed *= 1.25
+		receive_healing(_max_health)
+
+	elif _level == 4:
+		#Componding 25% increase to attack speed, 25% increase to attack damage, heal to full
+		_attack_strength *= 1.25
+		_attack_speed *= 1.25
+		receive_healing(_max_health)

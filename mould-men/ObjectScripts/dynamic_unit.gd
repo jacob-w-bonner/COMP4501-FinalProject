@@ -150,8 +150,13 @@ func attack(target: Unit, delta: float) -> void:
 		_state			= Globals.STATES.MOVING
 		return
 
+	# Checking if the target is a base
+	var reach = _reach_radius
+	if target is Base:
+		reach = _reach_radius * 2.0
+
 	# If the current target is out of range then move towards it 
-	if self.get_global_pos().distance_to(target.get_global_pos()) > _reach_radius:
+	if self.get_global_pos().distance_to(target.get_global_pos()) > reach:
 		_damage_dealt					= false
 		_attack_time					= 0.0
 		_mesh.global_transform.basis 	= _physics_body.global_transform.basis

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nv7wrln7ec02"]
 
-[ext_resource type="Script" uid="uid://dooyoh66rfi37" path="res://GameScripts/test_scene.gd" id="1_cdm84"]
+[ext_resource type="Script" uid="uid://l5wjucj0wjqf" path="res://GameScripts/test_scene_2.gd" id="1_hhc3w"]
 [ext_resource type="MeshLibrary" uid="uid://cwsa5dnbhabxe" path="res://Assets/TestAssets/test_tiles.meshlib" id="2_pntab"]
 [ext_resource type="Script" uid="uid://bwy5dtc5n2h4c" path="res://ObjectScripts/camera_script.gd" id="3_pkh5n"]
 [ext_resource type="Script" uid="uid://b7ocrnrctly4f" path="res://ObjectScripts/mole.gd" id="4_xep68"]
@@ -17,7 +17,9 @@
 [ext_resource type="Script" uid="uid://ccayliw5ke47i" path="res://UIScripts/base_ui.gd" id="18_pkh5n"]
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="18_pntab"]
 [ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="19_xep68"]
-[ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://Scenes/minimap_camera.gd" id="21_hhc3w"]
+[ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://ObjectScripts/minimap_camera.gd" id="21_hhc3w"]
+[ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="22_kkpf2"]
+[ext_resource type="Script" uid="uid://b0tx07quuwgx7" path="res://ObjectScripts/prospector.gd" id="23_ns6qj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,7 +40,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 agent_height = 0.25
 
 [node name="TestScene" type="Node3D" unique_id=637909514]
-script = ExtResource("1_cdm84")
+script = ExtResource("1_hhc3w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=998747993]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -70,34 +72,22 @@ far = 500.0
 script = ExtResource("3_pkh5n")
 
 [node name="Mole" type="Node3D" parent="." unique_id=1154567982]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -35.490005, 1.7, -6.2905593)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.236765, 1.7, -6.2905593)
 script = ExtResource("4_xep68")
-_health = 50
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
-
-[node name="Mole3" type="Node3D" parent="." unique_id=1998668318]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -12.508, 1.4, -1.294)
-script = ExtResource("4_xep68")
-_health = 50
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Mole2" type="Node3D" parent="." unique_id=2804634]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -35.587646, 1.7, 9.490339)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 25.577797, 1.7, 0.62028503)
 script = ExtResource("4_xep68")
 _health = 50
 _state = 3
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
-[node name="Enemy" type="Node3D" parent="." unique_id=1008627062]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7, 1.7, -7)
+[node name="Mole3" type="Node3D" parent="." unique_id=57690447]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 36.974968, 1.7, 2.4203672)
 script = ExtResource("4_xep68")
-_is_enemy = true
-metadata/_custom_type_script = "uid://b7ocrnrctly4f"
-
-[node name="Enemy2" type="Node3D" parent="." unique_id=139571797]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.215, 1.7, 7.1887655)
-script = ExtResource("4_xep68")
-_is_enemy = true
+_health = 50
+_state = 3
 metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Resource" type="Node3D" parent="." unique_id=122697034]
@@ -504,6 +494,20 @@ cull_mask = 1048573
 projection = 1
 size = 20.0
 script = ExtResource("21_hhc3w")
+
+[node name="Foreman" type="Node3D" parent="." unique_id=1523439707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.996, 1.7, 2.36)
+script = ExtResource("22_kkpf2")
+_is_enemy = true
+_state = 2
+metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
+
+[node name="Prospector" type="Node3D" parent="." unique_id=315303498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.064869, 1.7, 0.6089668)
+script = ExtResource("23_ns6qj")
+_is_enemy = true
+_state = 2
+metadata/_custom_type_script = "uid://b0tx07quuwgx7"
 
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]

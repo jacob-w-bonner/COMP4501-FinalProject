@@ -193,6 +193,11 @@ func closest_opponent(unit: Unit) -> Unit:
 	# If the unit is a miner mole then prioritize finding resources
 	if unit is MinerMole:
 		for ally in Globals.ALLY_ARR:
+
+			# Do not accept null units
+			if !is_instance_valid(ally):
+				continue
+
 			var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
 			if distance < closest_dist and ally is ResourceVein:
 				closest_pos  = ally.get_global_pos()

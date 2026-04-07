@@ -114,6 +114,8 @@ func _process(delta: float) -> void:
 	# No one should be receiving healing if the mole is not casting
 	elif _state != Globals.STATES.HEALING and _units_healed.size() > 0:
 		for ally in _units_healed:
+			if !is_instance_valid(ally):
+				continue
 			ally.set_is_healing(false)
 		_units_healed.clear()
 
@@ -136,6 +138,10 @@ func healing(delta: float) -> void:
 
 		# Only buff moles
 		if ally is Mole and ally != self:
+
+			# Do not accept null units
+			if !is_instance_valid(ally):
+				continue
 
 			# If the ally is within range and is not buffed already then do so
 			if ally.get_global_pos().distance_to(self.get_global_pos()) <= _healing_radius and !_units_healed.has(ally):
@@ -203,6 +209,11 @@ func closest_opponent(unit: Unit) -> Unit:
 	if unit is DoctorMole:
 		if unit.is_healing():
 			for ally in Globals.ALLY_ARR:
+
+				# Do not accept null units
+				if !is_instance_valid(ally):
+					continue
+
 				var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
 				if distance < closest_dist and ally is Mole and ally != self:
 					closest_pos  = ally.get_global_pos()
