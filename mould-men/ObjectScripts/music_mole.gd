@@ -93,6 +93,8 @@ func _process(delta: float) -> void:
 	# No one should be grooving if the music mole is not grooving
 	elif _state != Globals.STATES.GROOVING and _units_buffed.size() > 0:
 		for ally in _units_buffed:
+			if !is_instance_valid(ally):
+				continue
 			ally.decrease_buff_val(_music_buff)
 		_units_buffed.clear()
 
@@ -107,6 +109,10 @@ func grooving(delta: float) -> void:
 
 		# Only buff moles
 		if ally is Mole and ally != self:
+
+			# Do not accept null units
+			if !is_instance_valid(ally):
+				continue
 
 			# If the ally is within range and is not buffed already then do so
 			if ally.get_global_pos().distance_to(self.get_global_pos()) <= _music_radius and !_units_buffed.has(ally):
@@ -161,6 +167,8 @@ func destroy_self() -> void:
 
 	# Clear the buff list
 	for ally in _units_buffed:
+		if !is_instance_valid(ally):
+			continue
 		ally.decrease_buff_val(_music_buff)
 	_units_buffed.clear()
 
@@ -183,6 +191,11 @@ func closest_opponent(unit: Unit) -> Unit:
 	if unit is MusicMole:
 		if unit.is_playing():
 			for ally in Globals.ALLY_ARR:
+
+				# Do not accept null units
+				if !is_instance_valid(ally):
+					continue
+
 				var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
 				if distance < closest_dist and ally is Mole and ally != self:
 					closest_pos  = ally.get_global_pos()

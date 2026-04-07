@@ -119,6 +119,10 @@ func explode() -> void:
 	# Check the array for who to damage
 	for target in check_arr:
 
+		# Do not accept null units
+		if !is_instance_valid(target):
+			continue
+
 		# Only do LOS check if target is close enough to take damage
 		if self.global_position.distance_to(target.get_global_pos()) <= _EXPLOSION_RANGE:
 
