@@ -46,6 +46,10 @@ var enemy_units = {
 	}
 }
 
+var respawn_resources = {
+	
+}
+
 @export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
 @export var cannon_pos: Vector3 = Vector3(-0.5, Globals.FLOOR_HEIGHT, -6.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
@@ -67,6 +71,12 @@ var _previous_state = -1
 #Ending scene to switch to
 var ending_scene:			Ending			= preload("res://Scenes/end_scene.tscn").instantiate()
 var surrendering:			bool			= false
+
+#Respawn time for resources
+var resource_respawn_time:	float			= 120.0 #2 minute respawn timer for resources
+#reference to resource node for resource spawning
+@onready var resources_parent_node:	Node	= get_parent().get_parent().get_node("Resources")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -165,6 +175,13 @@ func _ready():
 			# Setting the shader surface colour to the old material
 			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
 			_mesh.mesh.surface_set_material(i, shader_mat)
+	
+	# Find the resources and hook up the regenerate behavoir
+	if not is_enemy():
+		for child in resources_parent_node.get_children():
+			if child is ResourceVein and not child._is_enemy:
+				#print("connected")
+				child.connect("resource_destroyed", set_resource_respawn)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -181,6 +198,11 @@ func _process(delta):
 		for unit in friendly_units.keys():
 			if friendly_units[unit]['cur_spawn_cooldown'] > 0.0:
 				friendly_units[unit]['cur_spawn_cooldown'] -= delta
+		for res in respawn_resources.keys():
+			respawn_resources[res]["time_left"] -= delta
+			if respawn_resources[res]["time_left"] <= 0:
+				spawn_resource(respawn_resources[res]["className"], res, respawn_resources[res]["global_position"])
+				respawn_resources.erase(res)
 
 	# Setting the shader parameters that need to be set by frame
 	for i in range(_mesh.mesh.get_surface_count()):
@@ -391,3 +413,22 @@ func show_action_text(text: String, color: Color):
 	_action_text.modulate = color
 	_action_text.visible = true
 	_action_text_timer = 1.5
+
+func spawn_resource(className: String, node_name: String, pos: Vector3):
+	var spawned_res = Coal
+	if className == "Gold":
+		spawned_res = Gold
+	elif className == "Amethyst":
+		spawned_res = Amethyst
+	elif className == "Diamond":
+		spawned_res = Diamond
+	spawned_res = spawned_res.new()
+	spawned_res.set_enemy(false)
+	spawned_res.set_name(node_name)
+	resources_parent_node.add_child(spawned_res) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
+	spawned_res.global_position = pos
+	Globals.ALLY_ARR.push_back(spawned_res)
+	
+func set_resource_respawn(className: String, node_name: String, pos: Vector3)->void:
+	if node_name not in respawn_resources.keys():
+		respawn_resources[node_name] = {'className' : className, 'time_left' : resource_respawn_time,"global_position" : pos }
