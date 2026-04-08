@@ -3,8 +3,6 @@ class_name Armadillo2025 extends DynamicUnit
 # Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
-#@onready var armadillo_2025 = $"../Armadillo2025"
-
 @onready var rig = $Rig
 @onready var skeleton = $Rig/Skeleton3D
 @onready var animation_player = $AnimationPlayer
@@ -13,12 +11,23 @@ class_name Armadillo2025 extends DynamicUnit
 var _action_text: Label3D
 var _action_text_timer: float = 0.0
 var _previous_state = -1
-# Called when the node enters the scene tree for the first time.
+
+# Carry variables
+var _pickup_target: Mole = null
+const PICKUP_RANGE: float = 2.5
+var holding_mole = false 
+
+@onready var carry_point: Node3D
 
 func _ready() -> void:
 
 	# Instantiating parent first
 	super._ready()
+	
+	carry_point = Node3D.new()
+	carry_point.name = "CarryPoint"
+	carry_point.position = Vector3(0, 0.5, 0) 
+	_physics_body.add_child(carry_point)
 	
 	_action_text = Label3D.new()
 	_action_text.text = ""
@@ -30,13 +39,6 @@ func _ready() -> void:
 	_action_text.outline_size = 50
 	
 	_physics_body.add_child(_action_text)
-	
-	#_mesh.mesh = 
-
-	# Armadillos are not enemies
-	#_is_enemy							= false
-
-	#_physics_body.position = _physics_body.to_local(head.global_transform.origin)
 	
 	# Instantiating the collision shape
 	_collision_shape = CollisionShape3D.new()
@@ -53,20 +55,6 @@ func _ready() -> void:
 	_collision_shape.rotation_degrees.x = -90
 	_collision_shape.position = Vector3(0, 0.15, 0)
 
-	# Grabbing the material from each surface for use in the shader
-	#for child in model.get_children():
-	#	if child is MeshInstance3D:
-	#		var mesh = child.mesh
-			
-	#		for i in range(mesh.get_surface_count()):
-	#			var standard_mat = mesh.surface_get_material(i)
-	#			
-	#			if standard_mat is StandardMaterial3D:
-	#				var shader_mat = ShaderMaterial.new()
-	#				shader_mat.shader = _shader
-	#				shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
-	#				mesh.surface_set_material(i, shader_mat)
-
 func _process(delta: float) -> void:
 	super._process(delta) 
 	
@@ -82,16 +70,23 @@ func _process(delta: float) -> void:
 		_previous_state = _state
 
 	if _state == Globals.STATES.MOVING:
-		if not animation_player.is_playing():
-			#animation_player.play_section("Animation", 0.0, 0.3, -1, 5.0, false)
-			#animation_player.play_section("Animation")
-			animation_player.play_section("Animation", 0.0, 1.0, -1, 1.0 ,false)
+		if animation_player.is_playing():
+			animation_player.stop()
 		if _closest_op == null:
 			_closest_op = closest_opponent(self)
 		else:
 			_nav_agent.target_position = _closest_op.get_global_pos()
 
 		move(_closest_op)
+		
+		if _pickup_target != null and is_instance_valid(_pickup_target) and holding_mole == false and _pickup_target._state == 0:
+			var dist = _physics_body.global_position.distance_to(_pickup_target.get_global_pos())
+			if dist <= PICKUP_RANGE:
+				pick_up_mole(_pickup_target)
+				_pickup_target = null
+				_closest_op = null
+				_state = Globals.STATES.SENTRY
+				return
 
 		if _closest_op == null:
 			_nav_agent.velocity = Vector3.ZERO
@@ -103,6 +98,8 @@ func _process(delta: float) -> void:
 			return
 
 		_nav_agent.velocity = Vector3.ZERO
+		if not animation_player.is_playing():
+			animation_player.play_section("Animation")
 		attack(_closest_op, delta)
 
 	elif _state == Globals.STATES.SENTRY:
@@ -132,7 +129,7 @@ func _input(event: InputEvent) -> void:
 			Globals.SELECTED_UNIT = self
 			_is_selected		  = true
 			show_action_text("Selected", Color(1.0, 0.489, 0.112, 1.0))
-			print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
+			#print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
 			return
 
 		# Deselect a unit
@@ -159,7 +156,16 @@ func _input(event: InputEvent) -> void:
 			var ally_arr = Globals.ALLY_ARR if !self.is_enemy() else Globals.ENEMY_ARR
 			for ally in ally_arr:
 				if ally.is_hovered():
-
+					
+					if ally is Mole:
+						if ally._is_being_carried:
+							drop_mole(ally)
+						else:
+							_pickup_target = ally
+							_closest_op = ally
+							_state = Globals.STATES.MOVING
+						return
+					
 					# We know that an ally was clicked so go towards it
 					_closest_op 			= ally
 					_state					= Globals.STATES.MOVING
@@ -173,7 +179,52 @@ func _input(event: InputEvent) -> void:
 			var space_state = get_world_3d().direct_space_state
 			var ray_query 	= PhysicsRayQueryParameters3D.create(ray_from, ray_to)
 			var result 		= space_state.intersect_ray(ray_query)
-		
+
+func pick_up_mole(mole: Mole) -> void:
+	if mole == null or mole._is_being_carried:
+		return
+	
+	mole._is_being_carried = true
+	mole._carrier = self
+
+	mole._nav_agent.velocity = Vector3.ZERO
+	mole._closest_op = null
+
+	var old_global = mole.global_transform
+	mole.get_parent().remove_child(mole)
+	carry_point.add_child(mole)
+	mole.global_transform = old_global 
+
+	mole.transform = Transform3D.IDENTITY
+	mole.scale = Vector3(0.5,0.5,0.5) * 0.3 
+	
+	self._speed *= 4 
+
+	holding_mole = true
+	
+	show_action_text("Picked up mole", Color(0,1,1))
+	
+func drop_mole(mole: Mole) -> void:
+	if mole == null or !mole._is_being_carried:
+		return
+
+	mole._is_being_carried = false
+	mole._carrier = null
+
+	carry_point.remove_child(mole)
+	get_parent().add_child(mole)
+
+	var drop_pos = carry_point.global_position + Vector3(2, 0, 0)
+	drop_pos.y = Globals.FLOOR_HEIGHT
+
+	mole.scale = Vector3(0.5, 0.5, 0.5)
+	mole.global_position = drop_pos
+	
+	self._speed *= 0.25
+
+	holding_mole = false
+	show_action_text("Dropped mole", Color(1,1,1))
+	
 func show_action_text(text: String, color: Color):
 	_action_text.text = text
 	_action_text.modulate = color
@@ -203,8 +254,3 @@ func _on_state_changed(new_state):
 			
 		Globals.STATES.HEALING:
 			show_action_text("Healing", Color(0.0, 0.602, 0.295, 1.0))
-
-func _animation_test() -> void:
-	#animation_player.play_section("Animation", 0.0, 1.0)
-
-	animation_player.play("Animation")

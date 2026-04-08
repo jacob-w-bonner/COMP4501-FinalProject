@@ -46,6 +46,11 @@ var _action_text: Label3D
 var _action_text_timer: float = 0.0
 var _previous_state = -1
 
+# Carrying variables
+var _is_being_carried: bool = false
+var _carrier: Node3D = null
+var _carry_offset: Vector3 = Vector3(0, 2.0, 0)
+
 # Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
@@ -126,7 +131,7 @@ func _input(event: InputEvent) -> void:
 			Globals.SELECTED_UNIT = self
 			_is_selected		  = true
 			show_action_text("Selected", Color(1.0, 0.489, 0.112, 1.0))
-			print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
+			#print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
 			return
 
 		# Deselect a unit
@@ -185,6 +190,13 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	# Prevent actions if being carried 
+	#if _is_being_carried and _carrier != null:
+	#	global_position = _carrier._physics_body.global_position + _carry_offset
+	#	_nav_agent.velocity = Vector3.ZERO
+	#	_state = Globals.STATES.SENTRY
+	#	return
 
 	if _action_text_timer > 0:
 		_action_text_timer -= delta
