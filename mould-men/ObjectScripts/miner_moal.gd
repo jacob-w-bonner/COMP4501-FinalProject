@@ -157,7 +157,7 @@ func mine(target: ResourceVein, delta: float) -> void:
 			# Gold was retrieved
 			Globals.RESOURCES.GOLD:
 				Globals.GOLD_NUM += retrieved
-				gold_label.text = str(Globals.GOAL_NUM)
+				gold_label.text = str(Globals.GOLD_NUM)
 
 			# Diamond was retrieved
 			Globals.RESOURCES.DIAMOND:

@@ -189,17 +189,21 @@ func is_hovered() -> bool:
 
 func set_minimap_icon(obj) -> void:
 	var path : String
-	var size : Vector3 = Vector3(0.4, 0.4, 0.4) # default icon scale in relation to scale of their parent
+	var size : Vector3 = Vector3(0.5, 0.5, 0.5) # default icon scale in relation to scale of their parent
 	var pos : Vector3 = Vector3(0, 3.0, 0) # default icon position about unit
+	var col : Color = Color(1.0, 1.0, 1.0, 1.0) # no modulation by default
 	# Set correct texture and size
 	if obj is Amethyst:
 		path = "res://Assets/UIAssets/amethyst.svg"
+		col = Color("6952ff")
 	elif obj is Diamond:
 		path = "res://Assets/UIAssets/cut-diamond.svg"
+		col = Color("62adff")
 	elif obj is Gold:
 		path = "res://Assets/UIAssets/gold-bar.svg"
 	elif obj is Coal:
 		path = "res://Assets/UIAssets/stone-pile.svg"
+		col = Color("3d3d3d")
 	elif obj is Base:
 		if obj.name == "MoleBase":
 			size = Vector3(0.7, 0.7, 0.7)
@@ -209,9 +213,14 @@ func set_minimap_icon(obj) -> void:
 			pos = Vector3(10.0, 100.0, 15.0)
 			size = Vector3(10.0, 10.0, 10.0)
 			path = "res://Assets/UIAssets/modern-city.svg"
+	elif obj is Cannon:
+		size = Vector3(0.6, 0.6, 0.6)
+		path = "res://Assets/UIAssets/cannon.svg"
 	elif _is_enemy:
+		size = Vector3(0.4, 0.4, 0.4)
 		path = "res://Assets/UIAssets/MinimapAssets/plain-square.svg"
 	else:
+		size = Vector3(0.4, 0.4, 0.4)
 		path =  "res://Assets/UIAssets/MinimapAssets/plain-circle.svg"
 	
 	# Load texture
@@ -231,8 +240,8 @@ func set_minimap_icon(obj) -> void:
 		
 		# Set icon colour
 		if obj is ResourceVein:
-			return
-		if _is_enemy:
+			_minimap_icon.modulate = col
+		elif _is_enemy:
 			_minimap_icon.modulate = Color(1.0, 0.0, 0.0, 1.0)
 		else:
 			_minimap_icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
