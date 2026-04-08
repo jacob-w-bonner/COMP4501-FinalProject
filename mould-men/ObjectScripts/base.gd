@@ -58,6 +58,9 @@ var _previous_state = -1
 # Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
+#Ending scene to switch to
+var ending_scene:			Ending			= preload("res://Scenes/end_scene.tscn").instantiate()
+var surrendering:			bool			= false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -209,6 +212,13 @@ func _input(event: InputEvent) -> void:
 			Globals.SELECTED_UNIT = null
 			_is_selected		  = false
 			return
+	
+	#Check for ending the game prematuraly
+	if not is_enemy():
+		if event is InputEventKey and event.pressed:
+			if event.keycode  == KEY_ESCAPE:
+				surrendering = true
+				self.take_damage(_max_health)
 
 func take_damage(damage_val: int) -> void:
 	super.take_damage(damage_val)
@@ -216,10 +226,15 @@ func take_damage(damage_val: int) -> void:
 	
 #TODO put the end of game stuff here, transition to a you lost screen I guess?
 func destroy_self() -> void:
-	if is_enemy():
-		pass #Win
+	if surrendering:
+		ending_scene.set_outcome(ending_scene.OUTCOME_TYPES.SURRENDER)
+	elif is_enemy():
+		ending_scene.set_outcome(ending_scene.OUTCOME_TYPES.VICTORY)
 	else:
-		pass #Loss
+		ending_scene.set_outcome(ending_scene.OUTCOME_TYPES.DEFEAT)
+	
+	get_tree().root.add_child(ending_scene)
+	super.destroy_self()
 
 func receive_healing(healing_val: int) -> void:
 	super.receive_healing(healing_val)

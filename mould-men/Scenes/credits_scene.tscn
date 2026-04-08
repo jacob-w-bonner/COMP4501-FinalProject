@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b55mixvo6vclg"]
+
+[ext_resource type="Script" uid="uid://ce80ye48jo8gu" path="res://GameScripts/credits_scene.gd" id="1_5a4fm"]
+[ext_resource type="Texture2D" uid="uid://dp5d0mvo1wx02" path="res://Assets/UIAssets/mole_chains.png" id="1_c8n8s"]
+[ext_resource type="Texture2D" uid="uid://uox8arnn0q5r" path="res://Assets/UIAssets/Oliver_enlist.png" id="2_5a4fm"]
+
+[node name="CreditsScene" type="Node2D" unique_id=1034266507]
+script = ExtResource("1_5a4fm")
+
+[node name="Control" type="Control" parent="." unique_id=1425303874]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1918.0
+offset_bottom = 1082.0
+
+[node name="Return_Button" type="Button" parent="Control" unique_id=1049964112]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 25.0
+offset_right = 600.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.9372549, 0.7490196, 0.015686275, 1)
+theme_override_colors/font_hover_color = Color(0, 0.7490196, 1, 1)
+theme_override_font_sizes/font_size = 72
+text = "Return to Menu"
+flat = true
+
+[node name="Label" type="Label" parent="Control" unique_id=1295235026]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 169.0
+offset_right = 1190.0
+offset_bottom = 1069.0
+theme_override_font_sizes/font_size = 28
+text = "The Heroes that made this masterpiece
+
+
+
+
+
+Design and Code by
+Foreman: Jacob
+Amethyst: William
+Music Mole: Bel
+Armadillo: Logan
+
+
+
+
+
+
+
+Additional Art by
+Cannon: Trisha"
+horizontal_alignment = 1
+
+[node name="MoleSprite" type="Sprite2D" parent="." unique_id=983645133]
+position = Vector2(317, 615)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_c8n8s")
+
+[node name="OliverSprite" type="Sprite2D" parent="." unique_id=885859207]
+position = Vector2(1558, 538)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5a4fm")
+
+[connection signal="pressed" from="Control/Return_Button" to="." method="_on_return_button_pressed"]
