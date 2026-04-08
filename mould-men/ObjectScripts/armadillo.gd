@@ -196,6 +196,10 @@ func pick_up_mole(mole: Mole) -> void:
 	mole.get_parent().remove_child(mole)
 	carry_point.add_child(mole)
 	mole.global_transform = old_global 
+	mole.position = carry_point.position
+	
+	print(carry_point.position)
+	print(mole.position)
 
 	mole.transform = Transform3D.IDENTITY
 	mole.scale = Vector3(0.5,0.5,0.5) * 0.3 
