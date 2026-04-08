@@ -542,19 +542,19 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="GUI2" type="CanvasLayer" parent="." unique_id=389060662]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=389060662]
 
-[node name="TextureRect" type="ColorRect" parent="GUI2" unique_id=13289256]
+[node name="TextureRect" type="ColorRect" parent="GUI" unique_id=13289256]
 offset_right = 320.0
 offset_bottom = 1080.0
 color = Color(0.3665946, 0.3665946, 0.36659458, 1)
 
-[node name="TextureRect2" type="ColorRect" parent="GUI2" unique_id=1428844232]
+[node name="TextureRect2" type="ColorRect" parent="GUI" unique_id=1428844232]
 offset_right = 1920.0
 offset_bottom = 48.0
 color = Color(0.3665946, 0.3665946, 0.36659458, 1)
 
-[node name="TextureRect3" type="ColorRect" parent="GUI2" unique_id=891250537]
+[node name="TextureRect3" type="ColorRect" parent="GUI" unique_id=891250537]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -563,7 +563,7 @@ offset_right = 1920.0
 grow_vertical = 0
 color = Color(0.3665946, 0.3665946, 0.36659458, 1)
 
-[node name="TextureRect4" type="ColorRect" parent="GUI2" unique_id=52704995]
+[node name="TextureRect4" type="ColorRect" parent="GUI" unique_id=52704995]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -572,7 +572,7 @@ offset_bottom = 1080.0
 grow_horizontal = 0
 color = Color(0.3665946, 0.3665946, 0.36659458, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2" unique_id=1919814236]
+[node name="MarginContainer" type="MarginContainer" parent="GUI" unique_id=1919814236]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -583,17 +583,17 @@ grow_horizontal = 2
 theme_override_constants/margin_left = 260
 theme_override_constants/margin_top = 12
 
-[node name="GridContainer" type="GridContainer" parent="GUI2/MarginContainer" unique_id=1149824294]
+[node name="GridContainer" type="GridContainer" parent="GUI/MarginContainer" unique_id=1149824294]
 layout_mode = 2
 theme_override_constants/h_separation = 50
 columns = 4
 script = ExtResource("11_ig43t")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=2029147490]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/MarginContainer/GridContainer" unique_id=2029147490]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer" unique_id=744056470]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer" unique_id=744056470]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -602,7 +602,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="GoldLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer" unique_id=1762352949]
+[node name="GoldLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer" unique_id=1762352949]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
@@ -614,7 +614,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Gold" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer" unique_id=592517201]
+[node name="Gold" type="TextureRect" parent="GUI/MarginContainer/GridContainer/HBoxContainer" unique_id=592517201]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -622,11 +622,11 @@ size_flags_vertical = 4
 texture = ExtResource("12_sbxh1")
 expand_mode = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=1430964132]
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/MarginContainer/GridContainer" unique_id=1430964132]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer2" unique_id=1935325260]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer2" unique_id=1935325260]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -635,7 +635,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="CoalLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer2" unique_id=1802577361]
+[node name="CoalLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer2" unique_id=1802577361]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
@@ -647,7 +647,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Coal" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer2" unique_id=1444077096]
+[node name="Coal" type="TextureRect" parent="GUI/MarginContainer/GridContainer/HBoxContainer2" unique_id=1444077096]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -655,11 +655,11 @@ size_flags_vertical = 4
 texture = ExtResource("12_dvdba")
 expand_mode = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=1378219394]
+[node name="HBoxContainer3" type="HBoxContainer" parent="GUI/MarginContainer/GridContainer" unique_id=1378219394]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer3" unique_id=1659798769]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer3" unique_id=1659798769]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -668,7 +668,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer3" unique_id=44602636]
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer3" unique_id=44602636]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
@@ -680,7 +680,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Amethyst" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer3" unique_id=1897787602]
+[node name="Amethyst" type="TextureRect" parent="GUI/MarginContainer/GridContainer/HBoxContainer3" unique_id=1897787602]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -688,11 +688,11 @@ size_flags_vertical = 4
 texture = ExtResource("14_sho3j")
 expand_mode = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=1882202591]
+[node name="HBoxContainer4" type="HBoxContainer" parent="GUI/MarginContainer/GridContainer" unique_id=1882202591]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer4" unique_id=1639105196]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer4" unique_id=1639105196]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -701,7 +701,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer4" unique_id=1565079233]
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI/MarginContainer/GridContainer/HBoxContainer4" unique_id=1565079233]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
@@ -713,7 +713,7 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Diamond" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer4" unique_id=363061434]
+[node name="Diamond" type="TextureRect" parent="GUI/MarginContainer/GridContainer/HBoxContainer4" unique_id=363061434]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -721,15 +721,15 @@ size_flags_vertical = 4
 texture = ExtResource("15_dh5c0")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI2" unique_id=1674514711]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI" unique_id=1674514711]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Minimap" type="MarginContainer" parent="GUI2/VBoxContainer" unique_id=1404416425]
+[node name="Minimap" type="MarginContainer" parent="GUI/VBoxContainer" unique_id=1404416425]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="Map Frame" type="TextureRect" parent="GUI2/VBoxContainer/Minimap" unique_id=196228771]
+[node name="Map Frame" type="TextureRect" parent="GUI/VBoxContainer/Minimap" unique_id=196228771]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
 custom_minimum_size = Vector2(320, 320)
@@ -739,7 +739,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Map Background Colour" type="TextureRect" parent="GUI2/VBoxContainer/Minimap" unique_id=2109133248]
+[node name="Map Background Colour" type="TextureRect" parent="GUI/VBoxContainer/Minimap" unique_id=2109133248]
 modulate = Color(0, 0, 0, 1)
 clip_contents = true
 custom_minimum_size = Vector2(310, 310)
@@ -749,7 +749,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Clipping Shape" type="TextureRect" parent="GUI2/VBoxContainer/Minimap" unique_id=1008691747]
+[node name="Clipping Shape" type="TextureRect" parent="GUI/VBoxContainer/Minimap" unique_id=1008691747]
 clip_children = 1
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -758,7 +758,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="GUI2/VBoxContainer/Minimap/Clipping Shape" unique_id=477171253]
+[node name="CenterContainer" type="CenterContainer" parent="GUI/VBoxContainer/Minimap/Clipping Shape" unique_id=477171253]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -772,28 +772,28 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI2/VBoxContainer/Minimap/Clipping Shape/CenterContainer" unique_id=1114125387]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/VBoxContainer/Minimap/Clipping Shape/CenterContainer" unique_id=1114125387]
 material = SubResource("ShaderMaterial_u3hpu")
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="GUI2/VBoxContainer/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=381946557]
+[node name="SubViewport" type="SubViewport" parent="GUI/VBoxContainer/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=381946557]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(300, 300)
 render_target_update_mode = 4
 
-[node name="MinimapCamera" type="Camera3D" parent="GUI2/VBoxContainer/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=209494553]
+[node name="MinimapCamera" type="Camera3D" parent="GUI/VBoxContainer/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=209494553]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
 cull_mask = 1048573
 projection = 1
 size = 40.0
 script = ExtResource("22_dpcai")
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer" unique_id=1038809378]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer" unique_id=1038809378]
 layout_mode = 2
 theme_override_constants/margin_top = -16
 
-[node name="Frame" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer" unique_id=1601702802]
+[node name="Frame" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer" unique_id=1601702802]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
 custom_minimum_size = Vector2(320, 190)
@@ -803,7 +803,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Background Colour" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer" unique_id=1528221992]
+[node name="Background Colour" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer" unique_id=1528221992]
 modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
 clip_contents = true
 custom_minimum_size = Vector2(310, 180)
@@ -813,25 +813,25 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer" unique_id=898351310]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer" unique_id=898351310]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer" unique_id=1570165512]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer" unique_id=1570165512]
 layout_mode = 2
 
-[node name="MoleCam" type="HBoxContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=641038598]
+[node name="MoleCam" type="HBoxContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=641038598]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam" unique_id=1579284441]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam" unique_id=1579284441]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_top = -7
 
-[node name="Map Frame" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer" unique_id=1533115417]
+[node name="Map Frame" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer" unique_id=1533115417]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
 custom_minimum_size = Vector2(140, 120)
@@ -841,7 +841,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Map Background Colour" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer" unique_id=1396338519]
+[node name="Map Background Colour" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer" unique_id=1396338519]
 modulate = Color(0, 0, 0, 1)
 clip_contents = true
 custom_minimum_size = Vector2(130, 110)
@@ -851,7 +851,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Clipping Shape" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer" unique_id=1451153373]
+[node name="Clipping Shape" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer" unique_id=1451153373]
 clip_children = 1
 custom_minimum_size = Vector2(120, 110)
 layout_mode = 2
@@ -860,7 +860,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape" unique_id=972190753]
+[node name="CenterContainer" type="CenterContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape" unique_id=972190753]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -874,32 +874,32 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape/CenterContainer" unique_id=1832675393]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape/CenterContainer" unique_id=1832675393]
 material = SubResource("ShaderMaterial_u3hpu")
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=1345483837]
+[node name="SubViewport" type="SubViewport" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=1345483837]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(120, 90)
 render_target_update_mode = 4
 
-[node name="MinimapCamera" type="Camera3D" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=310473911]
+[node name="MinimapCamera" type="Camera3D" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=310473911]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
 cull_mask = 1048573
 projection = 1
 size = 40.0
 script = ExtResource("22_dpcai")
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam" unique_id=1139094941]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam" unique_id=1139094941]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2" unique_id=1907298651]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2" unique_id=1907298651]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HEALTH" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2/VBoxContainer" unique_id=1820905806]
+[node name="HEALTH" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2/VBoxContainer" unique_id=1820905806]
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 theme_override_font_sizes/normal_font_size = 14
@@ -907,7 +907,7 @@ text = "HEALTH"
 fit_content = true
 autowrap_mode = 0
 
-[node name="STATUS" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2/VBoxContainer" unique_id=1472982811]
+[node name="STATUS" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2/VBoxContainer" unique_id=1472982811]
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 theme_override_font_sizes/normal_font_size = 14
@@ -915,7 +915,7 @@ text = "STATUS"
 fit_content = true
 autowrap_mode = 0
 
-[node name="LEVEL" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2/VBoxContainer" unique_id=1096305046]
+[node name="LEVEL" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MoleCam/MarginContainer2/VBoxContainer" unique_id=1096305046]
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 theme_override_font_sizes/normal_font_size = 14
@@ -923,12 +923,12 @@ text = "LEVEL"
 fit_content = true
 autowrap_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=378297420]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=378297420]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=553154516]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=553154516]
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 text = "DOCTOR MOLE"
@@ -936,11 +936,11 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI2/VBoxContainer" unique_id=185231344]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/VBoxContainer" unique_id=185231344]
 layout_mode = 2
 theme_override_constants/margin_top = -25
 
-[node name="Frame" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer2" unique_id=1104799289]
+[node name="Frame" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer2" unique_id=1104799289]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
 custom_minimum_size = Vector2(320, 460)
@@ -950,7 +950,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Background Colour" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer2" unique_id=436217026]
+[node name="Background Colour" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer2" unique_id=436217026]
 modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
 clip_contents = true
 custom_minimum_size = Vector2(310, 450)
@@ -960,19 +960,19 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="CurLevels" type="GridContainer" parent="GUI2/VBoxContainer/MarginContainer2" unique_id=1180799732]
+[node name="CurLevels" type="GridContainer" parent="GUI/VBoxContainer/MarginContainer2" unique_id=1180799732]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels" unique_id=238055969]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels" unique_id=238055969]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer" unique_id=1870213735]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer" unique_id=1870213735]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer/HBoxContainer" unique_id=391609916]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer/HBoxContainer" unique_id=391609916]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -982,7 +982,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer/HBoxContainer" unique_id=764672099]
+[node name="TextureRect" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer/HBoxContainer" unique_id=764672099]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -990,13 +990,13 @@ size_flags_vertical = 4
 texture = ExtResource("14_2n1tv")
 expand_mode = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels" unique_id=1874963806]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels" unique_id=1874963806]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer2" unique_id=1183537940]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer2" unique_id=1183537940]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer2/HBoxContainer" unique_id=1855172818]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer2/HBoxContainer" unique_id=1855172818]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1006,7 +1006,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer2/HBoxContainer" unique_id=388070431]
+[node name="TextureRect" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer2/HBoxContainer" unique_id=388070431]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1014,13 +1014,13 @@ size_flags_vertical = 4
 texture = ExtResource("14_2n1tv")
 expand_mode = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels" unique_id=1122805024]
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels" unique_id=1122805024]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer3" unique_id=1002536019]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer3" unique_id=1002536019]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer3/HBoxContainer" unique_id=1440925688]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer3/HBoxContainer" unique_id=1440925688]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1030,7 +1030,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer3/HBoxContainer" unique_id=877233100]
+[node name="TextureRect" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer3/HBoxContainer" unique_id=877233100]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1038,13 +1038,13 @@ size_flags_vertical = 4
 texture = ExtResource("14_2n1tv")
 expand_mode = 1
 
-[node name="MarginContainer4" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels" unique_id=509386795]
+[node name="MarginContainer4" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels" unique_id=509386795]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer4" unique_id=182425591]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer4" unique_id=182425591]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer4/HBoxContainer" unique_id=615949912]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer4/HBoxContainer" unique_id=615949912]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1054,7 +1054,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer2/CurLevels/MarginContainer4/HBoxContainer" unique_id=416943654]
+[node name="TextureRect" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer2/CurLevels/MarginContainer4/HBoxContainer" unique_id=416943654]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1062,11 +1062,11 @@ size_flags_vertical = 4
 texture = ExtResource("14_2n1tv")
 expand_mode = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="GUI2/VBoxContainer" unique_id=953787083]
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/VBoxContainer" unique_id=953787083]
 layout_mode = 2
 theme_override_constants/margin_top = -15
 
-[node name="Frame" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer3" unique_id=519752634]
+[node name="Frame" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer3" unique_id=519752634]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
 custom_minimum_size = Vector2(320, 70)
@@ -1076,7 +1076,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Background Colour" type="TextureRect" parent="GUI2/VBoxContainer/MarginContainer3" unique_id=196029246]
+[node name="Background Colour" type="TextureRect" parent="GUI/VBoxContainer/MarginContainer3" unique_id=196029246]
 modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
 clip_contents = true
 custom_minimum_size = Vector2(310, 60)
@@ -1086,288 +1086,18 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/MarginContainer3" unique_id=1259992132]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/MarginContainer3" unique_id=1259992132]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="Button" type="Button" parent="GUI2/VBoxContainer/MarginContainer3/MarginContainer" unique_id=336229970]
+[node name="Button" type="Button" parent="GUI/VBoxContainer/MarginContainer3/MarginContainer" unique_id=336229970]
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dlpd7")
 text = "MENU"
-
-[node name="GUI" type="CanvasLayer" parent="." unique_id=1829879879]
-visible = false
-follow_viewport_enabled = true
-
-[node name="ResourcesAndMinimap" type="HBoxContainer" parent="GUI" unique_id=73008985]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -330.0
-offset_bottom = 210.0
-grow_horizontal = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = -20
-
-[node name="Resources" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=1083164270]
-custom_minimum_size = Vector2(110, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/margin_top = -9
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources" unique_id=858631569]
-modulate = Color(0.70480496, 0.76072985, 0.7606284, 1)
-custom_minimum_size = Vector2(120, 210)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="GridContainer" type="GridContainer" parent="GUI/ResourcesAndMinimap/Resources" unique_id=1119663635]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/v_separation = 1
-script = ExtResource("11_ig43t")
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1277720958]
-custom_minimum_size = Vector2(65, 45)
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=1195783688]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=1127897258]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer" unique_id=69665384]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="GoldLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=43402988]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Gold" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1188586685]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("12_sbxh1")
-expand_mode = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1613727993]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=899878016]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=342804894]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer" unique_id=731823071]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CoalLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1124159630]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Coal" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=412701679]
-modulate = Color(0.41598046, 0.41598046, 0.41598028, 1)
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("12_dvdba")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MarginContainer3" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2037496128]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=1369670402]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=813598289]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer" unique_id=500367964]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=276973714]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Amethyst" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=603517264]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_sho3j")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MarginContainer4" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2042088340]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=1683131433]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=982575485]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer" unique_id=1299020406]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=1157175575]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Diamond" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=61457131]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("15_dh5c0")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Minimap" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=182787948]
-layout_mode = 2
-theme_override_constants/margin_top = -10
-theme_override_constants/margin_right = -10
-
-[node name="Map Frame" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=831162542]
-modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
-clip_contents = true
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="Map Background Colour" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1633254105]
-modulate = Color(0, 0, 0, 1)
-clip_contents = true
-custom_minimum_size = Vector2(230, 230)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="Clipping Shape" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1199664747]
-clip_children = 1
-custom_minimum_size = Vector2(230, 230)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape" unique_id=184571994]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -90.0
-offset_right = 90.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer" unique_id=2123205386]
-material = SubResource("ShaderMaterial_u3hpu")
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=1918300452]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(205, 205)
-render_target_update_mode = 0
-
-[node name="MinimapCamera" type="Camera3D" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=1562778168]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
-cull_mask = 1048573
-projection = 1
-size = 40.0
-script = ExtResource("22_dpcai")
 
 [node name="Units" type="Node3D" parent="." unique_id=46713047]
 
