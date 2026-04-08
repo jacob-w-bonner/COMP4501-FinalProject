@@ -52,12 +52,10 @@ load_path = "res://.godot/imported/stone-pile.svg-89cd65289ce93c63b7070eb18f583d
 shader = ExtResource("23_dpcai")
 shader_parameter/brightness = 2.67
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlpd7"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="CaveLevel" type="Node3D" unique_id=637909514]
-
 script = ExtResource("1_dpcai")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=998747993]
@@ -585,15 +583,17 @@ grow_horizontal = 2
 theme_override_constants/margin_left = 260
 theme_override_constants/margin_top = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/MarginContainer" unique_id=1970056311]
+[node name="GridContainer" type="GridContainer" parent="GUI2/MarginContainer" unique_id=1149824294]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/h_separation = 50
+columns = 4
+script = ExtResource("11_ig43t")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/MarginContainer/HBoxContainer" unique_id=2029147490]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=2029147490]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer" unique_id=744056470]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer" unique_id=744056470]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -602,17 +602,19 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="GoldLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1762352949]
-custom_minimum_size = Vector2(33, 0)
+[node name="GoldLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer" unique_id=1762352949]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
-text = "999"
+text = "0"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Gold" type="TextureRect" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer" unique_id=592517201]
+[node name="Gold" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer" unique_id=592517201]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -620,11 +622,11 @@ size_flags_vertical = 4
 texture = ExtResource("12_sbxh1")
 expand_mode = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GUI2/MarginContainer/HBoxContainer" unique_id=1430964132]
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=1430964132]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1935325260]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer2" unique_id=1935325260]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -633,17 +635,19 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="CoalLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1802577361]
-custom_minimum_size = Vector2(33, 0)
+[node name="CoalLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer2" unique_id=1802577361]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
-text = "999"
+text = "0"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Coal" type="TextureRect" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1444077096]
+[node name="Coal" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer2" unique_id=1444077096]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -651,11 +655,11 @@ size_flags_vertical = 4
 texture = ExtResource("12_dvdba")
 expand_mode = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="GUI2/MarginContainer/HBoxContainer" unique_id=1378219394]
+[node name="HBoxContainer3" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=1378219394]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer3" unique_id=1659798769]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer3" unique_id=1659798769]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -664,17 +668,19 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer3" unique_id=44602636]
-custom_minimum_size = Vector2(33, 0)
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer3" unique_id=44602636]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
-text = "999"
+text = "0"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Amethyst" type="TextureRect" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer3" unique_id=1897787602]
+[node name="Amethyst" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer3" unique_id=1897787602]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -682,11 +688,11 @@ size_flags_vertical = 4
 texture = ExtResource("14_sho3j")
 expand_mode = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="GUI2/MarginContainer/HBoxContainer" unique_id=1882202591]
+[node name="HBoxContainer4" type="HBoxContainer" parent="GUI2/MarginContainer/GridContainer" unique_id=1882202591]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer4" unique_id=1639105196]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer4" unique_id=1639105196]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
@@ -695,17 +701,19 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer4" unique_id=1565079233]
-custom_minimum_size = Vector2(33, 0)
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI2/MarginContainer/GridContainer/HBoxContainer4" unique_id=1565079233]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(53, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_dvdba")
-text = "999"
+text = "0"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Diamond" type="TextureRect" parent="GUI2/MarginContainer/HBoxContainer/HBoxContainer4" unique_id=363061434]
+[node name="Diamond" type="TextureRect" parent="GUI2/MarginContainer/GridContainer/HBoxContainer4" unique_id=363061434]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -927,184 +935,6 @@ text = "DOCTOR MOLE"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="GUI2/VBoxContainer" unique_id=65010046]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/v_separation = 1
-columns = 2
-script = ExtResource("11_ig43t")
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer" unique_id=1355549729]
-custom_minimum_size = Vector2(65, 45)
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer" unique_id=2055843373]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer" unique_id=1042131683]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer/MarginContainer" unique_id=1653880457]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="GoldLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=720452270]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Gold" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1418265278]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("12_sbxh1")
-expand_mode = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer" unique_id=1469582646]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer2" unique_id=1409545572]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer2" unique_id=637928345]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer2/MarginContainer" unique_id=1030831162]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CoalLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=885168626]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Coal" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1358270307]
-modulate = Color(0.41598046, 0.41598046, 0.41598028, 1)
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("12_dvdba")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MarginContainer3" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer" unique_id=652802612]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer3" unique_id=1069495916]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer3" unique_id=1741477390]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer3/MarginContainer" unique_id=1904716601]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1474551545]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Amethyst" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1940610295]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_sho3j")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MarginContainer4" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer" unique_id=831889584]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer4" unique_id=763787886]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("10_mqbjy")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer4" unique_id=1034841832]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI2/VBoxContainer/GridContainer/MarginContainer4/MarginContainer" unique_id=366319199]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI2/VBoxContainer/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=426950519]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Diamond" type="TextureRect" parent="GUI2/VBoxContainer/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=21638942]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("15_dh5c0")
-expand_mode = 3
-stretch_mode = 6
 
 [node name="MarginContainer2" type="MarginContainer" parent="GUI2/VBoxContainer" unique_id=185231344]
 layout_mode = 2
@@ -1328,7 +1158,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="GoldLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=43402988]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1370,7 +1199,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="CoalLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1124159630]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1414,7 +1242,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="AmethystLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=276973714]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1457,7 +1284,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="DiamondLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=1157175575]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3

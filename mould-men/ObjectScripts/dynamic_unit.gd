@@ -295,6 +295,8 @@ func decrease_buff_val(change_val: float) -> void:
 #Gives the unit its upgrade boons, deducts resource cost
 func handle_level_up_effects() -> void:
 	var my_class = self.get_script().get_global_name()
+	if my_class == "Armadillo":
+		return #TODO: remove this check if/when armadillo is able to level up
 	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
 	
 	if cur_level == 2:

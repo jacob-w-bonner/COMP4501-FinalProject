@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="7_oho3u"]
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="7_rdbpf"]
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="8_oho3u"]
-[ext_resource type="Script" path="res://ObjectScripts/armadillo.gd" id="11_733rx"]
+[ext_resource type="Script" uid="uid://mg6udjr54t1k" path="res://ObjectScripts/armadillo.gd" id="11_733rx"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="12_040rt"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_ibmi3"]
 [ext_resource type="Texture2D" uid="uid://ckuikpcy1u5xo" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
@@ -762,7 +762,7 @@ projection = 1
 size = 20.0
 
 [node name="Armadillo" type="Node3D" parent="." unique_id=22458191]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 2.2071228, 1.8569605, 0)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 2.207, 1.6, 0)
 script = ExtResource("11_733rx")
 
 [node name="Rig" type="Node3D" parent="Armadillo" unique_id=769327027]

@@ -155,6 +155,8 @@ func _input(event: InputEvent) -> void:
 			# Now check if an ally was clicked
 			var ally_arr = Globals.ALLY_ARR if !self.is_enemy() else Globals.ENEMY_ARR
 			for ally in ally_arr:
+				if !is_instance_valid(ally):
+					continue
 				if ally.is_hovered():
 					
 					if ally is Mole:
