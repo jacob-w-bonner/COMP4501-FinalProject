@@ -59,6 +59,11 @@ func _ready() -> void:
 	_collision_shape.shape = box_shape
 	_collision_shape.rotation_degrees.x = -90
 	_collision_shape.position = Vector3(0, 0.15, 0)
+	
+	#Set speed and health to an aproprite value for our fast strong boi
+	_speed = 2.0
+	_max_health = 200
+	_attack_strength = 15
 
 func _process(delta: float) -> void:
 	super._process(delta) 

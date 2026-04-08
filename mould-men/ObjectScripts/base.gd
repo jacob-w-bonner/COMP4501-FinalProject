@@ -8,8 +8,8 @@ var friendly_units = {
 		"unit_type" : Mole,
 	},
 	"MinerMole" : {
-		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
-		"spawn_cooldown" : 5.0,
+		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -10, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
+		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MinerMole,
 	},
@@ -34,20 +34,20 @@ var friendly_units = {
 }
 var enemy_units = {
 	"Prospector" : {
-		"spawn_cooldown" : 20.0,
-		"cur_spawn_cooldown" : 20.0, 
+		"spawn_cooldown" : 25.0,
+		"cur_spawn_cooldown" : 5.0, 
 		"unit_type" : Prospector,
 		
 	},
 	"Foreman" : {
 		"spawn_cooldown" : 45.0,
-		"cur_spawn_cooldown" : 60.0,
+		"cur_spawn_cooldown" : 20.0,
 		"unit_type" : Foreman,
 	}
 }
 
 @export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
-@export var cannon_pos: Vector3 = Vector3(5.0, Globals.FLOOR_HEIGHT, -7.0)
+@export var cannon_pos: Vector3 = Vector3(-0.5, Globals.FLOOR_HEIGHT, -6.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
 var enemy_diff:		int = 1
@@ -257,7 +257,7 @@ func enemy_spawn_logic(delta: float)->void:
 
 func scale_enemy_diff(time_passed: int):
 	if time_passed > 180 and enemy_diff == 1: # 3 minutes
-		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
+		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-10.0
 		enemy_diff=2
 	elif time_passed > 360 and enemy_diff == 2: # 6 minutes
 		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-15.0
@@ -268,7 +268,7 @@ func scale_enemy_diff(time_passed: int):
 	elif time_passed > 1500 and enemy_diff == 4: # 25 minutes
 		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-15.0
 		enemy_diff=5
-	elif time_passed > 2400 and enemy_diff == 5: #40 minutes Only to pace out players that take an INSANE amount of time
+	elif time_passed > 2700 and enemy_diff == 5: #45 minutes Only to pace out players that take an INSANE amount of time
 		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
 		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-5.0
 		enemy_diff=6
@@ -287,10 +287,14 @@ func spawn_unit(unit_str: String) -> void:
 		spawned_unit = enemy_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(true)
 		Globals.ENEMY_ARR.push_back(spawned_unit)
-		if randf_range(0.0,1.0) >= 0.80:
-			spawned_unit._state = Globals.STATES.MOVING
+		
+		if unit_str == "Prospector":
+			if randf_range(0.0,1.0) <= 0.80:
+				spawned_unit._state = Globals.STATES.MOVING
+			else:
+				spawned_unit._state = Globals.STATES.SENTRY
 		else:
-			spawned_unit._state = Globals.STATES.SENTRY
+			spawned_unit._state = Globals.STATES.MOVING
 	spawned_unit.set_name(unit_str)
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
 	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
@@ -368,6 +372,7 @@ func trigger_upgrade(unit) -> int:
 			Globals.update_resource(res, Globals.static_levels[unit_class]['cost'][cur_level][res])
 		if unit is Cannon and unit._level == 1: #special behvaoir
 			var cannon = Cannon.new() 
+			#cannon._state = Globals.STATES.SENTRY
 			Globals.ALLY_ARR.push_back(cannon)
 			cannon.set_name(unit_class)
 			get_parent().add_child.call_deferred(cannon) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable

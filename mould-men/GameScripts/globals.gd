@@ -90,8 +90,8 @@ var static_levels = {
 	'Base': {
 		'cur_level': 1,
 		'cost': {
-			2: {Globals.RESOURCES.COAL: - 125, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: 0},
-			3: {Globals.RESOURCES.COAL: - 250, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 10},
+			2: {Globals.RESOURCES.COAL: - 200, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: 0},
+			3: {Globals.RESOURCES.COAL: - 450, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 10},
 		},
 		'description ': {
 			2: 'A HUGE upgrade to max health, all units cost 1 less of each resource',
@@ -101,7 +101,7 @@ var static_levels = {
 	'Cannon': {
 		'cur_level': 1,
 		'cost': {
-			2: {Globals.RESOURCES.COAL: - 25, Globals.RESOURCES.GOLD: - 5, Globals.RESOURCES.AMETHYST: - 5, Globals.RESOURCES.DIAMOND: - 5},
+			2: {Globals.RESOURCES.COAL: - 150, Globals.RESOURCES.GOLD: - 5, Globals.RESOURCES.AMETHYST: - 5, Globals.RESOURCES.DIAMOND: - 5},
 			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: - 25, Globals.RESOURCES.AMETHYST: 0, Globals.RESOURCES.DIAMOND: - 25},
 			4: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 25, Globals.RESOURCES.DIAMOND: - 50},
 		},

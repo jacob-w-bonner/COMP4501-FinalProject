@@ -1,7 +1,7 @@
 class_name Foreman extends Prospector
 
 # The foreman has a different attack radius than its reach radius
-const _RADIUS_MAX:  float	= 20.0
+const _RADIUS_MAX:  float	= 8.0
 var _attack_radius: float 	= _RADIUS_MAX
 
 # Ray cast objects
@@ -56,7 +56,7 @@ func _ready() -> void:
 	_buff_height						= 7.0
 
 	# Setting health higher
-	_max_health							= 220
+	_max_health							= 170
 	_health								= _max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -115,6 +115,8 @@ func _process(delta: float) -> void:
 		# Otherwise rally
 		else:
 			rally(delta)
+
+
 
 # Called to rally nearby units
 func rally(delta: float) -> void:

@@ -32,9 +32,9 @@ class_name Mole extends DynamicUnit
 #   and the mole will find the nearest enemy and transition to the MOVING state
 
 # Constants common to moles
-const _BURROW_COOLDOWN: 	float 			= 5.0
-const _BURROW_DISTANCE:		float			= 10.0
-const _BURROW_TIME:			float			= 8.0
+const _BURROW_COOLDOWN: 	float 			= 30.0
+const _BURROW_DISTANCE:		float			= 20.0
+const _BURROW_TIME:			float			= 6.0
 
 # Tracking burrowing properties
 var _curr_burrow_cooldown: 	float 			= 0.0
