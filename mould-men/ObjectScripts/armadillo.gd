@@ -18,6 +18,9 @@ const PICKUP_RANGE: float = 2.5
 var holding_mole = false 
 
 @onready var carry_point: Node3D
+@onready var dummy_mole: Node3D
+
+var carried_mole: Mole = null
 
 func _ready() -> void:
 
@@ -28,6 +31,12 @@ func _ready() -> void:
 	carry_point.name = "CarryPoint"
 	carry_point.position = Vector3(0, 0.5, 0) 
 	_physics_body.add_child(carry_point)
+	
+	dummy_mole = MeshInstance3D.new()
+	dummy_mole.mesh = (load("res://Assets/MoleAssets/Mole/Mole.tres") as Mesh).duplicate()
+	dummy_mole.scale = Vector3(0.17, 0.17, 0.17)
+	dummy_mole.visible = false
+	carry_point.add_child(dummy_mole)
 	
 	_action_text = Label3D.new()
 	_action_text.text = ""
@@ -107,6 +116,9 @@ func _process(delta: float) -> void:
 		_nav_agent.velocity = Vector3.ZERO
 		sentry()
 	
+	if (self.get_health() <= 20 and holding_mole and carried_mole != null):
+		drop_mole(carried_mole)
+	
 # Called to handle input events
 func _input(event: InputEvent) -> void:
 
@@ -119,6 +131,11 @@ func _input(event: InputEvent) -> void:
 			Globals.SELECTED_UNIT 	= null
 			Globals.SELECT_COOLDOWN = true
 			_state					= Globals.STATES.SENTRY
+			return
+			
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		if self._is_hovered and holding_mole and carried_mole != null:
+			drop_mole(carried_mole)
 			return
 
 	# Checking for left mouse click
@@ -160,9 +177,7 @@ func _input(event: InputEvent) -> void:
 				if ally.is_hovered():
 					
 					if ally is Mole:
-						if ally._is_being_carried:
-							drop_mole(ally)
-						else:
+						if not ally._is_being_carried:
 							_pickup_target = ally
 							_closest_op = ally
 							_state = Globals.STATES.MOVING
@@ -183,8 +198,12 @@ func _input(event: InputEvent) -> void:
 			var result 		= space_state.intersect_ray(ray_query)
 
 func pick_up_mole(mole: Mole) -> void:
+	
 	if mole == null or mole._is_being_carried:
 		return
+		
+	carried_mole = mole  
+		
 	
 	mole._is_being_carried = true
 	mole._carrier = self
@@ -192,15 +211,16 @@ func pick_up_mole(mole: Mole) -> void:
 	mole._nav_agent.velocity = Vector3.ZERO
 	mole._closest_op = null
 
-	var old_global = mole.global_transform
 	mole.get_parent().remove_child(mole)
 	carry_point.add_child(mole)
-	mole.global_transform = old_global 
-
-	mole.transform = Transform3D.IDENTITY
-	mole.scale = Vector3(0.5,0.5,0.5) * 0.3 
 	
-	self._speed *= 4 
+	mole.visible = false
+	mole._collision_shape.disabled = true
+
+	dummy_mole.mesh = mole._mesh.mesh
+	dummy_mole.visible = true
+	
+	self._speed *= 4
 
 	holding_mole = true
 	
@@ -209,6 +229,10 @@ func pick_up_mole(mole: Mole) -> void:
 func drop_mole(mole: Mole) -> void:
 	if mole == null or !mole._is_being_carried:
 		return
+		
+	carried_mole = null
+	
+	mole._collision_shape.disabled = false
 
 	mole._is_being_carried = false
 	mole._carrier = null
@@ -223,6 +247,11 @@ func drop_mole(mole: Mole) -> void:
 	mole.global_position = drop_pos
 	
 	self._speed *= 0.25
+	
+	mole.visible = true
+	mole._collision_shape.disabled = false
+
+	dummy_mole.visible = false
 
 	holding_mole = false
 	show_action_text("Dropped mole", Color(1,1,1))
@@ -237,7 +266,6 @@ func _on_state_changed(new_state):
 	match new_state:
 		Globals.STATES.MOVING:
 			show_action_text("Moving", Color(0,1,0))
-			#_animation_test()
 
 		Globals.STATES.ATTACKING:
 			show_action_text("Attacking", Color(1,0,0))
