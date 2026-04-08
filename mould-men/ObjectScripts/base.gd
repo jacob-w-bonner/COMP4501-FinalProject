@@ -20,10 +20,16 @@ var friendly_units = {
 		"unit_type" : DoctorMole,
 	},
 	"MusicMole" : {
-		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -25, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : 0 },
+		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -20, Globals.RESOURCES.AMETHYST : -4, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MusicMole,
+	},
+	"Armadillo" : {
+		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : -5 },
+		"spawn_cooldown" : 20.0,
+		"cur_spawn_cooldown" : 0.0,
+		"unit_type" : Armadillo,
 	}
 }
 var enemy_units = {

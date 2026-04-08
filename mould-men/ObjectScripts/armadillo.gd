@@ -14,9 +14,14 @@ var _previous_state = -1
 
 # Carry variables
 var _pickup_target: Mole = null
+var passenger:		Mole = null
 const PICKUP_RANGE: float = 2.5
 var holding_mole = false 
 
+#Passive healing vars
+var regen_timer = 0
+var regen_proc_time = 0.3
+var healing_amount = 1
 @onready var carry_point: Node3D
 
 func _ready() -> void:
@@ -64,6 +69,15 @@ func _process(delta: float) -> void:
 	if _action_text_timer <= 0:
 		_action_text.visible = false
 		
+	#Heal our passenger if approprite level
+	var my_class = self.get_script().get_global_name()
+	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
+	if cur_level >= 3 and passenger != null:
+		regen_timer += delta
+		if regen_timer >= regen_proc_time:
+			passenger.receive_healing(healing_amount)
+			regen_timer = 0
+
 	# Detect state changes
 	if _state != _previous_state:
 		_on_state_changed(_state)
@@ -201,7 +215,7 @@ func pick_up_mole(mole: Mole) -> void:
 	self._speed *= 4 
 
 	holding_mole = true
-	
+	passenger = mole
 	show_action_text("Picked up mole", Color(0,1,1))
 	
 func drop_mole(mole: Mole) -> void:
@@ -223,6 +237,7 @@ func drop_mole(mole: Mole) -> void:
 	self._speed *= 0.25
 
 	holding_mole = false
+	passenger = null
 	show_action_text("Dropped mole", Color(1,1,1))
 	
 func show_action_text(text: String, color: Color):
@@ -254,3 +269,17 @@ func _on_state_changed(new_state):
 			
 		Globals.STATES.HEALING:
 			show_action_text("Healing", Color(0.0, 0.602, 0.295, 1.0))
+
+#Gives the unit its upgrade boons, deducts resource cost
+func handle_level_up_effects() -> void:
+	var my_class = self.get_script().get_global_name()
+	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
+	
+	if cur_level == 2:
+		#Recieve a 50% increase to speed
+		_speed *= 1.50
+	elif cur_level == 3:
+		#recieve a 25% max health boost, heal 25%
+		var old_health = _max_health
+		_max_health = ceil(_max_health * 1.25)
+		receive_healing(_max_health-old_health)

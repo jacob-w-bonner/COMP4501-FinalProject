@@ -7,6 +7,7 @@ var units = {
 	"MinerMole" : false,
 	"DoctorMole" : false,
 	"MusicMole" : false,
+	"Armadillo" : false
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,3 +55,11 @@ func _on_music_mouse_entered():
 
 func _on_music_mouse_exited():
 	units['MusicMole'] = false
+
+
+func _on_armadillo_mouse_entered():
+	units['Armadillo'] = true
+
+
+func _on_armadillo_mouse_exited():
+	units['Armadillo'] = false

@@ -309,4 +309,3 @@ func handle_level_up_effects() -> void:
 		_max_health = ceil(_max_health * 1.30)
 		receive_healing(_max_health-old_health)
 		_attack_strength = ceil(_attack_strength * 1.20)
-		

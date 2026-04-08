@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="5_dvdba"]
 [ext_resource type="Script" uid="uid://cbcqjp5vy7j3u" path="res://ObjectScripts/coal.gd" id="6_dlpd7"]
 [ext_resource type="Script" uid="uid://dswgpx4ppis5i" path="res://ObjectScripts/miner_moal.gd" id="7_2n1tv"]
+[ext_resource type="Texture2D" uid="uid://c7j3jwgmlwh73" path="res://GameScripts/are_you_sure.jpg" id="9_dlpd7"]
 [ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="10_mqbjy"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="11_ig43t"]
 [ext_resource type="Texture2D" uid="uid://ckuikpcy1u5xo" path="res://Assets/UIAssets/stone-pile.svg" id="12_dvdba"]
@@ -451,12 +452,14 @@ follow_viewport_enabled = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -108.0
+offset_left = -260.0
 offset_top = 976.0
-offset_right = 149.0
-offset_bottom = 1071.0
+offset_right = 207.5
+offset_bottom = 1100.0
 grow_horizontal = 2
-columns = 4
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
 script = ExtResource("14_dlpd7")
 base = NodePath("../../Units/MoleBase")
 
@@ -496,6 +499,15 @@ texture = ExtResource("15_dh5c0")
 expand_mode = 3
 stretch_mode = 6
 
+[node name="Armadillo" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=618016193]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("9_dlpd7")
+expand_mode = 3
+stretch_mode = 6
+
 [node name="MoleLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=163642945]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -532,6 +544,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 22
 text = "Music"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="ArmadilloLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1507651689]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "Armadillo"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -1006,3 +1028,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.196423, 1.9260888, 15.986
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Doctor" to="CanvasLayer/BaseActions" method="_on_doctor_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Music" to="CanvasLayer/BaseActions" method="_on_music_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Music" to="CanvasLayer/BaseActions" method="_on_music_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BaseActions/Armadillo" to="CanvasLayer/BaseActions" method="_on_armadillo_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BaseActions/Armadillo" to="CanvasLayer/BaseActions" method="_on_armadillo_mouse_exited"]

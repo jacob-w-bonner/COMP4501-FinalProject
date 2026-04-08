@@ -72,6 +72,17 @@ var dynamic_levels = {
 			2: 'Medium upgrades to health, damage, healing radius, and healing strength',
 			3: 'A HUGE upgrade to healing radius and healing strength',
 		}
+	},
+	'Armadillo': {
+		'cur_level': 1,
+		'cost': {
+			2: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 10, Globals.RESOURCES.DIAMOND: - 10},
+			3: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 20, Globals.RESOURCES.DIAMOND: - 20},
+		},
+		'description ': {
+			2: 'A HUGE upgrade to speed',
+			3: 'Medium upgrade to health, passenger Moles now receive passive health regeneration',
+		}
 	}
 }
 
@@ -95,7 +106,7 @@ var static_levels = {
 			4: {Globals.RESOURCES.COAL: 0, Globals.RESOURCES.GOLD: 0, Globals.RESOURCES.AMETHYST: - 25, Globals.RESOURCES.DIAMOND: - 50},
 		},
 		'description ': {
-			2: 'Unlock a powerful stationary cannon to protect your base',
+			2: 'Unlock an additional powerful stationary cannon to protect your base',
 			3: 'Medium increase to attack speed, heal to full',
 			4: 'large increase to attack speed, medium damage increase, heal to full',
 		}
