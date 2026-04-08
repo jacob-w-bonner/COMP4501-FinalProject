@@ -59,3 +59,4 @@ Amethyst icon (https://game-icons.net/1x1/skoll/amethyst.html) by Skoll under CC
 Cut diamond icon (https://game-icons.net/1x1/lorc/cut-diamond.html) by Lorc under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
 Modern city icon (https://game-icons.net/1x1/delapouite/modern-city.html) by Delapouite under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
 Tumulus icon (https://game-icons.net/1x1/cathelineau/tumulus.html) by Cathelineau under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+Cannon icon (https://game-icons.net/1x1/lorc/cannon.html) by Lorc under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
