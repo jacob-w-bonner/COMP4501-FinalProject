@@ -3,88 +3,57 @@ class_name Armadillo extends DynamicUnit
 # Shader for the mole
 @onready var _shader:		Shader			= preload("res://Shaders/mole.gdshader")
 
-@onready var head_pivot = $DALE/HEAD_PIVOT
-@onready var head = $DALE/HEAD_PIVOT/HEAD
-@onready var snout = $DALE/HEAD_PIVOT/HEAD/SNOUT
-
-@onready var ring_1 = $DALE/RING_1
-@onready var ring_2 = $DALE/RING_2
-@onready var ring_3 = $DALE/RING_3
-@onready var ring_4 = $DALE/RING_4
-@onready var ring_5 = $DALE/RING_5
-@onready var ring_6 = $DALE/RING_6
-
-@onready var lf_leg_pivot = $DALE/L_F_LEG_PIVOT
-@onready var rf_leg_pivot = $DALE/R_F_LEG_PIVOT
-@onready var lb_leg_pivot = $DALE/L_B_LEG_PIVOT
-@onready var rb_leg_pivot = $DALE/R_B_LEG_PIVOT
+@onready var rig = $Rig
+@onready var skeleton = $Rig/Skeleton3D
+@onready var animation_player = $AnimationPlayer
 
 # Text over armadillo variables 
 var _action_text: Label3D
 var _action_text_timer: float = 0.0
 var _previous_state = -1
 
-var walk_time: float = 0.0
-var walk_speed: float = 6.0   # animation speed
-var walk_amount: float = 0.0  # 0 = idle, 1 = full walk
+# Carry variables
+var _pickup_target: Mole = null
+const PICKUP_RANGE: float = 2.5
+var holding_mole = false 
 
-var rings = []
-var leg_pivots = []
+@onready var carry_point: Node3D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
 	# Instantiating parent first
 	super._ready()
 	
+	carry_point = Node3D.new()
+	carry_point.name = "CarryPoint"
+	carry_point.position = Vector3(0, 0.5, 0) 
+	_physics_body.add_child(carry_point)
+	
 	_action_text = Label3D.new()
 	_action_text.text = ""
 	_action_text.visible = false
 	_action_text.font_size = 200
-	_action_text.position = Vector3(0, 2.0, 0) # height above armadillo
+	_action_text.position = Vector3(0, 0.571428, 0) # height above armadillo
 	_action_text.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	_action_text.scale = Vector3(0.5, 0.5, 0.5)
+	_action_text.scale = Vector3(0.142857, 0.142857, 0.142857)
 	_action_text.outline_size = 50
 	
 	_physics_body.add_child(_action_text)
 	
-	#_mesh.mesh = 
-
-	# Armadillos are not enemies
-	#_is_enemy							= false
-	
-	rings = [ring_1, ring_2, ring_3, ring_4, ring_5, ring_6]
-	leg_pivots = [lf_leg_pivot, rf_leg_pivot, lb_leg_pivot, rb_leg_pivot]
-
-	_physics_body.position = _physics_body.to_local(head.global_transform.origin)
-	
 	# Instantiating the collision shape
 	_collision_shape = CollisionShape3D.new()
 	_physics_body.add_child(_collision_shape)
-	$DALE.reparent(_physics_body)
+	animation_player.reparent(_physics_body)
+	rig.reparent(_physics_body)
 
 	var box_shape = CapsuleShape3D.new()
-	box_shape.height = 1
-	box_shape.radius = 0.6
-	box_shape.mid_height = 1
+	box_shape.height = 0.285714
+	box_shape.radius = 0.171428
+	box_shape.mid_height = 0.285714
 
 	_collision_shape.shape = box_shape
 	_collision_shape.rotation_degrees.x = -90
-	_collision_shape.position = Vector3(0, -0.2, -0.5)
-
-	# Grabbing the material from each surface for use in the shader
-	#for child in model.get_children():
-	#	if child is MeshInstance3D:
-	#		var mesh = child.mesh
-			
-	#		for i in range(mesh.get_surface_count()):
-	#			var standard_mat = mesh.surface_get_material(i)
-	#			
-	#			if standard_mat is StandardMaterial3D:
-	#				var shader_mat = ShaderMaterial.new()
-	#				shader_mat.shader = _shader
-	#				shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
-	#				mesh.surface_set_material(i, shader_mat)
+	_collision_shape.position = Vector3(0, 0.15, 0)
 
 func _process(delta: float) -> void:
 	super._process(delta) 
@@ -101,12 +70,23 @@ func _process(delta: float) -> void:
 		_previous_state = _state
 
 	if _state == Globals.STATES.MOVING:
+		if animation_player.is_playing():
+			animation_player.stop()
 		if _closest_op == null:
 			_closest_op = closest_opponent(self)
 		else:
 			_nav_agent.target_position = _closest_op.get_global_pos()
 
 		move(_closest_op)
+		
+		if _pickup_target != null and is_instance_valid(_pickup_target) and holding_mole == false and _pickup_target._state == 0:
+			var dist = _physics_body.global_position.distance_to(_pickup_target.get_global_pos())
+			if dist <= PICKUP_RANGE:
+				pick_up_mole(_pickup_target)
+				_pickup_target = null
+				_closest_op = null
+				_state = Globals.STATES.SENTRY
+				return
 
 		if _closest_op == null:
 			_nav_agent.velocity = Vector3.ZERO
@@ -118,14 +98,14 @@ func _process(delta: float) -> void:
 			return
 
 		_nav_agent.velocity = Vector3.ZERO
+		if not animation_player.is_playing():
+			animation_player.play_section("Animation")
 		attack(_closest_op, delta)
 
 	elif _state == Globals.STATES.SENTRY:
 		_closest_op = null
 		_nav_agent.velocity = Vector3.ZERO
 		sentry()
-
-	handle_animation(delta)
 	
 # Called to handle input events
 func _input(event: InputEvent) -> void:
@@ -149,7 +129,7 @@ func _input(event: InputEvent) -> void:
 			Globals.SELECTED_UNIT = self
 			_is_selected		  = true
 			show_action_text("Selected", Color(1.0, 0.489, 0.112, 1.0))
-			print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
+			#print("%s: %d" % [Globals.SELECTED_UNIT.name, Globals.SELECTED_UNIT.get_state()])
 			return
 
 		# Deselect a unit
@@ -176,7 +156,16 @@ func _input(event: InputEvent) -> void:
 			var ally_arr = Globals.ALLY_ARR if !self.is_enemy() else Globals.ENEMY_ARR
 			for ally in ally_arr:
 				if ally.is_hovered():
-
+					
+					if ally is Mole:
+						if ally._is_being_carried:
+							drop_mole(ally)
+						else:
+							_pickup_target = ally
+							_closest_op = ally
+							_state = Globals.STATES.MOVING
+						return
+					
 					# We know that an ally was clicked so go towards it
 					_closest_op 			= ally
 					_state					= Globals.STATES.MOVING
@@ -190,7 +179,52 @@ func _input(event: InputEvent) -> void:
 			var space_state = get_world_3d().direct_space_state
 			var ray_query 	= PhysicsRayQueryParameters3D.create(ray_from, ray_to)
 			var result 		= space_state.intersect_ray(ray_query)
-		
+
+func pick_up_mole(mole: Mole) -> void:
+	if mole == null or mole._is_being_carried:
+		return
+	
+	mole._is_being_carried = true
+	mole._carrier = self
+
+	mole._nav_agent.velocity = Vector3.ZERO
+	mole._closest_op = null
+
+	var old_global = mole.global_transform
+	mole.get_parent().remove_child(mole)
+	carry_point.add_child(mole)
+	mole.global_transform = old_global 
+
+	mole.transform = Transform3D.IDENTITY
+	mole.scale = Vector3(0.5,0.5,0.5) * 0.3 
+	
+	self._speed *= 4 
+
+	holding_mole = true
+	
+	show_action_text("Picked up mole", Color(0,1,1))
+	
+func drop_mole(mole: Mole) -> void:
+	if mole == null or !mole._is_being_carried:
+		return
+
+	mole._is_being_carried = false
+	mole._carrier = null
+
+	carry_point.remove_child(mole)
+	get_parent().add_child(mole)
+
+	var drop_pos = carry_point.global_position + Vector3(2, 0, 0)
+	drop_pos.y = Globals.FLOOR_HEIGHT
+
+	mole.scale = Vector3(0.5, 0.5, 0.5)
+	mole.global_position = drop_pos
+	
+	self._speed *= 0.25
+
+	holding_mole = false
+	show_action_text("Dropped mole", Color(1,1,1))
+	
 func show_action_text(text: String, color: Color):
 	_action_text.text = text
 	_action_text.modulate = color
@@ -201,6 +235,7 @@ func _on_state_changed(new_state):
 	match new_state:
 		Globals.STATES.MOVING:
 			show_action_text("Moving", Color(0,1,0))
+			#_animation_test()
 
 		Globals.STATES.ATTACKING:
 			show_action_text("Attacking", Color(1,0,0))
@@ -219,42 +254,3 @@ func _on_state_changed(new_state):
 			
 		Globals.STATES.HEALING:
 			show_action_text("Healing", Color(0.0, 0.602, 0.295, 1.0))
-
-func handle_animation(delta: float):
-	var vel = 10#_physics_body.velocity.length()
-	walk_amount = clamp(vel / _speed, 0.0, 1.0)
-
-	if walk_amount > 0.01:
-		walk_time += delta * walk_speed * walk_amount
-		animate_walk(walk_time)
-	else:
-		reset_pose(delta)
-
-func animate_walk(t: float) -> void:
-
-	var leg_swing = sin(t) * 0.01
-	var leg_swing_opposite = sin(t + PI) * 0.01
-
-	lf_leg_pivot.rotation.x = leg_swing
-	rb_leg_pivot.rotation.x = leg_swing
-	rf_leg_pivot.rotation.x = leg_swing_opposite
-	lb_leg_pivot.rotation.x = leg_swing_opposite
-
-	for i in range(rings.size()):
-		var phase = t + i * 0.5
-		rings[i].rotation.y = rings[i].rotation.y + sin(phase) * 0.005
-		rings[i].rotation.y = rings[i].rotation.y + cos(phase) * 0.005
-		head_pivot.rotation.z = head_pivot.rotation.z + sin(phase) * 0.00001
-		head_pivot.rotation.z = head_pivot.rotation.z + cos(phase) * 0.00001
-
-func reset_pose(delta: float) -> void:
-
-	var reset_speed = 5.0
-
-	for leg in leg_pivots:
-		leg.rotation.x = lerp(leg.rotation.x, 0.0, delta * reset_speed)
-
-	for ring in rings:
-		ring.rotation = ring.rotation.lerp(Vector3.ZERO, delta * reset_speed)
-
-	head_pivot.rotation = head_pivot.rotation.lerp(Vector3.ZERO, delta * reset_speed)

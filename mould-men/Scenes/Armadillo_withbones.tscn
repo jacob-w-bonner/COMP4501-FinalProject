@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cv6e62sdc72as"]
-
-[ext_resource type="PackedScene" uid="uid://bo8asn15h0lwo" path="res://Assets/ArmadilloAssets/realistic-animated-armadillo-3d-model/source/armadillo (1)/source/Armadillo2025.glb" id="1_yacn2"]
-
-[node name="Armadillo2025" unique_id=22458191 instance=ExtResource("1_yacn2")]
