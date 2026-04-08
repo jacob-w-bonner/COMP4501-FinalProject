@@ -65,10 +65,10 @@ var surrendering:			bool			= false
 func _ready():
 	
 	#If you just want to test an upgrade quickly
-	#if not is_enemy():
-		#var temp = Cannon.new()
-		#print(trigger_upgrade(temp))
-		#temp.queue_free()
+	if not is_enemy():
+		var temp = Cannon.new()
+		print(trigger_upgrade(temp))
+		temp.queue_free()
 	
 	# Instantiating parent first
 	super._ready()
@@ -224,7 +224,6 @@ func take_damage(damage_val: int) -> void:
 	super.take_damage(damage_val)
 	health_bar.value = _health
 	
-#TODO put the end of game stuff here, transition to a you lost screen I guess?
 func destroy_self() -> void:
 	if surrendering:
 		ending_scene.set_outcome(ending_scene.OUTCOME_TYPES.SURRENDER)
