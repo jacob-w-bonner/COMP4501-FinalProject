@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cl0fcwiwto7yg"]
 
 [ext_resource type="Script" uid="uid://dy686jau6fvru" path="res://GameScripts/start_screen.gd" id="1_bfa8o"]
-[ext_resource type="Texture2D" uid="uid://silgqi2lx4qc" path="res://Assets/UIAssets/start_screen.png" id="1_vkh0d"]
+[ext_resource type="Texture2D" uid="uid://uyp0vejtr8ag" path="res://Assets/UIAssets/better_start_screen.png" id="2_ainjc"]
 
 [node name="StartScreen" type="Node2D" unique_id=1015572328]
 script = ExtResource("1_bfa8o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=241496503]
-texture = ExtResource("1_vkh0d")
+texture = ExtResource("2_ainjc")
 centered = false
 
 [node name="Control" type="Control" parent="." unique_id=847379007]
@@ -18,40 +18,35 @@ offset_bottom = 1082.0
 
 [node name="Start_Button" type="Button" parent="Control" unique_id=393292180]
 layout_mode = 0
-offset_left = 154.0
-offset_top = 63.0
-offset_right = 688.0
-offset_bottom = 170.0
+offset_left = 556.0
+offset_top = 576.0
+offset_right = 1242.0
+offset_bottom = 683.0
 theme_override_colors/font_color = Color(0, 0.7490196, 1, 1)
 theme_override_colors/font_hover_color = Color(0.5019608, 0.32941177, 0.14901961, 1)
 theme_override_font_sizes/font_size = 72
-text = "Start the Game"
 flat = true
 
 [node name="Credits_Button" type="Button" parent="Control" unique_id=2075197210]
 layout_mode = 0
-offset_left = 274.0
-offset_top = 732.0
-offset_right = 808.0
-offset_bottom = 839.0
+offset_left = 175.0
+offset_top = 805.0
+offset_right = 568.0
+offset_bottom = 912.0
 theme_override_colors/font_color = Color(0.9372549, 0.7490196, 0.015686275, 1)
 theme_override_colors/font_hover_color = Color(0.14901961, 0.16862746, 0.5019608, 1)
 theme_override_font_sizes/font_size = 72
-text = "Credits
-"
 flat = true
 
 [node name="Quit_Button" type="Button" parent="Control" unique_id=1202873377]
 layout_mode = 0
-offset_left = 1272.0
-offset_top = 922.0
-offset_right = 1806.0
-offset_bottom = 1029.0
+offset_left = 1634.0
+offset_top = 582.0
+offset_right = 1865.0
+offset_bottom = 682.0
 theme_override_colors/font_color = Color(0.47058824, 0.023529412, 0.023529412, 1)
 theme_override_colors/font_hover_color = Color(0.14901961, 0.5019608, 0.2509804, 1)
 theme_override_font_sizes/font_size = 72
-text = "Quit Game
-"
 flat = true
 
 [connection signal="pressed" from="Control/Start_Button" to="." method="_on_start_button_pressed"]
