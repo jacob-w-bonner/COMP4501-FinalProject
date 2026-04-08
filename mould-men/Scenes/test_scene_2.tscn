@@ -11,12 +11,13 @@
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="9_ekh8e"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="13_miijk"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="14_7wsrj"]
-[ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="15_w0mrj"]
+[ext_resource type="Texture2D" uid="uid://ckuikpcy1u5xo" path="res://Assets/UIAssets/stone-pile.svg" id="15_w0mrj"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="16_arxsw"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="17_3oa1i"]
 [ext_resource type="Script" uid="uid://ccayliw5ke47i" path="res://UIScripts/base_ui.gd" id="18_pkh5n"]
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="18_pntab"]
 [ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="19_xep68"]
+[ext_resource type="Shader" uid="uid://way6cbc8uy1t" path="res://UIScripts/minimap.gdshader" id="20_hhc3w"]
 [ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://ObjectScripts/minimap_camera.gd" id="21_hhc3w"]
 [ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="22_kkpf2"]
 [ext_resource type="Script" uid="uid://b0tx07quuwgx7" path="res://ObjectScripts/prospector.gd" id="23_ns6qj"]
@@ -39,7 +40,14 @@ vertices = PackedVector3Array(-37.66425, 5.5, -18.5, -37.66425, 5.5, -15.5, -30.
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(9, 4, 7), PackedInt32Array(7, 4, 8), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 11), PackedInt32Array(6, 11, 10), PackedInt32Array(10, 12, 6), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 13), PackedInt32Array(16, 13, 10), PackedInt32Array(10, 13, 12), PackedInt32Array(13, 17, 12), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 22, 23), PackedInt32Array(23, 22, 14), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(14, 26, 23), PackedInt32Array(18, 27, 22), PackedInt32Array(14, 15, 26), PackedInt32Array(21, 18, 22), PackedInt32Array(27, 28, 22), PackedInt32Array(22, 28, 29), PackedInt32Array(29, 28, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(30, 32, 29), PackedInt32Array(35, 34, 33), PackedInt32Array(33, 30, 35), PackedInt32Array(35, 30, 31), PackedInt32Array(35, 31, 37), PackedInt32Array(35, 37, 36), PackedInt32Array(36, 38, 35), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(8, 43, 7), PackedInt32Array(7, 43, 44), PackedInt32Array(44, 43, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(49, 46, 53), PackedInt32Array(53, 46, 52), PackedInt32Array(53, 54, 49), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(58, 55, 59), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 63), PackedInt32Array(63, 60, 64), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 68), PackedInt32Array(68, 65, 69), PackedInt32Array(71, 70, 72), PackedInt32Array(72, 70, 73), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(73, 70, 77), PackedInt32Array(77, 70, 76), PackedInt32Array(77, 78, 73), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 82), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(82, 79, 86), PackedInt32Array(86, 79, 85), PackedInt32Array(86, 87, 82), PackedInt32Array(89, 88, 90), PackedInt32Array(90, 88, 91), PackedInt32Array(91, 88, 92), PackedInt32Array(94, 93, 95), PackedInt32Array(95, 93, 96), PackedInt32Array(96, 93, 97), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 101), PackedInt32Array(101, 98, 102), PackedInt32Array(106, 105, 103), PackedInt32Array(103, 105, 104), PackedInt32Array(109, 108, 107), PackedInt32Array(113, 112, 110), PackedInt32Array(110, 112, 111), PackedInt32Array(116, 115, 114), PackedInt32Array(103, 117, 106), PackedInt32Array(106, 117, 118), PackedInt32Array(110, 116, 113), PackedInt32Array(113, 116, 107), PackedInt32Array(117, 109, 118), PackedInt32Array(118, 109, 114), PackedInt32Array(114, 109, 107), PackedInt32Array(114, 107, 116), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122), PackedInt32Array(122, 119, 123), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(127, 124, 128), PackedInt32Array(130, 129, 131), PackedInt32Array(131, 129, 132), PackedInt32Array(132, 129, 133), PackedInt32Array(135, 134, 136), PackedInt32Array(136, 134, 137), PackedInt32Array(137, 134, 138), PackedInt32Array(140, 139, 141), PackedInt32Array(141, 139, 142), PackedInt32Array(142, 139, 143), PackedInt32Array(145, 144, 146), PackedInt32Array(146, 144, 147), PackedInt32Array(147, 144, 148), PackedInt32Array(150, 149, 151), PackedInt32Array(151, 149, 152), PackedInt32Array(154, 153, 108), PackedInt32Array(109, 156, 155), PackedInt32Array(149, 154, 152), PackedInt32Array(152, 154, 155), PackedInt32Array(155, 154, 109), PackedInt32Array(109, 154, 108), PackedInt32Array(158, 157, 159), PackedInt32Array(159, 157, 160), PackedInt32Array(115, 162, 161), PackedInt32Array(164, 163, 114), PackedInt32Array(160, 164, 159), PackedInt32Array(159, 164, 161), PackedInt32Array(161, 164, 114), PackedInt32Array(161, 114, 115), PackedInt32Array(166, 165, 167), PackedInt32Array(167, 165, 168), PackedInt32Array(168, 165, 169), PackedInt32Array(170, 172, 171), PackedInt32Array(175, 174, 173), PackedInt32Array(173, 176, 175), PackedInt32Array(175, 176, 170), PackedInt32Array(158, 177, 157), PackedInt32Array(157, 177, 176), PackedInt32Array(177, 38, 176), PackedInt32Array(176, 38, 170), PackedInt32Array(170, 38, 172), PackedInt32Array(172, 38, 36), PackedInt32Array(180, 179, 178), PackedInt32Array(180, 178, 181), PackedInt32Array(181, 178, 182), PackedInt32Array(183, 181, 43), PackedInt32Array(43, 181, 182), PackedInt32Array(43, 182, 184), PackedInt32Array(43, 184, 45), PackedInt32Array(182, 185, 184), PackedInt32Array(150, 151, 183), PackedInt32Array(183, 151, 181), PackedInt32Array(187, 186, 188), PackedInt32Array(188, 186, 189), PackedInt32Array(189, 186, 190), PackedInt32Array(192, 191, 193), PackedInt32Array(193, 191, 194), PackedInt32Array(194, 191, 195), PackedInt32Array(197, 196, 198), PackedInt32Array(198, 196, 199), PackedInt32Array(199, 196, 200), PackedInt32Array(202, 201, 203), PackedInt32Array(203, 201, 204), PackedInt32Array(204, 201, 205), PackedInt32Array(207, 206, 208), PackedInt32Array(208, 206, 209), PackedInt32Array(212, 211, 213), PackedInt32Array(213, 211, 210), PackedInt32Array(215, 214, 216), PackedInt32Array(216, 214, 218), PackedInt32Array(216, 218, 217), PackedInt32Array(217, 218, 209), PackedInt32Array(216, 220, 219), PackedInt32Array(212, 213, 214), PackedInt32Array(214, 213, 218), PackedInt32Array(221, 214, 222), PackedInt32Array(222, 214, 215), PackedInt32Array(223, 208, 209), PackedInt32Array(216, 219, 215), PackedInt32Array(178, 179, 217), PackedInt32Array(217, 179, 216), PackedInt32Array(209, 218, 223), PackedInt32Array(225, 224, 226), PackedInt32Array(226, 224, 227), PackedInt32Array(229, 228, 227), PackedInt32Array(231, 230, 232), PackedInt32Array(232, 230, 233), PackedInt32Array(235, 234, 224), PackedInt32Array(224, 234, 236), PackedInt32Array(224, 236, 229), PackedInt32Array(224, 229, 227), PackedInt32Array(232, 233, 237), PackedInt32Array(232, 237, 236), PackedInt32Array(236, 237, 240), PackedInt32Array(236, 240, 239), PackedInt32Array(236, 239, 238), PackedInt32Array(237, 241, 240), PackedInt32Array(240, 174, 239), PackedInt32Array(239, 174, 175), PackedInt32Array(229, 236, 238), PackedInt32Array(243, 242, 244), PackedInt32Array(244, 242, 245), PackedInt32Array(247, 246, 248), PackedInt32Array(248, 246, 249), PackedInt32Array(245, 242, 249), PackedInt32Array(249, 242, 248), PackedInt32Array(249, 250, 245), PackedInt32Array(252, 251, 253), PackedInt32Array(253, 251, 254), PackedInt32Array(256, 255, 257), PackedInt32Array(257, 255, 258), PackedInt32Array(254, 251, 258), PackedInt32Array(258, 251, 257), PackedInt32Array(258, 259, 254), PackedInt32Array(261, 260, 262), PackedInt32Array(262, 260, 263), PackedInt32Array(263, 260, 264), PackedInt32Array(266, 265, 267), PackedInt32Array(267, 265, 268), PackedInt32Array(268, 265, 269), PackedInt32Array(271, 270, 272), PackedInt32Array(272, 270, 273), PackedInt32Array(273, 270, 274), PackedInt32Array(276, 275, 277), PackedInt32Array(277, 275, 278), PackedInt32Array(278, 275, 279), PackedInt32Array(281, 280, 282), PackedInt32Array(282, 280, 283), PackedInt32Array(283, 280, 284), PackedInt32Array(286, 285, 287), PackedInt32Array(287, 285, 288), PackedInt32Array(288, 285, 289), PackedInt32Array(185, 290, 184), PackedInt32Array(184, 290, 291), PackedInt32Array(291, 290, 209), PackedInt32Array(292, 217, 209), PackedInt32Array(290, 292, 209), PackedInt32Array(294, 293, 295), PackedInt32Array(295, 293, 296), PackedInt32Array(298, 297, 299), PackedInt32Array(299, 297, 300), PackedInt32Array(296, 293, 300), PackedInt32Array(300, 293, 299), PackedInt32Array(300, 301, 296), PackedInt32Array(207, 302, 206), PackedInt32Array(206, 302, 303), PackedInt32Array(305, 304, 303), PackedInt32Array(306, 309, 307), PackedInt32Array(307, 309, 308), PackedInt32Array(308, 309, 310), PackedInt32Array(310, 309, 305), PackedInt32Array(310, 305, 311), PackedInt32Array(311, 305, 312), PackedInt32Array(221, 222, 311), PackedInt32Array(311, 222, 310), PackedInt32Array(310, 222, 313), PackedInt32Array(210, 211, 302), PackedInt32Array(302, 211, 312), PackedInt32Array(302, 312, 305), PackedInt32Array(302, 305, 303), PackedInt32Array(315, 314, 316), PackedInt32Array(316, 314, 317), PackedInt32Array(317, 314, 318), PackedInt32Array(320, 319, 321), PackedInt32Array(321, 319, 322), PackedInt32Array(322, 319, 323), PackedInt32Array(325, 324, 326), PackedInt32Array(326, 324, 327), PackedInt32Array(327, 324, 328), PackedInt32Array(330, 329, 331), PackedInt32Array(331, 329, 332), PackedInt32Array(331, 332, 225), PackedInt32Array(331, 225, 226), PackedInt32Array(335, 334, 336), PackedInt32Array(336, 334, 333), PackedInt32Array(230, 231, 336), PackedInt32Array(335, 234, 334), PackedInt32Array(334, 234, 235), PackedInt32Array(339, 338, 337), PackedInt32Array(341, 332, 340), PackedInt32Array(340, 332, 329), PackedInt32Array(337, 342, 339), PackedInt32Array(339, 342, 333), PackedInt32Array(333, 342, 336), PackedInt32Array(336, 342, 230), PackedInt32Array(341, 340, 333), PackedInt32Array(333, 340, 339), PackedInt32Array(346, 345, 343), PackedInt32Array(343, 345, 344), PackedInt32Array(228, 347, 227), PackedInt32Array(227, 347, 348), PackedInt32Array(171, 172, 349), PackedInt32Array(349, 172, 348), PackedInt32Array(348, 347, 349), PackedInt32Array(353, 352, 350), PackedInt32Array(350, 352, 351), PackedInt32Array(330, 331, 354), PackedInt32Array(354, 331, 355), PackedInt32Array(355, 331, 304), PackedInt32Array(304, 331, 303), PackedInt32Array(356, 354, 338), PackedInt32Array(338, 354, 357), PackedInt32Array(357, 354, 355), PackedInt32Array(306, 307, 357), PackedInt32Array(357, 307, 338), PackedInt32Array(338, 339, 356), PackedInt32Array(361, 360, 358), PackedInt32Array(358, 360, 359)]
 agent_height = 0.25
 
-[node name="TestScene" type="Node3D" unique_id=637909514]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xuojd"]
+load_path = "res://.godot/imported/stone-pile.svg-89cd65289ce93c63b7070eb18f583ddf.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkpf2"]
+shader = ExtResource("20_hhc3w")
+shader_parameter/brightness = 2.67
+
+[node name="CaveLevel" type="Node3D" unique_id=637909514]
 script = ExtResource("1_hhc3w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=998747993]
@@ -63,6 +71,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=147667770]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -0.184, 20, 20.77685)
 cull_mask = 1048571
 projection = 1
@@ -118,98 +127,6 @@ _speed = 5
 _health = 50
 metadata/_custom_type_script = "uid://edh800y1jebg"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=860007368]
-follow_viewport_enabled = true
-
-[node name="BaseActions" type="GridContainer" parent="CanvasLayer" unique_id=58045482 node_paths=PackedStringArray("base")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -108.0
-offset_top = 976.0
-offset_right = 149.0
-offset_bottom = 1071.0
-grow_horizontal = 2
-columns = 4
-script = ExtResource("18_pkh5n")
-base = NodePath("../../MoleBase")
-
-[node name="Mole" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=63017164]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("14_7wsrj")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Miner" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=559014009]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("15_w0mrj")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Doctor" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=790763997]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("16_arxsw")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Music" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=2006190828]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("17_3oa1i")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MoleLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=564859619]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "Mole"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="MinerLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1073755378]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "Miner"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="DoctorLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1197005138]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "Doc"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="MusicLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1649539898]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "Music"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-
 [node name="MoleBase" type="Node3D" parent="." unique_id=583691117]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34.628, 1.632, -1)
 script = ExtResource("18_pntab")
@@ -228,277 +145,6 @@ _is_enemy = true
 _attack_strength = 0
 metadata/_custom_type_script = "uid://dn84b6ye8sjbn"
 
-[node name="GUI" type="CanvasLayer" parent="." unique_id=531666910]
-follow_viewport_enabled = true
-
-[node name="ResourcesAndMinimap" type="HBoxContainer" parent="GUI" unique_id=4742121]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -330.0
-offset_bottom = 210.0
-grow_horizontal = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = -20
-
-[node name="Resources" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=1154260337]
-custom_minimum_size = Vector2(110, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/margin_top = -9
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources" unique_id=1099250905]
-modulate = Color(0.70480496, 0.76072985, 0.7606284, 1)
-custom_minimum_size = Vector2(120, 210)
-layout_mode = 2
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="GridContainer" type="GridContainer" parent="GUI/ResourcesAndMinimap/Resources" unique_id=1899566102]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/v_separation = 1
-script = ExtResource("13_miijk")
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1843225718]
-custom_minimum_size = Vector2(65, 45)
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=445497242]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=1553794831]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer" unique_id=12294247]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="GoldLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=2023314576]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Gold" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=837326220]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_7wsrj")
-expand_mode = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1853055636]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=603270369]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=358990459]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer" unique_id=316230757]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CoalLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=969312219]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Coal" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=1427808078]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("15_w0mrj")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MarginContainer3" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2006377370]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=1569470171]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=1568669041]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer" unique_id=368075071]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="AmethystLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=961243320]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Amethyst" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=483361119]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("16_arxsw")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="MarginContainer4" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2081237397]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=965907874]
-modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
-custom_minimum_size = Vector2(110, 45)
-layout_mode = 2
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=2126566929]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer" unique_id=819999818]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="DiamondLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=2124487317]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
-text = "0"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Diamond" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=201949995]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("17_3oa1i")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="Minimap" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=1879669242]
-layout_mode = 2
-theme_override_constants/margin_top = -10
-theme_override_constants/margin_right = -5
-
-[node name="Map Frame" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=824079523]
-modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
-clip_contents = true
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="Map Background Colour" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1627250300]
-modulate = Color(0.54901963, 0.36862746, 0.28627452, 1)
-clip_contents = true
-custom_minimum_size = Vector2(230, 230)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="Clipping Shape" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1597011873]
-clip_children = 1
-custom_minimum_size = Vector2(230, 230)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("19_xep68")
-expand_mode = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape" unique_id=687032604]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -90.0
-offset_right = 90.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer" unique_id=170520361]
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=1885969121]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(205, 205)
-render_target_update_mode = 4
-
-[node name="MinimapCamera" type="Camera3D" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=2014806782]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
-cull_mask = 1048573
-projection = 1
-size = 20.0
-script = ExtResource("21_hhc3w")
-
 [node name="Foreman" type="Node3D" parent="." unique_id=1523439707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.161215, 1.7, 2.36)
 script = ExtResource("22_kkpf2")
@@ -512,6 +158,371 @@ script = ExtResource("23_ns6qj")
 _is_enemy = true
 _state = 2
 metadata/_custom_type_script = "uid://b0tx07quuwgx7"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1197102113]
+follow_viewport_enabled = true
+
+[node name="BaseActions" type="GridContainer" parent="CanvasLayer" unique_id=1285422290 node_paths=PackedStringArray("base")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 976.0
+offset_right = 149.0
+offset_bottom = 1071.0
+grow_horizontal = 2
+columns = 4
+script = ExtResource("18_pkh5n")
+base = NodePath("../../MoleBase")
+
+[node name="Mole" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=457966729]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("14_7wsrj")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Miner" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=2094538012]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("CompressedTexture2D_xuojd")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Doctor" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=967516233]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("16_arxsw")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Music" type="TextureRect" parent="CanvasLayer/BaseActions" unique_id=1754566163]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("17_3oa1i")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MoleLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1890686954]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "Mole"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="MinerLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1091037143]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "Miner"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="DoctorLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=574316659]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "Doc"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="RichTextLabel" parent="CanvasLayer/BaseActions" unique_id=1988598574]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "Music"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=829119731]
+follow_viewport_enabled = true
+
+[node name="ResourcesAndMinimap" type="HBoxContainer" parent="GUI" unique_id=377783734]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -330.0
+offset_bottom = 210.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -20
+
+[node name="Resources" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=338875857]
+custom_minimum_size = Vector2(110, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = -9
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources" unique_id=620429381]
+modulate = Color(0.70480496, 0.76072985, 0.7606284, 1)
+custom_minimum_size = Vector2(120, 210)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="GUI/ResourcesAndMinimap/Resources" unique_id=875696472]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 1
+script = ExtResource("13_miijk")
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1294834358]
+custom_minimum_size = Vector2(65, 45)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=580313519]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer" unique_id=744700044]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer" unique_id=694269454]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GoldLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=1329776235]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Gold" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer" unique_id=526066019]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_7wsrj")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=568117188]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=1803741628]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2" unique_id=961838801]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer" unique_id=1282785350]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CoalLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=714997644]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Coal" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=150672278]
+modulate = Color(0.41598046, 0.41598046, 0.41598028, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_w0mrj")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=2140932730]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=640471380]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3" unique_id=490010893]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer" unique_id=1844177706]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AmethystLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1817254074]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Amethyst" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer" unique_id=1007690526]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_arxsw")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MarginContainer4" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer" unique_id=1454151979]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=66672946]
+modulate = Color(0.5478941, 0.36846253, 0.28712296, 1)
+custom_minimum_size = Vector2(110, 45)
+layout_mode = 2
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4" unique_id=402746654]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer" unique_id=1015155163]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DiamondLabel" type="RichTextLabel" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=28443828]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+text = "0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Diamond" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer" unique_id=97824965]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_3oa1i")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Minimap" type="MarginContainer" parent="GUI/ResourcesAndMinimap" unique_id=1236515646]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="Map Frame" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=572833203]
+modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
+clip_contents = true
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="Map Background Colour" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=1208757467]
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(230, 230)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="Clipping Shape" type="TextureRect" parent="GUI/ResourcesAndMinimap/Minimap" unique_id=316819970]
+clip_children = 1
+custom_minimum_size = Vector2(230, 230)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_xep68")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape" unique_id=996648172]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer" unique_id=543707309]
+material = SubResource("ShaderMaterial_kkpf2")
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer" unique_id=1737748682]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(205, 205)
+render_target_update_mode = 4
+
+[node name="MinimapCamera" type="Camera3D" parent="GUI/ResourcesAndMinimap/Minimap/Clipping Shape/CenterContainer/SubViewportContainer/SubViewport" unique_id=756986279]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
+cull_mask = 1048573
+projection = 1
+size = 40.0
+script = ExtResource("21_hhc3w")
 
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]
