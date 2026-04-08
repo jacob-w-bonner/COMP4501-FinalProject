@@ -14,10 +14,12 @@
 [ext_resource type="Script" uid="uid://ccayliw5ke47i" path="res://UIScripts/base_ui.gd" id="14_dlpd7"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_sho3j"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dh5c0"]
+[ext_resource type="Script" uid="uid://b7ocrnrctly4f" path="res://ObjectScripts/mole.gd" id="17_dlpd7"]
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="18_2n1tv"]
 [ext_resource type="Script" uid="uid://tyimuh366lck" path="res://ObjectScripts/gold.gd" id="18_m7bt0"]
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="19_2n1tv"]
 [ext_resource type="Script" uid="uid://fr08nj5cf2wv" path="res://ObjectScripts/diamond.gd" id="19_4y3ct"]
+[ext_resource type="Script" uid="uid://bs3v0u5a4cf0b" path="res://ObjectScripts/foreman.gd" id="19_dpcai"]
 [ext_resource type="PackedScene" uid="uid://b8eesw2fwfhtg" path="res://Assets/Lamp/Lantern.tscn" id="20_go3ms"]
 [ext_resource type="Script" uid="uid://bao444cjqck6q" path="res://ObjectScripts/cannon.gd" id="21_mqbjy"]
 [ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://ObjectScripts/minimap_camera.gd" id="22_dpcai"]
@@ -863,6 +865,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.85852, 0, -0.21935177)
 script = ExtResource("18_2n1tv")
 _state = 3
 metadata/_custom_type_script = "uid://edh800y1jebg"
+
+[node name="Foreman" type="Node3D" parent="Units" unique_id=567541633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.36, 1.6, -6.49)
+script = ExtResource("19_dpcai")
+_is_enemy = true
+_state = 1
+metadata/_custom_type_script = "uid://bs3v0u5a4cf0b"
+
+[node name="Mole" type="Node3D" parent="Units" unique_id=508356441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.11407, 0, -5.067919)
+script = ExtResource("17_dlpd7")
+metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 
 [node name="Resources" type="Node3D" parent="." unique_id=1571351508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
