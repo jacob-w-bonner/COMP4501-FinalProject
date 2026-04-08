@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://bltrhy7jjrbn1" path="res://ObjectScripts/music_mole.gd" id="7_oho3u"]
 [ext_resource type="Script" uid="uid://xudvisx4xxyv" path="res://ObjectScripts/amethyst.gd" id="7_rdbpf"]
 [ext_resource type="Script" uid="uid://edh800y1jebg" path="res://ObjectScripts/doctor_mole.gd" id="8_oho3u"]
-[ext_resource type="Script" uid="uid://mg6udjr54t1k" path="res://ObjectScripts/armadillo.gd" id="11_733rx"]
+[ext_resource type="Script" path="res://ObjectScripts/armadillo.gd" id="11_733rx"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="12_040rt"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_ibmi3"]
-[ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
+[ext_resource type="Texture2D" uid="uid://ckuikpcy1u5xo" path="res://Assets/UIAssets/stone-pile.svg" id="13_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://c27kcpiffpmur" path="res://Assets/ArmadilloAssets/realistic-animated-armadillo-3d-model/source/armadillo (1)/source/Armadillo2025_Image_0.png" id="13_kmsc6"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_4qg1e"]
 [ext_resource type="Texture2D" uid="uid://cat3s744aok0m" path="res://Assets/ArmadilloAssets/realistic-animated-armadillo-3d-model/source/armadillo (1)/source/Armadillo2025_Image_1.png" id="14_ajhoy"]
@@ -424,7 +424,7 @@ _data = {
 &"Animation": SubResource("Animation_mbktk")
 }
 
-[node name="TestScene" type="Node3D" unique_id=637909514]
+[node name="CaveLevel" type="Node3D" unique_id=637909514]
 script = ExtResource("1_50ct6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1661225263]
