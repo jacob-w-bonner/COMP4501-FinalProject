@@ -41,7 +41,7 @@ var enemy_units = {
 }
 
 @export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
-@export var cannon_pos: Vector3 = Vector3(2.0, Globals.FLOOR_HEIGHT, -5.0)
+@export var cannon_pos: Vector3 = Vector3(5.0, Globals.FLOOR_HEIGHT, -7.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
 var enemy_diff:		int = 1
@@ -65,10 +65,10 @@ var surrendering:			bool			= false
 func _ready():
 	
 	#If you just want to test an upgrade quickly
-	if not is_enemy():
-		var temp = Cannon.new()
-		print(trigger_upgrade(temp))
-		temp.queue_free()
+	#if not is_enemy():
+		#var temp = Cannon.new()
+		#print(trigger_upgrade(temp))
+		#temp.queue_free()
 	
 	# Instantiating parent first
 	super._ready()

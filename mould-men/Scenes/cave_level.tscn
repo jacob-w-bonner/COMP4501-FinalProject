@@ -50,7 +50,7 @@ load_path = "res://.godot/imported/stone-pile.svg-89cd65289ce93c63b7070eb18f583d
 shader = ExtResource("23_dpcai")
 shader_parameter/brightness = 2.67
 
-[node name="TestScene2" type="Node3D" unique_id=637909514]
+[node name="CaveLevel" type="Node3D" unique_id=637909514]
 script = ExtResource("1_dpcai")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=998747993]

@@ -20,12 +20,6 @@ var			_mining_time:		float			= 0.0
 var			_already_mined:		bool				= false
 var 		_mining_direction:	float				= 10.0
 
-# UI labels to be updated
-@onready var gold_label: RichTextLabel = %GoldLabel
-@onready var coal_label: RichTextLabel = %CoalLabel
-@onready var amethyst_label: RichTextLabel = %AmethystLabel
-@onready var diamond_label: RichTextLabel = %DiamondLabel
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -145,29 +139,7 @@ func mine(target: ResourceVein, delta: float) -> void:
 	if _mining_time > 3.0 * _MINING_DURATION / _buff_val / 4.0 and !_already_mined:
 		var retrieved = target.deplete_resource(_mining_efficiency)
 		_already_mined = true
-
-		# Incrementing whatever resource was retrieved
-		match target.get_resource_type():
-
-			# Coal was retrieved
-			Globals.RESOURCES.COAL:
-				Globals.COAL_NUM += retrieved
-				coal_label.text = str(Globals.COAL_NUM)
-
-			# Gold was retrieved
-			Globals.RESOURCES.GOLD:
-				Globals.GOLD_NUM += retrieved
-				gold_label.text = str(Globals.GOLD_NUM)
-
-			# Diamond was retrieved
-			Globals.RESOURCES.DIAMOND:
-				Globals.DIAMOND_NUM += retrieved
-				diamond_label.text = str(Globals.DIAMOND_NUM)
-
-			# Amethyst was retrieved
-			Globals.RESOURCES.AMETHYST:
-				Globals.AMETHYST_NUM += retrieved
-				amethyst_label.text = str(Globals.AMETHYST_NUM)
+		Globals.update_resource(target.get_resource_type(), retrieved)
 
 	# Handling a basic mining animation
 	mine_animation(delta)

@@ -127,10 +127,13 @@ var FLOOR_HEIGHT: float = 1.6
 var SELECT_COOLDOWN: bool = false
 
 # Resource Locations
-@onready var gold_label: RichTextLabel = %GoldLabel
-@onready var coal_label: RichTextLabel = get_tree().root.get_node("TestScene/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer/CoalLabel")
-@onready var amethyst_label: RichTextLabel = get_tree().root.get_node("TestScene/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer/AmethystLabel")
-@onready var diamond_label: RichTextLabel = get_tree().root.get_node("TestScene/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer/DiamondLabel")
+@onready var gold_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer/MarginContainer/HBoxContainer/GoldLabel")
+@onready var coal_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer/CoalLabel")
+@onready var amethyst_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer3/MarginContainer/HBoxContainer/AmethystLabel")
+@onready var diamond_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer4/MarginContainer/HBoxContainer/DiamondLabel")
+
+func _ready() -> void:
+	print(get_tree().root.get_children()[0].get_name())
 
 func update_resource(resource: RESOURCES, amt: int) -> int:
 	if (resource == RESOURCES.COAL):
