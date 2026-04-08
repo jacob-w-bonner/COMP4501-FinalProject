@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://cbcqjp5vy7j3u" path="res://ObjectScripts/coal.gd" id="6_dlpd7"]
 [ext_resource type="Texture2D" uid="uid://cbivaag7skt2g" path="res://Assets/UIAssets/MinimapAssets/plain-square.svg" id="10_mqbjy"]
 [ext_resource type="Script" uid="uid://ur3pcbxkg6ae" path="res://UIScripts/resources.gd" id="11_ig43t"]
+[ext_resource type="Texture2D" uid="uid://ckuikpcy1u5xo" path="res://Assets/UIAssets/stone-pile.svg" id="12_dvdba"]
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_sbxh1"]
-[ext_resource type="Texture2D" uid="uid://cbul1ywljyibl" path="res://Assets/UIAssets/stone-pile.svg" id="13_yth3c"]
 [ext_resource type="Script" uid="uid://ccayliw5ke47i" path="res://UIScripts/base_ui.gd" id="14_dlpd7"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_sho3j"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dh5c0"]
@@ -39,6 +39,9 @@ glow_blend_mode = 0
 [sub_resource type="NavigationMesh" id="NavigationMesh_bp8ox"]
 geometry_parsed_geometry_type = 1
 agent_radius = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_go3ms"]
+load_path = "res://.godot/imported/stone-pile.svg-89cd65289ce93c63b7070eb18f583ddf.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3hpu"]
 shader = ExtResource("23_dpcai")
@@ -466,7 +469,7 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("13_yth3c")
+texture = SubResource("CompressedTexture2D_go3ms")
 expand_mode = 3
 stretch_mode = 6
 
@@ -641,11 +644,12 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Coal" type="TextureRect" parent="GUI/ResourcesAndMinimap/Resources/GridContainer/MarginContainer2/MarginContainer/HBoxContainer" unique_id=412701679]
+modulate = Color(0.41598046, 0.41598046, 0.41598028, 1)
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("13_yth3c")
+texture = ExtResource("12_dvdba")
 expand_mode = 3
 stretch_mode = 6
 
@@ -902,6 +906,7 @@ metadata/_custom_type_script = "uid://tyimuh366lck"
 
 [node name="Lanterns" type="Node3D" parent="." unique_id=2093719206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+script = ExtResource("3_2n1tv")
 
 [node name="Lantern" parent="Lanterns" unique_id=943472903 instance=ExtResource("20_go3ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9961605, 1.9260888, 7.915386)
@@ -952,7 +957,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.901397, 0, -4.2036977)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.414044, 0, -1.2293943)
 
 [node name="Lantern18" parent="Lanterns" unique_id=917582750 instance=ExtResource("20_go3ms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42167735, 0, -9.524637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42167735, 0, -9.597486)
 
 [node name="Lantern19" parent="Lanterns" unique_id=553319344 instance=ExtResource("20_go3ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.612879, 0, -9.524637)
@@ -983,6 +988,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.744984, 1.9260888, 16.4121
 
 [node name="Lantern28" parent="Lanterns" unique_id=535777378 instance=ExtResource("20_go3ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1802692, 1.9260888, 21.956972)
+
+[node name="Lantern15" parent="Lanterns" unique_id=1534668803 instance=ExtResource("20_go3ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0201313, 1.9260888, -17.728031)
+
+[node name="Lantern29" parent="Lanterns" unique_id=11259506 instance=ExtResource("20_go3ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.76483, 1.9260888, 17.797628)
+
+[node name="Lantern30" parent="Lanterns" unique_id=1768442849 instance=ExtResource("20_go3ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.196423, 1.9260888, 15.986719)
 
 [connection signal="mouse_entered" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BaseActions/Mole" to="CanvasLayer/BaseActions" method="_on_mole_mouse_exited"]

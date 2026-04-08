@@ -58,7 +58,7 @@ material = SubResource("StandardMaterial3D_2aqvp")
 
 [node name="Lantern" unique_id=943472903 instance=ExtResource("1_btn7n")]
 
-[node name="Bottom_Material #47_0" parent="Sketchfab_model/def0bc61c8bd452b8103f3c4a2d797cb_fbx/RootNode/Bottom/Object_4" parent_id_path=PackedInt32Array(469385713) index="1" unique_id=429394530]
+[node name="Bottom_Material #47_0" parent="Sketchfab_model/def0bc61c8bd452b8103f3c4a2d797cb_fbx/RootNode/Bottom/Object_4" parent_id_path=PackedInt32Array(284111541) index="1" unique_id=1340304365]
 surface_material_override/0 = SubResource("StandardMaterial3D_btn7n")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="1" unique_id=487347237]
@@ -74,3 +74,4 @@ draw_pass_1 = SubResource("QuadMesh_48wus")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="GPUParticles3D" index="0" unique_id=1162277746]
 transform = Transform3D(5, 0, 0, 0, 5, -1.4210856e-13, 0, 1.4210856e-13, 5, 0, 1.1817123, 1.4210855e-13)
+light_specular = 0.0

@@ -1,7 +1,7 @@
 extends Node3D
 
 func _ready() -> void:
-	var children = get_children()
+	var children = find_children("*", "", true, false)
 	
 	for child in children:
 		if child is OmniLight3D:
