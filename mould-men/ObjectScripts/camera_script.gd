@@ -9,7 +9,7 @@ var moving_to_target_speed:	float = 60.0
 var zooming_to_target_speed:	float = 40.0
 var dir:						Vector3 = Vector3(0,0,0)
 @export var move_speed:		float = 15.0
-var unit_offset:				Vector3 = Vector3(0.0, 20, 17.0)
+var unit_offset:				Vector3 = Vector3(0.0, 20, 13.0)
 
 #Zoom
 @export var default_zoom:	float = 20.0
