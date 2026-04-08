@@ -53,10 +53,10 @@ shader = ExtResource("23_dpcai")
 shader_parameter/brightness = 2.67
 
 
-[node name="CaveLevel" type="Node3D" unique_id=637909514]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlpd7"]
 bg_color = Color(0, 0, 0, 1)
+
+[node name="CaveLevel" type="Node3D" unique_id=637909514]
 
 script = ExtResource("1_dpcai")
 
