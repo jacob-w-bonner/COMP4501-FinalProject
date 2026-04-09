@@ -255,6 +255,7 @@ func take_damage(damage_val: int) -> void:
 	health_bar.value = _health
 	
 func destroy_self() -> void:
+	%GUI.visible = false
 	if surrendering:
 		ending_scene.set_outcome(ending_scene.OUTCOME_TYPES.SURRENDER)
 	elif is_enemy():

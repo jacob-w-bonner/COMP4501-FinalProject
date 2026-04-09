@@ -683,6 +683,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.76483, 1.9260888, 17.7976
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.196423, 1.9260888, 15.986719)
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=2006783575]
+unique_name_in_owner = true
 
 [node name="TextureRect" type="ColorRect" parent="GUI" unique_id=946254781]
 offset_right = 320.0
