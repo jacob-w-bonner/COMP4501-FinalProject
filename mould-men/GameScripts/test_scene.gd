@@ -12,7 +12,7 @@ extends Node3D
 @onready var doctor_mole  = $DoctorMole
 @onready var cannon  = $Cannon
 
-@onready var armadillo_2025 = $Armadillo
+@onready var armadillo_2025 = $Armadillo2025
 
 @onready var camera = $Camera3D
 
