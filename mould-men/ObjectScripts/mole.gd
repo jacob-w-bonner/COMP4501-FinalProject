@@ -203,9 +203,9 @@ func _process(delta: float) -> void:
 	# Prevent actions if being carried 
 	#if _is_being_carried and _carrier != null:
 	#	global_position = _carrier._physics_body.global_position + _carry_offset
-		#_nav_agent.velocity = Vector3.ZERO
-		#_state = Globals.STATES.SENTRY
-		#return
+	#	_nav_agent.velocity = Vector3.ZERO
+	#	_state = Globals.STATES.SENTRY
+	#	return
 
 	# Locking y axis
 	_physics_body.global_position.y = Globals.FLOOR_HEIGHT
