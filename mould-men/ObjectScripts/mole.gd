@@ -46,7 +46,7 @@ var _action_text: Label3D
 var _action_text_timer: float = 0.0
 var _previous_state = -1
 
-# Carrying variables for carrying things
+# Carrying variables
 var _is_being_carried: bool = false
 var _carrier: Node3D = null
 var _carry_offset: Vector3 = Vector3(0, 2.0, 0)
