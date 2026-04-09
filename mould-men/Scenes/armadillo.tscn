@@ -14,11 +14,7 @@ func _ready() -> void:
 [node name="Armadillo" unique_id=22458191 instance=ExtResource("1_64rdl")]
 script = SubResource("GDScript_suy2o")
 
-<<<<<<< HEAD
 [node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(1313067425) index="0" unique_id=703048731]
-=======
-[node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(625613339) index="0" unique_id=1195939168]
->>>>>>> parent of ddeff31 (new)
 bones/1/position = Vector3(2.7518685e-09, 0.17869608, -0.08039686)
 bones/1/rotation = Quaternion(0.999794, -1.5323689e-09, 7.548235e-08, 0.02029684)
 bones/3/rotation = Quaternion(-0.17868687, 1.9884694e-06, 1.988206e-07, 0.983906)
