@@ -306,6 +306,34 @@ func request_spawn(unit_str: String) -> float:
 		pass
 	return -1.0
 
+func is_spawn_possible(unit_str: String) -> bool:
+	if is_enemy():
+		return false
+	
+	if friendly_units[unit_str]["cur_spawn_cooldown"] > 0.0:
+		return false
+	
+	for res in friendly_units[unit_str]["cost"]:
+		var cost = friendly_units[unit_str]["cost"][res]
+		
+		if not Globals.check_valid_resource_transaction(res, cost):
+			return false
+	
+	return true
+
+func get_spawn_costs(unit_str: String) -> Dictionary:
+	if not friendly_units.has(unit_str):
+		return {}
+	
+	var unit_costs = friendly_units[unit_str]["cost"]
+	
+	return {
+		Globals.RESOURCES.COAL: abs(unit_costs.get(Globals.RESOURCES.COAL, 0)),
+		Globals.RESOURCES.GOLD: abs(unit_costs.get(Globals.RESOURCES.GOLD, 0)),
+		Globals.RESOURCES.AMETHYST: abs(unit_costs.get(Globals.RESOURCES.AMETHYST, 0)),
+		Globals.RESOURCES.DIAMOND: abs(unit_costs.get(Globals.RESOURCES.DIAMOND, 0)),
+	}
+
 func get_random_point(origin: Vector3, radious: Vector3) -> Vector3:
 	return origin + Vector3(rng.randf_range(radious.x * -1, radious.x),
 	0.0, #cannot imagine we would ever want to change this but feel free

@@ -106,10 +106,10 @@ var static_levels = {
 var TIME: float = 0.0
 
 # Tracking the amount of resources the player has
-var COAL_NUM: int = 999 # 100
-var GOLD_NUM: int = 999 # 15
-var DIAMOND_NUM: int = 999 # 0
-var AMETHYST_NUM: int = 999 # 0
+var COAL_NUM: int = 100 # 100
+var GOLD_NUM: int = 15 # 15
+var DIAMOND_NUM: int = 0 # 0
+var AMETHYST_NUM: int = 0 # 0
 
 # Array that contains each of the enemies
 var ENEMY_ARR: Array = []

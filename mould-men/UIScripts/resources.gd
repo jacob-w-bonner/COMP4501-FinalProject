@@ -10,18 +10,3 @@ func _ready():
 	coal_label.text = str(Globals.COAL_NUM)
 	amethyst_label.text = str(Globals.AMETHYST_NUM)
 	diamond_label.text = str(Globals.DIAMOND_NUM)
-
-func _on_mole_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_mole_mouse_exited():
-	pass # Replace with function body.
-
-
-func _on_miner_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_miner_mouse_exited():
-	pass # Replace with function body.
