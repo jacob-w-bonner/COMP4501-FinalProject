@@ -49,6 +49,7 @@ Cannon Shell Assets:
 
 Bomb Assets:
 "Simple Bomb" (https://skfb.ly/6APSP) by Blender3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
 Armadillo:
 "Realistic Animated Armadillo 3D Model" (https://skfb.ly/pxF77) by WildMesh 3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
@@ -60,3 +61,9 @@ Cut diamond icon (https://game-icons.net/1x1/lorc/cut-diamond.html) by Lorc unde
 Modern city icon (https://game-icons.net/1x1/delapouite/modern-city.html) by Delapouite under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
 Tumulus icon (https://game-icons.net/1x1/cathelineau/tumulus.html) by Cathelineau under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
 Cannon icon (https://game-icons.net/1x1/lorc/cannon.html) by Lorc under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/).
+
+UI Assets:
+https://game-icons.net/1x1/delapouite/stethoscope.html
+https://game-icons.net/1x1/delapouite/musical-notes.html
+https://game-icons.net/1x1/delapouite/war-pick.html
+https://www.1001fonts.com/star-crush-font.html
