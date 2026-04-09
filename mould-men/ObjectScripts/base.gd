@@ -50,6 +50,8 @@ var respawn_resources = {
 	
 }
 
+var armadillo_scene = preload("res://Scenes/armadillo.tscn")
+
 @export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
 @export var cannon_pos: Vector3 = Vector3(-0.5, Globals.FLOOR_HEIGHT, -6.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
@@ -296,9 +298,14 @@ func scale_enemy_diff(time_passed: int):
 		enemy_diff=6
 
 func spawn_unit(unit_str: String) -> void:
-	var spawned_unit: DynamicUnit = null
+	var spawned_unit = null
 	if not is_enemy():
-		spawned_unit = friendly_units[unit_str]["unit_type"].new()
+		#Instancing a scene not a class node so differnt behavoir
+		if unit_str == "Armadillo":
+			spawned_unit = armadillo_scene.instantiate()
+			#print(spawned_unit.get_class())
+		else:
+			spawned_unit = friendly_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(false)
 		Globals.ALLY_ARR.push_back(spawned_unit)
 		if spawned_unit is MinerMole:
@@ -317,6 +324,7 @@ func spawn_unit(unit_str: String) -> void:
 				spawned_unit._state = Globals.STATES.SENTRY
 		else:
 			spawned_unit._state = Globals.STATES.MOVING
+	
 	spawned_unit.set_name(unit_str)
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
 	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
