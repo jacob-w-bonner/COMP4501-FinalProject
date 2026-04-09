@@ -69,6 +69,12 @@ func handle_camera_movement(delta: float) -> void:
 	if dir != Vector3(0,0,0): #If we are moving stop focusing on unit
 		global_position += dir.normalized() * move_speed * delta * max(self.size / (zoom_bounds[1] / 2), 0.5)
 		target = null
+	
+	#Saftey checker to make sure if no buttons being pushed then theres no camera velocity
+	if target == null and not Input.is_action_just_pressed('camera_left') and not Input.is_action_just_pressed('camera_right') and not Input.is_action_just_pressed('camera_forward') and not Input.is_action_just_pressed('camera_back'):
+		if not Input.is_action_just_released('camera_left') and not Input.is_action_just_released('camera_right') and not Input.is_action_just_released('camera_forward') and not Input.is_action_just_released('camera_back'):
+			dir == Vector3(0,0,0)
+	
 
 func handle_camera_zoom() -> void:
 	if Input.is_action_just_pressed('camera_zoom_in'):
