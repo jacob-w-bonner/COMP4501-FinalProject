@@ -143,8 +143,21 @@ var SELECT_COOLDOWN: bool = false
 @onready var amethyst_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer3/AmethystLabel")
 @onready var diamond_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer4/DiamondLabel")
 
+var game_start = false
+
+
 func _ready() -> void:
 	print(get_tree().root.get_children()[0].get_name())
+
+func _process(delta):
+	if  get_tree().root.get_node("CaveLevel") != null and not game_start:
+		game_start = true
+		gold_label = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer/GoldLabel")
+		coal_label = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer2/CoalLabel")
+		amethyst_label = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer3/AmethystLabel")
+		diamond_label = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer4/DiamondLabel")
+		print("started")
+		
 
 func get_current_level(unit_str: String) -> int:
 	if dynamic_levels.has(unit_str):

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MouldMen"
-run/main_scene="uid://c37hw1u3o5gff"
+run/main_scene="uid://cl0fcwiwto7yg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
