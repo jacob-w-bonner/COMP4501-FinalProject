@@ -66,6 +66,8 @@ func handle_camera_movement(delta: float) -> void:
 		dir-= Vector3.FORWARD
 	if Input.is_action_just_released('camera_back'):
 		dir-= Vector3.BACK
+	if Input.is_action_just_pressed("kill_camera_movement"):
+		dir = Vector3(0,0,0)
 	if dir != Vector3(0,0,0): #If we are moving stop focusing on unit
 		global_position += dir.normalized() * move_speed * delta * max(self.size / (zoom_bounds[1] / 2), 0.5)
 		target = null
