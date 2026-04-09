@@ -5,7 +5,7 @@ const _ENEMY_BASE:				Color				= Color(0.654, 0.654, 0.654, 1.0)
 const _ALLY_BASE:				Color				= Color(0.453, 0.179, 0.0, 1.0)
 
 # Constant for cannon attack range
-const _ATTACK_RADIUS:			float				= 8.0
+const _ATTACK_RADIUS:			float				= 14
 
 # Meshes and nodes for the cannon parts
 var _mount_mesh:				MeshInstance3D		= null
@@ -78,6 +78,9 @@ func _ready() -> void:
 	# Setting the shader material for the base
 	var base_mat						= ShaderMaterial.new()
 	base_mat.shader 					= _shader
+
+	#Seeting attack strength to be a bit less than normal
+	_attack_strength = 7
 
 	# Setting the colour of the base based on whether or not the cannon is an ally
 	if is_enemy():

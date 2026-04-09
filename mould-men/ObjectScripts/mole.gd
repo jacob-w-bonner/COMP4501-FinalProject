@@ -32,9 +32,9 @@ class_name Mole extends DynamicUnit
 #   and the mole will find the nearest enemy and transition to the MOVING state
 
 # Constants common to moles
-const _BURROW_COOLDOWN: 	float 			= 5.0
-const _BURROW_DISTANCE:		float			= 10.0
-const _BURROW_TIME:			float			= 8.0
+const _BURROW_COOLDOWN: 	float 			= 30.0
+const _BURROW_DISTANCE:		float			= 20.0
+const _BURROW_TIME:			float			= 6.0
 
 # Tracking burrowing properties
 var _curr_burrow_cooldown: 	float 			= 0.0
@@ -46,7 +46,7 @@ var _action_text: Label3D
 var _action_text_timer: float = 0.0
 var _previous_state = -1
 
-# Carrying variables
+# Carrying variables for carrying things
 var _is_being_carried: bool = false
 var _carrier: Node3D = null
 var _carry_offset: Vector3 = Vector3(0, 2.0, 0)

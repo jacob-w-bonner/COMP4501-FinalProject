@@ -26,6 +26,9 @@ var _AMYTHEST_MAX:			int					= 10
 # OmniLight
 var light:					OmniLight3D			= null
 
+#Resource regeneration stuff
+signal resource_destroyed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -128,6 +131,11 @@ func get_resource_amount() -> int:
 # Setter for the amount of resources
 func set_resource_amount(new_amount: int) -> void:
 	_res_amount = new_amount
+
+func destroy_self():
+	resource_destroyed.emit(self.get_script().get_global_name(), self.get_name(), self.global_position)
+	super.destroy_self()
+
 
 # Called to deplete the resource and return how much was depleted
 func deplete_resource(taken: int) -> int:

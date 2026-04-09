@@ -2,7 +2,7 @@
 class_name DynamicUnit extends Unit
 
 # Properties that all dynamic units have
-@export var _speed: 			int 				= 2.0
+@export var _speed: 			float 				= 1.0
 @export var _buff_val:			float				= 1.0
 var			_buff_height:		float				= 4.0
 var			_velocity:			Vector3				= Vector3.ZERO
@@ -295,8 +295,6 @@ func decrease_buff_val(change_val: float) -> void:
 #Gives the unit its upgrade boons, deducts resource cost
 func handle_level_up_effects() -> void:
 	var my_class = self.get_script().get_global_name()
-	if my_class == "Armadillo":
-		return #TODO: remove this check if/when armadillo is able to level up
 	var cur_level = Globals.dynamic_levels[my_class]['cur_level']
 	
 	if cur_level == 2:
@@ -311,4 +309,3 @@ func handle_level_up_effects() -> void:
 		_max_health = ceil(_max_health * 1.30)
 		receive_healing(_max_health-old_health)
 		_attack_strength = ceil(_attack_strength * 1.20)
-		

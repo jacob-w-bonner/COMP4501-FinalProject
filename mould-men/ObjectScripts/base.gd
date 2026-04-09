@@ -8,8 +8,8 @@ var friendly_units = {
 		"unit_type" : Mole,
 	},
 	"MinerMole" : {
-		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -5, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
-		"spawn_cooldown" : 5.0,
+		"cost" : { Globals.RESOURCES.COAL : -15, Globals.RESOURCES.GOLD : -10, Globals.RESOURCES.AMETHYST : 0, Globals.RESOURCES.DIAMOND : 0 },
+		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MinerMole,
 	},
@@ -20,28 +20,40 @@ var friendly_units = {
 		"unit_type" : DoctorMole,
 	},
 	"MusicMole" : {
-		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -25, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : 0 },
+		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : -20, Globals.RESOURCES.AMETHYST : -4, Globals.RESOURCES.DIAMOND : 0 },
 		"spawn_cooldown" : 10.0,
 		"cur_spawn_cooldown" : 0.0,
 		"unit_type" : MusicMole,
+	},
+	"Armadillo" : {
+		"cost" : { Globals.RESOURCES.COAL : 0, Globals.RESOURCES.GOLD : 0, Globals.RESOURCES.AMETHYST : -5, Globals.RESOURCES.DIAMOND : -5 },
+		"spawn_cooldown" : 20.0,
+		"cur_spawn_cooldown" : 0.0,
+		"unit_type" : Armadillo,
 	}
 }
 var enemy_units = {
 	"Prospector" : {
-		"spawn_cooldown" : 20.0,
-		"cur_spawn_cooldown" : 20.0, 
+		"spawn_cooldown" : 25.0,
+		"cur_spawn_cooldown" : 5.0, 
 		"unit_type" : Prospector,
 		
 	},
 	"Foreman" : {
 		"spawn_cooldown" : 45.0,
-		"cur_spawn_cooldown" : 60.0,
+		"cur_spawn_cooldown" : 20.0,
 		"unit_type" : Foreman,
 	}
 }
 
+var respawn_resources = {
+	
+}
+
+var armadillo_scene = preload("res://Scenes/armadillo.tscn")
+
 @export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
-@export var cannon_pos: Vector3 = Vector3(5.0, Globals.FLOOR_HEIGHT, -7.0)
+@export var cannon_pos: Vector3 = Vector3(-0.5, Globals.FLOOR_HEIGHT, -6.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
 var enemy_diff:		int = 1
@@ -61,6 +73,12 @@ var _previous_state = -1
 #Ending scene to switch to
 var ending_scene:			Ending			= preload("res://Scenes/end_scene.tscn").instantiate()
 var surrendering:			bool			= false
+
+#Respawn time for resources
+var resource_respawn_time:	float			= 120.0 #2 minute respawn timer for resources
+#reference to resource node for resource spawning
+@onready var resources_parent_node:	Node	= get_parent().get_parent().get_node("Resources")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -159,6 +177,13 @@ func _ready():
 			# Setting the shader surface colour to the old material
 			shader_mat.set_shader_parameter("tex", standard_mat.albedo_texture)
 			_mesh.mesh.surface_set_material(i, shader_mat)
+	
+	# Find the resources and hook up the regenerate behavoir
+	if not is_enemy():
+		for child in resources_parent_node.get_children():
+			if child is ResourceVein and not child._is_enemy:
+				#print("connected")
+				child.connect("resource_destroyed", set_resource_respawn)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -175,6 +200,11 @@ func _process(delta):
 		for unit in friendly_units.keys():
 			if friendly_units[unit]['cur_spawn_cooldown'] > 0.0:
 				friendly_units[unit]['cur_spawn_cooldown'] -= delta
+		for res in respawn_resources.keys():
+			respawn_resources[res]["time_left"] -= delta
+			if respawn_resources[res]["time_left"] <= 0:
+				spawn_resource(respawn_resources[res]["className"], res, respawn_resources[res]["global_position"])
+				respawn_resources.erase(res)
 
 	# Setting the shader parameters that need to be set by frame
 	for i in range(_mesh.mesh.get_surface_count()):
@@ -225,6 +255,7 @@ func take_damage(damage_val: int) -> void:
 	health_bar.value = _health
 	
 func destroy_self() -> void:
+	%GUI.visible = false
 	if surrendering:
 		ending_scene.set_outcome(ending_scene.OUTCOME_TYPES.SURRENDER)
 	elif is_enemy():
@@ -251,7 +282,7 @@ func enemy_spawn_logic(delta: float)->void:
 
 func scale_enemy_diff(time_passed: int):
 	if time_passed > 180 and enemy_diff == 1: # 3 minutes
-		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
+		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-10.0
 		enemy_diff=2
 	elif time_passed > 360 and enemy_diff == 2: # 6 minutes
 		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-15.0
@@ -262,15 +293,20 @@ func scale_enemy_diff(time_passed: int):
 	elif time_passed > 1500 and enemy_diff == 4: # 25 minutes
 		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-15.0
 		enemy_diff=5
-	elif time_passed > 2400 and enemy_diff == 5: #40 minutes Only to pace out players that take an INSANE amount of time
+	elif time_passed > 2700 and enemy_diff == 5: #45 minutes Only to pace out players that take an INSANE amount of time
 		enemy_units['Prospector']['spawn_cooldown'] = enemy_units['Prospector']['spawn_cooldown']-5.0
 		enemy_units['Foreman']['spawn_cooldown'] = enemy_units['Foreman']['spawn_cooldown']-5.0
 		enemy_diff=6
 
 func spawn_unit(unit_str: String) -> void:
-	var spawned_unit: DynamicUnit = null
+	var spawned_unit = null
 	if not is_enemy():
-		spawned_unit = friendly_units[unit_str]["unit_type"].new()
+		#Instancing a scene not a class node so differnt behavoir
+		if unit_str == "Armadillo":
+			spawned_unit = armadillo_scene.instantiate()
+			#print(spawned_unit.get_class())
+		else:
+			spawned_unit = friendly_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(false)
 		Globals.ALLY_ARR.push_back(spawned_unit)
 		if spawned_unit is MinerMole:
@@ -281,14 +317,20 @@ func spawn_unit(unit_str: String) -> void:
 		spawned_unit = enemy_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(true)
 		Globals.ENEMY_ARR.push_back(spawned_unit)
-		if randf_range(0.0,1.0) >= 0.80:
-			spawned_unit._state = Globals.STATES.MOVING
+		
+		if unit_str == "Prospector":
+			if randf_range(0.0,1.0) <= 0.80:
+				spawned_unit._state = Globals.STATES.MOVING
+			else:
+				spawned_unit._state = Globals.STATES.SENTRY
 		else:
-			spawned_unit._state = Globals.STATES.SENTRY
-	spawned_unit.set_name(unit_str)
+			spawned_unit._state = Globals.STATES.MOVING
+	
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
-	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
-	spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
+	spawned_unit.set_name(unit_str)
+	spawned_unit.global_position = get_random_point(Vector3(self.global_position.x, 0, self.global_position.z)  + spawn_offset, spawn_radious)
+	if unit_str != "Armadillo":
+		spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
 
 func request_spawn(unit_str: String) -> float:
 	if not is_enemy():
@@ -390,6 +432,7 @@ func trigger_upgrade(unit) -> int:
 			Globals.update_resource(res, Globals.static_levels[unit_class]['cost'][cur_level][res])
 		if unit is Cannon and unit._level == 1: #special behvaoir
 			var cannon = Cannon.new() 
+			#cannon._state = Globals.STATES.SENTRY
 			Globals.ALLY_ARR.push_back(cannon)
 			cannon.set_name(unit_class)
 			get_parent().add_child.call_deferred(cannon) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
@@ -408,3 +451,22 @@ func show_action_text(text: String, color: Color):
 	_action_text.modulate = color
 	_action_text.visible = true
 	_action_text_timer = 1.5
+
+func spawn_resource(className: String, node_name: String, pos: Vector3):
+	var spawned_res = Coal
+	if className == "Gold":
+		spawned_res = Gold
+	elif className == "Amethyst":
+		spawned_res = Amethyst
+	elif className == "Diamond":
+		spawned_res = Diamond
+	spawned_res = spawned_res.new()
+	spawned_res.set_enemy(false)
+	spawned_res.set_name(node_name)
+	resources_parent_node.add_child(spawned_res) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
+	spawned_res.global_position = pos
+	Globals.ALLY_ARR.push_back(spawned_res)
+	
+func set_resource_respawn(className: String, node_name: String, pos: Vector3)->void:
+	if node_name not in respawn_resources.keys():
+		respawn_resources[node_name] = {'className' : className, 'time_left' : resource_respawn_time,"global_position" : pos }

@@ -315,6 +315,9 @@ func closest_opponent(unit: Unit) -> Unit:
 		# Do not accept self as an option
 		if ally == self:
 			continue
+		# Do not accept resource as an option
+		if self is Foreman and ally is ResourceVein:
+			continue
 
 		var distance = ally.get_global_pos().distance_to(unit.get_global_pos())
 		if distance < ally_closest_distance:
