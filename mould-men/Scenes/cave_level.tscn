@@ -840,7 +840,7 @@ autowrap_mode = 0
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 theme_override_font_sizes/normal_font_size = 14
-text = "MOVING"
+text = "LEADING"
 fit_content = true
 autowrap_mode = 0
 
@@ -856,7 +856,7 @@ autowrap_mode = 0
 layout_mode = 2
 theme = ExtResource("9_dvdba")
 theme_override_font_sizes/normal_font_size = 14
-text = "1"
+text = "100"
 fit_content = true
 autowrap_mode = 0
 
@@ -868,7 +868,7 @@ theme_override_constants/margin_top = 5
 [node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/MoleCam/MarginContainer/VBoxContainer/MarginContainer" unique_id=553154516]
 layout_mode = 2
 theme = ExtResource("9_dvdba")
-text = "DOCTOR MOLE"
+text = "COMMANDER MOULD"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
