@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://b7gtrquqq6isn"]
+
+[ext_resource type="FontFile" uid="uid://jfsut3obihm" path="res://Assets/UIAssets/Fonts/star-crush.regular.ttf" id="1_4qip4"]
+
+[resource]
+default_font = ExtResource("1_4qip4")
+default_font_size = 30
