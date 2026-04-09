@@ -245,3 +245,7 @@ func set_minimap_icon(obj) -> void:
 			_minimap_icon.modulate = Color(1.0, 0.0, 0.0, 1.0)
 		else:
 			_minimap_icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+		# Account for large size differences 
+		if self is Armadillo:
+			_minimap_icon.scale = Vector3(0.1, 0.1, 0.1)
