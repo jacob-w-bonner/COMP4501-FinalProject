@@ -67,3 +67,4 @@ https://game-icons.net/1x1/delapouite/stethoscope.html
 https://game-icons.net/1x1/delapouite/musical-notes.html
 https://game-icons.net/1x1/delapouite/war-pick.html
 https://www.1001fonts.com/star-crush-font.html
+https://game-icons.net/1x1/delapouite/armadillo.html
