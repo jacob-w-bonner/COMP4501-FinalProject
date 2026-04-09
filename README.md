@@ -3,7 +3,8 @@ The RTS game for our COMP 4501 final project: Mould Men!
 
 ## Controls
 <ul>
-<li>wasd: Move camera around </li>
+<li>WASD: Move camera around </li>
+<li>C: Emergency stop button if the camera gets a mind of its own</li>
 <li>Mouse Scroll Wheel: Zoom camera in and out, click down on it while hovering the cursor over a unit to track it</li>
 <li>Left Click: Select a unit thats being hovered over by the cursor, additional clicks will do different things depending on context</li>
 <li>Double Left Click: Engage a unit in sentry mode</li>
