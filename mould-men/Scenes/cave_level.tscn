@@ -20,8 +20,10 @@
 [ext_resource type="Script" uid="uid://biata3sje0r3q" path="res://UIScripts/button_cooldown.gd" id="17_sbxh1"]
 [ext_resource type="Script" uid="uid://tyimuh366lck" path="res://ObjectScripts/gold.gd" id="18_m7bt0"]
 [ext_resource type="Texture2D" uid="uid://cxf6bryp3d02u" path="res://Assets/UIAssets/musical-notes.svg" id="18_sbxh1"]
+[ext_resource type="Texture2D" uid="uid://blmb1lmmunyj5" path="res://Assets/UIAssets/tumulus.svg" id="18_sho3j"]
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="19_2n1tv"]
 [ext_resource type="Script" uid="uid://fr08nj5cf2wv" path="res://ObjectScripts/diamond.gd" id="19_4y3ct"]
+[ext_resource type="Texture2D" uid="uid://dgqq2wpfihi51" path="res://Assets/UIAssets/cannon.svg" id="19_dh5c0"]
 [ext_resource type="Script" uid="uid://b5cknwfn2dh1p" path="res://UIScripts/costs.gd" id="19_ig43t"]
 [ext_resource type="Texture2D" uid="uid://yeq2ajfyecor" path="res://Assets/UIAssets/armadillo.svg" id="19_sbxh1"]
 [ext_resource type="PackedScene" uid="uid://b8eesw2fwfhtg" path="res://Assets/Lamp/Lantern.tscn" id="20_go3ms"]
@@ -897,167 +899,293 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/MarginContainer" unique_id=255498683]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer" unique_id=410302996]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer" unique_id=255498683]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("9_dvdba")
-text = "LEVEL UP"
+text = "UPGRADES"
 fit_content = true
 autowrap_mode = 0
 
-[node name="CurLevels" type="GridContainer" parent="GUI/Sidebar/Upgrades" unique_id=1180799732]
+[node name="CurLevels" type="GridContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer" unique_id=1180799732]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 49
-theme_override_constants/v_separation = 50
-columns = 2
+theme_override_constants/v_separation = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/Sidebar/Upgrades/CurLevels" unique_id=238055969]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=1390740406]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer" unique_id=1870213735]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer/HBoxContainer" unique_id=764672099]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_2n1tv")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer/HBoxContainer" unique_id=391609916]
-custom_minimum_size = Vector2(33, 0)
+[node name="Mole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer" unique_id=801984988]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-text = "999"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = " MOLE"
+icon = ExtResource("14_2n1tv")
+alignment = 0
+expand_icon = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/Sidebar/Upgrades/CurLevels" unique_id=1874963806]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole" unique_id=1342178566]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole" unique_id=1522719598]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter" unique_id=505462072]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=2099677792]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer2" unique_id=1183537940]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer2/HBoxContainer" unique_id=388070431]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_2n1tv")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer2/HBoxContainer" unique_id=1855172818]
-custom_minimum_size = Vector2(33, 0)
+[node name="MinerMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2" unique_id=1948629254]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-text = "999"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = " MINER MOLE"
+icon = ExtResource("16_mqbjy")
+alignment = 0
+expand_icon = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="GUI/Sidebar/Upgrades/CurLevels" unique_id=1122805024]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole" unique_id=1104030472]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole" unique_id=1578801398]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter" unique_id=1466291365]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=169079908]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer3" unique_id=1002536019]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer3/HBoxContainer" unique_id=877233100]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_2n1tv")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer3/HBoxContainer" unique_id=1440925688]
-custom_minimum_size = Vector2(33, 0)
+[node name="DoctorMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3" unique_id=1876582604]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-text = "999"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = " DOCTOR MOLE"
+icon = ExtResource("17_ig43t")
+alignment = 0
+expand_icon = true
 
-[node name="MarginContainer4" type="MarginContainer" parent="GUI/Sidebar/Upgrades/CurLevels" unique_id=509386795]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole" unique_id=717195752]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole" unique_id=1788690141]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter" unique_id=1828427693]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=184346938]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer4" unique_id=182425591]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer4/HBoxContainer" unique_id=416943654]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_2n1tv")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer4/HBoxContainer" unique_id=615949912]
-custom_minimum_size = Vector2(33, 0)
+[node name="MusicMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4" unique_id=658389206]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-text = "999"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = " MUSIC MOLE"
+icon = ExtResource("18_sbxh1")
+alignment = 0
+expand_icon = true
 
-[node name="MarginContainer5" type="MarginContainer" parent="GUI/Sidebar/Upgrades/CurLevels" unique_id=1852513218]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole" unique_id=1274997345]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole" unique_id=340223321]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter" unique_id=2038202131]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="MarginContainer5" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=985687747]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer5" unique_id=376069957]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer5/HBoxContainer" unique_id=1286581136]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_2n1tv")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer5/HBoxContainer" unique_id=813350201]
-custom_minimum_size = Vector2(33, 0)
+[node name="Base" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5" unique_id=376006574]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-text = "999"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = " MOLE BASE"
+icon = ExtResource("18_sho3j")
+alignment = 0
+expand_icon = true
 
-[node name="MarginContainer6" type="MarginContainer" parent="GUI/Sidebar/Upgrades/CurLevels" unique_id=1189437585]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base" unique_id=1177286830]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base" unique_id=1983432952]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter" unique_id=1719096363]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="MarginContainer6" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=1237376304]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer6" unique_id=301547609]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer6/HBoxContainer" unique_id=134775072]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_2n1tv")
-expand_mode = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Sidebar/Upgrades/CurLevels/MarginContainer6/HBoxContainer" unique_id=1447026333]
-custom_minimum_size = Vector2(33, 0)
+[node name="Cannon" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6" unique_id=2039156909]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-text = "999"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = " MOLE DEFENSES"
+icon = ExtResource("19_dh5c0")
+alignment = 0
+expand_icon = true
+
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon" unique_id=756936101]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon" unique_id=1006699656]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter" unique_id=1297405726]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
 
 [node name="Spawning" type="MarginContainer" parent="GUI/Sidebar" unique_id=1563874481]
 layout_mode = 2
