@@ -109,7 +109,7 @@ func _process(delta: float) -> void:
 
 		move(_closest_op)
 		
-		if _pickup_target != null and is_instance_valid(_pickup_target) and holding_mole == false and _pickup_target._state == 0:
+		if _pickup_target != null and is_instance_valid(_pickup_target) and holding_mole == false and (_pickup_target._state == Globals.STATES.IDLE or _pickup_target._state == Globals.STATES.SENTRY):
 			var dist = _physics_body.global_position.distance_to(_pickup_target.get_global_pos())
 			if dist <= PICKUP_RANGE:
 				pick_up_mole(_pickup_target)
@@ -218,6 +218,10 @@ func _input(event: InputEvent) -> void:
 			var ray_query 	= PhysicsRayQueryParameters3D.create(ray_from, ray_to)
 			var result 		= space_state.intersect_ray(ray_query)
 
+
+func nav_finish() -> void:
+	if _pickup_target == null:
+		super.nav_finish()
 
 func pick_up_mole(mole: Mole) -> void:
 	if mole == null or mole._is_being_carried:

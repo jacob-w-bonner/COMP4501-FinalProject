@@ -52,7 +52,9 @@ var respawn_resources = {
 
 var armadillo_scene = preload("res://Scenes/armadillo.tscn")
 
-@export var spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
+@export var enemy_spawn_offset: Vector3 = Vector3(-6.0, Globals.FLOOR_HEIGHT, 0.0)
+@export var dillo_spawn_offset: Vector3 = Vector3(6.0, Globals.FLOOR_HEIGHT, 0.0)
+@export var friendly_spawn_offset: Vector3 = Vector3(6.0, 0.0, 0.0)
 @export var cannon_pos: Vector3 = Vector3(-0.5, Globals.FLOOR_HEIGHT, -6.0)
 @export var spawn_radious: Vector3 = Vector3(0.5, 0.0, 2.5)
 var rng = RandomNumberGenerator.new()
@@ -99,7 +101,7 @@ func _ready():
 		_nav_obs.global_position = self.global_position + Vector3(12,Globals.FLOOR_HEIGHT,20) * Vector3(self.scale.x, 1, self.scale.z)
 		_mesh.mesh							= (load("res://Assets/StaticAssets/apartment.tres") as Mesh).duplicate()
 	else:
-		_nav_obs.radius = 0.65
+		_nav_obs.radius = 1.5
 		_nav_obs.global_position = self.global_position
 		_mesh.mesh							= (load("res://Assets/StaticAssets/hole.tres") as Mesh).duplicate()
 
@@ -304,7 +306,6 @@ func spawn_unit(unit_str: String) -> void:
 		#Instancing a scene not a class node so differnt behavoir
 		if unit_str == "Armadillo":
 			spawned_unit = armadillo_scene.instantiate()
-			#print(spawned_unit.get_class())
 		else:
 			spawned_unit = friendly_units[unit_str]["unit_type"].new()
 		spawned_unit.set_enemy(false)
@@ -328,7 +329,13 @@ func spawn_unit(unit_str: String) -> void:
 	
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
 	spawned_unit.set_name(unit_str)
-	spawned_unit.global_position = get_random_point(Vector3(self.global_position.x, 0, self.global_position.z)  + spawn_offset, spawn_radious)
+	if is_enemy():
+		spawned_unit.global_position = get_random_point(Vector3(self.global_position.x, 0, self.global_position.z)  + enemy_spawn_offset, spawn_radious)
+	else:
+		if unit_str == "Armadillo":
+			spawned_unit.global_position = get_random_point(Vector3(self.global_position.x, 0, self.global_position.z)  + dillo_spawn_offset, spawn_radious)
+		else:
+			spawned_unit.global_position = get_random_point(Vector3(self.global_position.x, 0, self.global_position.z)  + friendly_spawn_offset, spawn_radious)
 	if unit_str != "Armadillo":
 		spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
 
