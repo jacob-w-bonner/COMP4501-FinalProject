@@ -325,12 +325,10 @@ func spawn_unit(unit_str: String) -> void:
 		else:
 			spawned_unit._state = Globals.STATES.MOVING
 	
-	spawned_unit.set_name(unit_str)
 	get_parent().add_child(spawned_unit) #If you make it a child of this base you gotta make sure you scale correctly so they aint inperceptable
-	spawned_unit.global_position = get_random_point(self.global_position + spawn_offset, spawn_radious)
-	if unit_str == "Armadillo":
-		spawned_unit.scale = Vector3(3.5,3.5,3.5)
-	else:
+	spawned_unit.set_name(unit_str)
+	spawned_unit.global_position = get_random_point(Vector3(self.global_position.x, 0, self.global_position.z)  + spawn_offset, spawn_radious)
+	if unit_str != "Armadillo":
 		spawned_unit.scale = Vector3(0.5,0.5,0.5) #Can make this per unit if wanted, but for now seems pretty global
 
 func request_spawn(unit_str: String) -> float:

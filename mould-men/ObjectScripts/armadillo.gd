@@ -71,9 +71,10 @@ func _ready() -> void:
 	_collision_shape.position = Vector3(0, 0.15, 0)
 	
 	#Set speed and health to an aproprite value for our fast strong boi
-	_speed = 2.0
+	self._speed = 2.0
 	_max_health = 200
 	_attack_strength = 15
+	print(self._speed)
 
 func _process(delta: float) -> void:
 	super._process(delta) 
@@ -243,6 +244,7 @@ func pick_up_mole(mole: Mole) -> void:
 	self._speed *= 4
 
 	holding_mole = true
+	passenger = mole
 	
 	show_action_text("Picked up mole", Color(0,1,1))
 	
@@ -274,6 +276,7 @@ func drop_mole(mole: Mole) -> void:
 	dummy_mole.visible = false
 
 	holding_mole = false
+	passenger = null
 	show_action_text("Dropped mole", Color(1,1,1))
 	
 func show_action_text(text: String, color: Color):
