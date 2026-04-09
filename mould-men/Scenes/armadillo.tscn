@@ -15,11 +15,7 @@ func _ready() -> void:
 script = SubResource("GDScript_suy2o")
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 [node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(1313067425) index="0" unique_id=703048731]
-=======
-[node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(625613339) index="0" unique_id=1195939168]
->>>>>>> parent of ddeff31 (new)
 =======
 [node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(625613339) index="0" unique_id=1195939168]
 >>>>>>> parent of ddeff31 (new)
