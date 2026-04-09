@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dfj5vnruw8hvk" path="res://Assets/UIAssets/gold-bar.svg" id="12_sbxh1"]
 [ext_resource type="Texture2D" uid="uid://c5f5jt2a2osxo" path="res://Assets/UIAssets/MinimapAssets/mole.svg" id="14_2n1tv"]
 [ext_resource type="Texture2D" uid="uid://daf4wrmconhcl" path="res://Assets/UIAssets/amethyst.svg" id="14_sho3j"]
+[ext_resource type="Script" uid="uid://cm5naun4bpipu" path="res://UIScripts/upgrades.gd" id="15_6f257"]
 [ext_resource type="Texture2D" uid="uid://bhc7tqsmo6bet" path="res://Assets/UIAssets/cut-diamond.svg" id="15_dh5c0"]
 [ext_resource type="Texture2D" uid="uid://bodqcvhdnqv3s" path="res://Assets/UIAssets/war-pick.svg" id="16_mqbjy"]
 [ext_resource type="Texture2D" uid="uid://dtolrr7ilge37" path="res://Assets/UIAssets/stethoscope.svg" id="17_ig43t"]
@@ -30,6 +31,7 @@
 [ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://ObjectScripts/minimap_camera.gd" id="22_dpcai"]
 [ext_resource type="Script" uid="uid://b7ocrnrctly4f" path="res://ObjectScripts/mole.gd" id="22_ig43t"]
 [ext_resource type="Shader" uid="uid://way6cbc8uy1t" path="res://UIScripts/minimap.gdshader" id="23_dpcai"]
+[ext_resource type="Script" uid="uid://bon8lqrdj0836" path="res://UIScripts/flavour_text.gd" id="24_6f257"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -913,26 +915,28 @@ text = "UPGRADES"
 fit_content = true
 autowrap_mode = 0
 
-[node name="CurLevels" type="GridContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer" unique_id=1180799732]
+[node name="Upgrades" type="GridContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer" unique_id=1180799732]
 layout_mode = 2
-theme_override_constants/v_separation = 6
+theme_override_constants/v_separation = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=1390740406]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=1390740406]
 layout_mode = 2
 
-[node name="Mole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer" unique_id=801984988]
+[node name="Mole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer" unique_id=801984988 node_paths=PackedStringArray("base")]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = " MOLE"
 icon = ExtResource("14_2n1tv")
 alignment = 0
 expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole" unique_id=1342178566]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" unique_id=1342178566]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -942,7 +946,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole" unique_id=1522719598]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" unique_id=1522719598]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -954,11 +958,11 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter" unique_id=241455176]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole/Counter" unique_id=241455176]
 layout_mode = 2
 theme_override_constants/separation = -240
 
-[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter/HBoxContainer" unique_id=1452809656]
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole/Counter/HBoxContainer" unique_id=1452809656]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -967,7 +971,7 @@ text = "LVL "
 horizontal_alignment = 2
 clip_text = true
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter/HBoxContainer" unique_id=505462072]
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole/Counter/HBoxContainer" unique_id=505462072]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -976,22 +980,24 @@ text = "1"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=2099677792]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=2099677792]
 layout_mode = 2
 
-[node name="MinerMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2" unique_id=1948629254]
+[node name="MinerMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2" unique_id=1948629254 node_paths=PackedStringArray("base")]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = " MINER MOLE"
 icon = ExtResource("16_mqbjy")
 alignment = 0
 expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole" unique_id=1104030472]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" unique_id=1104030472]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -1001,7 +1007,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole" unique_id=1578801398]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" unique_id=1578801398]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1013,11 +1019,11 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter" unique_id=595179836]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole/Counter" unique_id=595179836]
 layout_mode = 2
 theme_override_constants/separation = -240
 
-[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter/HBoxContainer" unique_id=1637516862]
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole/Counter/HBoxContainer" unique_id=1637516862]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1026,7 +1032,7 @@ text = "LVL "
 horizontal_alignment = 2
 clip_text = true
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter/HBoxContainer" unique_id=584397095]
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole/Counter/HBoxContainer" unique_id=584397095]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1035,22 +1041,24 @@ text = "1"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=169079908]
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=169079908]
 layout_mode = 2
 
-[node name="DoctorMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3" unique_id=1876582604]
+[node name="DoctorMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3" unique_id=1876582604 node_paths=PackedStringArray("base")]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = " DOCTOR MOLE"
 icon = ExtResource("17_ig43t")
 alignment = 0
 expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole" unique_id=717195752]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" unique_id=717195752]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -1060,7 +1068,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole" unique_id=1788690141]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" unique_id=1788690141]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1072,11 +1080,11 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter" unique_id=384943633]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole/Counter" unique_id=384943633]
 layout_mode = 2
 theme_override_constants/separation = -240
 
-[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter/HBoxContainer" unique_id=287651561]
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole/Counter/HBoxContainer" unique_id=287651561]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1085,7 +1093,7 @@ text = "LVL "
 horizontal_alignment = 2
 clip_text = true
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter/HBoxContainer" unique_id=1185195874]
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole/Counter/HBoxContainer" unique_id=1185195874]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1094,22 +1102,24 @@ text = "1"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="MarginContainer4" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=184346938]
+[node name="MarginContainer4" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=184346938]
 layout_mode = 2
 
-[node name="MusicMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4" unique_id=658389206]
+[node name="MusicMole" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4" unique_id=658389206 node_paths=PackedStringArray("base")]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = " MUSIC MOLE"
 icon = ExtResource("18_sbxh1")
 alignment = 0
 expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole" unique_id=1274997345]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" unique_id=1274997345]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -1119,7 +1129,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole" unique_id=340223321]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" unique_id=340223321]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1131,11 +1141,11 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter" unique_id=1431661869]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole/Counter" unique_id=1431661869]
 layout_mode = 2
 theme_override_constants/separation = -240
 
-[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter/HBoxContainer" unique_id=468034392]
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole/Counter/HBoxContainer" unique_id=468034392]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1144,7 +1154,7 @@ text = "LVL "
 horizontal_alignment = 2
 clip_text = true
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter/HBoxContainer" unique_id=1982349561]
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole/Counter/HBoxContainer" unique_id=1982349561]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1153,22 +1163,85 @@ text = "1"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="MarginContainer5" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=985687747]
+[node name="MarginContainer5" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=1708117662]
 layout_mode = 2
 
-[node name="Base" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5" unique_id=376006574]
+[node name="Armadillo" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5" unique_id=1445273346 node_paths=PackedStringArray("base")]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
+text = " ARMADILLO"
+icon = ExtResource("19_sbxh1")
+alignment = 0
+expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
+
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" unique_id=629273813]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" unique_id=232063822]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo/Counter" unique_id=759956414]
+layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo/Counter/HBoxContainer" unique_id=201595756]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo/Counter/HBoxContainer" unique_id=911445174]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="MarginContainer6" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=985687747]
+layout_mode = 2
+
+[node name="Base" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6" unique_id=376006574 node_paths=PackedStringArray("base")]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_dvdba")
+theme_override_font_sizes/font_size = 20
 text = " MOLE BASE"
 icon = ExtResource("18_sho3j")
 alignment = 0
 expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base" unique_id=1177286830]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" unique_id=1177286830]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -1178,7 +1251,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base" unique_id=1983432952]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" unique_id=1983432952]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1190,11 +1263,11 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter" unique_id=1852849234]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base/Counter" unique_id=1852849234]
 layout_mode = 2
 theme_override_constants/separation = -240
 
-[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter/HBoxContainer" unique_id=1687215558]
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base/Counter/HBoxContainer" unique_id=1687215558]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1203,7 +1276,7 @@ text = "LVL "
 horizontal_alignment = 2
 clip_text = true
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter/HBoxContainer" unique_id=1651319860]
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base/Counter/HBoxContainer" unique_id=1651319860]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1212,22 +1285,24 @@ text = "1"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="MarginContainer6" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels" unique_id=1237376304]
+[node name="MarginContainer7" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades" unique_id=1237376304]
 layout_mode = 2
 
-[node name="Cannon" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6" unique_id=2039156909]
+[node name="Cannon" type="Button" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7" unique_id=2039156909 node_paths=PackedStringArray("base")]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = " MOLE DEFENSES"
 icon = ExtResource("19_dh5c0")
 alignment = 0
 expand_icon = true
+script = ExtResource("15_6f257")
+base = NodePath("../../../../../../../../Units/MoleBase")
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon" unique_id=756936101]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" unique_id=756936101]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -1237,7 +1312,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon" unique_id=1006699656]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" unique_id=1006699656]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1249,11 +1324,11 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter" unique_id=1681646146]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon/Counter" unique_id=1681646146]
 layout_mode = 2
 theme_override_constants/separation = -240
 
-[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter/HBoxContainer" unique_id=2060854005]
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon/Counter/HBoxContainer" unique_id=2060854005]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1262,7 +1337,7 @@ text = "LVL "
 horizontal_alignment = 2
 clip_text = true
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter/HBoxContainer" unique_id=518026777]
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon/Counter/HBoxContainer" unique_id=518026777]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -1505,10 +1580,10 @@ text = "0.0"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="MenuButton" type="MarginContainer" parent="GUI/Sidebar" unique_id=953787083]
+[node name="ArmadilloSpawning" type="MarginContainer" parent="GUI/Sidebar" unique_id=953787083]
 layout_mode = 2
 
-[node name="Frame" type="TextureRect" parent="GUI/Sidebar/MenuButton" unique_id=519752634]
+[node name="Frame" type="TextureRect" parent="GUI/Sidebar/ArmadilloSpawning" unique_id=519752634]
 modulate = Color(0.7058824, 0.7607843, 0.7607843, 1)
 clip_contents = true
 custom_minimum_size = Vector2(320, 70)
@@ -1518,7 +1593,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="Background Colour" type="TextureRect" parent="GUI/Sidebar/MenuButton" unique_id=196029246]
+[node name="Background Colour" type="TextureRect" parent="GUI/Sidebar/ArmadilloSpawning" unique_id=196029246]
 modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
 clip_contents = true
 custom_minimum_size = Vector2(310, 60)
@@ -1528,14 +1603,14 @@ size_flags_vertical = 4
 texture = ExtResource("10_mqbjy")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/Sidebar/MenuButton" unique_id=1259992132]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Sidebar/ArmadilloSpawning" unique_id=1259992132]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="Armadillo" type="Button" parent="GUI/Sidebar/MenuButton/MarginContainer" unique_id=1300411959 node_paths=PackedStringArray("base")]
+[node name="Armadillo" type="Button" parent="GUI/Sidebar/ArmadilloSpawning/MarginContainer" unique_id=1300411959 node_paths=PackedStringArray("base")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1549,7 +1624,7 @@ script = ExtResource("17_sbxh1")
 base = NodePath("../../../../../Units/MoleBase")
 cooldown = 10.0
 
-[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" unique_id=575757755]
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" unique_id=575757755]
 modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 0
@@ -1559,10 +1634,10 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("10_mqbjy")
 
-[node name="Timer" type="Timer" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" unique_id=1992745394]
+[node name="Timer" type="Timer" parent="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" unique_id=1992745394]
 one_shot = true
 
-[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" unique_id=1229464904]
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" unique_id=1229464904]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1574,7 +1649,7 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo/Counter" unique_id=910290043]
+[node name="Value" type="Label" parent="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo/Counter" unique_id=910290043]
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
@@ -1711,6 +1786,30 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("15_dh5c0")
 expand_mode = 1
+
+[node name="FlavourText" type="Control" parent="GUI" unique_id=1703228587]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("24_6f257")
+
+[node name="Panel" type="Panel" parent="GUI/FlavourText" unique_id=1477180414]
+layout_mode = 0
+offset_right = 520.0
+offset_bottom = 24.0
+
+[node name="FlavourText" type="RichTextLabel" parent="GUI/FlavourText" unique_id=660899784]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_dvdba")
+theme_override_font_sizes/normal_font_size = 14
+text = "Medium upgrade to health, passenger Moles now receive passive health regeneration"
+fit_content = true
+autowrap_mode = 0
 
 [node name="Units" type="Node3D" parent="." unique_id=46713047]
 
@@ -1911,6 +2010,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.76483, 1.9260888, 17.7976
 [node name="Lantern30" parent="Lanterns" unique_id=1768442849 instance=ExtResource("20_go3ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.196423, 1.9260888, 15.986719)
 
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer/Mole" method="_on_pressed"]
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer2/MinerMole" method="_on_pressed"]
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer3/DoctorMole" method="_on_pressed"]
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer4/MusicMole" method="_on_pressed"]
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer5/Armadillo" method="_on_pressed"]
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer6/Base" method="_on_pressed"]
+[connection signal="mouse_entered" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" to="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/Upgrades/MarginContainer7/Cannon" method="_on_pressed"]
 [connection signal="mouse_entered" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/Mole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/Mole" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/Mole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/Mole" method="_on_mouse_exited"]
 [connection signal="pressed" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/Mole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/Mole" method="_on_pressed"]
@@ -1927,7 +2047,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.196423, 1.9260888, 15.986
 [connection signal="mouse_exited" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" method="_on_mouse_exited"]
 [connection signal="pressed" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" method="_on_pressed"]
 [connection signal="timeout" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole/Timer" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" method="_on_timer_timeout"]
-[connection signal="mouse_entered" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_mouse_exited"]
-[connection signal="pressed" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_pressed"]
-[connection signal="timeout" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo/Timer" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" to="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" to="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" to="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" method="_on_pressed"]
+[connection signal="timeout" from="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo/Timer" to="GUI/Sidebar/ArmadilloSpawning/MarginContainer/Armadillo" method="_on_timer_timeout"]

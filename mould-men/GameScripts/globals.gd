@@ -146,6 +146,81 @@ var SELECT_COOLDOWN: bool = false
 func _ready() -> void:
 	print(get_tree().root.get_children()[0].get_name())
 
+func get_current_level(unit_str: String) -> int:
+	if dynamic_levels.has(unit_str):
+		return dynamic_levels[unit_str].get("cur_level", 1)
+	if static_levels.has(unit_str):
+		return static_levels[unit_str].get("cur_level", 1)
+	return -1
+
+func get_upgrade_costs(unit_str: String) -> Dictionary:
+	var data = {}
+	
+	if dynamic_levels.has(unit_str):
+		data = dynamic_levels[unit_str]
+	elif static_levels.has(unit_str):
+		data = static_levels[unit_str]
+	else:
+		return {}
+	
+	var cur_level = data.get("cur_level", 1)
+	var next_level = cur_level + 1
+	var cost_dict = data.get("cost", {}).get(next_level, {})
+	
+	return {
+		Globals.RESOURCES.COAL: abs(cost_dict.get(Globals.RESOURCES.COAL, 0)),
+		Globals.RESOURCES.GOLD: abs(cost_dict.get(Globals.RESOURCES.GOLD, 0)),
+		Globals.RESOURCES.AMETHYST: abs(cost_dict.get(Globals.RESOURCES.AMETHYST, 0)),
+		Globals.RESOURCES.DIAMOND: abs(cost_dict.get(Globals.RESOURCES.DIAMOND, 0)),
+	}
+
+func can_afford_upgrade(unit_str: String) -> bool:
+	var data = {}
+	
+	if dynamic_levels.has(unit_str):
+		data = dynamic_levels[unit_str]
+	elif static_levels.has(unit_str):
+		data = static_levels[unit_str]
+	else:
+		return false
+	
+	var cur_level = data.get("cur_level", 1)
+	var next_level = cur_level + 1
+	
+	var cost_dict = data.get("cost", {}).get(next_level, null)
+	
+	# No next level
+	if cost_dict == null:
+		return false
+	
+	for res in cost_dict:
+		var cost = cost_dict[res]
+		
+		if not Globals.check_valid_resource_transaction(res, cost):
+			return false
+	
+	return true
+
+func get_next_upgrade_description(unit_str: String) -> String:
+	var data = {}
+	
+	if dynamic_levels.has(unit_str):
+		data = dynamic_levels[unit_str]
+	elif static_levels.has(unit_str):
+		data = static_levels[unit_str]
+	else:
+		return ""
+	
+	var cur_level = data.get("cur_level", 1)
+	var next_level = cur_level + 1
+	
+	var desc_dict = data.get("description ", {})
+	
+	if not desc_dict.has(next_level):
+		return "Max level reached!"
+	
+	return desc_dict[next_level]
+
 func update_resource(resource: RESOURCES, amt: int) -> int:
 	if (resource == RESOURCES.COAL):
 		COAL_NUM += amt
