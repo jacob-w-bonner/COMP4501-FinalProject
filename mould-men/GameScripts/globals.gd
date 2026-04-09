@@ -127,10 +127,10 @@ var FLOOR_HEIGHT: float = 1.6
 var SELECT_COOLDOWN: bool = false
 
 # Resource Locations
-@onready var gold_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/MarginContainer/GridContainer/HBoxContainer/GoldLabel")
-@onready var coal_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/MarginContainer/GridContainer/HBoxContainer2/CoalLabel")
-@onready var amethyst_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/MarginContainer/GridContainer/HBoxContainer3/AmethystLabel")
-@onready var diamond_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/MarginContainer/GridContainer/HBoxContainer4/DiamondLabel")
+@onready var gold_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer/GoldLabel")
+@onready var coal_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer2/CoalLabel")
+@onready var amethyst_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer3/AmethystLabel")
+@onready var diamond_label: RichTextLabel = get_tree().root.get_node("CaveLevel/GUI/Resources/GridContainer/HBoxContainer4/DiamondLabel")
 
 func _ready() -> void:
 	print(get_tree().root.get_children()[0].get_name())
