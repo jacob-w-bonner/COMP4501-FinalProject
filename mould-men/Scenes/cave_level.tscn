@@ -1664,12 +1664,12 @@ metadata/_custom_type_script = "uid://b7ocrnrctly4f"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Amethyst" type="Node3D" parent="Resources" unique_id=337698818]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.172832, 0, -1.5122747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68611, 0, 5.29084)
 script = ExtResource("5_dvdba")
 metadata/_custom_type_script = "uid://xudvisx4xxyv"
 
 [node name="Amethyst2" type="Node3D" parent="Resources" unique_id=1404375562]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.137457, 0, 16.946236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.329194, 0, 18.205423)
 script = ExtResource("5_dvdba")
 metadata/_custom_type_script = "uid://xudvisx4xxyv"
 
@@ -1684,7 +1684,7 @@ script = ExtResource("6_dlpd7")
 metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
 
 [node name="Coal2" type="Node3D" parent="Resources" unique_id=1593594409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.012888, 0, 15.069056)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1214204, 0, 8.091542)
 script = ExtResource("6_dlpd7")
 metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
 
@@ -1693,8 +1693,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.958141, 0, 9.107767)
 script = ExtResource("6_dlpd7")
 metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
 
+[node name="Coal4" type="Node3D" parent="Resources" unique_id=1129238989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.771957, 0, -0.6046238)
+script = ExtResource("6_dlpd7")
+metadata/_custom_type_script = "uid://cbcqjp5vy7j3u"
+
 [node name="Diamond" type="Node3D" parent="Resources" unique_id=1790339788]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.17897, 0, -13.090511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.975733, 0, 3.104329)
 script = ExtResource("19_4y3ct")
 metadata/_custom_type_script = "uid://fr08nj5cf2wv"
 
@@ -1704,7 +1709,7 @@ script = ExtResource("19_4y3ct")
 metadata/_custom_type_script = "uid://fr08nj5cf2wv"
 
 [node name="Diamond3" type="Node3D" parent="Resources" unique_id=1364031513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.702344, 0, -18.68126)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.847272, 0, 12.152515)
 script = ExtResource("19_4y3ct")
 metadata/_custom_type_script = "uid://fr08nj5cf2wv"
 
@@ -1714,12 +1719,17 @@ script = ExtResource("18_m7bt0")
 metadata/_custom_type_script = "uid://tyimuh366lck"
 
 [node name="Gold2" type="Node3D" parent="Resources" unique_id=1050599900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05098, 0, -16.708546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0186825, 0, -16.708546)
 script = ExtResource("18_m7bt0")
 metadata/_custom_type_script = "uid://tyimuh366lck"
 
 [node name="Gold3" type="Node3D" parent="Resources" unique_id=1337392898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.76754, 0, -0.9209175)
+script = ExtResource("18_m7bt0")
+metadata/_custom_type_script = "uid://tyimuh366lck"
+
+[node name="Gold4" type="Node3D" parent="Resources" unique_id=1823013870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6886635, 0, -17.653559)
 script = ExtResource("18_m7bt0")
 metadata/_custom_type_script = "uid://tyimuh366lck"
 
