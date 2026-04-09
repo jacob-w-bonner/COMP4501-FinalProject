@@ -954,8 +954,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter" unique_id=505462072]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter" unique_id=241455176]
 layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter/HBoxContainer" unique_id=1452809656]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer/Mole/Counter/HBoxContainer" unique_id=505462072]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
 text = "1"
@@ -999,8 +1013,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter" unique_id=1466291365]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter" unique_id=595179836]
 layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter/HBoxContainer" unique_id=1637516862]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer2/MinerMole/Counter/HBoxContainer" unique_id=584397095]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
 text = "1"
@@ -1044,8 +1072,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter" unique_id=1828427693]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter" unique_id=384943633]
 layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter/HBoxContainer" unique_id=287651561]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer3/DoctorMole/Counter/HBoxContainer" unique_id=1185195874]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
 text = "1"
@@ -1089,8 +1131,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter" unique_id=2038202131]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter" unique_id=1431661869]
 layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter/HBoxContainer" unique_id=468034392]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer4/MusicMole/Counter/HBoxContainer" unique_id=1982349561]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
 text = "1"
@@ -1134,8 +1190,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter" unique_id=1719096363]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter" unique_id=1852849234]
 layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter/HBoxContainer" unique_id=1687215558]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer5/Base/Counter/HBoxContainer" unique_id=1651319860]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
 text = "1"
@@ -1179,8 +1249,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter" unique_id=1297405726]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter" unique_id=1681646146]
 layout_mode = 2
+theme_override_constants/separation = -240
+
+[node name="Label" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter/HBoxContainer" unique_id=2060854005]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "LVL "
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Value" type="Label" parent="GUI/Sidebar/Upgrades/MarginContainer/VBoxContainer/CurLevels/MarginContainer6/Cannon/Counter/HBoxContainer" unique_id=518026777]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/font_size = 14
 text = "1"
