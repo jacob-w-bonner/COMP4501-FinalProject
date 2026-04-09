@@ -15,16 +15,19 @@ func _ready():
 	$Sweep.value = 0
 	process = false
 	# Disable buttons for things you can't afford
-	disabled = !base.is_spawn_possible(self.name)
+	if base != null:
+		disabled = !base.is_spawn_possible(self.name)
 
 func _process(_delta):
-	disabled = !base.is_spawn_possible(self.name)
+	if base != null:
+		disabled = !base.is_spawn_possible(self.name)
 	if process:
 		time_label.text = "%3.1f" % $Timer.time_left
 		$Sweep.value = int(($Timer.time_left / cooldown) * 100)
 
 func _on_pressed() -> void:
-	base.request_spawn(self.name)
+	if base != null:
+		base.request_spawn(self.name)
 	disabled = true
 	process = true
 	$Timer.start()
@@ -35,16 +38,18 @@ func _on_timer_timeout() -> void:
 	disabled = false
 	time_label.hide()
 	process = false
-	disabled = !base.is_spawn_possible(self.name)
+	if base != null:
+		disabled = !base.is_spawn_possible(self.name)
 
 func _on_mouse_entered() -> void:
 	# Populate costs based on global values
-	var dict = base.get_spawn_costs(self.name)
-	%GoldCost.text = str(dict.get(1))
-	%CoalCost.text = str(dict.get(0))
-	%AmethystCost.text = str(dict.get(2))
-	%DiamondCost.text = str(dict.get(3))
-	%Costs.show()
+	if base != null:
+		var dict = base.get_spawn_costs(self.name)
+		%GoldCost.text = str(dict.get(1))
+		%CoalCost.text = str(dict.get(0))
+		%AmethystCost.text = str(dict.get(2))
+		%DiamondCost.text = str(dict.get(3))
+		%Costs.show()
 
 func _on_mouse_exited() -> void:
 	%Costs.hide()

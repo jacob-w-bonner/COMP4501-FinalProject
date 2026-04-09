@@ -451,6 +451,7 @@ far = 500.0
 script = ExtResource("3_4y3ct")
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=389060662]
+unique_name_in_owner = true
 
 [node name="TextureRect" type="ColorRect" parent="GUI" unique_id=13289256]
 offset_right = 320.0
