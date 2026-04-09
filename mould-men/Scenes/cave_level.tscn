@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dn84b6ye8sjbn" path="res://ObjectScripts/base.gd" id="19_2n1tv"]
 [ext_resource type="Script" uid="uid://fr08nj5cf2wv" path="res://ObjectScripts/diamond.gd" id="19_4y3ct"]
 [ext_resource type="Script" uid="uid://b5cknwfn2dh1p" path="res://UIScripts/costs.gd" id="19_ig43t"]
+[ext_resource type="Texture2D" uid="uid://yeq2ajfyecor" path="res://Assets/UIAssets/armadillo.svg" id="19_sbxh1"]
 [ext_resource type="PackedScene" uid="uid://b8eesw2fwfhtg" path="res://Assets/Lamp/Lantern.tscn" id="20_go3ms"]
 [ext_resource type="Script" uid="uid://bao444cjqck6q" path="res://ObjectScripts/cannon.gd" id="21_mqbjy"]
 [ext_resource type="Script" uid="uid://d1d8oe63sat6r" path="res://ObjectScripts/minimap_camera.gd" id="22_dpcai"]
@@ -52,9 +53,6 @@ agent_radius = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3hpu"]
 shader = ExtResource("23_dpcai")
 shader_parameter/brightness = 2.67
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlpd7"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="CaveLevel" type="Node3D" unique_id=637909514]
 script = ExtResource("1_dpcai")
@@ -1325,11 +1323,52 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="Button" type="Button" parent="GUI/Sidebar/MenuButton/MarginContainer" unique_id=336229970]
+[node name="Armadillo" type="Button" parent="GUI/Sidebar/MenuButton/MarginContainer" unique_id=1300411959 node_paths=PackedStringArray("base")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("9_dvdba")
-theme_override_styles/normal = SubResource("StyleBoxFlat_dlpd7")
-text = "MENU"
+theme_override_font_sizes/font_size = 24
+text = "SPAWN ARMADILLO"
+icon = ExtResource("19_sbxh1")
+alignment = 0
+expand_icon = true
+script = ExtResource("17_sbxh1")
+base = NodePath("../../../../../Units/MoleBase")
+cooldown = 10.0
+
+[node name="Sweep" type="TextureProgressBar" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" unique_id=575757755]
+modulate = Color(0.101960786, 0.101960786, 0.101960786, 0.7529412)
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_mqbjy")
+
+[node name="Timer" type="Timer" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" unique_id=1992745394]
+one_shot = true
+
+[node name="Counter" type="MarginContainer" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" unique_id=1229464904]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Value" type="Label" parent="GUI/Sidebar/MenuButton/MarginContainer/Armadillo/Counter" unique_id=910290043]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 14
+text = "0.0"
+horizontal_alignment = 2
+clip_text = true
 
 [node name="Costs" type="Control" parent="GUI" unique_id=1261653173]
 unique_name_in_owner = true
@@ -1666,3 +1705,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.196423, 1.9260888, 15.986
 [connection signal="mouse_exited" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" method="_on_mouse_exited"]
 [connection signal="pressed" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" method="_on_pressed"]
 [connection signal="timeout" from="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole/Timer" to="GUI/Sidebar/Spawning/MarginContainer/VBoxContainer/MoleSpawn/MusicMole" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_mouse_exited"]
+[connection signal="pressed" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_pressed"]
+[connection signal="timeout" from="GUI/Sidebar/MenuButton/MarginContainer/Armadillo/Timer" to="GUI/Sidebar/MenuButton/MarginContainer/Armadillo" method="_on_timer_timeout"]
