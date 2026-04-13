@@ -14,6 +14,7 @@ The RTS game for our COMP 4501 final project: Mould Men!
 ## A super high commitment any time now TODO list
 <ul>
 <li>Ambient sounds, Mole command and death cries, Clanker death cries</li>
+<li>Fix camera wandering by replacing vector addition with an effects list</li>
 </ul>
 
 
