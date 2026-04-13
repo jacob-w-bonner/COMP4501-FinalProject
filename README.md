@@ -11,6 +11,10 @@ The RTS game for our COMP 4501 final project: Mould Men!
 <li>ESC: Surrender</li>
 </ul>
 
+## A super high commitment any time now TODO list
+<ul>
+<li>Ambient sounds, Mole command and death cries, Clanker death cries</li>
+</ul>
 
 
 ## Our many art asset credits
