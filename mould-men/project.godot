@@ -13,7 +13,7 @@ config_version=5
 config/name="MouldMen"
 run/main_scene="uid://cl0fcwiwto7yg"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cwvwpphnnaaxe"
 
 [autoload]
 
